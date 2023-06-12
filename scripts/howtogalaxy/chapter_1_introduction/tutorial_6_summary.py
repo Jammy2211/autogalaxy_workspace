@@ -1,0 +1,237 @@
+"""
+Tutorial 9: Summary
+===================
+
+In this chapter, we have learnt that:
+
+ 1) **PyAutoGalaxy** uses Cartesian `Grid2D`'s of $(y,x)$ coordinates to evaluate galaxy luminous emission.
+ 2) These grids are combined with light profiles to compute images and other quantities.
+ 3) Profiles are grouped together to make galaxies.
+ 4) Collections of galaxies (at the same redshift) form a plane.
+ 5) The Universe's cosmology can be input into this `Plane` to convert its units to kiloparsecs.
+ 6) The plane's image can be used to simulate galaxy `Imaging` like it was observed with a real telescope.
+ 7) This data can be fitted, so to as quantify how well a model galaxy system represents the observed image.
+
+In this summary, we'll go over all the different Python objects introduced throughout this chapter and consider how
+they come together as one.
+"""
+# %matplotlib inline
+# from pyprojroot import here
+# workspace_path = str(here())
+# %cd $workspace_path
+# print(f"Working Directory has been set to `{workspace_path}`")
+
+from os import path
+import autogalaxy as ag
+import autogalaxy.plot as aplt
+
+"""
+__Initial Setup__
+
+The `dataset_path` specifies where we load the dataset from, which is the directory 
+`autogalaxy_workspace/dataset/imaging/howtogalaxy/`.
+"""
+dataset_path = path.join("dataset", "imaging", "howtogalaxy")
+
+"""
+Below, we do all the steps we have learned this chapter, making profiles, galaxies, a plane, fitting data, etc. 
+
+Note that we create a plane with two galaxies, the first of which has a bulge and disk.
+"""
+dataset = ag.Imaging.from_fits(
+    data_path=path.join(dataset_path, "data.fits"),
+    noise_map_path=path.join(dataset_path, "noise_map.fits"),
+    psf_path=path.join(dataset_path, "psf.fits"),
+    pixel_scales=0.1,
+)
+
+mask = ag.Mask2D.circular(
+    shape_native=dataset.shape_native, pixel_scales=dataset.pixel_scales, radius=3.0
+)
+
+dataset = dataset.apply_mask(mask=mask)
+
+galaxy_0 = ag.Galaxy(
+    redshift=0.5,
+    bulge=ag.lp.Sersic(
+        centre=(0.0, 0.0),
+        ell_comps=(0.0, 0.111111),
+        intensity=1.0,
+        effective_radius=1.0,
+        sersic_index=2.5,
+    ),
+    disk=ag.lp.Exponential(
+        centre=(0.0, 0.0),
+        ell_comps=(0.0, 0.111111),
+        intensity=1.0,
+        effective_radius=1.0,
+    ),
+)
+
+galaxy_1 = ag.Galaxy(
+    redshift=0.5,
+    bulge=ag.lp.Sersic(
+        centre=(1.0, 1.0),
+        ell_comps=(0.0, 0.111111),
+        intensity=1.0,
+        effective_radius=1.0,
+        sersic_index=2.5,
+    ),
+)
+
+plane = ag.Plane(galaxies=[galaxy_0, galaxy_1])
+
+fit = ag.FitImaging(dataset=dataset, plane=plane)
+
+"""
+__Object Composition__
+
+Lets now consider how all of the objects we've covered throughout this chapter (`LightProfile`'s, `MassProfile`'s,
+`Galaxy`'s, `Plane`'s, `Plane`'s) come together in a `FitImaging` object.
+
+The fit contains the `Plane`, which contains the `Planes`, which contains the `Galaxy`'s which contains 
+the `Profile`'s:
+"""
+print(fit)
+print()
+print(fit.plane)
+print()
+print(fit.plane.galaxies[0])
+print()
+print(fit.plane.galaxies[0])
+print()
+print(fit.plane.galaxies[0].bulge)
+print()
+print(fit.plane.galaxies[0].disk)
+print()
+print(fit.plane.galaxies[1].bulge)
+print()
+
+"""
+Once we have a `FitImaging` object, we can therefore use any of the `Plotter` objects throughout this chapter to plot
+any specific aspect of the fit, whether it be a profile, galaxy or plane. 
+
+For example, if we want to plot the image of the first galaxy's bulge and disk, we can do this in a variety of 
+different ways.
+"""
+plane_plotter = aplt.PlanePlotter(plane=fit.plane, grid=dataset.grid)
+plane_plotter.figures_2d(image=True)
+
+galaxy_plotter = aplt.GalaxyPlotter(galaxy=fit.plane.galaxies[0], grid=dataset.grid)
+galaxy_plotter.figures_2d(image=True)
+
+"""
+Understanding how these objects decompose into the different components of a galaxy is important for general 
+**PyAutoGalaxy** use.
+
+As the galaxy systems that we analyse become more complex, it is useful to know how to decompose their light 
+profiles, galaxies and planes to extract different pieces of information about the galaxy. 
+
+For example, we made our galaxy above with two light profiles, a `bulge` and `disk`. We can plot the image of 
+each component individually, now that we know how to break-up the different components of the fit and plane.
+"""
+light_profile_plotter = aplt.LightProfilePlotter(
+    light_profile=fit.plane.galaxies[0].bulge, grid=dataset.grid
+)
+light_profile_plotter.set_title("Bulge Image")
+light_profile_plotter.figures_2d(image=True)
+
+light_profile_plotter = aplt.LightProfilePlotter(
+    light_profile=fit.plane.galaxies[0].disk, grid=dataset.grid
+)
+light_profile_plotter.set_title("Disk Image")
+light_profile_plotter.figures_2d(image=True)
+
+"""
+__Visualization__
+
+Furthermore, using the `MatPLot2D`, `Visuals2D` and `Include2D` objects visualize any aspect of a fit we're interested 
+in and fully customize the figure. 
+
+Before beginning chapter 2 of **HowToGalaxy**, you should checkout the package `autogalaxy_workspace/plot`. 
+This provides a full API reference of every plotting option in **PyAutoGalaxy**, allowing you to create your own 
+fully customized figures of galaxies with minimal effort!
+"""
+mat_plot = aplt.MatPlot2D(
+    title=aplt.Title(label="This is the title", color="r", fontsize=20),
+    ylabel=aplt.YLabel(ylabel="Label of Y", color="b", fontsize=5, position=(0.2, 0.5)),
+    xlabel=aplt.XLabel(xlabel="Label of X", color="g", fontsize=10),
+    cmap=aplt.Cmap(cmap="cool", norm="linear"),
+)
+
+include = aplt.Include2D(
+    origin=True, mask=True, border=True, light_profile_centres=True
+)
+
+visuals = aplt.Visuals2D()
+
+light_profile_plotter = aplt.LightProfilePlotter(
+    light_profile=fit.plane.galaxies[0].bulge,
+    grid=dataset.grid,
+    mat_plot_2d=mat_plot,
+    include_2d=include,
+    visuals_2d=visuals,
+)
+light_profile_plotter.set_title("Bulge Image")
+light_profile_plotter.figures_2d(image=True)
+
+"""
+And, we're done, not just with the tutorial, but the chapter!
+
+__Code Design__
+
+To end, I want to quickly talk about the **PyAutoGalaxy** code-design and structure, which was really the main topic of
+this tutorial.
+
+Throughout this chapter, we never talk about anything like it was code. We didn`t refer to  'variables', 'parameters`' 
+'functions' or 'dictionaries', did we? Instead, we talked about 'galaxies', 'planes' a 'Plane', etc. We discussed 
+the objects that we, as scientists, think about when we consider a galaxy system.
+
+Software that abstracts the underlying code in this way follows an `object-oriented design`, and it is our hope 
+with **PyAutoGalaxy** that we've made its interface (often called the API for short) very intuitive, whether you were
+previous familiar with galaxy morphology or a complete newcomer!
+
+__Source Code__
+
+If you do enjoy code, variables, functions, and parameters, you may want to dig deeper into the **PyAutoGalaxy** source 
+code at some point in the future. Firstly, you should note that all of the code we discuss throughout the **HowToGalaxy** 
+lectures is not contained in just one project (e.g. the **PyAutoGalaxy** GitHub repository) but in fact three repositories:
+
+**PyAutoFit** - Everything required for modeling (the topic of chapter 2): https://github.com/rhayes777/PyAutoFit
+
+**PyAutoArray** - Handles all data structures and Astronomy dataset objects: https://github.com/Jammy2211/PyAutoArray
+
+**PyAutoGalaxy** - Contains the light profiles and galaxies: https://github.com/Jammy2211/PyAutoGalaxy
+
+Instructions on how to build these projects from source are provided here:
+
+https://pyautogalaxy.readthedocs.io/en/latest/installation/source.html
+
+We take a lot of pride in our source code, so I can promise you its well written, well documented and thoroughly 
+tested (check out the `test` directory if you're curious how to test code well!).
+
+__Likelihood Function__
+
+When performing a fit we compute a value of `log_likelihood`, which is computed by calling the **PyAutoGalax**
+likelihood function -- a term used in statistics to describe how one fits a model to data.
+
+This tutorial has likely given you a clear idea of how the likelihood is evaluated, however a more detailed 
+step-by-step visual guide is provided at `autogalaxy_workspace/*/imaging/log_likelihood_function/parametric.ipynb`.
+
+I recommend you give this notebook a read through, in order to further clarify how a galaxy model is fitted to data.
+
+__Wrap Up__
+
+You`ve learn a lot in this chapter, but what you have not learnt is how to 'model' a real galaxy.
+
+In the real world, we have no idea what the 'correct' combination of light profiles are that will give a good fit to 
+a galaxy. Modeling is the process of finding the model which provides a good fit and it is the topic of chapter 2 
+of **HowToGalaxy**.
+
+Finally, if you enjoyed doing the **HowToGalaxy** tutorials please git us a star on the **PyAutoGalaxy** GitHub
+repository: 
+
+ https://github.com/Jammy2211/PyAutoGalaxy
+
+Even the smallest bit of exposure via a GitHub star can help our project grow!
+"""
