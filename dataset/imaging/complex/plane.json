@@ -1,0 +1,94 @@
+{
+    "type": "autogalaxy.plane.plane.Plane",
+    "galaxies": [
+        {
+            "bulge": {
+                "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                "centre": [
+                    0.0,
+                    0.0
+                ],
+                "ell_comps": [
+                    0.05263157894736841,
+                    3.2227547345982974e-18
+                ],
+                "intensity": 0.2,
+                "effective_radius": 0.8,
+                "sersic_index": 4.0
+            },
+            "disk": {
+                "type": "autogalaxy.profiles.light.standard.exponential.Exponential",
+                "centre": [
+                    0.0,
+                    0.0
+                ],
+                "ell_comps": [
+                    0.152828012432548,
+                    0.08823529411764709
+                ],
+                "intensity": 0.1,
+                "effective_radius": 1.6
+            },
+            "clump_0": {
+                "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                "centre": [
+                    1.0,
+                    1.0
+                ],
+                "ell_comps": [
+                    0.0,
+                    0.0
+                ],
+                "intensity": 0.5,
+                "effective_radius": 0.2,
+                "sersic_index": 4.0
+            },
+            "clump_1": {
+                "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                "centre": [
+                    0.5,
+                    0.8
+                ],
+                "ell_comps": [
+                    0.0,
+                    0.0
+                ],
+                "intensity": 0.5,
+                "effective_radius": 0.2,
+                "sersic_index": 4.0
+            },
+            "clump_2": {
+                "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                "centre": [
+                    -1.0,
+                    -0.7
+                ],
+                "ell_comps": [
+                    0.0,
+                    0.0
+                ],
+                "intensity": 0.5,
+                "effective_radius": 0.2,
+                "sersic_index": 4.0
+            },
+            "clump_3": {
+                "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                "centre": [
+                    -1.0,
+                    0.4
+                ],
+                "ell_comps": [
+                    0.0,
+                    0.0
+                ],
+                "intensity": 0.5,
+                "effective_radius": 0.2,
+                "sersic_index": 4.0
+            },
+            "type": "autogalaxy.galaxy.galaxy.Galaxy",
+            "redshift": 0.5
+        }
+    ],
+    "redshift": 0.5,
+    "run_time_dict": null
+}

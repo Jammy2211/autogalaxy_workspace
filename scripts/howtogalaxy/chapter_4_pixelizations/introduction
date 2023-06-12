@@ -1,0 +1,27 @@
+So, we've learnt how to build pipelines that model galaxies and customize them to our science case.
+
+We consider how using search chaining, we can fix complex galaxies made of multiple components or multiple
+galaxies at the same time.
+
+However, we saw a pretty huge barrier when trying to fit very complex galaxies, that it requires an unwieldy number
+of non-linear parameters. The non-linear parameter space would become very complex, and even a well crafted pipeline
+may not fix the problem.
+
+In this chapter, we'll learn about pixelizations and inversions. These tools allow us to reconstruct components of a
+galaxy using a pixel-grid. This makes no assumption about the galaxy's morphology, breaking the simplifying assumptions
+inherent to analytic light profiles (e.g. symmetry).
+
+Remarkably, pixels grids use just a couple of non-linear parameters, meaning the 30+ non-linear parameters we required
+to fit complex galaxy components before are going to be reduced to just 3 or 4!
+
+By combining these fits with parametric model, we are therefore able to fit certain structures (e.g. a bulge and disk)
+whilst using these non-parametric pixelizations to fit other components that may otherwise degrade the fit.
+
+In particular, you'll learn how we:
+
+1) Pixelize a galaxy into a set of pixels that define mappings to image pixels.
+2) Invert this pixelization to fit the galaxy and thus reconstruct its light.
+3) Apply a smoothness prior on the galaxy reconstruction, called 'regularization', to ensure the solution is physicag.
+4) Apply this prior in a Bayesian framework to objectively quantify the galaxy reconstruction's log likelihood.
+6) Use alternative pixelizations that use Voronoi pixels adapted to the galaxy's mass model.
+7) Use these features in PyAutoGalaxy pipelines.
