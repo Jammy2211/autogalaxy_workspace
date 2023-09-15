@@ -63,10 +63,10 @@ I have not made an animation for a galaxy yet...).
 **Credit: Amy Etherington**
 
 In this tutorial, and throughout this entire chapter, we are going to use the non-linear search
-called `dynesty` (https://github.com/joshspeagle/dynesty). I have found this to be a great non-linear search for
+called `nautilus` (https://github.com/joshspeagle/nautilus). I have found this to be a great non-linear search for
 galaxy modeling, albeit alternatives are available in **PyAutoGalaxy** and will be discussed later in this chapter.
 
-For now, lets not worry about the details of how dynesty actually works and simply keep in our minds the described of
+For now, lets not worry about the details of how nautilus actually works and simply keep in our minds the described of
 a non-linear search provided above.
 """
 # %matplotlib inline
@@ -183,7 +183,7 @@ print(model.info)
 __Search__
 
 We now create the non-linear search object which will fit the model, which as discussed above is the nested
-sampling algorithm dynesty. We pass the `DynestyStatic` object the following:
+sampling algorithm nautilus. We pass the `Nautilus` object the following:
    
  - A `path_prefix` which tells the search to output its results in the 
  folder `autogalaxy_workspace/output/howtogalaxy/chapter_2`. 
@@ -191,16 +191,15 @@ sampling algorithm dynesty. We pass the `DynestyStatic` object the following:
  - A `name`, which gives the search a name and means the full output path is 
    `autogalaxy_workspace/output/howtogalaxy/chapter_2/tutorial_1_non_linear_search`. 
 
- - Input parameters like `nlive` and `walks` which control how it samples parameter space. These are discussed
+ - Input parameters like `n_live` and `walks` which control how it samples parameter space. These are discussed
  in more detail in a later tutorial.
 
 """
-search = af.DynestyStatic(
+search = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_2"),
     name="tutorial_1_non_linear_search",
     unique_tag=dataset_name,
-    nlive=40,
-    walks=5,
+    n_live=80,
 )
 
 """
@@ -333,8 +332,8 @@ __Output Folder__
 
 Now this is running you should checkout the `autogalaxy_workspace/output` folder.
 
-This is where the results of the search are written to your hard-disk (in the `tutorial_1_non_linear_search` folder). 
-When its completed, images, results and information about the fit appear in this folder, meaning that you don't need 
+This is where the results of the search are written to hard-disk (in the `start_here` folder). 
+Once completed images, results and information about the fit appear in this folder, meaning that you don't need 
 to keep running Python code to see the result.
 
 __Unique Identifier__
@@ -349,7 +348,7 @@ a new unique identifier will be generated, ensuring that the model-fit results a
 
 __On The Fly Outputs__
 
-Even when the search is running, information about the highest likelihood model inferred by the search so-far 
+Even when the search is running, information about the highest likelihood model inferred by the search so far 
 is output to this folder on-the-fly. If you navigate to the folder: 
 
  `output/howtogalaxy/chapter_1/tutorials_1_non_linear_search/unique_identifier` 
@@ -384,7 +383,7 @@ fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
 fit_plotter.subplot_fit()
 
 """
-The Probability Density Functions (PDF's) of the results can be plotted using Dynesty's in-built visualization 
+The Probability Density Functions (PDF's) of the results can be plotted using Nautilus's in-built visualization 
 library, which is wrapped via the `DynestyPlotter` object.
 
 The PDF shows the 1D and 2D probabilities estimated for every parameter after the model-fit. The two dimensional 

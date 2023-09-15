@@ -85,11 +85,11 @@ galaxy = af.Model(ag.Galaxy, redshift=0.5, bulge=bulge, disk=disk)
 
 model_1 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
-search_1 = af.DynestyStatic(
+search_1 = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_4"),
     name="search[1]_source[lp]",
     unique_tag=dataset_name,
-    nlive=50,
+    n_live=100,
 )
 
 analysis_1 = ag.AnalysisImaging(dataset=dataset)
@@ -128,11 +128,11 @@ galaxy = af.Model(
 
 model_2 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
-search_2 = af.DynestyStatic(
+search_2 = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_4"),
     name="search[2]_source[inversion_initialization]",
     unique_tag=dataset_name,
-    nlive=20,
+    n_live=50,
 )
 
 analysis_2 = ag.AnalysisImaging(
@@ -179,11 +179,11 @@ galaxy = af.Model(
 
 model_3 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
-search_3 = af.DynestyStatic(
+search_3 = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_4"),
     name="search[3]_source[pix]",
     unique_tag=dataset_name,
-    nlive=50,
+    n_live=100,
 )
 
 analysis_3 = ag.AnalysisImaging(dataset=dataset)

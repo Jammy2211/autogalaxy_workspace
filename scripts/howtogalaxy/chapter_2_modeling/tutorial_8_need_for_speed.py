@@ -26,12 +26,12 @@ are performed back-to-back. A key motivation for this is that it gives us a lot 
 dimensionality, priors and settings so as to perform faster and more efficient modeling.
 
 In the optional **HowToGalaxy** tutorial `chapter_optional/tutorial_searches.ipynb` we discuss other non-linear
-searches supported by **HowToGalaxy** which use a different approach to sample parameter sample than `dynesty`. For
+searches supported by **HowToGalaxy** which use a different approach to sample parameter sample than `nautilus`. For
 those familiar with statistical inference, this includes maximum likelihood estimators and MCMC algorithms.
 
 For galaxy modeling, there are maximum likelihood estimator methods (e.g. the Levenberg-Marquardt) that for simple
 models (e.g. a single `Sersic`) can often reliable infer the maximum likelihood model, using 10 times or fewer
-likelihood evaluations than `dynesty` therefore running over ten times or more faster). However, these methods do
+likelihood evaluations than `nautilus` therefore running over ten times or more faster). However, these methods do
 not infer reliable errors and are subject to inferring local maximum. Nevertheless, users modeling large galaxy
 samples may wish to investigate these methods.
 

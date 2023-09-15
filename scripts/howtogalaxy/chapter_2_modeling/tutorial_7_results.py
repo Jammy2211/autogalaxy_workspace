@@ -41,12 +41,11 @@ model = af.Collection(
     galaxies=af.Collection(galaxy=af.Model(ag.Galaxy, redshift=0.5, mass=ag.lp.Sersic))
 )
 
-search = af.DynestyStatic(
+search = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_2"),
     name="tutorial_1_non_linear_search",
     unique_tag=dataset_name,
-    nlive=40,
-    walks=5,
+    n_live=80,
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset)

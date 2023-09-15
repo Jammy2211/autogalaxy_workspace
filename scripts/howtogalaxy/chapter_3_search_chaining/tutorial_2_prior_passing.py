@@ -88,11 +88,11 @@ run it.
 """
 analysis_1 = ag.AnalysisImaging(dataset=dataset)
 
-search_1 = af.DynestyStatic(
+search_1 = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_1",
     unique_tag=dataset_name,
-    nlive=50,
+    n_live=100,
 )
 
 result_1 = search_1.fit(model=model_1, analysis=analysis_1)
@@ -164,11 +164,11 @@ that were passed.
 """
 analysis_2 = ag.AnalysisImaging(dataset=dataset)
 
-search_2 = af.DynestyStatic(
+search_2 = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_3"),
     name="tutorial_2_search_chaining_2",
     unique_tag=dataset_name,
-    nlive=50,
+    n_live=100,
 )
 
 print(
@@ -291,22 +291,12 @@ The intensity of an image depends on its units, S/N, galaxy brightness, etc. The
 one can use to generically chain the intensity of any two proflies. Thus, it makes more sense to chain them using 
 the relative value from a previous search.
 
-We can customize how priors are passed from the results of a search and non-linear search by inputting to the search 
-a `PriorPasser` object:
+We can customize how priors are passed from the results of a search and non-linear search by editing the
+ `prior_passer` settings in the `general.yaml` config file.
 
-"""
-search = af.DynestyStatic(
-    prior_passer=af.PriorPasser(sigma=2.0, use_widths=False, use_errors=True)
-)
-
-"""
-The PriorPasser allows us to customize at what sigma the error values the model results are computed at to compute
+This allows us to customize at what sigma the error values the model results are computed at to compute
 the passed sigma values and customizes whether the widths in the config file, these computed errors, or both, 
 are used to set the sigma values of the passed priors.
-
-The default values of the `PriorPasser` are found in the config file of every non-linear search, in the [prior_passer]
-section. All non-linear searches by default use a sigma value of 3.0, use_width=True and use_errors=True. We anticipate
-you should not need to change these values to get modeling to work proficiently!
 
 __EXAMPLE__
 

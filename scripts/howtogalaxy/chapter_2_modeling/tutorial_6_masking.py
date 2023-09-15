@@ -63,11 +63,11 @@ applied is passed into the `AnalysisImaging` object, ensuring that this is the m
 galaxy = af.Model(ag.Galaxy, redshift=1.0, bulge=ag.lp.Sersic)
 model = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
-search = af.DynestyStatic(
+search = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_2"),
     name="tutorial_5_with_custom_mask",
     unique_tag=dataset_name,
-    nlive=40,
+    n_live=80,
     number_of_cores=1,
 )
 

@@ -117,11 +117,11 @@ __Search + Analysis__
 
 Now lets create the search and analysis.
 """
-search_1 = af.DynestyStatic(
+search_1 = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_1",
     unique_tag=dataset_name,
-    nlive=50,
+    n_live=100,
 )
 
 analysis_1 = ag.AnalysisImaging(dataset=dataset)
@@ -232,11 +232,11 @@ print(model_2.info)
 Lets setup and run the search. As expected, it gives us the correct model. However, it does so significantly 
 faster than we are used to!
 """
-search_2 = af.DynestyStatic(
+search_2 = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_2",
     unique_tag=dataset_name,
-    nlive=50,
+    n_live=100,
 )
 
 analysis_2 = ag.AnalysisImaging(dataset=dataset)
