@@ -191,9 +191,8 @@ sampling algorithm nautilus. We pass the `Nautilus` object the following:
  - A `name`, which gives the search a name and means the full output path is 
    `autogalaxy_workspace/output/howtogalaxy/chapter_2/tutorial_1_non_linear_search`. 
 
- - Input parameters like `n_live` and `walks` which control how it samples parameter space. These are discussed
- in more detail in a later tutorial.
-
+ - Input parameters like `n_live` which control how it samples parameter space. This is discussed in more detail in 
+ a later tutorial.
 """
 search = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_2"),
@@ -267,8 +266,9 @@ For this example, we conservatively estimate that the non-linear search will per
 parameter in the model. This is an upper limit, with models typically converging in far fewer iterations.
 
 If you perform the fit over multiple CPUs, you can divide the run time by the number of cores to get an estimate of
-the time it will take to fit the model. However, above ~6 cores the speed-up from parallelization is less efficient and
-does not scale linearly with the number of cores.
+the time it will take to fit the model. Parallelization with Nautilus scales well, it speeds up the model-fit by the 
+`number_of_cores` for N < 8 CPUs and roughly `0.5*number_of_cores` for N > 8 CPUs. This scaling continues 
+for N> 50 CPUs, meaning that with super computing facilities you can always achieve fast run times!
 """
 print(
     "Estimated Run Time Upper Limit (seconds) = ",
@@ -384,7 +384,7 @@ fit_plotter.subplot_fit()
 
 """
 The Probability Density Functions (PDF's) of the results can be plotted using Nautilus's in-built visualization 
-library, which is wrapped via the `DynestyPlotter` object.
+library, which is wrapped via the `NautilusPlotter` object.
 
 The PDF shows the 1D and 2D probabilities estimated for every parameter after the model-fit. The two dimensional 
 figures can show the degeneracies between different parameters, for example how increasing the intensity $I$ of the
@@ -398,7 +398,7 @@ parameter `n`). These mappings ate specified in the `config/notation.yaml` file 
 The superscripts of labels correspond to the name each component was given in the model (e.g. for the `Isothermal`
 mass its name `mass` defined when making the `Model` above is used).
 """
-search_plotter = aplt.DynestyPlotter(samples=result.samples)
+search_plotter = aplt.NautilusPlotter(samples=result.samples)
 search_plotter.cornerplot()
 
 """

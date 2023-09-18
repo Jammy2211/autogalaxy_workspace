@@ -120,6 +120,37 @@ search = af.Nautilus(
 
 analysis = ag.AnalysisImaging(dataset=dataset)
 
+"""
+__Run Time__
+
+For standard light profiles, the log likelihood evaluation time is of order ~0.01 seconds for this dataset.
+
+For linear light profiles, the log likelihood evaluation increases to around ~0.05 seconds per likelihood evaluation.
+This is still fast, but it does mean that the fit may take around five times longer to run.
+
+However, because two free parameters have been removed from the model (the `intensity` of the lens bulge and 
+source bulge), the total number of likelihood evaluations will reduce. Furthermore, the simpler parameter space
+likely means that the fit will take less than 10000 per free parameter to converge. This is aided further
+by the reduction in `n_live` to 100.
+
+Fits using standard light profiles and linear light profiles therefore take roughly the same time to run. However,
+the simpler parameter space of linear light profiles means that the model-fit is more reliable, less susceptible to
+converging to an incorrect solution and scales better if even more light profiles are included in the model.
+"""
+run_time_dict, info_dict = analysis.profile_log_likelihood_function(
+    instance=model.random_instance()
+)
+
+print(f"Log Likelihood Evaluation Time (second) = {run_time_dict['fit_time']}")
+print(
+    "Estimated Run Time Upper Limit (seconds) = ",
+    (run_time_dict["fit_time"] * model.total_free_parameters * 10000)
+    / search.number_of_cores,
+)
+
+"""
+Run the non-linear search.
+"""
 print(
     "The non-linear search has begun running - checkout the workspace/output/howtogalaxy/chapter_2/tutorial_5_linear_light_profile"
     " folder for live output of the results, images and model."
@@ -201,53 +232,74 @@ __Basis__
 
 We can use many linear light profiles to build a `Basis`. 
 
-For example, below, we make a `Basis` out of 10 elliptical Gaussian linear light profiles which: 
+For example, below, we make a `Basis` out of 30 elliptical Gaussian linear light profiles which: 
 
  - All share the same centre and elliptical components.
- - Have `sigma` values which increase following the relation `sigma = 0.0001 + (1.0 * log10(1.0 + i)). 
+ - The `sigma` size of the Gaussians increases in log10 increments.
  
 Because `log10(1.0) = 0.0` the first Gaussian `sigma` value is therefore 0.0001, whereas because `log10(10) = 1.0`
-the size of the final Gaussian is 1.0. The equation below has therefore been chosen to provide intuition on 
-the scale of the Gaussians.
+the size of the final Gaussian is 1.0. 
+
+The equation below has therefore been chosen to provide intuition on the scale of the Gaussians.
 """
-gaussian_list = [
-    ag.lp_linear.Gaussian(centre=(0.0, 0.0), ell_comps=(0.0, 0.0)) for _ in range(10)
-]
+total_gaussians = 30
+
+# The sigma values of the Gaussians will be fixed to values spanning 0.01 to the mask radius, 3.0".
+mask_radius = 3.0
+log10_sigma_list = np.linspace(-2, np.log10(mask_radius), total_gaussians)
+
+# By defining the centre here, it creates two free parameters that are assigned below to all Gaussians.
+
+centre_0 = af.UniformPrior(lower_limit=-0.1, upper_limit=0.1)
+centre_1 = af.UniformPrior(lower_limit=-0.1, upper_limit=0.1)
+
+bulge_gaussian_list = []
+
+# A list of Gaussian model components whose parameters are customized belows.
+
+gaussian_list = af.Collection(
+    af.Model(ag.lp_linear.Gaussian) for _ in range(total_gaussians)
+)
+
+# Iterate over every Gaussian and customize its parameters.
 
 for i, gaussian in enumerate(gaussian_list):
-    gaussian.sigma = 0.0001 + (1.0 * np.log10(1.0 + i))
+    gaussian.centre.centre_0 = centre_0  # All Gaussians have same y centre.
+    gaussian.centre.centre_1 = centre_1  # All Gaussians have same x centre.
+    gaussian.ell_comps = gaussian_list[
+        0
+    ].ell_comps  # All Gaussians have same elliptical components.
+    gaussian.sigma = (
+        10 ** log10_sigma_list[i]
+    )  # All Gaussian sigmas are fixed to values above.
 
-basis = ag.lp_basis.Basis(
-    light_profile_list=gaussian_list,
+bulge_gaussian_list += gaussian_list
+
+# The Basis object groups many light profiles together into a single model component.
+
+bulge = af.Model(
+    ag.lp_basis.Basis,
+    light_profile_list=bulge_gaussian_list,
 )
 
 """
 One we have a `Basis`, we can treat it like any other light profile in order to create a `Galaxy` and `Plane` and 
 use it to fit data.
 """
-galaxy = ag.Galaxy(redshift=0.5, bulge=basis)
+galaxy = ag.Galaxy(redshift=0.5, bulge=bulge)
 
 plane = ag.Plane(galaxies=[galaxy])
 
 fit = ag.FitImaging(dataset=dataset, plane=plane)
 
 """
-By plotting the fit, we see that the `Basis` does a reasonable job at capturing the appearance of the galaxy in the 
-data
+By plotting the fit, we see that the `Basis` does a reasonable job at capturing the appearance of the lens galaxy.
 
-However, there are also distinct residual features:
- 
- - The centre of the image has significant chi-squareds, because the `sigma` scale of the Gaussians were not
- small enough to capture the central emission.
- 
- - There is a directional patterns in the residuals emanating from the centre of the data, because the Gaussians
- have a single elliptical unit system whereas the data is made of two elliptical structures (a bulge and disk). 
+There are imperfections, but this is because we did not fit the model via a non-linear search in order to determine
+the optimal values of the Gaussians in the basis. In particular, the Gaussians above were all spherical, when the
+lens galaxy is elliptical. 
 
- - There is also a "ringing" pattern, where circular rings can be seen radially outwards from the data. This is
- caused by Gaussians with alternating positive and negative being used to reconstruct the data, and is a result
- of the `Basis` not perfectly representing the underlying galaxy.
-
-We will address are these deficiencies in the model using a ` Basis` that we fit below.
+We rectify this below, where we use a non-linear search to determine the optimal values of the Gaussians!
 """
 fit_plotter = aplt.FitImagingPlotter(
     fit=fit,
@@ -262,50 +314,55 @@ the `af.Model()` and `af.Collection()` objects.
 
 In this example we fit a `Basis` model for the bulge where:
 
- - The bulge is a superposition of 10 parametric linear `Gaussian` profiles [6 parameters]. 
+ - The bulge is a superposition of 30 parametric linear `Gaussian` profiles [4 parameters]. 
  - The centres and elliptical components of each family of Gaussians are all linked together.
- - The `sigma` size of the Gaussians increases following a relation sigma = a + b * log10(i), where `i` is the 
- Gaussian index (which runs from 0 -> 9) and `a` and `b` are free parameters.
+ - The `sigma` size of the Gaussians increases in log10 increments.
 
-__Relations__
-
-The model below is composed using relations of the form `y = a + (log10(i+1) + b)`, where the values  of `a` 
-and `b` are the non-linear free parameters fitted for by `nautilus`. This is the same relation used in the
-simple fitting example above.
-
-For example, if `nautilus` samples a model where `a=0.01` and `b=5.0`, it will use a `Basis` containing 10 Gaussians 
-whoses `sigma` values are are follows:
-
- - gaussian[0] -> sigma = 0.01 + (5.0 * log10(0.0 + 1.0)) = 0.01 + 0.0 = 0.01
- - gaussian[1] -> sigma = 0.01 + (5.0 * log10(1.0 + 1.0)) = 0.01 + 0.301 = 0.311
- - gaussian [...] -> continues with increasing sigma.
- - gaussian[9] -> sigma = 0.01 + (5.0 * log10(9.0 + 1.0)) = 0.01 + 1.0 = 1.01
-
-Again, the relations above are chosen to provide intuition on the scale of the Gaussians. 
-
-Because `a` and `b` are free parameters (as opposed to `sigma` which can assume many values), we are able to 
-compose and fit `Basis` objects which can capture very complex light distributions with just N = 5-10 non-linear 
-parameters!
-
-Owing to our use of relations, the number of free parameters associated with the bulge is N=6. 
+The number of free parameters and therefore the dimensionality of the MGe is just N=4.
 """
-bulge_a = af.UniformPrior(lower_limit=0.0, upper_limit=0.2)
-bulge_b = af.UniformPrior(lower_limit=0.0, upper_limit=10.0)
+total_gaussians = 30
 
-gaussians_bulge = af.Collection(af.Model(ag.lp_linear.Gaussian) for _ in range(10))
+# The sigma values of the Gaussians will be fixed to values spanning 0.01 to the mask radius, 3.0".
+mask_radius = 3.0
+log10_sigma_list = np.linspace(-2, np.log10(mask_radius), total_gaussians)
 
-for i, gaussian in enumerate(gaussians_bulge):
-    gaussian.centre = gaussians_bulge[0].centre
-    gaussian.ell_comps = gaussians_bulge[0].ell_comps
-    gaussian.sigma = bulge_a + (bulge_b * np.log10(i + 1))
+# By defining the centre here, it creates two free parameters that are assigned below to all Gaussians.
 
+centre_0 = af.UniformPrior(lower_limit=-0.1, upper_limit=0.1)
+centre_1 = af.UniformPrior(lower_limit=-0.1, upper_limit=0.1)
+
+bulge_gaussian_list = []
+
+# A list of Gaussian model components whose parameters are customized belows.
+
+gaussian_list = af.Collection(
+    af.Model(al.lp_linear.Gaussian) for _ in range(total_gaussians)
+)
+
+# Iterate over every Gaussian and customize its parameters.
+
+for i, gaussian in enumerate(gaussian_list):
+    gaussian.centre.centre_0 = centre_0  # All Gaussians have same y centre.
+    gaussian.centre.centre_1 = centre_1  # All Gaussians have same x centre.
+    gaussian.ell_comps = gaussian_list[
+        0
+    ].ell_comps  # All Gaussians have same elliptical components.
+    gaussian.sigma = (
+        10 ** log10_sigma_list[i]
+    )  # All Gaussian sigmas are fixed to values above.
+
+bulge_gaussian_list += gaussian_list
+
+# The Basis object groups many light profiles together into a single model component.
 
 bulge = af.Model(
     ag.lp_basis.Basis,
-    light_profile_list=gaussians_bulge,
+    light_profile_list=bulge_gaussian_list,
 )
 
 """
+__Disk MGE__
+
 The residuals of the fit above showed us that the galaxy in the data is composed of multiple structures (e.g. a bulge
 and disk) which have distinct elliptical coordinates.
 
@@ -313,25 +370,49 @@ We therefore compose a second `Basis` of 10 Gaussians to represent the `disk`. T
 the `bulge` (e.g. all Gaussians share the same `centre` and `ell_comps`) but is treated as a completely
 independent set of parameters.
 """
-disk_a = af.UniformPrior(lower_limit=0.0, upper_limit=0.2)
-disk_b = af.UniformPrior(lower_limit=0.0, upper_limit=10.0)
+total_gaussians = 10
 
-gaussians_disk = af.Collection(af.Model(ag.lp_linear.Gaussian) for _ in range(10))
+# The sigma values of the Gaussians will be fixed to values spanning 0.01 to the mask radius, 3.0".
+mask_radius = 3.0
+log10_sigma_list = np.linspace(-2, np.log10(mask_radius), total_gaussians)
 
-for i, gaussian in enumerate(gaussians_disk):
-    gaussian.centre = gaussians_disk[0].centre
-    gaussian.ell_comps = gaussians_disk[0].ell_comps
-    gaussian.sigma = disk_a + (disk_b * np.log10(i + 1))
+disk_gaussian_list = []
+
+# A list of Gaussian model components whose parameters are customized belows.
+
+gaussian_list = af.Collection(
+    af.Model(ag.lp_linear.Gaussian) for _ in range(total_gaussians)
+)
+
+# Iterate over every Gaussian and customize its parameters.
+
+for i, gaussian in enumerate(gaussian_list):
+    gaussian.centre.centre_0 = bulge_gaussian_list[
+        0
+    ].centre_0  # All Gaussians have same y centre as bulge.
+    gaussian.centre.centre_1 = bulge_gaussian_list[
+        0
+    ].centre_1  # All Gaussians have same x centre as bulge.
+    gaussian.ell_comps = gaussian_list[
+        0
+    ].ell_comps  # All Gaussians have same elliptical components.
+    gaussian.sigma = (
+        10 ** log10_sigma_list[i]
+    )  # All Gaussian sigmas are fixed to values above.
+
+disk_gaussian_list += gaussian_list
+
+# The Basis object groups many light profiles together into a single model component.
 
 disk = af.Model(
     ag.lp_basis.Basis,
-    light_profile_list=gaussians_disk,
+    light_profile_list=disk_gaussian_list,
 )
 
 """
-We now compose the overall model which uses both sets of 10 Gaussians to represent separately the bulge and disk.
+We now compose the overall model which uses both sets of Gaussians to represent separately the bulge and disk.
 
-The overall dimensionality of non-linear parameter space is just N=12, which is fairly remarkable if you
+The overall dimensionality of non-linear parameter space is just N=6, which is fairly remarkable if you
 think about just how complex the structures are that these two `Basis` of Gaussians can capture!
 """
 galaxy = af.Model(ag.Galaxy, redshift=0.5, bulge=bulge, disk=disk)
@@ -341,18 +422,18 @@ model = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 """
 The `info` attribute shows the model, which is a lot longer than we have seen previously, given that is 
-composed of 20 Gaussians in total!
+composed of many Gaussians!
 """
 print(model.info)
 
 """
-We now fit the model.
+We now fit the model, with just `n_live=50` given the simiplicity of parameter space.
 """
 search = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_2"),
     name="tutorial_5_basis",
     unique_tag=dataset_name,
-    n_live=100,
+    n_live=50,
     number_of_cores=1,
 )
 
@@ -375,7 +456,7 @@ print(result_basis.info)
 """
 Visualizing the fit shows that we successfully fit the data to the noise level.
 
-Note that the result objects `max_log_likelihooD_plane` and `max_log_likelihood_fit` automatically convert
+Note that the result objects `max_log_likelihood_plane` and `max_log_likelihood_fit` automatically convert
 all linear light profiles to ordinary light profiles, including every single one of the 20 Gaussians fitted
 above. 
 
@@ -392,121 +473,43 @@ fit_plotter = aplt.FitImagingPlotter(fit=result_basis.max_log_likelihood_fit)
 fit_plotter.subplot_fit()
 
 """
-__Regularization__
+__Multi Gaussian Expansion Benefits__
 
-There is one downside to `Basis` functions, we may compose a model with too much freedom. The `Basis` (e.g. our 20
-Gaussians) may overfit noise in the data -- something we don't want to happen! 
- 
-To circumvent this issue, we have the option of adding regularization to a `Basis`. Regularization penalizes
-solutions which are not smooth -- it is essentially a prior that says we expect the component the `Basis` represents
-(e.g. a bulge or disk) to be smooth, in that its light changes smoothly as a function of radius.
+Symmetric light profiles (e.g. elliptical Sersics) may leave significant residuals, because they fail to capture
+irregular and asymmetric morphological of galaxies (e.g. isophotal twists, an ellipticity which varies radially).
+An MGE fully captures these features and can therefore much better represent the emission of complex galaxies.
 
-Below, we compare two fits, one without regularization and one with regularization which uses a `coefficient=1.0`,
-which is a relatively large value that leads to an overly smooth fit.
-"""
-gaussian_list = [
-    ag.lp_linear.Gaussian(centre=(0.0, 0.0), ell_comps=(0.0, 0.0)) for _ in range(10)
-]
+The MGE model can be composed in a way that has fewer non-linear parameters than an elliptical Sersic. In this example,
+a groups of Gaussians is used to represent the `bulge` of the galaxy, which in total correspond to just N=4 non-linear 
+parameters (a `bulge` and `disk` comprising two linear Sersics would give N=10).
 
-for i, gaussian in enumerate(gaussian_list):
-    gaussian.sigma = 0.0001 + (1.0 * np.log10(1.0 + i))
+The MGE model parameterization is also composed such that neither the `intensity` parameters or any of the
+parameters controlling the size of the Gaussians (their `sigma` values) are non-linear parameters sampled by Nautilus.
+This removes the most significant degeneracies in parameter space, making the model much more reliable and efficient
+to fit.
 
-basis = ag.lp_basis.Basis(light_profile_list=gaussian_list, regularization=None)
+Therefore, not only does an MGE fit more complex galaxy morphologies, it does so using fewer non-linear parameters
+in a much simpler non-linear parameter space which has far less significant parameter degeneracies!
 
-galaxy = ag.Galaxy(redshift=0.5, bulge=basis)
-
-plane = ag.Plane(galaxies=[galaxy])
-
-fit = ag.FitImaging(dataset=dataset, plane=plane)
-
-fit_plotter = aplt.FitImagingPlotter(
-    fit=fit,
-)
-fit_plotter.subplot_fit()
-
-
-basis = ag.lp_basis.Basis(
-    light_profile_list=gaussian_list, regularization=ag.reg.Constant(coefficient=1.0)
-)
-
-galaxy = ag.Galaxy(redshift=0.5, bulge=basis)
-
-plane = ag.Plane(galaxies=[galaxy])
-
-fit = ag.FitImaging(dataset=dataset, plane=plane)
-
-fit_plotter = aplt.FitImagingPlotter(
-    fit=fit,
-)
-fit_plotter.subplot_fit()
-
-"""
-We can easily extend the model-fit performed above to include regularization, where the `coefficient` parameters 
-associated with each `Basis` are included in the `nautilus` non-linear parameter space and fitted for.
-"""
-
-bulge = af.Model(
-    ag.lp_basis.Basis,
-    light_profile_list=gaussians_bulge,
-    regularization=af.Model(ag.reg.Constant),
-)
-
-disk = af.Model(
-    ag.lp_basis.Basis,
-    light_profile_list=gaussians_disk,
-    regularization=af.Model(ag.reg.Constant),
-)
-
-galaxy = af.Model(ag.Galaxy, redshift=0.5, bulge=bulge, disk=disk)
-
-model = af.Collection(galaxies=af.Collection(galaxy=galaxy))
-
-"""
-The `info` attribute shows the model, which has addition priors now associated with regularization.
-"""
-print(model.info)
-
-"""
-We now fit the model.
-"""
-search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
-    name="tutorial_5_basis_regularization",
-    unique_tag=dataset_name,
-    n_live=100,
-    number_of_cores=1,
-)
-
-"""
-__When To Regularize?__
-
-The benefits of applying regularization are: 
-
-- It prevents or reduces the over-fitting of noise in the data. 
-
-- It circumvents the "ringing" effect seen above, where alternating negative and positive linear light 
-profiles reconstruct the data.
-
-The downside is it adds extra non-linear parameters to the fit, slowing the analysis down.
-
-Whether you need to apply regularization to your science case is a difficult question. We recommend that 
-if you are using `Basis` objects, you begin without regularization to see if the `Basis` looks sufficient to 
-fit the data accurately. If effects like the positie / negative ringing occur, you may want to then try
-fits including regularization. 
-
-Regularization is applied following a statistics framework, which is described in more detail in chapter 4 
-of **HowToGalaxy*.
 
 __Other Basis Functions__
 
-In addition to the Gaussians used in this example, there are a number of other linear light profiles 
-implemented in **PyAutoGalaxy** which are designed to be used as basis functions:
+In addition to the Gaussians used in this example, there is another basis function implemented in PyAutoGalaxy 
+that is commonly used to represent the light of galaxies, called a `Shapelet`. 
 
- - Shapelets: Shapelets are basis functions with analytic properties that are appropriate for capturing the 
-   exponential / disk-like features of a galaxy. They do so over a wide range of scales, and can often represent 
-   features in these galaxies that a single Sersic function cannot.
- 
+Shapelets are basis functions with analytic properties that are appropriate for capturing the  exponential / disk-like 
+features of a galaxy. They do so over a wide range of scales, and can often represent features in source galaxies 
+that a single Sersic function or MGE cannot.
+
 An example using shapelets is given at `autogalaxy_workspace/scripts/imaging/modeling/features/shapelets.py`.
+ 
+Feel free to experiment with using shapelets as the galaxy by yourself. However they incur higher computational 
+overheads than the MGE and include a free parameter which governs the size of the basis functions and therefore source,
+slowing down convergence of the non-linear search. We have found that MGEs perform better than shapelets in most 
+lens modeling problems. 
+
+If you have a desire to fit sources with even more complex morphologies we recommend you look at how to reconstruct 
+sources using pixelizations in the `modeling/features` section or chapter 4 of **HowToGalaxy**.
 
 __Wrap Up__
 
