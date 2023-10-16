@@ -178,7 +178,7 @@ which has already performed the inversion and therefore the galaxy light profile
 """
 plane = result_linear_light_profile.max_log_likelihood_plane
 
-print(plane.galaxies[0].intensity)
+print(plane.galaxies[0].bulge.intensity)
 
 """
 The `Plane` contained in the `max_log_likelihood_fit` also has the solved for `intensity` values:
@@ -187,7 +187,7 @@ fit = result_linear_light_profile.max_log_likelihood_fit
 
 plane = fit.plane
 
-print(plane.galaxies[0].intensity)
+print(plane.galaxies[0].bulge.intensity)
 
 """
 __Visualization__
@@ -315,7 +315,7 @@ bulge_gaussian_list = []
 # A list of Gaussian model components whose parameters are customized belows.
 
 gaussian_list = af.Collection(
-    af.Model(al.lp_linear.Gaussian) for _ in range(total_gaussians)
+    af.Model(ag.lp_linear.Gaussian) for _ in range(total_gaussians)
 )
 
 # Iterate over every Gaussian and customize its parameters.
