@@ -115,7 +115,6 @@ search = af.Nautilus(
     name="tutorial_searches_slow",
     unique_tag=dataset_name,
     n_live=400,
-    f_live=0.8,
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset)

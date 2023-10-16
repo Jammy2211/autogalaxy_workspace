@@ -90,7 +90,7 @@ So, with this in mind, we'll perform an analysis using 3 searches:
 
 __Model + Search + Analysis + Model-Fit (Search 1)__
 
-In search 1 we fit a model where:
+Search 1 we fit a model where:
 
  - The left galaxy's light is a parametric linear `DevVaucouleurs` bulge with fixed centre [3 parameters].
 
@@ -128,7 +128,6 @@ search_1 = af.Nautilus(
     name="search[1]__left_galaxy_light[bulge_linear]",
     unique_tag=dataset_name,
     n_live=75,
-    f_live=5.0,
 )
 
 result_1 = search_1.fit(model=model_1, analysis=analysis_1)
@@ -143,7 +142,7 @@ print(result_1.info)
 """
 __Model (Search 2)__
 
-In search 2 we fit a model where:
+Search 2 we fit a model where:
 
  - The left galaxy's light is a parametric linear `DevVaucouleurs` bulge [0 parameters: fixed from search 1].
 
@@ -183,7 +182,6 @@ search_2 = af.Nautilus(
     name="search[2]__right_galaxy_light[bulge_linear]",
     unique_tag=dataset_name,
     n_live=75,
-    f_live=5.0,
 )
 
 result_2 = search_2.fit(model=model_2, analysis=analysis_2)
@@ -197,7 +195,7 @@ print(result_2.info)
 """
 __Model + Search + Analysis + Model-Fit (Search 4)__
 
-In search 4 we fit a model where:
+Search 4 we fit a model where:
 
  - The left galaxy's light is a parametric linear `Sersic` bulge with centre fixed [4 parameters: priors initialized 
  from search 1].
@@ -234,7 +232,6 @@ search_3 = af.Nautilus(
     name="search[3]_light_x2[bulge_linear]",
     unique_tag=dataset_name,
     n_live=100,
-    f_live=0.3,
 )
 
 result_3 = search_3.fit(model=model_3, analysis=analysis_3)
