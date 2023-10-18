@@ -116,9 +116,7 @@ of the regularization scheme, before using these models to refit the galaxy mass
 """
 mesh = af.Model(ag.mesh.Rectangular, shape=(40, 40))
 
-pixelization = af.Model(
-    ag.Pixelization, mesh=mesh, regularization=ag.reg.Constant
-)
+pixelization = af.Model(ag.Pixelization, mesh=mesh, regularization=ag.reg.Constant)
 
 galaxy = af.Model(
     ag.Galaxy,
@@ -173,9 +171,7 @@ disk.effective_radius = result_1.model.galaxies.galaxy.disk.effective_radius
 
 mesh = af.Model(ag.mesh.Rectangular, shape=(40, 40))
 
-pixelization = af.Model(
-    ag.Pixelization, mesh=mesh, regularization=ag.reg.Constant
-)
+pixelization = af.Model(ag.Pixelization, mesh=mesh, regularization=ag.reg.Constant)
 
 galaxy = af.Model(
     ag.Galaxy, redshift=0.5, bulge=bulge, disk=disk, pixelization=pixelization
