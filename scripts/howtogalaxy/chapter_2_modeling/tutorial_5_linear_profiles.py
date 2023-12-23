@@ -460,7 +460,7 @@ An MGE fully captures these features and can therefore much better represent the
 
 The MGE model can be composed in a way that has fewer non-linear parameters than an elliptical Sersic. In this example,
 a groups of Gaussians is used to represent the `bulge` of the galaxy, which in total correspond to just N=4 non-linear 
-parameters (a `bulge` and `disk` comprising two linear Sersics would give N=10).
+parameters (a `bulge` and `disk` comprising two linear Sersics has N=10 parameters).
 
 The MGE model parameterization is also composed such that neither the `intensity` parameters or any of the
 parameters controlling the size of the Gaussians (their `sigma` values) are non-linear parameters sampled by Nautilus.
