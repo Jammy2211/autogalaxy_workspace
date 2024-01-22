@@ -136,6 +136,20 @@ For the first two chapters of the **HowToGalaxy** tutorials the plane object wil
 used in this way. However, it has dedicated functionality for advanced **PyAutoGalaxy** features and theefore
 has a purpose, which hopefully you'll be clear on in the future!
 
+__Log10__
+
+The previous tutorial discussed how the light distributions of galaxies are closer to a log10 distribution than a 
+linear one and showed a convenience method to plot the image in log10 space.
+
+When plotting multiple galaxies, plotting in log10 space makes it easier to see by how much the galaxy images
+overlap and blend with one another. 
+"""
+mat_plot = aplt.MatPlot2D(use_log10=True)
+
+plane_plotter = aplt.PlanePlotter(plane=plane, grid=grid, mat_plot_2d=mat_plot)
+plane_plotter.figures_2d(image=True)
+
+"""
 __Wrap Up__
 
 Tutorial 3 complete! 
