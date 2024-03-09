@@ -2,13 +2,13 @@
 Tutorial 8: Fitting
 ===================
 
-Up to now, we have used light profiles, galaxies and planes to create images of a galaxy. However, this is the opposite
+Up to now, we have used light profiles and galaxies to create images of a galaxy. However, this is the opposite
 of what most Astronomers do: normally, an Astronomer has observed an image of a galaxy, and their goal is to
 determine the profiles that best represent the light distribution of the galaxy.
 
 To do this, we need to fit the data and determine which light profiles best represent the image it contains. We'll
 demonstrate how to do this using the imaging data we simulated in the previous tutorial. By comparing the images that
-come out of a plane with the data, we'll compute diagnostics that tell us how good or bad a combination of light
+come out of galaxies with the data, we'll compute diagnostics that tell us how good or bad a combination of light
 profiles represent the galaxy we observed.
 """
 # %matplotlib inline
@@ -173,12 +173,12 @@ print(dataset.grid.native)
 """
 __Fitting__
 
-To fit an image, we first create a plane. 
+To fit an image, we first create the galaxies. 
 
-Lets use the same plane that we simulated the imaging with in the previous tutorial, which will give us a 'perfect' fit.
+Lets use the same galaxies that we simulated the imaging with in the previous tutorial, which will give us a 'perfect' fit.
 
-Its worth noting that below, we use the masked imaging's grid to setup the plane. This ensures that the image we create
-from the plane has the same resolution and alignment as our lens data's masked image and that the image is only 
+Its worth noting that below, we use the masked imaging's grid to setup the galaxies. This ensures that the image we create
+from the galaxies has the same resolution and alignment as our lens data's masked image and that the image is only 
 created in unmasked pixels.
 """
 galaxy = ag.Galaxy(
@@ -192,17 +192,17 @@ galaxy = ag.Galaxy(
     ),
 )
 
-plane = ag.Plane(galaxies=[galaxy])
+galaxies = ag.Galaxies(galaxies=[galaxy])
 
-plane_plotter = aplt.PlanePlotter(plane=plane, grid=dataset.grid)
-plane_plotter.figures_2d(image=True)
+galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=dataset.grid)
+galaxies_plotter.figures_2d(image=True)
 
 """
 __Fit__
 
-To fit the image, we pass the `Imaging` and `Plane` to a `FitImaging` object. This performs the following:
+To fit the image, we pass the `Imaging` and `Galaxies` to a `FitImaging` object. This performs the following:
 
- 1) Creates an image of the galaxies from the plane using its `image_2d_from()` method.
+ 1) Creates an image of the galaxies using its `image_2d_from()` method.
 
  2) Blurs this image with the data's PSF, ensuring the telescope optics are included in the fit. This 
  creates what is called the `model_image`.
@@ -213,10 +213,10 @@ To fit the image, we pass the `Imaging` and `Plane` to a `FitImaging` object. Th
 
  5) Squares every value in the normalized residual-map, creating the fit's `chi_squared_map`.
 
- 6) Sums up these chi-squared values and converts them to a `log_likelihood`, which quantifies how good this plane`s 
+ 6) Sums up these chi-squared values and converts them to a `log_likelihood`, which quantifies how good the galaxies
  fit to the data was (higher log_likelihood = better fit).
 """
-fit = ag.FitImaging(dataset=dataset, plane=plane)
+fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 """
 Using a `FitImagingPlotter` to inspect the fit, we can see that we get a very good fit. For example: 
@@ -284,11 +284,11 @@ print(fit.log_likelihood)
 """
 __Fitting (incorrect fit)__
 
-Previously, we used the same plane to create and fit the image, giving an excellent fit. The residual map and 
+Previously, we used the same galaxies to create and fit the image, giving an excellent fit. The residual map and 
 chi-squared map showed no signs of the galaxy's light being left over. This solution will translate to one of the 
 highest log likelihood solutions possible.
 
-Lets change the plane, so that it is near the correct solution, but slightly off. Below, we slightly offset the 
+Lets change the galaxies, so that it is near the correct solution, but slightly off. Below, we slightly offset the 
 galaxy centre, by half a pixel, so 0.05"
 """
 galaxy = ag.Galaxy(
@@ -302,13 +302,13 @@ galaxy = ag.Galaxy(
     ),
 )
 
-plane = ag.Plane(galaxies=[galaxy])
+galaxies = ag.Galaxies(galaxies=[galaxy])
 
 """
 By plotting the fit, we see that residuals now appear at the centre the galaxy, increasing the chi-squared values 
 (which determine our log_likelihood).
 """
-fit_bad = ag.FitImaging(dataset=dataset, plane=plane)
+fit_bad = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 fit_bad_imaging_plotter = aplt.FitImagingPlotter(fit=fit, include_2d=include)
 fit_bad_imaging_plotter.subplot_fit()
@@ -324,7 +324,7 @@ print(fit_bad.log_likelihood)
 """
 It decreases! As expected, this model is a worse fit to the data.
 
-Lets change the plane, one more time, to a solution nowhere near the correct one.
+Lets change the galaxies, one more time, to a solution nowhere near the correct one.
 """
 galaxy = ag.Galaxy(
     redshift=0.5,
@@ -337,9 +337,9 @@ galaxy = ag.Galaxy(
     ),
 )
 
-plane = ag.Plane(galaxies=[galaxy])
+galaxies = ag.Galaxies(galaxies=[galaxy])
 
-fit_very_bad = ag.FitImaging(dataset=dataset, plane=plane)
+fit_very_bad = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 fit_very_bad_imaging_plotter = aplt.FitImagingPlotter(
     fit=fit_very_bad, include_2d=include
@@ -347,7 +347,7 @@ fit_very_bad_imaging_plotter = aplt.FitImagingPlotter(
 fit_very_bad_imaging_plotter.subplot_fit()
 
 """
-Clearly, the model provides a terrible fit and this plane is not a plausible representation of our galaxy dataset
+Clearly, the model provides a terrible fit and the galaxies are not a plausible representation of our galaxy dataset
 (of course, we already knew that, given that we simulated it!)
 
 The log likelihood drops dramatically, as expected.

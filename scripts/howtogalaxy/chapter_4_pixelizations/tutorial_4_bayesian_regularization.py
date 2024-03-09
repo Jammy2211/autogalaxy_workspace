@@ -56,9 +56,9 @@ def perform_fit_with_galaxy(dataset, galaxy):
 
     dataset = dataset.apply_mask(mask=mask)
 
-    plane = ag.Plane(galaxies=[galaxy])
+    galaxies = ag.Galaxies(galaxies=[galaxy])
 
-    return ag.FitImaging(dataset=dataset, plane=plane)
+    return ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 
 """

@@ -5,8 +5,10 @@ Tutorial 3: galaxies
 This tutorial introduces `Galaxy` objects, which:
 
  - Are composed from collections of the light profiles introduced in the previous tutorial.
- - Combine these profiles such that their properties (e.g. an image) are correctly calculated
- as the combination of these profiles.
+
+ - Combine these profiles such that their properties (e.g. an image) are correctly calculated as the combination of
+ these profiles.
+
  - Also have a redshift, which defines how far a galaxy is from Earth.
 """
 # %matplotlib inline
@@ -110,32 +112,33 @@ show how these 3 galaxies are misaligned in 2D.
 galaxy_plotter.figures_1d_decomposed(image=True)
 
 """
-__Planes__
+__Multiple Galaxies__
 
-We can also group galaxies into a `Plane` object, which is constructed from a list of galaxies.
+We can also group galaxies into a `Galaxies` object, which is constructed from a list of galaxies.
 """
-plane = ag.Plane(galaxies=[galaxy_with_light_profile, galaxy_with_3_light_profiles])
-
-"""
-The plane has agl the same methods we've seen for light profiles and galaxies.
-
-For example, the `image_2d_from` method sums up the individual images of every galaxy in the plane.
-"""
-plane_image_2d = plane.image_2d_from(grid=grid)
+galaxies = ag.Galaxies(
+    galaxies=[galaxy_with_light_profile, galaxy_with_3_light_profiles]
+)
 
 """
-The `PlanePlotter` also allows similar plots to be made as the `GalaxyPlotter`.
+The galaxies has the same methods we've seen for light profiles and individual galaxies.
+
+For example, the `image_2d_from` method sums up the individual images of every galaxy.
 """
-plane_plotter = aplt.PlanePlotter(plane=plane, grid=grid)
-plane_plotter.subplot_galaxy_images()
+image = galaxies.image_2d_from(grid=grid)
 
 """
-The `Plane` object may seem a bit redundant, in this tutorial is pretty much acts as a list galaxies! 
+The `GalaxiesPlotter` shares the same API as the `LightProfilePlotter` and `GalaxyPlotter`.
+"""
+galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
+galaxies_plotter.figures_2d(image=True)
 
-For the first two chapters of the **HowToGalaxy** tutorials the plane object will indeed pretty much only be
-used in this way. However, it has dedicated functionality for advanced **PyAutoGalaxy** features and theefore
-has a purpose, which hopefully you'll be clear on in the future!
+"""
+A subplot can be made of each individual galaxy image.
+"""
+galaxies_plotter.subplot_galaxy_images()
 
+"""
 __Log10__
 
 The previous tutorial discussed how the light distributions of galaxies are closer to a log10 distribution than a 
@@ -146,14 +149,16 @@ overlap and blend with one another.
 """
 mat_plot = aplt.MatPlot2D(use_log10=True)
 
-plane_plotter = aplt.PlanePlotter(plane=plane, grid=grid, mat_plot_2d=mat_plot)
-plane_plotter.figures_2d(image=True)
+galaxies_plotter = aplt.GalaxiesPlotter(
+    galaxies=galaxies, grid=grid, mat_plot_2d=mat_plot
+)
+galaxies_plotter.figures_2d(image=True)
 
 """
 __Wrap Up__
 
 Tutorial 3 complete! 
 
-We've learnt that by grouping light profiles into a galaxy and galaxies into a plane we can sum the contribution of 
+We've learnt that by grouping light profiles into a galaxy and galaxies together we can sum the contribution of 
 each profile to  compute the galaxy's image (and other properties).
 """

@@ -7,9 +7,9 @@ In this chapter, we have learnt that:
  1) **PyAutoGalaxy** uses Cartesian `Grid2D`'s of $(y,x)$ coordinates to evaluate galaxy luminous emission.
  2) These grids are combined with light profiles to compute images and other quantities.
  3) Profiles are grouped together to make galaxies.
- 4) Collections of galaxies (at the same redshift) form a plane.
- 5) The Universe's cosmology can be input into this `Plane` to convert its units to kiloparsecs.
- 6) The plane's image can be used to simulate galaxy `Imaging` like it was observed with a real telescope.
+ 4) Collections of galaxies (at the same redshift) can be made..
+ 5) The Universe's cosmology can be input into this `Galaxies` to convert its units to kiloparsecs.
+ 6) The galaxies's image can be used to simulate galaxy `Imaging` like it was observed with a real telescope.
  7) This data can be fitted, so to as quantify how well a model galaxy system represents the observed image.
 
 In this summary, we'll go over all the different Python objects introduced throughout this chapter and consider how
@@ -34,9 +34,9 @@ The `dataset_path` specifies where we load the dataset from, which is the direct
 dataset_path = path.join("dataset", "imaging", "howtogalaxy")
 
 """
-Below, we do all the steps we have learned this chapter, making profiles, galaxies, a plane, fitting data, etc. 
+Below, we do all the steps we have learned this chapter, making profiles, galaxies, fitting data, etc. 
 
-Note that we create a plane with two galaxies, the first of which has a bulge and disk.
+Note that we use two galaxies, the first of which has a bulge and disk.
 """
 dataset = ag.Imaging.from_fits(
     data_path=path.join(dataset_path, "data.fits"),
@@ -79,45 +79,42 @@ galaxy_1 = ag.Galaxy(
     ),
 )
 
-plane = ag.Plane(galaxies=[galaxy_0, galaxy_1])
+galaxies = ag.Galaxies(galaxies=[galaxy_0, galaxy_1])
 
-fit = ag.FitImaging(dataset=dataset, plane=plane)
+fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 """
 __Object Composition__
 
 Lets now consider how all of the objects we've covered throughout this chapter (`LightProfile`'s, `MassProfile`'s,
-`Galaxy`'s, `Plane`'s, `Plane`'s) come together in a `FitImaging` object.
+`Galaxy`'s, `Galaxies`'s) come together in a `FitImaging` object.
 
-The fit contains the `Plane`, which contains the `Planes`, which contains the `Galaxy`'s which contains 
-the `Profile`'s:
+The fit contains the `Galaxies`, which contains the `Galaxy`'s which contains the `Profile`'s:
 """
 print(fit)
 print()
-print(fit.plane)
+print(fit)
 print()
-print(fit.plane.galaxies[0])
+print(fit.galaxies[0])
 print()
-print(fit.plane.galaxies[0])
+print(fit.galaxies[0].bulge)
 print()
-print(fit.plane.galaxies[0].bulge)
+print(fit.galaxies[0].disk)
 print()
-print(fit.plane.galaxies[0].disk)
-print()
-print(fit.plane.galaxies[1].bulge)
+print(fit.galaxies[1].bulge)
 print()
 
 """
 Once we have a `FitImaging` object, we can therefore use any of the `Plotter` objects throughout this chapter to plot
-any specific aspect of the fit, whether it be a profile, galaxy or plane. 
+any specific aspect of the fit, whether it be a profile, galaxy or galaxies. 
 
 For example, if we want to plot the image of the first galaxy's bulge and disk, we can do this in a variety of 
 different ways.
 """
-plane_plotter = aplt.PlanePlotter(plane=fit.plane, grid=dataset.grid)
-plane_plotter.figures_2d(image=True)
+galaxies_plotter = aplt.GalaxiesPlotter(galaxies=fit.galaxies, grid=dataset.grid)
+galaxies_plotter.figures_2d(image=True)
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=fit.plane.galaxies[0], grid=dataset.grid)
+galaxy_plotter = aplt.GalaxyPlotter(galaxy=fit.galaxies[0], grid=dataset.grid)
 galaxy_plotter.figures_2d(image=True)
 
 """
@@ -125,19 +122,19 @@ Understanding how these objects decompose into the different components of a gal
 **PyAutoGalaxy** use.
 
 As the galaxy systems that we analyse become more complex, it is useful to know how to decompose their light 
-profiles, galaxies and planes to extract different pieces of information about the galaxy. 
+profiles, galaxies and galaxies to extract different pieces of information about the galaxy. 
 
 For example, we made our galaxy above with two light profiles, a `bulge` and `disk`. We can plot the image of 
-each component individually, now that we know how to break-up the different components of the fit and plane.
+each component individually, now that we know how to break-up the different components of the fit and galaxies.
 """
 light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=fit.plane.galaxies[0].bulge, grid=dataset.grid
+    light_profile=fit.galaxies[0].bulge, grid=dataset.grid
 )
 light_profile_plotter.set_title("Bulge Image")
 light_profile_plotter.figures_2d(image=True)
 
 light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=fit.plane.galaxies[0].disk, grid=dataset.grid
+    light_profile=fit.galaxies[0].disk, grid=dataset.grid
 )
 light_profile_plotter.set_title("Disk Image")
 light_profile_plotter.figures_2d(image=True)
@@ -166,7 +163,7 @@ include = aplt.Include2D(
 visuals = aplt.Visuals2D()
 
 light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=fit.plane.galaxies[0].bulge,
+    light_profile=fit.galaxies[0].bulge,
     grid=dataset.grid,
     mat_plot_2d=mat_plot,
     include_2d=include,
@@ -184,7 +181,7 @@ To end, I want to quickly talk about the **PyAutoGalaxy** code-design and struct
 this tutorial.
 
 Throughout this chapter, we never talk about anything like it was code. We didn`t refer to  'variables', 'parameters`' 
-'functions' or 'dictionaries', did we? Instead, we talked about 'galaxies', 'planes' a 'Plane', etc. We discussed 
+'functions' or 'dictionaries', did we? Instead, we talked about 'galaxies'. We discussed 
 the objects that we, as scientists, think about when we consider a galaxy system.
 
 Software that abstracts the underlying code in this way follows an `object-oriented design`, and it is our hope 

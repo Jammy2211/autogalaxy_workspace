@@ -77,7 +77,7 @@ In chapter 1, we'll learn about galaxy structure and **PyAutoGalaxy**. At the en
 
 1) Create uniform grid's of (x,y) Cartesian coordinates.
 2) Combine these grid's with light profiles to make images.
-3) Combine these light profiles to make galaxies and planes.
+3) Combine these light profiles to make galaxies.
 4) Simulate telescope CCD imaging data of a galaxy.
 5) Fit imaging data with model images generated via galaxy objects.
 

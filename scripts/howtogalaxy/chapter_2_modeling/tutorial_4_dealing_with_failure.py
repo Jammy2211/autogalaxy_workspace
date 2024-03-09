@@ -168,8 +168,8 @@ bulge.sersic_index = af.GaussianPrior(
 We now compose the overall model, where the galaxy model uses the `Model` components above which had their
 priors customizes.
 
-In this exercise, I'm not going to change any priors on the source galaxy. Whilst modeling experts can look at a 
-galaxy and often tell you roughly where the galaxy is located (in the source-plane), it is something of art 
+In this exercise, I'm not going to change any priors on the galaxy. Whilst modeling experts can look at a 
+galaxy and often tell you roughly where the galaxy is located, it is something of art 
 form. Furthermore, the source's morphology can be pretty complex, making it difficult to come up with a good source 
 prior!
 """

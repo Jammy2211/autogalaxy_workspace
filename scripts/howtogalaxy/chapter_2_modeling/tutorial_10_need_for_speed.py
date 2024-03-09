@@ -40,7 +40,7 @@ __Algorithmic Optimization__
 Every operation **PyAutoGalaxy** performs to fit galaxy data with a model takes time, for example:
 
  - Computing the intensity values from a light profile.
- - Convolving the image that comes from a plane with the PSF to compare it to the data.
+ - Convolving the galaxies image with the PSF to compare it to the data.
 
 One can therefore in principle make **PyAutoGalaxy** run faster by using more efficient algorithms. However, I am
 confident that for many tasks and operations we have written code that is already very fast!

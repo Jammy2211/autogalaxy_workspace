@@ -172,38 +172,38 @@ __Intensities__
 The intensities of linear light profiles are not a part of the model parameterization and therefore are not displayed
 in the `model.results` file.
 
-To extract the `intensity` values of a specific component in the model, we use the `max_log_likelihood_plane`,
+To extract the `intensity` values of a specific component in the model, we use the `max_log_likelihood_galaxies`,
 which has already performed the inversion and therefore the galaxy light profiles have their solved for
 `intensity`'s associated with them.
 """
-plane = result_linear_light_profile.max_log_likelihood_plane
+galaxies = result_linear_light_profile.max_log_likelihood_galaxies
 
-print(plane.galaxies[0].bulge.intensity)
+print(galaxies[0].bulge.intensity)
 
 """
-The `Plane` contained in the `max_log_likelihood_fit` also has the solved for `intensity` values:
+The `Galaxies` contained in the `max_log_likelihood_fit` also has the solved for `intensity` values:
 """
 fit = result_linear_light_profile.max_log_likelihood_fit
 
-plane = fit.plane
+galaxies = fit.galaxies
 
-print(plane.galaxies[0].bulge.intensity)
+print(galaxies[0].bulge.intensity)
 
 """
 __Visualization__
 
-Linear light profiles and objects containing them (e.g. galaxies, a plane) cannot be plotted because they do not 
+Linear light profiles and objects containing them (e.g. galaxies) cannot be plotted because they do not 
 have an `intensity` value.
 
 Therefore, the objects created above which replaces all linear light profiles with ordinary light profiles must be
 used for visualization:
 """
-plane = result_linear_light_profile.max_log_likelihood_plane
+galaxies = result_linear_light_profile.max_log_likelihood_galaxies
 
-plane_plotter = aplt.PlanePlotter(plane=plane, grid=dataset.grid)
-plane_plotter.figures_2d(image=True)
+galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=dataset.grid)
+galaxies_plotter.figures_2d(image=True)
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=plane.galaxies[0], grid=dataset.grid)
+galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxies[0], grid=dataset.grid)
 galaxy_plotter.figures_2d(image=True)
 
 """
@@ -262,14 +262,14 @@ bulge = af.Model(
 )
 
 """
-One we have a `Basis`, we can treat it like any other light profile in order to create a `Galaxy` and `Plane` and 
+One we have a `Basis`, we can treat it like any other light profile in order to create a `Galaxy` and `Galaxies` and 
 use it to fit data.
 """
 galaxy = ag.Galaxy(redshift=0.5, bulge=bulge)
 
-plane = ag.Plane(galaxies=[galaxy])
+galaxies = ag.Galaxies(galaxies=[galaxy])
 
-fit = ag.FitImaging(dataset=dataset, plane=plane)
+fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 """
 By plotting the fit, we see that the `Basis` does a reasonable job at capturing the appearance of the lens galaxy.
@@ -435,7 +435,7 @@ print(result_basis.info)
 """
 Visualizing the fit shows that we successfully fit the data to the noise level.
 
-Note that the result objects `max_log_likelihood_plane` and `max_log_likelihood_fit` automatically convert
+Note that the result objects `max_log_likelihood_galaxies` and `max_log_likelihood_fit` automatically convert
 all linear light profiles to ordinary light profiles, including every single one of the 20 Gaussians fitted
 above. 
 
@@ -443,10 +443,10 @@ This means we can use them directly to perform the visualization below.
 """
 print(result_basis.max_log_likelihood_instance)
 
-plane_plotter = aplt.PlanePlotter(
-    plane=result_basis.max_log_likelihood_plane, grid=result_basis.grid
+galaxies_plotter = aplt.GalaxiesPlotter(
+    galaxies=result_basis.max_log_likelihood_galaxies, grid=result_basis.grid
 )
-plane_plotter.subplot()
+galaxies_plotter.subplot()
 
 fit_plotter = aplt.FitImagingPlotter(fit=result_basis.max_log_likelihood_fit)
 fit_plotter.subplot_fit()

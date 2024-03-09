@@ -17,11 +17,5 @@ Files
 `Tutorial 3: Galaxies <https://mybinder.org/v2/gh/Jammy2211/autogalaxy_workspace/release?filepath=notebooks/howtogalaxy/chapter_1_introduction/tutorial_3_galaxies.ipynb>`_
 - Making galaxy objects out of light and mass profile.
 
-`Tutorial 4: Data <https://mybinder.org/v2/gh/Jammy2211/autogalaxy_workspace/release?filepath=notebooks/howtogalaxy/chapter_1_introduction/tutorial_4_data.ipynb>`_
-- Loading and inspecting telescope imaging data of a galaxy.
-
-`Tutorial 5: Fitting <https://mybinder.org/v2/gh/Jammy2211/autogalaxy_workspace/release?filepath=notebooks/howtogalaxy/chapter_1_introduction/tutorial_5_fitting.ipynb>`_
-- Fitting data with a galaxy model.
-
 `Tutorial 6: Summary <https://mybinder.org/v2/gh/Jammy2211/autogalaxy_workspace/release?filepath=notebooks/howtogalaxy/chapter_1_introduction/tutorial_6_summary.ipynb>`_
 - A summary of the chapter.

@@ -152,7 +152,7 @@ There are three more things about a linear inversion that are worth knowing:
 
 Finally, let me show you how easy it is to fit an image with an `Inversion` using a `FitImaging` object. Instead of 
 giving the galaxy a light profile, we simply pass it a `Pixelization` and regularization, and pass it to a 
-plane.
+galaxies.
 """
 pixelization = ag.Pixelization(
     mesh=ag.mesh.Rectangular(shape=(25, 25)),
@@ -161,17 +161,17 @@ pixelization = ag.Pixelization(
 
 galaxy = ag.Galaxy(redshift=1.0, pixelization=pixelization)
 
-plane = ag.Plane(galaxies=[galaxy])
+galaxies = ag.Galaxies(galaxies=[galaxy])
 
 """
-Then, like before, we pass the imaging and plane `FitImaging` object. 
+Then, like before, we pass the imaging and galaxies `FitImaging` object. 
 
 We see some pretty good looking residuals, albeit there is faint flux leftover. We will consider how we can address 
 this in the next tutorial. 
 
 We can use the `subplot_of_galaxies` method to specifically visualize the inversion and plot the reconstruction.
 """
-fit = ag.FitImaging(dataset=dataset, plane=plane)
+fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 include = aplt.Include2D(mask=True)
 

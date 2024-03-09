@@ -2,7 +2,7 @@
 Tutorial 3: Two Galaxies
 ========================
 
-Up to now, all the images we've fitted had one galaxy. However, we saw in chapter 1 that our plane object can
+Up to now, all the images we've fitted had one galaxy. However, we saw in chapter 1 that our galaxies object can
 consist of multiple galaxies which each contribute to the overall emission. Multi-galaxy systems are challenging to
 model, because they add an extra 5-10 parameters to the non-linear search per galaxy and, more problematically, the
 degeneracies between the parameters of the light profiles of the galaxies can be severe.

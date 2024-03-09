@@ -53,17 +53,17 @@ analysis = ag.AnalysisImaging(dataset=dataset)
 result = search.fit(model=model, analysis=analysis)
 
 """
-__Plane & Fit__
+__Galaxies & Fit__
 
 In the previous tutorials, we saw that this result contains the maximum log likelihood fit, which provide
 a fast way to visualize the result.
 
-It also contains the maximum log likelihood plane.
+It also contains the maximum log likelihood galaxies.
 """
-plane_plotter = aplt.PlanePlotter(
-    plane=result.max_log_likelihood_plane, grid=mask.derive_grid.all_false_sub_1
+galaxies_plotter = aplt.GalaxiesPlotter(
+    galaxies=result.max_log_likelihood_galaxies, grid=mask.derive_grid.all_false_sub_1
 )
-plane_plotter.subplot()
+galaxies_plotter.subplot()
 
 fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
 fit_plotter.subplot_fit()

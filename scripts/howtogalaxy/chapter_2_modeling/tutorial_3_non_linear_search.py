@@ -4,7 +4,7 @@ Tutorial 1: Non-linear Search
 
 __Modeling__
 
-In chapter 1, we learned how to use **PyAutoGalaxy** to do many things: create galaxies and planes, simulate and fit
+In chapter 1, we learned how to use **PyAutoGalaxy** to do many things: create galaxies, simulate and fit
 data. However, we did not learn how to answer the core questions that any scientist, when faced with observations of a
 galaxy, seeks to answer:
 
@@ -34,7 +34,7 @@ So, how do we infer the parameters of our light profile above that give a good f
 Well, with the tools that we learned in chapter 1, we could try the following:
 
  1) Randomly guess a model, corresponding to some random set of parameter values for the light profile.
- 2) Use this model to create a `Plane` and fit the `Imaging` with it, via a `FitImaging` object.
+ 2) Use this model to create galaxies and fit the `Imaging` with it, via a `FitImaging` object.
  3) Quantify the goodness of fit using the `log_likelihood`.
  4) Keep guessing models, repeating steps 1-3, until we eventually find a model that provides a good fit (i.e.
  a high value log likelihood)!

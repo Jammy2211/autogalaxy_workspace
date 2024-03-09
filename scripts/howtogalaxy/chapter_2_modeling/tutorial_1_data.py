@@ -8,8 +8,8 @@ Other than the actual light that profile emits there are no other effects in the
 contrasts real data of a galaxy, where there are lots of other effects in the imagimg (noise, diffraction due to the
 telescope optics, etc.).
 
-In this example, we use **PyAutoGalaxy** to simulate Hubble Space Telescope (HST) imaging of a galaxy, where the galaxy
-image is made via a plane. By simulate, we mean that this image will contain these effects that are present in real data.
+In this example, we use **PyAutoGalaxy** to simulate Hubble Space Telescope (HST) imaging of a galaxy. By simulate,
+we mean that this image will contain these effects that are present in real data.
 """
 # %matplotlib inline
 # from pyprojroot import here
@@ -29,7 +29,7 @@ We'll need a 2D grid to make the galaxy image we'll ultimately simulate as if it
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.1)
 
 """
-Now, lets setup our galaxy and plane.
+Now, lets setup our galaxy and galaxies.
 """
 galaxy = ag.Galaxy(
     redshift=0.5,
@@ -42,13 +42,13 @@ galaxy = ag.Galaxy(
     ),
 )
 
-plane = ag.Plane(galaxies=[galaxy])
+galaxies = ag.Galaxies(galaxies=[galaxy])
 
 """
-Lets look at the plane's image, which is the image we'll be simulating.
+Lets look at the galaxies's image, which is the image we'll be simulating.
 """
-plane_plotter = aplt.PlanePlotter(plane=plane, grid=grid)
-plane_plotter.figures_2d(image=True)
+galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
+galaxies_plotter.figures_2d(image=True)
 
 """
 __Simulations__
@@ -64,12 +64,14 @@ psf = ag.Kernel2D.from_gaussian(
 )
 
 """
-The simulation does not use plane's image plotted above. Instead, we use a slightly different image which is padded 
+The simulation does not use the image plotted above. Instead, we use a slightly different image which is padded 
 with zeros around its edge, based on the shape of the PSF that we will convolve the image with. This ensures 
 edge-effects do not degrade our simulation`s PSF convolution.
 """
-normal_image_2d = plane.image_2d_from(grid=grid)
-padded_image_2d = plane.padded_image_2d_from(grid=grid, psf_shape_2d=psf.shape_native)
+normal_image_2d = galaxies.image_2d_from(grid=grid)
+padded_image_2d = galaxies.padded_image_2d_from(
+    grid=grid, psf_shape_2d=psf.shape_native
+)
 
 print(normal_image_2d.shape_native)
 print(padded_image_2d.shape_native)
@@ -86,13 +88,13 @@ imaging data is acquired in a telescope, including:
  3) Poisson noise: The number of counts observed in each pixel of the HST imaging detector is a random process 
  described by Poisson count statistics. Thus, Poisson noise is included due to the background sky and galaxy emission.
  
-We pass the plane and grid to the simulator to create the image of the galaxy and add the above effects to it.
+We pass the galaxies and grid to the simulator to create the image of the galaxy and add the above effects to it.
 """
 simulator = ag.SimulatorImaging(
     exposure_time=300.0, psf=psf, background_sky_level=0.1, add_poisson_noise=True
 )
 
-dataset = simulator.via_plane_from(plane=plane, grid=grid)
+dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 
 """
 By plotting the image, we can see it has been blurred due to the telescope optics and that noise has been added.
