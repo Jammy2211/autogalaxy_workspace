@@ -45,7 +45,7 @@ To gain further insight, we can inspect the results of the previous tutorial and
 regions of parameter space for each parameter.
 
 Navigate to the folder `autogalaxy_workspace/output/howtogalaxy/tutorial_1_non_linear_search/images/searches`
-and open the `cornerplot.png` figure, where:
+and open the `corner.png` figure, where:
 
  - The 1D plots of curved lines show, in one dimension, the values of each parameter that gave the highest likelihood
  solutions.
