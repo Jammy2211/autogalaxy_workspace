@@ -28,28 +28,11 @@ import autogalaxy.plot as aplt
 """
 __Initial Setup__
 
-The `dataset_path` specifies where we load the dataset from, which is the directory 
-`autogalaxy_workspace/dataset/imaging/howtogalaxy/`.
-"""
-dataset_path = path.join("dataset", "imaging", "howtogalaxy")
-
-"""
-Below, we do all the steps we have learned this chapter, making profiles, galaxies, fitting data, etc. 
+Below, we do all the steps we have learned this chapter, making profiles, galaxies, etc. 
 
 Note that we use two galaxies, the first of which has a bulge and disk.
 """
-dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
-    pixel_scales=0.1,
-)
-
-mask = ag.Mask2D.circular(
-    shape_native=dataset.shape_native, pixel_scales=dataset.pixel_scales, radius=3.0
-)
-
-dataset = dataset.apply_mask(mask=mask)
+grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
 galaxy_0 = ag.Galaxy(
     redshift=0.5,
@@ -81,40 +64,34 @@ galaxy_1 = ag.Galaxy(
 
 galaxies = ag.Galaxies(galaxies=[galaxy_0, galaxy_1])
 
-fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
-
 """
 __Object Composition__
 
 Lets now consider how all of the objects we've covered throughout this chapter (`LightProfile`'s, `MassProfile`'s,
-`Galaxy`'s, `Galaxies`'s) come together in a `FitImaging` object.
+`Galaxy`'s, `Galaxies`'s) come together.
 
-The fit contains the `Galaxies`, which contains the `Galaxy`'s which contains the `Profile`'s:
+The `Galaxies` contain the `Galaxy`'s which contains the `Profile`'s:
 """
-print(fit)
+print(galaxies[0])
 print()
-print(fit)
+print(galaxies[0].bulge)
 print()
-print(fit.galaxies[0])
+print(galaxies[0].disk)
 print()
-print(fit.galaxies[0].bulge)
-print()
-print(fit.galaxies[0].disk)
-print()
-print(fit.galaxies[1].bulge)
+print(galaxies[1].bulge)
 print()
 
 """
-Once we have a `FitImaging` object, we can therefore use any of the `Plotter` objects throughout this chapter to plot
-any specific aspect of the fit, whether it be a profile, galaxy or galaxies. 
+Once we have galaxies, we can therefore use any of the `Plotter` objects throughout this chapter to plot
+any specific aspect, whether it be a profile, galaxy or galaxies. 
 
 For example, if we want to plot the image of the first galaxy's bulge and disk, we can do this in a variety of 
 different ways.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=fit.galaxies, grid=dataset.grid)
+galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
 galaxies_plotter.figures_2d(image=True)
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=fit.galaxies[0], grid=dataset.grid)
+galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxies[0], grid=grid)
 galaxy_plotter.figures_2d(image=True)
 
 """
@@ -125,16 +102,16 @@ As the galaxy systems that we analyse become more complex, it is useful to know 
 profiles, galaxies and galaxies to extract different pieces of information about the galaxy. 
 
 For example, we made our galaxy above with two light profiles, a `bulge` and `disk`. We can plot the image of 
-each component individually, now that we know how to break-up the different components of the fit and galaxies.
+each component individually, now that we know how to break-up the different components of the galaxies.
 """
 light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=fit.galaxies[0].bulge, grid=dataset.grid
+    light_profile=galaxies[0].bulge, grid=grid
 )
 light_profile_plotter.set_title("Bulge Image")
 light_profile_plotter.figures_2d(image=True)
 
 light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=fit.galaxies[0].disk, grid=dataset.grid
+    light_profile=galaxies[0].disk, grid=grid
 )
 light_profile_plotter.set_title("Disk Image")
 light_profile_plotter.figures_2d(image=True)
@@ -142,7 +119,7 @@ light_profile_plotter.figures_2d(image=True)
 """
 __Visualization__
 
-Furthermore, using the `MatPLot2D`, `Visuals2D` and `Include2D` objects visualize any aspect of a fit we're interested 
+Furthermore, using the `MatPLot2D`, `Visuals2D` and `Include2D` objects visualize any aspect we're interested 
 in and fully customize the figure. 
 
 Before beginning chapter 2 of **HowToGalaxy**, you should checkout the package `autogalaxy_workspace/plot`. 
@@ -163,8 +140,8 @@ include = aplt.Include2D(
 visuals = aplt.Visuals2D()
 
 light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=fit.galaxies[0].bulge,
-    grid=dataset.grid,
+    light_profile=galaxies[0].bulge,
+    grid=grid,
     mat_plot_2d=mat_plot,
     include_2d=include,
     visuals_2d=visuals,
@@ -178,7 +155,7 @@ And, we're done, not just with the tutorial, but the chapter!
 __Code Design__
 
 To end, I want to quickly talk about the **PyAutoGalaxy** code-design and structure, which was really the main topic of
-this tutorial.
+this tutoriag.
 
 Throughout this chapter, we never talk about anything like it was code. We didn`t refer to  'variables', 'parameters`' 
 'functions' or 'dictionaries', did we? Instead, we talked about 'galaxies'. We discussed 
@@ -206,16 +183,6 @@ https://pyautogalaxy.readthedocs.io/en/latest/installation/source.html
 
 We take a lot of pride in our source code, so I can promise you its well written, well documented and thoroughly 
 tested (check out the `test` directory if you're curious how to test code well!).
-
-__Likelihood Function__
-
-When performing a fit we compute a value of `log_likelihood`, which is computed by calling the **PyAutoGalax**
-likelihood function -- a term used in statistics to describe how one fits a model to data.
-
-This tutorial has likely given you a clear idea of how the likelihood is evaluated, however a more detailed 
-step-by-step visual guide is provided at `autogalaxy_workspace/*/imaging/log_likelihood_function/parametric.ipynb`.
-
-I recommend you give this notebook a read through, in order to further clarify how a galaxy model is fitted to data.
 
 __Wrap Up__
 
