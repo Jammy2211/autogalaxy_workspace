@@ -136,7 +136,7 @@ search_2 = af.Nautilus(
 )
 
 analysis_2 = ag.AnalysisImaging(
-    dataset=dataset, settings_inversion=ag.SettingsInversion(relocate_pix_border=True)
+    dataset=dataset, settings_inversion=ag.SettingsInversion(use_border_relocator=True)
 )
 
 result_2 = search_2.fit(model=model_2, analysis=analysis_2)
