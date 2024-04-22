@@ -61,7 +61,7 @@ a fast way to visualize the result.
 It also contains the maximum log likelihood galaxies.
 """
 galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result.max_log_likelihood_galaxies, grid=mask.derive_grid.all_false_sub_1
+    galaxies=result.max_log_likelihood_galaxies, grid=mask.derive_grid.all_false
 )
 galaxies_plotter.subplot()
 
