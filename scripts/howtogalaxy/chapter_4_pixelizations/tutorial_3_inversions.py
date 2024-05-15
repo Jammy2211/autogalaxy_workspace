@@ -65,9 +65,13 @@ mesh = ag.mesh.Rectangular(shape=dataset.shape_native)
 
 pixelization = ag.Pixelization(mesh=mesh)
 
-mapper_grids = pixelization.mapper_grids_from(source_plane_data_grid=dataset.grid)
+mapper_grids = pixelization.mapper_grids_from(
+    mask=mask, source_plane_data_grid=dataset.grid
+)
 mapper = ag.Mapper(
-    mapper_grids=mapper_grids, regularization=ag.reg.Constant(coefficient=1.0)
+    mapper_grids=mapper_grids,
+    over_sampler=dataset.over_sampler_pixelization,
+    regularization=ag.reg.Constant(coefficient=1.0),
 )
 
 include = aplt.Include2D(mask=True, mapper_source_plane_data_grid=False)
