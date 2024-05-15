@@ -247,8 +247,8 @@ We can print the fit`s attributes. As usual, we can choose whether to return the
 the native data's edge values all zeros, as the edges were masked:
 """
 print("Model-Image:")
-print(fit.model_image.slim)
-print(fit.model_image.native)
+print(fit.model_data.slim)
+print(fit.model_data.native)
 print()
 print("Residual Maps:")
 print(fit.residual_map.slim)
@@ -261,7 +261,7 @@ print(fit.chi_squared_map.native)
 """
 Of course, the central unmasked pixels have non-zero values.
 """
-model_image = fit.model_image.native
+model_image = fit.model_data.native
 print(model_image[48:53, 48:53])
 print()
 
