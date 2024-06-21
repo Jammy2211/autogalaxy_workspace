@@ -519,5 +519,5 @@ galaxy morphologies.
 """
 
 basis = ag.lp_basis.Basis(
-    light_profile_list=gaussian_list, regularization=ag.reg.Constant(coefficient=1.0)
+    profile_list=gaussian_list, regularization=ag.reg.Constant(coefficient=1.0)
 )
