@@ -48,7 +48,7 @@ This information comes when we use the pixelization to create up a `Mapper`, whi
 that we created above.
 """
 mapper_grids = pixelization.mapper_grids_from(
-    mask=grid.mask, source_plane_data_grid=grid
+    mask=grid.mask, source_plane_data_grid=grid.over_sampler.over_sampled_grid
 )
 
 mapper = ag.Mapper(mapper_grids=mapper_grids, over_sampler=None, regularization=None)

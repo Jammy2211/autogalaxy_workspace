@@ -105,16 +105,19 @@ We use the results of search 1 to create the model fitted in search 2, where:
  
  - The galaxy's disk is an `Exponential` [0 parameters: parameters fixed from search 1].
 
- - The galaxy's clumps are reconstructed `Rectangular` mesh with resolution 40 x 40 [0 parameters].
+ - The galaxy's clumps are reconstructed `Rectangular` mesh with resolution as free parameters [2 parameters].
 
  - This pixelization is regularized using a `Constant` scheme [1 parameter]. 
 
-The number of free parameters and therefore the dimensionality of non-linear parameter space is N=1.
+The number of free parameters and therefore the dimensionality of non-linear parameter space is N=3.
 
 This search allows us to very efficiently set up the resolution of the mesh and regularization coefficient 
 of the regularization scheme, before using these models to refit the galaxy mass model.
 """
-mesh = af.Model(ag.mesh.Rectangular, shape=(40, 40))
+mesh = af.Model(ag.mesh.Rectangular)
+
+mesh.shape_0 = af.UniformPrior(lower_limit=36, upper_limit=42)
+mesh.shape_1 = af.UniformPrior(lower_limit=36, upper_limit=42)
 
 pixelization = af.Model(ag.Pixelization, mesh=mesh, regularization=ag.reg.Constant)
 

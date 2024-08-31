@@ -58,7 +58,7 @@ mesh = ag.mesh.Rectangular(
 pixelization = ag.Pixelization(mesh=mesh)
 
 mapper_grids = pixelization.mapper_grids_from(
-    mask=grid.mask, source_plane_data_grid=grid
+    mask=grid.mask, source_plane_data_grid=grid.over_sampler.over_sampled_grid
 )
 
 mapper = ag.Mapper(
@@ -123,7 +123,10 @@ dataset_plotter.figures_2d(data=True)
 We can now use the masked grid to create a new `Mapper` (using the same rectangular 25 x 25 pixelization 
 as before).
 """
-mapper_grids = mesh.mapper_grids_from(mask=mask, source_plane_data_grid=dataset.grid)
+mapper_grids = mesh.mapper_grids_from(
+    mask=mask,
+    source_plane_data_grid=dataset.grids.pixelization.over_sampler.over_sampled_grid,
+)
 
 mapper = ag.Mapper(
     mapper_grids=mapper_grids,
