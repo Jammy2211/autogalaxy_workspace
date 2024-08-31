@@ -444,7 +444,7 @@ This means we can use them directly to perform the visualization below.
 print(result_basis.max_log_likelihood_instance)
 
 galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result_basis.max_log_likelihood_galaxies, grid=result_basis.grid
+    galaxies=result_basis.max_log_likelihood_galaxies, grid=result_basis.grids.uniform
 )
 galaxies_plotter.subplot()
 
