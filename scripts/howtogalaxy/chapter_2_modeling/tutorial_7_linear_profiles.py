@@ -112,7 +112,7 @@ We now create this search and run it.
 """
 search = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_2"),
-    name="tutorial_5_linear_light_profile",
+    name="tutorial_7_linear_light_profile",
     unique_tag=dataset_name,
     n_live=100,
     number_of_cores=1,
@@ -258,7 +258,7 @@ bulge_gaussian_list += gaussian_list
 
 bulge = af.Model(
     ag.lp_basis.Basis,
-    light_profile_list=bulge_gaussian_list,
+    profile_list=bulge_gaussian_list,
 )
 
 """
@@ -336,7 +336,7 @@ bulge_gaussian_list += gaussian_list
 
 bulge = af.Model(
     ag.lp_basis.Basis,
-    light_profile_list=bulge_gaussian_list,
+    profile_list=bulge_gaussian_list,
 )
 
 """
@@ -385,7 +385,7 @@ disk_gaussian_list += gaussian_list
 
 disk = af.Model(
     ag.lp_basis.Basis,
-    light_profile_list=disk_gaussian_list,
+    profile_list=disk_gaussian_list,
 )
 
 """
@@ -410,7 +410,7 @@ We now fit the model, with just `n_live=50` given the simiplicity of parameter s
 """
 search = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_2"),
-    name="tutorial_5_basis",
+    name="tutorial_7_basis",
     unique_tag=dataset_name,
     n_live=50,
     number_of_cores=1,
@@ -517,7 +517,6 @@ In chapter 4 of **HowToGalaxy** we introduce non-parametric pixelizations, which
 that does not make assumptions like a centre and can thus reconstruct even more complex, asymmetric and irregular
 galaxy morphologies.
 """
-
 basis = ag.lp_basis.Basis(
     profile_list=gaussian_list, regularization=ag.reg.Constant(coefficient=1.0)
 )
