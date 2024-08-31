@@ -58,7 +58,7 @@ mesh = ag.mesh.Rectangular(
 pixelization = ag.Pixelization(mesh=mesh)
 
 mapper_grids = pixelization.mapper_grids_from(
-    mask=grid.mask, source_plane_data_grid=grid.over_sampler.over_sampled_grid
+    mask=grid.mask, source_plane_data_grid=grid
 )
 
 mapper = ag.Mapper(
