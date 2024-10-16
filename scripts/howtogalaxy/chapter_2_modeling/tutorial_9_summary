@@ -1,0 +1,17 @@
+Congratulations, you've completed the second chapter of the **PyAutoGalaxy** tutorials!
+
+In this chapter, you learnt:
+
+1) What a non-linear search is.
+2) How to use a non-linear search to sample the parameter space of a model.
+3) How the priors we give parameters specify our search of this parameter space.
+4) How one must carefully balance complexity and realism when fitting a model to a data-set.
+5) The importance of factoring in run-speed when modeling a galaxy, and tricks to speed up the analysis.
+6) About masking data in the analysis.
+
+At this point, you are ready to begin modeling galaxies. The 'modeling' folders in the
+autogalaxy_workspace contains a number of scripts that can be easily adopted to model galaxies using a variety of
+different approaches, models and non-linear searches. If you have your own galaxy data, I'd recommend you adapt these
+scripts to your data. If you don't have your own data, checkout the 'simulators' folder to simulate your own dataset!
+
+Alternatively, you may wish to continue on to chapter 3 on search chaining.
