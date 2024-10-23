@@ -28,6 +28,8 @@ Here is an overview of what we'll cover in this tutorial:
 - **Fitting**: We'll fit the data with a galaxy model, computing key quantities like the model image, residuals,
   chi-squared, and log likelihood to assess the quality of the fit.
 - **Bad Fits**: We'll demonstrate how even small deviations from the true parameters can significantly impact the fit.
+- **Model Fitting**: We'll perform a basic model fit on a simple dataset, adjusting the model parameters to improve the
+  fit quality.
 """
 import numpy as np
 from os import path
@@ -554,6 +556,87 @@ print("New Likelihood:")
 print(fit_very_bad.log_likelihood)
 
 """
+__Model Fitting__
+
+In the previous sections, we used the true model to fit the data, which resulted in a high log likelihood and minimal 
+residuals. We also demonstrated how even small deviations from the true parameters can significantly degrade the fit 
+quality, reducing the log likelihood.
+
+In practice, however, we don't know the "true" model. For example, we might have an image of a galaxy observed with 
+the Hubble Space Telescope, but the values for parameters like its `effective_radius`, `sersic_index`, and others are 
+unknown. The process of determining the best-fit model is called model fitting, and it is the main topic of 
+Chapter 2 of *HowToGalaxy*.
+
+To conclude this section, let's perform a basic, hands-on model fit to develop some intuition about how we can find 
+the best-fit model. We'll start by loading a simple dataset that was simulated using a `Sersic` profile, where the 
+true parameters of this profile are unknown.
+
+"""
+dataset_name = "simple"
+dataset_path = path.join("dataset", "imaging", dataset_name)
+
+dataset = ag.Imaging.from_fits(
+    data_path=path.join(dataset_path, "data.fits"),
+    psf_path=path.join(dataset_path, "psf.fits"),
+    noise_map_path=path.join(dataset_path, "noise_map.fits"),
+    pixel_scales=0.1,
+)
+
+dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
+dataset_plotter.subplot_dataset()
+
+
+"""
+Now, you'll try to determine the best-fit model for this image, corresponding to the parameters used to simulate the 
+dataset.
+
+We'll use the simplest possible approach: try different combinations of light profile parameters and adjust them 
+based on how well each model fits the data. You’ll quickly find that certain parameters produce a much better fit 
+than others. For example, determining the correct values of the `centre` should not take too long.
+
+Pay attention to the `log_likelihood` and the `residual_map` as you adjust the parameters. These will guide you in 
+determining if your model is providing a good fit to the data. Aim to increase the log likelihood and reduce the 
+residuals.
+
+Keep experimenting with different values for a while, seeing how small you can make the residuals and how high you 
+can push the log likelihood. Eventually, you’ll likely reach a point where further improvements become difficult, 
+even after trying many different parameter values. This is a good point to stop and reflect on your first experience 
+with model fitting, and then to scroll to the next cell to see a discussion of the exercise.
+"""
+
+galaxy = ag.Galaxy(
+    redshift=0.5,
+    bulge=ag.lp.Sersic(
+        centre=(1.0, 10),  # These are the parameters you need to adjust
+        ell_comps=(0.5, 0.9),  # to try and improve the model's fit to the data!
+        intensity=1.0,
+        effective_radius=1.0,
+        sersic_index=1.0,
+    ),
+)
+
+galaxies = ag.Galaxies(galaxies=[galaxy])
+
+fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
+
+fit_plotter = aplt.FitImagingPlotter(fit=fit)
+fit_plotter.subplot_fit()
+
+print("Log Likelihood:")
+print(fit.log_likelihood)
+
+"""
+Manually guessing model parameters repeatedly is a very inefficient and slow way to find the best fit. If the model 
+were more complex—say, if the `galaxy` had additional light profile components beyond just its `bulge` (like a 
+second `Sersic` profile representing a `disk`)—the model would become so intricate that this manual approach 
+would be practically impossible. This is definitely not how model fitting is done in practice.
+
+However, this exercise has given you a basic intuition for how model fitting works. The statistical inference tools 
+that are actually used for model fitting will be introduced in Chapter 2. Interestingly, these tools are not entirely 
+different from the approach you just tried. Essentially, they also involve iteratively testing models until those 
+with high log likelihoods are found. The key difference is that a computer can perform this process thousands of 
+times, and it does so in a much more efficient and strategic way.
+
 __Wrap Up__
 
 In this tutorial, you have learned how to fit a galaxy model to imaging data, a fundamental process in astronomy
@@ -574,4 +657,7 @@ Let's summarize what we have covered:
   
 - **Bad Fits**: We demonstrated how even small deviations from the true parameters can significantly impact the fit
   quality, leading to decreased log likelihood values.
+  
+- **Model Fitting**: We performed a basic model fit on a simple dataset, adjusting the model parameters to improve the
+  fit quality.
 """

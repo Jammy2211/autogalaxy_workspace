@@ -29,7 +29,7 @@
                 "intensity": 0.1,
                 "effective_radius": 1.6
             },
-            "clump_0": {
+            "extra_galaxy_0": {
                 "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
                 "centre": [
                     1.0,
@@ -43,7 +43,7 @@
                 "effective_radius": 0.2,
                 "sersic_index": 4.0
             },
-            "clump_1": {
+            "extra_galaxy_1": {
                 "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
                 "centre": [
                     0.5,
@@ -57,7 +57,7 @@
                 "effective_radius": 0.2,
                 "sersic_index": 4.0
             },
-            "clump_2": {
+            "extra_galaxy_2": {
                 "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
                 "centre": [
                     -1.0,
@@ -71,7 +71,7 @@
                 "effective_radius": 0.2,
                 "sersic_index": 4.0
             },
-            "clump_3": {
+            "extra_galaxy_3": {
                 "type": "autogalaxy.profiles.light.standard.sersic.Sersic",
                 "centre": [
                     -1.0,
