@@ -31,11 +31,11 @@ profiles on the grid, we can effectively generate images that represent the stru
 
 Here is an overview of what we'll cover in this tutorial:
 
-- **Grids**: We'll create a uniform grid of $(y,x)$ coordinates and show how it can be used to measure the light of a galaxy.
-- **Geometry**: We'll show how to shift and rotate a grid, and convert it to elliptical coordinates.
-- **Light Profiles**: We'll introduce light profiles, analytic functions that describe how a galaxy's light is distributed.
-- **Galaxies**: We'll create galaxies containing light profiles and show how to compute their image.
-- **Units**: We'll show how to convert the units of a galaxy's image to physical units like kiloparsecs.
+- **Grids**: Create a uniform grid of $(y,x)$ coordinates and show how it can be used to measure the light of a galaxy.
+- **Geometry**: How to shift and rotate a grid, and convert it to elliptical coordinates.
+- **Light Profiles**: Using light profiles, analytic functions that describe how a galaxy's light is distributed.
+- **Galaxies**: Creating galaxies containing light profiles and computing the image of a galaxy.
+- **Units**: Converting the units of a galaxy's image to physical units like kiloparsecs.
 
 
 The imports below are required to run the howtogalaxy tutorials in a Jupiter notebook. They also import the
@@ -58,8 +58,8 @@ __Grids__
 A `Grid2D` is a set of two-dimensional $(y,x)$ coordinates that represent points in space where we evaluate the 
 light emitted by a galaxy.
 
-Each coordinate on the grid is referred to as a 'pixel'. This is because we use the grid to measure the brightness of a 
-galaxy at each of these coordinates, allowing us to create an image of the galaxy.
+Each coordinate on the grid is referred to as a 'pixel'. This is because we use the grid to create the image of a
+galaxy at each of these coordinates, meaning that each coordinate maps to the centre of each pixel in this image.
 
 Grids are defined in units of 'arc-seconds' ("). An arc-second is a unit of angular measurement used by astronomers to 
 describe the apparent size of objects in the sky.
@@ -74,7 +74,7 @@ grid = ag.Grid2D.uniform(
     shape_native=(
         101,
         101,
-    ),  # The dimensions of the grid, which here is 100 x 100 pixels.
+    ),  # The dimensions of the grid, which here is 101 x 101 pixels.
     pixel_scales=0.1,  # The conversion factor between pixel units and arc-seconds.
 )
 
@@ -123,8 +123,8 @@ print(grid.slim.shape)
 For the HowToGalaxy tutorials, you don't need to fully understand why grids have both native and slim representations. 
 Just note that both are used for calculations and plotting.
 
-*Exercise*: Try creating grids with different shapes and pixel scales using the `ag.Grid2D.uniform()` function above. 
-Observe how the grid coordinates change when you adjust `shape_native` and `pixel_scales`.
+*Exercise*: Try creating grids with different `shape_native` and `pixel_scales` using the `ag.Grid2D.uniform()` function 
+above.  Observe how the grid coordinates change when you adjust `shape_native` and `pixel_scales`.
 
 __Geometry__
 
@@ -139,6 +139,8 @@ grid_shifted = grid
 grid_shifted[:, 0] = grid_shifted[:, 0] - centre[0]  # Shift in y-direction.
 grid_shifted[:, 1] = grid_shifted[:, 1] - centre[1]  # Shift in x-direction.
 
+print("(y,x) pixel 0 After Shift:")
+print(grid_shifted.native[0, 0])  # The coordinate of the first pixel after shifting.
 
 """
 The grid is now centered around (0.3", 0.5"). We can plot the shifted grid to see this change.
@@ -171,6 +173,9 @@ grid_rotated = grid_shifted
 grid_rotated[:, 0] = radius * np.sin(theta)
 grid_rotated[:, 1] = radius * np.cos(theta)
 
+print("(y,x) pixel 0 After Rotation:")
+print(grid_rotated.native[0, 0])  # The coordinate of the first pixel after rotation.
+
 """
 The grid has now been rotated 60 degrees counter-clockwise. We can plot it to see the change.
 
@@ -197,6 +202,9 @@ What happens to the grid when you adjust the `axis_ratio` variable?
 """
 axis_ratio = 0.5
 eta = np.sqrt((grid_rotated[:, 0]) ** 2 + (grid_rotated[:, 1]) ** 2 / axis_ratio**2)
+
+print("First Ten Elliptical Coordinates:")
+print(eta[:10])
 
 """
 Above, the angle $\phi$ (in degrees) was used to rotate the grid, and the axis-ratio $q$ was used to convert the grid 

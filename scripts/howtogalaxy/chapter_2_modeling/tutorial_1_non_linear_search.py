@@ -241,7 +241,6 @@ galaxy_model = af.Model(ag.Galaxy, redshift=0.5, bulge=ag.lp_linear.Sersic)
 """
 We now input the model component into a `Collection` object, which groups all the model components used to fit the data.
 
-
 As with profiles, we give galaxies descriptive names like `bulge`, or `disk`. Since this model has only one 
 galaxy, we'll simply refer to it as `galaxy` throughout the tutorials.
 
@@ -313,6 +312,11 @@ model.galaxies.galaxy.bulge.effective_radius = af.UniformPrior(
 model.galaxies.galaxy.bulge.sersic_index = af.UniformPrior(
     lower_limit=0.8, upper_limit=8.0
 )
+
+"""
+By reprinting the `model.info`, we can see that the priors have been updated to the values we specified.
+"""
+print(model.info)
 
 """
 __Analysis__

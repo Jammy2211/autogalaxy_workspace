@@ -1,76 +1,40 @@
 """
-Tutorial 1: Non-linear Search
-=============================
+Tutorial 2: Practicalities
+==========================
 
-ADD PARALLELIZATION DESCRIPTION
+In the last tutorial, we introduced foundational statistical concepts essential for model-fitting, such as parameter
+spaces, likelihoods, priors, and non-linear searches. Understanding these statistical concepts is crucial for
+performing model fits effectively.
 
-The starting point for most scientific analysis conducted by an Astronomer is that they have observations of a galaxy
-using a telescope like the Hubble Space Telescope, and seek to learn about the galaxy and the Universe from these
-observations. With **PyAutoGalaxy**, we seek to learn about the galaxy's structure and morphology, asking questions like
-how big is the galaxy, is it disky or bulgy, and how is its light distributed?
+However, achieving successful model-fitting also requires practical skills, including how to manage outputs,
+review results, interpret model quality, and ensure run-times are efficient enough for your scientific needs.
 
-To answer these questions, we must therefore fit the dataset with a model of the galaxy, where the model defines the
-light profile that make up the galaxy we fit. Our goal is the find the combination of light profile parameters that
-best-fit the data, such that the model represents the galaxy, and therefore the Universe, as well as possible.
+This tutorial will focus on these practical aspects of model-fitting, including:
 
-This process is called model-fitting, or "modeling" for short, and we actually did our first example of this in the
-previous chapter. If you recall, in the fitting tutorial we set up a fit to a simulated dataset where the parameter
-used to simulate the data were unknown, and you guessed the values of the parameters that best fit the data. You
-iteratively improved the model-fit by guessing new parameters, over and over, finding soluations which produced
-higher `log_likelihood` values.
+- How to save results to your hard disk.
+- How to navigate the output folder and examine model-fit results to assess quality.
+- How to estimate the run-time of a model-fit before initiating it, and change settings to make it faster or run the analysis in parallel.
 
-However, this approach was not optimal, it was manual and slow, we had no certainty that we had found the best
-(e.g. maximum likelihood) solution and for more complex models, with more parameters and light profiles, it would
-have been completely unfeasible.
+__Contents__
 
-In this chapter, we perform modeling as a scientist would actually do it, and introduce the statistical inference
-techniques that will ultimately allow us to fit complex models made of many light profiles to real galaxy data,
-and begin learning about real galaxies in the Universe.
+This tutorial is split into the following sections:
 
-This first tutorial introduces a number of key statistical concepts that are fundamental to understanding how
-modeling works in **PyAutoGalaxy**.
-
-__Non Linear Search__
-
-So, how do we infer the parameters of our light profile above that give a good fit to our data?
-
-Well, with the tools that we learned in chapter 1, we could try the following:
-
- 1) Randomly guess a model, corresponding to some random set of parameter values for the light profile.
- 2) Use this model to create galaxies and fit the `Imaging` with it, via a `FitImaging` object.
- 3) Quantify the goodness of fit using the `log_likelihood`.
- 4) Keep guessing models, repeating steps 1-3, until we eventually find a model that provides a good fit (i.e.
- a high value log likelihood)!
-
-It may sound surprising, but this is actually the basis of how modeling works. However, we can do a lot better
-than random guessing. Instead, we we can track the log likelihoods of all of our previous guesses, and guess more
-models using the combinations of light profile parameters that gave high log likelihood solutions previously.
-
-The idea is that if a set of parameters provided a good fit to the data, another set of parameters with similar values
-probably will too. Furthermore, if by following this approach we are able to keep guessing models with higher and higher
-likelihoods, we should eventually 'climb' our way to the model with the highest likelihood overall!
-
-This approach to model-fitting is called a `non-linear search` and it is a common algorithm applied by scientists to
-many different problems. Over the next few tutorials, we are going to really get our heads around the concept of a
-non-linear search; intuition which will prove crucial for us to become a successful modeler.
-
-An animation of a non-linear search fitting a model is shown below. Note how the initial models that it fits give
-a poor fit to the data, but that they gradually improve as more iterations are performed as the search begins to only
-guess models that are near other, high likelihood, models.
-
-(This animation is for a strong gravitational lens, modeled using **PyAutoGalaxy**'s child project **PyAutoGalaxy**.
-I have not made an animation for a galaxy yet...).
-
-![Lens Modeling Animation](https://github.com/Jammy2211/auto_files/blob/main/lensmodel.gif?raw=true "model")
-
-**Credit: Amy Etherington**
-
-In this tutorial, and throughout this entire chapter, we are going to use the non-linear search
-called `nautilus` (https://github.com/joshspeagle/nautilus). I have found this to be a great non-linear search for
-galaxy modeling, albeit alternatives are available in **PyAutoGalaxy** and will be discussed later in this chapter.
-
-For now, lets not worry about the details of how nautilus actually works and simply keep in our minds the described of
-a non-linear search provided above.
+ **PyAutoFit:** The parent package of PyAutoGalaxy, which handles practicalities of model-fitting.
+ **Initial Setup:** Load the dataset we'll fit a model to using a non-linear search.
+ **Mask:** Apply a mask to the dataset.
+ **Model:** Introduce the model we will fit to the data.
+ **Search:** Setup the non-linear search, Nautilus, used to fit the model to the data.
+ **Search Settings:** Discuss the settings of the non-linear search, including the number of live points.
+ **Number Of Cores:** Discuss how to use multiple cores to fit models faster in parallel.
+ **Parallel Script:** Running the model-fit in parallel if a bug occurs in a Jupiter notebook.
+ **Iterations Per Update:** How often the non-linear search outputs the current results to hard-disk.
+ **Analysis:** Create the Analysis object which contains the `log_likelihood_function` that the non-linear search calls.
+ **Model-Fit:** Fit the model to the data.
+ **Result:** Print the results of the model-fit to the terminal.
+ **Output Folder:** Inspect the output folder where results are stored.
+ **Unique Identifier:** Discussion of the unique identifier of the model-fit which names the folder in the output directory.
+ **Output Folder Contents:** What is output to the output folder (model results, visualization, etc.).
+ **Result:** Plot the best-fit model to the data.
 """
 # %matplotlib inline
 # from pyprojroot import here
@@ -89,11 +53,8 @@ Modeling uses the probabilistic programming language
 [PyAutoFit](https://github.com/rhayes777/PyAutoFit), an open-source project that allows complex model
 fitting techniques to be straightforwardly integrated into scientific modeling software. 
 
-**PyAutoFit** is actually a spin-off project of **PyAutoGalaxy**. whereby we found that the statistic techniques and
-methods we applied to model galaxies could be used in a more general setting to many different scientific 
-problems. Check it out if you are interested in developing your own software to perform advanced model-fitting!
-
-We import this library separately from **PyAutoGalaxy**.
+The majority of tools that make model-fitting practical are provided by PyAutoFit, for example it handles
+all output of the non-linear search to hard-disk, the visualization of results and the estimation of run-times.
 """
 import autofit as af
 
@@ -102,17 +63,8 @@ __Initial Setup__
 
 Lets first load the `Imaging` dataset we'll fit a model with using a non-linear search. 
 
-If you are interested in how we simulate the galaxy data, checkout the scripts in the 
-package `autogalaxy_workspace/*/imaging/simulators`.
-
-The galaxy in this image was generated using:
-
- - The galaxy's `LightProfile` is a `Sersic`.
-
-Note how the model used to simulate the data is the same as the model we will fit in this tutorial.
-
-This dataset (and all datasets used in tutorials from here are on) are stored and loaded from the 
-`autogalaxy_workspace/dataset/imaging` folder.
+This is the same dataset we fitted in the previous tutorial, and we'll repeat the same fit, as we simply want
+to illustrate the practicalities of model-fitting in this tutorial.
 """
 dataset_name = "simple__sersic"
 dataset_path = path.join("dataset", "imaging", dataset_name)
@@ -130,7 +82,7 @@ dataset_plotter.subplot_dataset()
 """
 __Mask__
 
-The non-linear fit also needs a `Mask2D`, lets use a 3.0" circle.
+We again apply a 3.0" mask to the dataset.
 """
 mask = ag.Mask2D.circular(
     shape_native=dataset.shape_native, pixel_scales=dataset.pixel_scales, radius=3.0
@@ -144,115 +96,132 @@ dataset_plotter.subplot_dataset()
 """
 __Model__
 
-To compose a model, we set up a `Galaxy` as a `Model`. Whereas previously we manually specified the value of 
-every parameter of a `Galaxy`'s light profiles, when the galaxy is a `Model` only the class of each profile is 
-passed. By creating the galaxy as `Model` we are telling **PyAutoGalaxy** that the parameter's of its profiles are
-to be fitted for via the non-linear search.
+We compose the model using the same API as the previous tutorial.
 
-Lets model the galaxy with an elliptical Sersic light profile (which is what it was simulated with) which represents
-its bulge component.
+This model is the same as the previous tutorial, a single `Galaxy` with a `Sersic` light profile.
 """
-galaxy_model = af.Model(ag.Galaxy, redshift=0.5, bulge=ag.lp.Sersic)
+galaxy_model = af.Model(ag.Galaxy, redshift=0.5, bulge=ag.lp_linear.Sersic)
 
-"""
-We now have multiple `Model` components, which we bring together into a final model via the `Collection` object.
-
-Just like we are used to giving profiles descriptive names, like `bulge`, `disk` and `mass` we also name the galaxies 
-that make up our model. Of course, its good practise for us to give them descriptive, albeit given there is only
-one galaxy in his model we'll simply use `galaxy` to do this throughout the tutorials.
-
-[It may seem odd that we define two `Collections`, with the `Collection` in the outer loop only having a `galaxies`
-attribute and the inner `Collection` containing only one galaxy. 
-
-In future tutorials, we'll see that we can add additional model-components and galaxies to a model, such that the 
-API below can be easily extended to include these components.]
-"""
 model = af.Collection(galaxies=af.Collection(galaxy=galaxy_model))
 
-"""
-The `info` attribute shows the model in a readable format.
-
-[The `info` below may not display optimally on your computer screen, for example the whitespace between parameter
-names on the left and parameter priors on the right may lead them to appear across multiple lines. This is a
-common issue in Jupyter notebooks.
-
-The`info_whitespace_length` parameter in the file `config/generag.yaml` in the [output] section can be changed to 
-increase or decrease the amount of whitespace (The Jupyter notebook kernel will need to be reset for this change to 
-appear in a notebook).]
-"""
 print(model.info)
 
 """
 __Search__
 
-We now create the non-linear search object which will fit the model, which as discussed above is the nested
-sampling algorithm nautilus. We pass the `Nautilus` object the following:
-   
- - A `path_prefix` which tells the search to output its results in the 
- folder `autogalaxy_workspace/output/howtogalaxy/chapter_2`. 
- 
- - A `name`, which gives the search a name and means the full output path is 
-   `autogalaxy_workspace/output/howtogalaxy/chapter_2/tutorial_1_non_linear_search`. 
+To fit the model, we now create the non-linear search object, selecting the nested sampling algorithm, Nautilus, 
+as recommended in the previous tutorial.
 
- - Input parameters like `n_live` which control how it samples parameter space. This is discussed in more detail in 
- a later tutorial.
- 
- __What is n_live?__
+We set up the `Nautilus` object with these parameters:
 
-Nautilus samples parameter space by placing down "live points", which correspond to models of the galaxy. Each 
-live point has an associated `log_likelihood` which quantifies how well it fits the data. The live points map-out 
-where in parameter space there are high likelihood solutions, so that it can focus on searching these regions.
+- **`path_prefix`**: specifies the output directory, here set to `autogalaxy_workspace/output/howtogalaxy/chapter_2`.
+  
+- **`name`**: gives the search a descriptive name, which creates the full output path 
+as `autogalaxy_workspace/output/howtogalaxy/chapter_2/tutorial_2_practicalities`.
 
-Nautilus has one main setting that trades-off accuracy and computational run-time, the number of `live_points`. 
-A higher number of live points gives a more accurate result because it maps out parameter space more thoroughly, 
-but this increases the run-time. A lower value may lead to less reliable modeling (e.g. the fit may infer 
-a local maxima), but is faster. 
+- **`n_live`**: controls the number of live points Nautilus uses to sample parameter space.
 
-The suitable value depends on the model complexity whereby models with more parameters require more live points. 
-The default value of 200 is sufficient for the vast majority of common galaxy models. Lower values often given reliable
-results though, and speed up the run-times. In this example, given the model is quite simple (N=7 parameters), we 
-reduce the number of live points to 80 to speed up the run-time.
+__Search Settings__
 
+Nautilus samples parameter space by placing "live points" representing different galaxy models. Each point has an 
+associated `log_likelihood` that reflects how well it fits the data. By mapping where high-likelihood solutions are 
+located, it can focus on searching those regions.
+
+The main setting to balance is the **number of live points**. More live points allow Nautilus to map parameter space 
+more thoroughly, increasing accuracy but also runtime. Fewer live points reduce run-time but may make the search less 
+reliable, possibly getting stuck in local maxima.
+
+The ideal number of live points depends on model complexity. More parameters generally require more live points, but 
+the default of 200 is sufficient for most galaxy models. Lower values can still yield reliable results, particularly 
+for simpler models. For this example (6 parameters), we reduce the live points to 80 to speed up runtime without 
+compromising accuracy.
+
+Tuning non-linear search settings (e.g., the number of live points) to match model complexity is essential. We aim 
+for enough live points to ensure accurate results (i.e., finding a global maximum) but not so many that runtime 
+is excessive.
+
+In practice, the optimal number of live points is often found through trial and error, guided by summary statistics 
+on how well the search is performing, which we’ll cover below. For this single Sersic model with a linear light 
+profile, 80 live points is sufficient to achieve reliable results.
+
+__Number Of Cores__
+
+We may include an input `number_of_cores`, which when above 1 means that Nautilus uses parallel processing to sample 
+multiple models at once on your CPU. When `number_of_cores=2` the search will run roughly two times as
+fast, for `number_of_cores=3` three times as fast, and so on. The downside is more cores on your CPU will be in-use
+which may hurt the general performance of your computer.
+
+You should experiment to figure out the highest value which does not give a noticeable loss in performance of your 
+computer. If you know that your processor is a quad-core processor you should be able to use `number_of_cores=4`. 
+
+Above `number_of_cores=4` the speed-up from parallelization diminishes greatly. We therefore recommend you do not
+use a value above this.
+
+For users on a Windows Operating system, using `number_of_cores>1` may lead to an error, in which case it should be 
+reduced back to 1 to fix it.
+
+__Parallel Script__
+
+Depending on the operating system (e.g. Linux, Mac, Windows), Python version, if you are running a Jupyter notebook 
+and other factors, this script may not run a successful parallel fit (e.g. running the script 
+with `number_of_cores` > 1 will produce an error). It is also common for Jupyter notebooks to not run in parallel 
+correctly, requiring a Python script to be run, often from a command line terminal.
+
+To fix these issues, the Python script needs to be adapted to use an `if __name__ == "__main__":` API, as this allows
+the Python `multiprocessing` module to allocate threads and jobs correctly. An adaptation of this example script 
+is provided at `autolens_workspace/scripts/modeling/imaging/customize/parallel.py`, which will hopefully run 
+successfully in parallel on your computer!
+
+Therefore if paralellization for this script doesn't work, check out the `parallel.py` example. You will need to update
+all scripts you run to use the this format and API. 
+
+__Iterations Per Update__
+
+Every N iterations, the non-linear search outputs the current results to the folder `autogalaxy_workspace/output`,
+which includes producing visualization. 
+
+Depending on how long it takes for the model to be fitted to the data (see discussion about run times below), 
+this can take up a large fraction of the run-time of the non-linear search.
+
+For this fit, the fit is very fast, thus we set a high value of `iterations_per_update=10000` to ensure these updates
+so not slow down the overall speed of the model-fit. 
+
+**If the iteration per update is too low, the model-fit may be significantly slowed down by the time it takes to
+output results and visualization frequently to hard-disk. If your fit is consistent displaying a log saying that it
+is outputting results, try increasing this value to ensure the model-fit runs efficiently.**
 """
 search = af.Nautilus(
     path_prefix=path.join("howtogalaxy", "chapter_2"),
-    name="tutorial_1_non_linear_search",
+    name="tutorial_2_practicalities",
     unique_tag=dataset_name,
     n_live=80,
+    iterations_per_update=2500,
+    # number_of_cores=1, # Try uncommenting this line to run in parallel but see "Parallel Script" above.
 )
 
 """
 __Analysis__
 
-The `AnalysisImaging` object defines how the non-linear search fits each model that it guesses (which consists of 
-a set of parameters values for the light and mass profiles guessed by the search) to the `Imaging` dataset.
-
-The fit is performed using the analysis class's `log_likelihood_function`, which in model-fitting is a commonly used 
-term to describe a function that given a model and data, fits the model to the data to return a value of log 
-likelihood, which the non-linear search uses the evaluate the goodness-of-fit.
-
-This likelihood function is written in the **PyAutoGalaxy** source code, but it essentially repeats the steps we 
-discussed in tutorial 5 of chapter 1 of **HowToGalaxy**, where we computed a value of `log_likelihood` 
-via a `FitImaging` object.
-
-A detailed step-by-step visual guide of the likelihood function is provided 
-at `autogalaxy_workspace/*/imaging/log_likelihood_function/parametric.ipynb`.
+We again create the `AnalysisImaging` object which contains the `log_likelihood_function` that the non-linear search
+calls to fit the model to the data.
 """
 analysis = ag.AnalysisImaging(dataset=dataset)
 
 """
 __Run Times__
 
-modeling can be a computationally expensive process. When fitting complex models to high resolution datasets 
-run times can be of order hours, days, weeks or even months.
+Another key practicality in model-fitting is the run-time of the model-fit. Modeling can be a computationally 
+expensive process, whereby the fitting of complex models to high resolution datasets run times may be of order hours, 
+days or weeks.
 
 Run times are dictated by two factors:
 
- - The log likelihood evaluation time: the time it takes for a single `instance` of the model to be fitted to 
+ - **The log likelihood evaluation time:** the time it takes for a single `instance` of the model to be fitted to 
    the dataset such that a log likelihood is returned.
 
- - The number of iterations (e.g. log likelihood evaluations) performed by the non-linear search: more complex lens
-   models require more iterations to converge to a solution.
+ - **The number of iterations (e.g. log likelihood evaluations) performed by the non-linear search:** more complex lens
+   models require more iterations to converge to a solution (and as discussed above, settings like the number of live
+   points also control this).
 
 The log likelihood evaluation time can be estimated before a fit using the `profile_log_likelihood_function` method,
 which returns two dictionaries containing the run-times and information about the fit.
@@ -264,9 +233,11 @@ run_time_dict, info_dict = analysis.profile_log_likelihood_function(
 """
 The overall log likelihood evaluation time is given by the `fit_time` key.
 
-For this example, it is ~0.01 seconds, which is extremely fast for modeling. More advanced lens
-modeling features (e.g. shapelets, multi Gaussian expansions, pixelizations) have slower log likelihood evaluation
-times (1-3 seconds), and you should be wary of this when using these features.PointDataset
+For this example, it is ~0.05 seconds, which is extremely fast for model fitting. 
+
+The more advanced fitting techniques discussed at the end of chapter 1 (e.g. shapelets, multi Gaussian expansions, 
+pixelizations) have longer log likelihood evaluation times (1-3 seconds) and therefore may require more efficient 
+search settings to keep the overall run-time feasible.
 """
 print(f"Log Likelihood Evaluation Time (second) = {run_time_dict['fit_time']}")
 
@@ -277,8 +248,10 @@ estimate of the number of iterations the non-linear search will perform.
 Estimating this quantity is more tricky, as it varies depending on the model complexity (e.g. number of parameters)
 and the properties of the dataset and model being fitted.
 
-For this example, we conservatively estimate that the non-linear search will perform ~10000 iterations per free 
-parameter in the model. This is an upper limit, with models typically converging in far fewer iterations.
+For this example, we conservatively estimate that the non-linear search will perform ~5000 iterations per free 
+parameter in the model. This is an upper limit, with models typically converging in fewer iterations. With 6
+free parameters, this gives an estimate of ~6000 iterations, which at ~0.05 seconds per iteration gives a total
+run-time of ~120 seconds (or ~2 minutes).
 
 If you perform the fit over multiple CPUs, you can divide the run time by the number of cores to get an estimate of
 the time it will take to fit the model. Parallelization with Nautilus scales well, it speeds up the model-fit by the 
@@ -287,39 +260,35 @@ for N> 50 CPUs, meaning that with super computing facilities you can always achi
 """
 print(
     "Estimated Run Time Upper Limit (seconds) = ",
-    (run_time_dict["fit_time"] * model.total_free_parameters * 10000)
+    (run_time_dict["fit_time"] * model.total_free_parameters * 1000)
     / search.number_of_cores,
 )
 
 """
 __Model-Fit__
 
-We can now begin the model-fit by passing the model and analysis object to the search, which performs a non-linear
-search to find which models fit the data with the highest likelihood.
+To begin the model-fit, we pass the model and analysis objects to the search, which performs a non-linear search to 
+identify models that best fit the data.
 
-Model fits using a non-linear search can take a long time to run. Whilst the fit in this tutorial should take just a  
-few minutes, fitting more complex models can take upwards of hours! 
+Running model fits via non-linear search can take significant time. While the fit in this tutorial should 
+complete in a few minutes, more complex models may require longer run times. In Jupyter notebooks, this can be 
+limiting, as the notebook cell will only complete once the fit finishes, preventing you from advancing through the 
+tutorial or running additional code.
 
-This is fine (modeling is simply a computationally expensive exercise), but it does make going through the 
-tutorials problematic. This is especially true in Jupyter notebooks, as whilst the non-linear search is running 
-you won't be able to continue to the next notebook cell until the search has finished. 
+To work around this, we recommend running tutorial scripts as standalone Python scripts, found 
+in `autogalaxy_workspace/scripts/howtogalaxy`. These scripts mirror the notebook tutorials but run independently of 
+Jupyter notebooks. For example, you can start a script with:
 
-For this reason, we recommend that you **do not** run each non-linear search in these tutorials via your Jupyter 
-notebook, but instead run the corresponding Python script found in 
-the `autogalaxy_workspace/*/howtogalaxy/chapter_2_modeling` folder. 
+`python3 scripts/howtogalaxy/chapter_2_modeling/tutorial_2_practicalities.py`
 
-This can be run either using the `python3` command on the command line, e.g.:
+Using scripts allows results to be saved to the hard drive in the `output` folder, enabling you to inspect results 
+immediately once the script completes. When rerun, the script loads results directly from disk, so any Jupyter 
+notebook cells will quickly load and display the complete model-fit results if they’re already saved.
 
- `python3 scripts/howtogalaxy/chapter_2_modeling/tutoial_1_non_linear_search.py` 
+This approach not only avoids the slowdowns associated with notebook cells during lengthy runs but is also essential 
+for using super-computers for fitting tasks, as they require separate Python scripts.
 
-Or via your IDE (if you are using one).
-
-A non-linear search outputs all results to your hard-disk, in the `output` folder. Thus once it has run and is finished 
-you can run its corresponding Jupyter notebook cell and it immediately load the result.
-
-It is generally good practise to run modeling scripts outside of a notebook, given that the long run times make
-notebook use cumbersome. For everything else though (loading results, inspection, plotting, interpretation) you should
-use notebooks!
+For tasks like loading results, inspecting data, plotting, and interpreting results, Jupyter notebooks remain ideal.
 """
 print(
     "The non-linear search has begun running - checkout the autogalaxy_workspace/output/"
@@ -345,9 +314,10 @@ print(result.info)
 """
 __Output Folder__
 
-Now this is running you should checkout the `autogalaxy_workspace/output` folder.
+Now checkout the `autogalaxy_workspace/output` folder.
 
-This is where the results of the search are written to hard-disk (in the `start_here` folder). 
+This is where the results of the search are written to hard-disk (in the `tutorial_2_practicalities` folder). 
+
 Once completed images, results and information about the fit appear in this folder, meaning that you don't need 
 to keep running Python code to see the result.
 
@@ -361,38 +331,48 @@ An identical combination of model, search and dataset generates the same identif
 script will use the existing results to resume the model-fit. In contrast, if you change the model, search or dataset,
 a new unique identifier will be generated, ensuring that the model-fit results are output into a separate folder. 
 
-__On The Fly Outputs__
+We additionally want the unique identifier to be specific to the dataset fitted, so that if we fit different datasets
+with the same model and search results are output to a different folder. We achieved this for the fit above by passing 
+the `dataset_name` to the search's `unique_tag`.
 
-Even when the search is running, information about the highest likelihood model inferred by the search so far 
-is output to this folder on-the-fly. If you navigate to the folder: 
+__Output Folder Contents__
 
- `output/howtogalaxy/chapter_1/tutorials_1_non_linear_search/unique_identifier` 
- 
-Even before the search has finished, you will see:
+Now this is running you should checkout the `autogalaxy_workspace/output` folder. This is where the results of the 
+search are written to hard-disk (in the `start_here` folder), where all outputs are human readable (e.g. as .json,
+.csv or text files).
 
- 1) The `images` folder, where images of the highest likelihood model are output on-the-fly. This includes the
- `FitImaging` subplot we plotted in the previous chapter, which therefore gives a real sense of 'how good' the model
- fit is.
+As the fit progresses, results are written to the `output` folder on the fly using the highest likelihood model found
+by the non-linear search so far. This means you can inspect the results of the model-fit as it runs, without having to
+wait for the non-linear search to terminate.
  
- 2) The `samples` folder, which contains a `.csv` table of every sample of the non-linear search as well as other 
- information. 
+The `output` folder includes:
+
+ - `model.info`: Summarizes the model, its parameters and their priors discussed in the next tutorial.
  
- 3) The `model.info` file, which lists the model, its parameters and their priors (discussed in the next tutorial).
+ - `model.results`: Summarizes the highest likelihood model inferred so far including errors.
  
- 4) The `model.results` file, which lists the highest likelihood model and the most probable model with 
- errors (this outputs on-the-fly).
+ - `images`: Visualization of the highest likelihood model-fit to the dataset, (e.g. a fit subplot showing the 
+ galaxies, model data and residuals).
  
- 5) The `search.summary` file, which provides a summary of the non-linear search settings and statistics on how well
- it is performing.
+ - `files`: A folder containing .fits files of the dataset, the model as a human-readable .json file, 
+ a `.csv` table of every non-linear search sample and other files containing information about the model-fit.
+ 
+ - `search.summary`: A file providing summary statistics on the performance of the non-linear search.
+ 
+ - `search_internal`: Internal files of the non-linear search (in this case Nautilus) used for resuming the fit and
+  visualizing the search.
 
 __Result__
 
-The `search.fit` method above returned a `result`, which contains lots of information about the model fit. We
-will cover this in detail in a later tutorial.
+The `search.fit` method produces a `result` object, packed with useful information about the model fit that we’ll 
+explore in detail in a later tutorial.
 
-One thing the result contains we'll use now is the `FitImaging` object that corresponds to the set of model
-parameters that gae the maximum log likelihood solution. We plot this object as per usual to inspect how good our
-fit was.
+One component of the `result` object we’ll use now is the `FitImaging` object, which corresponds to the set of model 
+parameters that yielded the maximum log-likelihood solution. Plotting this object lets us visually inspect how well 
+the model fits the data.
+
+In this example, the fit to the data is excellent, with residuals near zero, as expected since the same model was 
+used both to simulate and fit the data.
 """
 fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
 fit_plotter.subplot_fit()
@@ -417,21 +397,29 @@ plotter = aplt.NestPlotter(samples=result.samples)
 plotter.corner_cornerpy()
 
 """
-The fit looks good and we've therefore found a model close to the one I used to simulate the image with (you can 
-confirm this yourself if you want, by comparing the inferred parameters to those found in the script
-`autogalaxy_workspace/*/imaging/simulators/simple__sersic.py`).
+__Other Practicalities__
+
+The following are examples of other practicalities which I will document fully in this example script in the future,
+but so far have no found the time:
+
+- `config`: The files in `autogalaxy_workspace/config` which control many aspects of how PyAutoGalaxy runs,
+ including visualization, the non-linear search settings.
+
+- `config/priors`: Folder containing the default priors on all model components.
+
+- `results`: How to load the results of a model-fit from the output folder to a Python script or Jupyter notebook.
+
+- `output.yaml`: What files are output to control file size.
 
 __Wrap Up__
 
-And with that, we are done. You have successfully modeled your first galaxy! Before moving 
-onto the next tutorial, I want you to think about the following:
+This tutorial has illustrated how to handle a number of practicalities that are key to performing model-fitting
+effectively. These include:
 
- 1) a non-linear search is often said to search a `non-linear parameter-space`, why is the term parameter-space 
- used?
+- How to save results to your hard disk.
 
- 2) Why is this parameter space 'non-linear'?
+- How to navigate the output folder and examine model-fit results to assess quality.
 
- 3) Initially, the non-linear search randomly guesses the values of the parameters. However, how does it know what 
- a reasonable value for each parameter is? Why did it guess values of effective radius between 0.0 and 10.0, instead of
- between -10000000000000.0 and some other outlandish number? 
+- How to estimate the run-time of a model-fit before initiating it, and change settings to make it faster or run the
+  analysis in parallel.
 """

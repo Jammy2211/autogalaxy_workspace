@@ -21,14 +21,14 @@ concepts and show how they are applied in practice to analyze astronomical data.
 
 Here is an overview of what we'll cover in this tutorial:
 
-- **Dataset**: We'll load the imaging dataset that we previously simulated, consisting of the image, noise map, and PSF.
-- **Mask**: We'll apply a mask to the data, excluding regions with low signal-to-noise ratios from the analysis.
-- **Masked Grid**: We'll create a masked grid, which contains only the coordinates of unmasked pixels, to evaluate the
+- **Dataset**: Load the imaging dataset that we previously simulated, consisting of the image, noise map, and PSF.
+- **Mask**: Apply a mask to the data, excluding regions with low signal-to-noise ratios from the analysis.
+- **Masked Grid**: Create a masked grid, which contains only the coordinates of unmasked pixels, to evaluate the
   galaxy's light profile in only unmasked regions.
-- **Fitting**: We'll fit the data with a galaxy model, computing key quantities like the model image, residuals,
+- **Fitting**: Fit the data with a galaxy model, computing key quantities like the model image, residuals,
   chi-squared, and log likelihood to assess the quality of the fit.
-- **Bad Fits**: We'll demonstrate how even small deviations from the true parameters can significantly impact the fit.
-- **Model Fitting**: We'll perform a basic model fit on a simple dataset, adjusting the model parameters to improve the
+- **Bad Fits**: Demonstrate how even small deviations from the true parameters can significantly impact the fit.
+- **Model Fitting**: Perform a basic model fit on a simple dataset, adjusting the model parameters to improve the
   fit quality.
 """
 import numpy as np
@@ -570,7 +570,6 @@ Chapter 2 of *HowToGalaxy*.
 To conclude this section, let's perform a basic, hands-on model fit to develop some intuition about how we can find 
 the best-fit model. We'll start by loading a simple dataset that was simulated using a `Sersic` profile, where the 
 true parameters of this profile are unknown.
-
 """
 dataset_name = "simple"
 dataset_path = path.join("dataset", "imaging", dataset_name)
@@ -581,6 +580,14 @@ dataset = ag.Imaging.from_fits(
     noise_map_path=path.join(dataset_path, "noise_map.fits"),
     pixel_scales=0.1,
 )
+
+mask = ag.Mask2D.circular(
+    shape_native=dataset.shape_native,
+    pixel_scales=dataset.pixel_scales,
+    radius=3.0,
+)
+
+dataset = dataset.apply_mask(mask=mask)
 
 dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
 dataset_plotter.subplot_dataset()
@@ -607,14 +614,13 @@ with model fitting, and then to scroll to the next cell to see a discussion of t
 galaxy = ag.Galaxy(
     redshift=0.5,
     bulge=ag.lp.Sersic(
-        centre=(1.0, 10),  # These are the parameters you need to adjust
-        ell_comps=(0.5, 0.9),  # to try and improve the model's fit to the data!
-        intensity=1.0,
-        effective_radius=1.0,
-        sersic_index=1.0,
+        centre=(1.0, 10),  # These are the parameters
+        ell_comps=(0.5, 0.9),  # you need to adjust
+        intensity=1.0,  # to try and improve
+        effective_radius=1.0,  #  the model's fit
+        sersic_index=1.0,  # to the data!
     ),
 )
-
 galaxies = ag.Galaxies(galaxies=[galaxy])
 
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)

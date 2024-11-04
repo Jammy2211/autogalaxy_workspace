@@ -2,29 +2,29 @@
 Tutorial 2: Data
 ================
 
-In the last tutorial, we used light profiles to create images of galaxies. However, those images don't accurately
+In the previous tutorial, we used light profiles to create images of galaxies. However, those images don't accurately
 represent what we would observe through a telescope.
 
 Real telescope images, like those taken with the Charge Coupled Device (CCD) imaging detectors on the Hubble Space
-Telescope, include several factors that affect what we see:
+Telescope (HST), include several factors that affect what we see:
 
 **Telescope Optics:** The optical components of the telescope can blur the light, influencing the image's sharpness.
 
 **Exposure Time:** The time the detector collects light, affecting the clarity of the image. Longer exposure times
 gather more light, improving the signal-to-noise ratio and creating a clearer image.
 
-**Background Sky:** Light from the sky itself, such as distant stars or zodiacal light, adds noise to the image.
-adds additional noise to the image.
+**Background Sky:** Light from a background sky, such as distant stars or zodiacal light, adds noise to the image.
 
 In this tutorial, we'll simulate a galaxy image by applying these real-world effects to the light profiles and images
 we created earlier.
 
 Here is an overview of what we'll cover in this tutorial:
 
-- **Optics Blurring:** We'll simulate how the telescope optics blur the galaxy's light, making the image appear blurred.
-- **Poisson Noise:** We'll add Poisson noise to the image, simulating the randomness in the photon-to-electron conversion process on the CCD.
-- **Background Sky:** We'll add a background sky to the image, simulating the light from the sky that adds noise to the image.
-- **Simulator:** We'll use the `SimulatorImaging` object to simulate imaging data that includes all these effects.
+- **Optics Blurring:** Simulating how the telescope optics blur the galaxy's light, making the image appear blurred.
+- **Poisson Noise:** Adding Poisson noise to the image, simulating the randomness in the photon-to-electron conversion process on the CCD.
+- **Background Sky:** Adding a background sky to the image, simulating the light from the sky that adds noise to the image.
+- **Simulator:** Using the `SimulatorImaging` object to simulate imaging data that includes all these effects.
+- **Output:** Saving the simulated data to `.fits` files for use in future tutorials, where .fits is the standard image format used by astronomers.
 """
 # %matplotlib inline
 # from pyprojroot import here
@@ -47,7 +47,7 @@ grid = ag.Grid2D.uniform(
     shape_native=(
         101,
         101,
-    ),  # The dimensions of the grid, which here is 100 x 100 pixels.
+    ),  # The dimensions of the grid, which here is 101 x 101 pixels.
     pixel_scales=0.1,  # The conversion factor between pixel units and arc-seconds.
 )
 
@@ -82,7 +82,7 @@ galaxies_plotter.figures_2d(image=True)
 """
 __Optics Blurring__
 
-All images captured using CCDs (like those on the Hubble Space Telescope or Euclid) experience some level of blurring 
+All images captured using CCDs (like those on the Hubble Space Telescope) experience some level of blurring 
 due to the optics of the telescope. This blurring occurs because the optical system spreads out the light from each 
 point source (e.g., a star or a part of a galaxy).
 
@@ -103,6 +103,17 @@ image that represents the spreading out of light from a single point source. Thi
 entire galaxy image when we perform the convolution.
 """
 array_plotter = aplt.Array2DPlotter(array=psf)
+array_plotter.set_title("PSF 2D Kernel")
+array_plotter.figure_2d()
+
+"""
+The PSF is often more informative when plotted on a log10 scale. This approach allows us to clearly observe values 
+in its tail, which are much smaller than the central peak yet critical for many scientific analyses. The tail 
+values may significantly affect the spread and detail captured in the data.
+"""
+array_plotter = aplt.Array2DPlotter(
+    array=psf, mat_plot_2d=aplt.MatPlot2D(use_log10=True)
+)
 array_plotter.set_title("PSF 2D Kernel")
 array_plotter.figure_2d()
 
@@ -290,7 +301,9 @@ For actual telescope data, the PSF is determined during data processing and is p
 It's crucial for accurately deconvolving the PSF from the galaxy image, allowing us to recover the true properties 
 of the galaxy. We'll explore this further in the next tutorial.
 """
-array_plotter = aplt.Array2DPlotter(array=dataset.psf)
+array_plotter = aplt.Array2DPlotter(
+    array=dataset.psf, mat_plot_2d=aplt.MatPlot2D(use_log10=True)
+)
 array_plotter.set_title("Simulated PSF")
 array_plotter.figure_2d()
 
@@ -383,4 +396,6 @@ the entire image.
 
 - **Simulator**: The `SimulatorImaging` object enables us to simulate realistic imaging data by including all of 
 these effects together and contains the `data`, `psf`, and `noise_map` components.
+
+- **Output**: We saved the simulated data to `.fits` files, the standard format used by astronomers for storing images.
 """
