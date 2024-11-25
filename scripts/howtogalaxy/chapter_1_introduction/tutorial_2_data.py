@@ -280,7 +280,10 @@ The `SimulatorImaging` object lets us create simulated imaging data while includ
 Poisson noise, and background sky all at once:
 """
 simulator = ag.SimulatorImaging(
-    exposure_time=300.0, psf=psf, background_sky_level=0.1, add_poisson_noise=True
+    exposure_time=300.0,
+    psf=psf,
+    background_sky_level=0.1,
+    add_poisson_noise_to_data=True,
 )
 
 dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
