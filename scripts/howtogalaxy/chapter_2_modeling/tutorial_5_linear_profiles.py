@@ -65,6 +65,21 @@ mask = ag.Mask2D.circular(
 dataset = dataset.apply_mask(mask=mask)
 
 """
+__Over Sampling__
+
+Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via 
+the `autogalaxy_workspace/*/guides/over_sampling.ipynb` notebook.
+"""
+over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
+    grid=dataset.grid,
+    sub_size_list=[8, 4, 1],
+    radial_list=[0.3, 0.6],
+    centre_list=[(0.0, 0.0)],
+)
+
+dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
+
+"""
 When plotted, the galaxy's bulge and disk are clearly visible in the centre of the image.
 """
 dataset_plotter = aplt.ImagingPlotter(
@@ -444,7 +459,7 @@ This means we can use them directly to perform the visualization below.
 print(result_basis.max_log_likelihood_instance)
 
 galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result_basis.max_log_likelihood_galaxies, grid=result_basis.grids.uniform
+    galaxies=result_basis.max_log_likelihood_galaxies, grid=result_basis.grids.lp
 )
 galaxies_plotter.subplot()
 

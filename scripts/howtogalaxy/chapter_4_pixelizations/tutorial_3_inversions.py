@@ -67,11 +67,10 @@ pixelization = ag.Pixelization(mesh=mesh)
 
 mapper_grids = pixelization.mapper_grids_from(
     mask=mask,
-    source_plane_data_grid=dataset.grids.pixelization.over_sampler.over_sampled_grid,
+    source_plane_data_grid=dataset.grids.pixelization,
 )
 mapper = ag.Mapper(
     mapper_grids=mapper_grids,
-    over_sampler=dataset.grids.over_sampler_pixelization,
     regularization=ag.reg.Constant(coefficient=1.0),
 )
 

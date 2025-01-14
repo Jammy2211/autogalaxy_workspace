@@ -63,7 +63,6 @@ mapper_grids = pixelization.mapper_grids_from(
 
 mapper = ag.Mapper(
     mapper_grids=mapper_grids,
-    over_sampler=dataset.grids.over_sampler_pixelization,
     regularization=None,
 )
 
@@ -125,12 +124,11 @@ as before).
 """
 mapper_grids = mesh.mapper_grids_from(
     mask=mask,
-    source_plane_data_grid=dataset.grids.pixelization.over_sampler.over_sampled_grid,
+    source_plane_data_grid=dataset.grids.pixelization,
 )
 
 mapper = ag.Mapper(
     mapper_grids=mapper_grids,
-    over_sampler=dataset.grids.over_sampler_pixelization,
     regularization=None,
 )
 

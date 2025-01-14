@@ -51,7 +51,7 @@ mapper_grids = pixelization.mapper_grids_from(
     mask=grid.mask, source_plane_data_grid=grid
 )
 
-mapper = ag.Mapper(mapper_grids=mapper_grids, over_sampler=None, regularization=None)
+mapper = ag.Mapper(mapper_grids=mapper_grids, regularization=None)
 
 """
 This `Mapper` is a `RectangularMapper` -- every `Mesh` and `Pixelization` generates it owns mapper.
