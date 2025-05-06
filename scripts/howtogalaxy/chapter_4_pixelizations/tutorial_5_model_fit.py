@@ -19,6 +19,7 @@ using an inversion.
 We will use search chaining to do this, first fitting the main galaxy components with light profiles, thereby
 initializing the bulge and disk components. In the later searches we will switch to an `Inversion`.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())

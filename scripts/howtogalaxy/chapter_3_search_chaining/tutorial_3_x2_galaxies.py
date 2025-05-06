@@ -15,6 +15,7 @@ Up to now, I've put a focus on an analysis being generag. The script we write in
 opposite, specific to the image we're modeling. Fitting multiple galaxies is really difficult and writing a
 pipeline that we can generalize to many galaxies isn't currently possible.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())

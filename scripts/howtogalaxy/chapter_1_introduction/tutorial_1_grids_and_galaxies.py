@@ -41,6 +41,7 @@ Here is an overview of what we'll cover in this tutorial:
 The imports below are required to run the howtogalaxy tutorials in a Jupiter notebook. They also import the
 `autogalaxy` package and the `autogalaxy.plot` module which are used throughout the tutorials.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())
