@@ -31,6 +31,7 @@ Here is an overview of what we'll cover in this tutorial:
 - **Model Fitting**: Perform a basic model fit on a simple dataset, adjusting the model parameters to improve the
   fit quality.
 """
+
 import numpy as np
 from os import path
 import autogalaxy as ag

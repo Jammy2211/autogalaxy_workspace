@@ -7,6 +7,7 @@ does, why it was called a mapper and whether it was mapping anything at all!
 
 Therefore, in this tutorial, we'll cover mappers in more detail.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())

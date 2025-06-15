@@ -5,6 +5,7 @@ Tutorial 5: Results
 In the previous tutorials, each search returned a `Result` object, which we used to plot the maximum log likelihood
 fit each model-fit. In this tutorial, we'll take a look at the result object in a little more detail.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())
@@ -99,7 +100,7 @@ We are not going into any more detail on the result variable in this tutorial, o
 
 A comprehensive description of the results can be found at the following packages:
 
- `autogalaxy_workspace/*/imaging/results`
+ `autogalaxy_workspace/*/results`
  
 The results API for CCD imaging data is the same as for other data types (e.g. interferometer, point-soures). This
 package can therefore be used to learn the API and then translate to other data types.

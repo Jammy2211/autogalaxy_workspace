@@ -35,6 +35,7 @@ search, we can use its results to tune the priors of our second search. For exam
  1) The first search should give us a pretty good idea of the galaxy's bulge and disk profiles, for example its
  centre, intensity, effective radius.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())

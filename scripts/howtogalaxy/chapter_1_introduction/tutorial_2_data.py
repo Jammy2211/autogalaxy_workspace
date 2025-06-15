@@ -26,6 +26,7 @@ Here is an overview of what we'll cover in this tutorial:
 - **Simulator:** Using the `SimulatorImaging` object to simulate imaging data that includes all these effects.
 - **Output:** Saving the simulated data to `.fits` files for use in future tutorials, where .fits is the standard image format used by astronomers.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())

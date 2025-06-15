@@ -10,6 +10,7 @@ In the previous two tutorials, we introduced:
 However, non of this has actually helped us fit galaxy data or reconstruct the galaxy. This is the subject
 of this tutorial, where the process of reconstructing the galaxy's light on the pixelization is called an `Inversion`.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())

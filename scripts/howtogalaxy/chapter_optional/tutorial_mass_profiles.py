@@ -15,6 +15,7 @@ This tutorial introduces `LightProfile` objects, which represent analytic forms 
 By passing these objects 2D grids of $(y,x)$ coordinates we can create images from a light profile, which is therefore
 a model of a galaxy's luminous emission.
 """
+
 # %matplotlib inline
 # from pyprojroot import here
 # workspace_path = str(here())
