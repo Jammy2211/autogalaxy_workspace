@@ -8,7 +8,7 @@ Jupyter notebook and on your computer screen.
 
 # %matplotlib inline
 
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 
@@ -48,15 +48,15 @@ directory `autogalaxy_workspace/dataset/imaging/simple__sersic`.
 There are many example simulated images of galaxies in this directory that will be used throughout the 
 **HowToGalaxy** lectures.
 """
-dataset_path = path.join("dataset", "imaging", "simple__sersic")
+dataset_path = Path("dataset", "imaging", "simple__sersic")
 
 """
 We now load this dataset from .fits files and create an instance of an `imaging` object.
 """
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 

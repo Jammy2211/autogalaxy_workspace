@@ -13,7 +13,7 @@ We'll also learn a neat trick to improve the speed and accuracy of a non-linear 
 # %cd $workspace_path
 # print(f"Working Directory has been set to `{workspace_path}`")
 
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 import autofit as af
@@ -26,12 +26,12 @@ we'll use the same galaxy data as tutorials 1 & 2, where:
  - The galaxy's `LightProfile` is an `Sersic`.
 """
 dataset_name = "simple__sersic"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -79,7 +79,7 @@ galaxy = af.Model(ag.Galaxy, redshift=1.0, bulge=ag.lp.Sersic)
 model = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
+    path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_5_with_custom_mask",
     unique_tag=dataset_name,
     n_live=80,

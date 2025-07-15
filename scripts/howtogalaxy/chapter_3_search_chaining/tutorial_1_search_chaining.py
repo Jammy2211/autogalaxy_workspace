@@ -43,7 +43,7 @@ search, we can use its results to tune the priors of our second search. For exam
 # print(f"Working Directory has been set to `{workspace_path}`")
 
 import numpy as np
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 import autofit as af
@@ -57,12 +57,12 @@ we'll use the same galaxy data as tutorial 4 of chapter 2, where:
  - The galaxy's disk is an `Exponential`.
 """
 dataset_name = "simple"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -128,7 +128,7 @@ __Search + Analysis__
 Now lets create the search and analysis.
 """
 search_1 = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_3"),
+    path_prefix=Path("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_1",
     unique_tag=dataset_name,
     n_live=100,
@@ -243,7 +243,7 @@ Lets setup and run the search. As expected, it gives us the correct model. Howev
 faster than we are used to!
 """
 search_2 = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_3"),
+    path_prefix=Path("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_2",
     unique_tag=dataset_name,
     n_live=100,

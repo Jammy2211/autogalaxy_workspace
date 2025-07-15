@@ -26,7 +26,7 @@ initializing the bulge and disk components. In the later searches we will switch
 # %cd $workspace_path
 # print(f"Working Directory has been set to `{workspace_path}`")
 
-from os import path
+from pathlib import Path
 import autofit as af
 import autogalaxy as ag
 import autogalaxy.plot as aplt
@@ -41,12 +41,12 @@ we'll use complex galaxy data, where:
  - The galaxy's has four star forming clumps which are `Sersic` profiles.
 """
 dataset_name = "complex"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -96,7 +96,7 @@ galaxy = af.Model(ag.Galaxy, redshift=0.5, bulge=bulge, disk=disk)
 model_1 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 search_1 = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_4"),
+    path_prefix=Path("howtogalaxy", "chapter_4"),
     name="search[1]_source[lp]",
     unique_tag=dataset_name,
     n_live=100,
@@ -142,7 +142,7 @@ galaxy = af.Model(
 model_2 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 search_2 = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_4"),
+    path_prefix=Path("howtogalaxy", "chapter_4"),
     name="search[2]_source[inversion_initialization]",
     unique_tag=dataset_name,
     n_live=50,
@@ -193,7 +193,7 @@ galaxy = af.Model(
 model_3 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 search_3 = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_4"),
+    path_prefix=Path("howtogalaxy", "chapter_4"),
     name="search[3]_source[pix]",
     unique_tag=dataset_name,
     n_live=100,
