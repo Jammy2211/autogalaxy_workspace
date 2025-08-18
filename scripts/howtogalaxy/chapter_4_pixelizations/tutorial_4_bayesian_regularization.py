@@ -99,9 +99,7 @@ galaxy = ag.Galaxy(redshift=1.0, pixelization=pixelization)
 
 no_regularization_fit = perform_fit_with_galaxy(dataset=dataset, galaxy=galaxy)
 
-include = aplt.Include2D(mask=True)
-
-fit_plotter = aplt.FitImagingPlotter(fit=no_regularization_fit, include_2d=include)
+fit_plotter = aplt.FitImagingPlotter(fit=no_regularization_fit)
 fit_plotter.subplot_fit()
 
 inversion_plotter = aplt.InversionPlotter(inversion=no_regularization_fit.inversion)
@@ -140,7 +138,7 @@ galaxy = ag.Galaxy(redshift=1.0, pixelization=pixelization)
 
 high_regularization_fit = perform_fit_with_galaxy(dataset=dataset, galaxy=galaxy)
 
-fit_plotter = aplt.FitImagingPlotter(fit=high_regularization_fit, include_2d=include)
+fit_plotter = aplt.FitImagingPlotter(fit=high_regularization_fit)
 fit_plotter.subplot_fit()
 
 inversion_plotter = aplt.InversionPlotter(inversion=high_regularization_fit.inversion)
@@ -234,9 +232,7 @@ print(3988.0716851250163)
 print("New Bayesian Evidence:")
 print(fit.log_evidence)
 
-include = aplt.Include2D(mask=True)
-
-fit_plotter = aplt.FitImagingPlotter(fit=fit, include_2d=include)
+fit_plotter = aplt.FitImagingPlotter(fit=fit)
 fit_plotter.subplot_fit()
 
 """ 

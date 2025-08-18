@@ -73,15 +73,20 @@ We now plot the `Mapper` alongside the image we used to generate the source-plan
 Using the `Visuals2D` object we are also going to highlight specific grid coordinates certain colors, such that we
 can see how they map from the image grid to the pixelization grid. 
 """
+indexes = [range(250), [150, 250, 350, 450, 550, 650, 750, 850, 950, 1050]]
+
 visuals = aplt.Visuals2D(
-    indexes=[range(250), [150, 250, 350, 450, 550, 650, 750, 850, 950, 1050]]
+    indexes=indexes,
 )
-include = aplt.Include2D(mapper_source_plane_data_grid=False)
 
 mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper, visuals_2d=visuals, include_2d=include
+    mapper=mapper,
+    visuals_2d=visuals,
 )
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+mapper_plotter.subplot_image_and_mapper(
+    image=dataset.data,
+)
+
 
 """
 Using a mapper, we can now make these mappings appear the other way round. That is, we can input a pixelization pixel
@@ -90,9 +95,15 @@ index (of our rectangular grid) and highlight how all of the image-pixels that i
 Lets map source pixel 313, the central source-pixel, to the image. We observe that for a given rectangular pixelization
 pixel, there are four image pixels.
 """
-visuals = aplt.Visuals2D(pix_indexes=[[312]])
+pix_indexes = [[312]]
+
+indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
+
+visuals = aplt.Visuals2D(indexes=indexes)
+
 mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper, visuals_2d=visuals, include_2d=include
+    mapper=mapper,
+    visuals_2d=visuals,
 )
 
 mapper_plotter.subplot_image_and_mapper(image=dataset.data)
@@ -136,9 +147,7 @@ mapper = ag.Mapper(
 """
 Lets plot it.
 """
-include = aplt.Include2D(mask=True, mapper_source_plane_data_grid=False)
-
-mapper_plotter = aplt.MapperPlotter(mapper=mapper, include_2d=include)
+mapper_plotter = aplt.MapperPlotter(mapper=mapper)
 mapper_plotter.subplot_image_and_mapper(image=dataset.data)
 
 """
@@ -147,9 +156,17 @@ maps too in the pixelization.
 
 Now lets show that when we plot pixelization pixel indexes, they still appear in the same place in the image.
 """
-visuals = aplt.Visuals2D(pix_indexes=[[312], [314], [316], [318]])
+pix_indexes = [[312], [314], [316], [318]]
+
+indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
+
+visuals = aplt.Visuals2D(
+    indexes=indexes,
+)
+
 mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper, visuals_2d=visuals, include_2d=include
+    mapper=mapper,
+    visuals_2d=visuals,
 )
 
 mapper_plotter.subplot_image_and_mapper(image=dataset.data)

@@ -75,9 +75,7 @@ mapper = ag.Mapper(
     regularization=ag.reg.Constant(coefficient=1.0),
 )
 
-include = aplt.Include2D(mask=True, mapper_source_plane_data_grid=False)
-
-mapper_plotter = aplt.MapperPlotter(mapper=mapper, include_2d=include)
+mapper_plotter = aplt.MapperPlotter(mapper=mapper)
 mapper_plotter.subplot_image_and_mapper(image=dataset.data)
 
 """
@@ -103,9 +101,7 @@ Both of these can be plotted using an `InversionPlotter`.
 It is possible for an inversion to have multiple `Mapper`'s, therefore for certain figures we specify the index 
 of the mapper we wish to plot. In this case, because we only have one mapper we specify the index 0.
 """
-include = aplt.Include2D(mask=True)
-
-inversion_plotter = aplt.InversionPlotter(inversion=inversion, include_2d=include)
+inversion_plotter = aplt.InversionPlotter(inversion=inversion)
 inversion_plotter.figures_2d(reconstructed_image=True)
 inversion_plotter.figures_2d_of_pixelization(pixelization_index=0, reconstruction=True)
 
@@ -123,10 +119,15 @@ simply need to be able to use an inversion to model a galaxy.
 
 To begin, lets consider some random mappings between our mapper`s pixelization pixels and the image.
 """
-visuals = aplt.Visuals2D(pix_indexes=[[445], [285], [313], [132], [11]])
+pix_indexes = [[445], [285], [313], [132], [11]]
+
+indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
+
+visuals = aplt.Visuals2D(indexes=indexes)
 
 mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper, visuals_2d=visuals, include_2d=include
+    mapper=mapper,
+    visuals_2d=visuals,
 )
 mapper_plotter.subplot_image_and_mapper(image=dataset.data)
 
@@ -178,9 +179,7 @@ We can use the `subplot_of_galaxies` method to specifically visualize the invers
 """
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
-include = aplt.Include2D(mask=True)
-
-fit_plotter = aplt.FitImagingPlotter(fit=fit, include_2d=include)
+fit_plotter = aplt.FitImagingPlotter(fit=fit)
 fit_plotter.subplot_fit()
 fit_plotter.subplot_of_galaxies(galaxy_index=0)
 

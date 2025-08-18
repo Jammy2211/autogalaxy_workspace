@@ -496,7 +496,7 @@ Shapelets are basis functions with analytic properties that are appropriate for 
 features of a galaxy. They do so over a wide range of scales, and can often represent features in source galaxies 
 that a single Sersic function or MGE cannot.
 
-An example using shapelets is given at `autogalaxy_workspace/scripts/imaging/modeling/features/shapelets.py`.
+An example using shapelets is given at `autogalaxy_workspace/scripts/modeling/imaging/features/shapelets.py`.
  
 Feel free to experiment with using shapelets as the galaxy by yourself. However they incur higher computational 
 overheads than the MGE and include a free parameter which governs the size of the basis functions and therefore source,
