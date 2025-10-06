@@ -19,7 +19,7 @@ conceptually challenging!
 # %cd $workspace_path
 # print(f"Working Directory has been set to `{workspace_path}`")
 
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 
@@ -33,12 +33,12 @@ we'll use the same complex galaxy data as the previous tutorial, where:
  - The galaxy's has four star forming clumps which are `Sersic` profiles.
 """
 dataset_name = "complex"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -99,9 +99,7 @@ galaxy = ag.Galaxy(redshift=1.0, pixelization=pixelization)
 
 no_regularization_fit = perform_fit_with_galaxy(dataset=dataset, galaxy=galaxy)
 
-include = aplt.Include2D(mask=True)
-
-fit_plotter = aplt.FitImagingPlotter(fit=no_regularization_fit, include_2d=include)
+fit_plotter = aplt.FitImagingPlotter(fit=no_regularization_fit)
 fit_plotter.subplot_fit()
 
 inversion_plotter = aplt.InversionPlotter(inversion=no_regularization_fit.inversion)
@@ -140,7 +138,7 @@ galaxy = ag.Galaxy(redshift=1.0, pixelization=pixelization)
 
 high_regularization_fit = perform_fit_with_galaxy(dataset=dataset, galaxy=galaxy)
 
-fit_plotter = aplt.FitImagingPlotter(fit=high_regularization_fit, include_2d=include)
+fit_plotter = aplt.FitImagingPlotter(fit=high_regularization_fit)
 fit_plotter.subplot_fit()
 
 inversion_plotter = aplt.InversionPlotter(inversion=high_regularization_fit.inversion)
@@ -234,9 +232,7 @@ print(3988.0716851250163)
 print("New Bayesian Evidence:")
 print(fit.log_evidence)
 
-include = aplt.Include2D(mask=True)
-
-fit_plotter = aplt.FitImagingPlotter(fit=fit, include_2d=include)
+fit_plotter = aplt.FitImagingPlotter(fit=fit)
 fit_plotter.subplot_fit()
 
 """ 

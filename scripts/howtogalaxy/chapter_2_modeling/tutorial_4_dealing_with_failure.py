@@ -26,7 +26,7 @@ global maxima solution is in indeed the global maxima.
 # print(f"Working Directory has been set to `{workspace_path}`")
 
 import numpy as np
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 import autofit as af
@@ -40,12 +40,12 @@ we'll use the same galaxy data as the previous tutorial, where:
  - The galaxy's disk is an `Exponential`.
 """
 dataset_name = "simple"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -203,7 +203,7 @@ We can now create this custom search and run it. Our non-linear search will now 
 regions of parameter space, given our improved and more informed priors.
 """
 search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
+    path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_4_custom_priors",
     unique_tag=dataset_name,
     n_live=100,
@@ -293,7 +293,7 @@ print(model.info)
 We now create this search and run it.
 """
 search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
+    path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_4_reducing_complexity",
     unique_tag=dataset_name,
     n_live=100,
@@ -361,7 +361,7 @@ galaxy = af.Model(ag.Galaxy, redshift=0.5, bulge=ag.lp.Sersic, disk=ag.lp.Expone
 model = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
+    path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_4_look_harder",
     unique_tag=dataset_name,
     n_live=200,

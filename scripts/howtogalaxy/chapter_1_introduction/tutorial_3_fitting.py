@@ -33,7 +33,7 @@ Here is an overview of what we'll cover in this tutorial:
 """
 
 import numpy as np
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 
@@ -49,12 +49,12 @@ standard for CCD imaging.
 
 The `dataset_path` below specifies where these files are located: `autogalaxy_workspace/dataset/imaging/howtogalaxy/`.
 """
-dataset_path = path.join("dataset", "imaging", "howtogalaxy")
+dataset_path = Path("dataset", "imaging", "howtogalaxy")
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -573,12 +573,12 @@ the best-fit model. We'll start by loading a simple dataset that was simulated u
 true parameters of this profile are unknown.
 """
 dataset_name = "simple"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
+    data_path=dataset_path / "data.fits",
+    psf_path=dataset_path / "psf.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
     pixel_scales=0.1,
 )
 

@@ -22,7 +22,7 @@ pipeline that we can generalize to many galaxies isn't currently possible.
 # %cd $workspace_path
 # print(f"Working Directory has been set to `{workspace_path}`")
 
-from os import path
+from pathlib import Path
 import autofit as af
 import autogalaxy as ag
 import autogalaxy.plot as aplt
@@ -35,12 +35,12 @@ we'll use new galaxying data, where:
  - There are two galaxy's whose `LightProfile`'s are both `Sersic`'s.
 """
 dataset_name = "sersic_x2"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.05,
 )
 
@@ -79,7 +79,7 @@ __Paths__
 
 All four searches will use the same `path_prefix`, so we write it here to avoid repetition.
 """
-path_prefix = path.join("howtogalaxy", "chapter_3", "tutorial_3_x2_galaxies")
+path_prefix = Path("howtogalaxy") / "chapter_3" / "tutorial_3_x2_galaxies"
 
 """
 __Search Chaining Approach__

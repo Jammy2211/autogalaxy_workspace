@@ -31,7 +31,7 @@ structures (e.g. asymmetries, twists) with just N=6-8 non-linear parameters.
 # print(f"Working Directory has been set to `{workspace_path}`")
 
 import numpy as np
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 import autofit as af
@@ -45,12 +45,12 @@ we'll use the same galaxy data as the previous tutorial, where:
  - The galaxy's disk is an `Exponential`.
 """
 dataset_name = "simple"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -127,7 +127,7 @@ print(model.info)
 We now create this search and run it.
 """
 search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
+    path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_7_linear_light_profile",
     unique_tag=dataset_name,
     n_live=100,
@@ -152,19 +152,7 @@ by the reduction in `n_live` to 100.
 Fits using standard light profiles and linear light profiles therefore take roughly the same time to run. However,
 the simpler parameter space of linear light profiles means that the model-fit is more reliable, less susceptible to
 converging to an incorrect solution and scales better if even more light profiles are included in the model.
-"""
-run_time_dict, info_dict = analysis.profile_log_likelihood_function(
-    instance=model.random_instance()
-)
 
-print(f"Log Likelihood Evaluation Time (second) = {run_time_dict['fit_time']}")
-print(
-    "Estimated Run Time Upper Limit (seconds) = ",
-    (run_time_dict["fit_time"] * model.total_free_parameters * 10000)
-    / search.number_of_cores,
-)
-
-"""
 Run the non-linear search.
 """
 print(
@@ -425,7 +413,7 @@ print(model.info)
 We now fit the model, with just `n_live=50` given the simiplicity of parameter space.
 """
 search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
+    path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_7_basis",
     unique_tag=dataset_name,
     n_live=50,
@@ -508,7 +496,7 @@ Shapelets are basis functions with analytic properties that are appropriate for 
 features of a galaxy. They do so over a wide range of scales, and can often represent features in source galaxies 
 that a single Sersic function or MGE cannot.
 
-An example using shapelets is given at `autogalaxy_workspace/scripts/imaging/modeling/features/shapelets.py`.
+An example using shapelets is given at `autogalaxy_workspace/scripts/modeling/imaging/features/shapelets.py`.
  
 Feel free to experiment with using shapelets as the galaxy by yourself. However they incur higher computational 
 overheads than the MGE and include a free parameter which governs the size of the basis functions and therefore source,

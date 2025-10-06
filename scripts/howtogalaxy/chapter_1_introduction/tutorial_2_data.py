@@ -34,7 +34,7 @@ Here is an overview of what we'll cover in this tutorial:
 # print(f"Working Directory has been set to `{workspace_path}`")
 
 import numpy as np
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 
@@ -371,13 +371,13 @@ the `autogalaxy_workspace`.
 
 The files are named `data.fits`, `noise_map.fits`, and `psf.fits`, and will be used in the next tutorial.
 """
-dataset_path = path.join("dataset", "imaging", "howtogalaxy")
+dataset_path = Path("dataset", "imaging", "howtogalaxy")
 print("Dataset Path: ", dataset_path)
 
 dataset.output_to_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     overwrite=True,
 )
 

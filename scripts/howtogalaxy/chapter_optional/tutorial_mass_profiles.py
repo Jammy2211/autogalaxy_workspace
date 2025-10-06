@@ -73,10 +73,8 @@ A `MassProfilePlotter` can plot the deflection angles.
 
 (The black and white lines are called the `critical curve` and `caustic`. we'll cover what these are in a later tutorial.)
 """
-mass_profile_plottter = aplt.MassProfilePlotter(
-    mass_profile=sis_mass_profile, grid=grid
-)
-mass_profile_plottter.figures_2d(deflections_y=True, deflections_x=True)
+mass_profile_plotter = aplt.MassProfilePlotter(mass_profile=sis_mass_profile, grid=grid)
+mass_profile_plotter.figures_2d(deflections_y=True, deflections_x=True)
 
 """
 __Other Properties__
@@ -100,4 +98,4 @@ mass_profile_magnification = sis_mass_profile.magnification_2d_from(grid=grid)
 """
 Plotting them is equally straight forward.
 """
-mass_profile_plottter.figures_2d(convergence=True, potential=True, magnification=True)
+mass_profile_plotter.figures_2d(convergence=True, potential=True, magnification=True)

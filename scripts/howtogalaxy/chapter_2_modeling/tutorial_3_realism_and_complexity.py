@@ -24,7 +24,7 @@ an important concept to keep in mind for the remainder of this chapter!
 # %cd $workspace_path
 # print(f"Working Directory has been set to `{workspace_path}`")
 
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 import autofit as af
@@ -38,12 +38,12 @@ we'll use new galaxying data, where:
  - The galaxy's disk is an `Exponential`.
 """
 dataset_name = "simple"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -95,7 +95,7 @@ model = af.Collection(
 )
 
 search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
+    path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_3_realism_and_complexity",
     unique_tag=dataset_name,
     n_live=100,
@@ -155,7 +155,7 @@ parameter space. We are going to use so few that the initial search over paramet
 probability of getting close the global maxima, meaning it converges on a local maxima. 
 """
 search = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_2"),
+    path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_3_realism_and_complexity__local_maxima",
     unique_tag=dataset_name,
     n_live=50,

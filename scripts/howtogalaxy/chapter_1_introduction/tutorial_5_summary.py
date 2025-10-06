@@ -22,7 +22,7 @@ they come together as one.
 # %cd $workspace_path
 # print(f"Working Directory has been set to `{workspace_path}`")
 
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 
@@ -120,7 +120,7 @@ light_profile_plotter.figures_2d(image=True)
 """
 __Visualization__
 
-Furthermore, using the `MatPLot2D`, `Visuals2D` and `Include2D` objects visualize any aspect we're interested 
+Furthermore, using the `MatPLot2D` and `Visuals2D` objects we can visualize any aspect we're interested 
 in and fully customize the figure. 
 
 Before beginning chapter 2 of **HowToGalaxy**, you should checkout the package `autogalaxy_workspace/plot`. 
@@ -134,11 +134,7 @@ mat_plot = aplt.MatPlot2D(
     cmap=aplt.Cmap(cmap="cool", norm="linear"),
 )
 
-include = aplt.Include2D(
-    origin=True, mask=True, border=True, light_profile_centres=True
-)
-
-visuals = aplt.Visuals2D()
+visuals = aplt.Visuals2D(origin=(0.0, 0.0))
 
 light_profile_plotter = aplt.LightProfilePlotter(
     light_profile=galaxies[0].bulge,

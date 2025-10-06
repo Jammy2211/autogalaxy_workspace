@@ -18,7 +18,7 @@ way, which is the topic of this tutorial.
 # print(f"Working Directory has been set to `{workspace_path}`")
 
 import numpy as np
-from os import path
+from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 import autofit as af
@@ -34,12 +34,12 @@ we'll use the same galaxying data as the previous tutorial, where:
 All the usual steps for setting up a model fit (masking, analysis, etc.) are included below.
 """
 dataset_name = "simple"
-dataset_path = path.join("dataset", "imaging", dataset_name)
+dataset_path = Path("dataset") / "imaging" / dataset_name
 
 dataset = ag.Imaging.from_fits(
-    data_path=path.join(dataset_path, "data.fits"),
-    noise_map_path=path.join(dataset_path, "noise_map.fits"),
-    psf_path=path.join(dataset_path, "psf.fits"),
+    data_path=dataset_path / "data.fits",
+    noise_map_path=dataset_path / "noise_map.fits",
+    psf_path=dataset_path / "psf.fits",
     pixel_scales=0.1,
 )
 
@@ -99,7 +99,7 @@ run it.
 analysis_1 = ag.AnalysisImaging(dataset=dataset)
 
 search_1 = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_3"),
+    path_prefix=Path("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_1",
     unique_tag=dataset_name,
     n_live=100,
@@ -175,7 +175,7 @@ that were passed.
 analysis_2 = ag.AnalysisImaging(dataset=dataset)
 
 search_2 = af.Nautilus(
-    path_prefix=path.join("howtogalaxy", "chapter_3"),
+    path_prefix=Path("howtogalaxy", "chapter_3"),
     name="tutorial_2_search_chaining_2",
     unique_tag=dataset_name,
     n_live=100,
