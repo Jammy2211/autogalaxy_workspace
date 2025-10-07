@@ -99,7 +99,6 @@ search = af.Nautilus(
     name="tutorial_3_realism_and_complexity",
     unique_tag=dataset_name,
     n_live=100,
-    number_of_cores=1,
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset)
@@ -159,7 +158,6 @@ search = af.Nautilus(
     name="tutorial_3_realism_and_complexity__local_maxima",
     unique_tag=dataset_name,
     n_live=50,
-    number_of_cores=1,
 )
 
 print(

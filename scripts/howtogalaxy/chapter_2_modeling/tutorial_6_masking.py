@@ -83,7 +83,6 @@ search = af.Nautilus(
     name="tutorial_5_with_custom_mask",
     unique_tag=dataset_name,
     n_live=80,
-    number_of_cores=1,
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset)

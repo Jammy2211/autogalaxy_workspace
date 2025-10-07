@@ -131,13 +131,13 @@ and its `sersic_index` fixed to 4.0. The API for passing priors is shown below a
 
  2) We do not pass the `centre` or `sersic_index` using `model`, because it would be fixed to the values that it was in 
  the first search. By omitting the centre, it uses the default priors on a galaxy, whereas we manually tell the 
- Sersic index to use a `GaussianPrior` centred on 4.0. 
+ Sersic index to use a `TruncatedGaussianPrior` centred on 4.0. 
 """
 bulge = af.Model(ag.lp_linear.Sersic)
 
 bulge.ell_comps = result_1.model.galaxies.galaxy.bulge.ell_comps
 bulge.effective_radius = result_1.model.galaxies.galaxy.bulge.effective_radius
-bulge.sersic_index = af.GaussianPrior(
+bulge.sersic_index = af.TruncatedGaussianPrior(
     mean=4.0, sigma=2.0, lower_limit=0.0, upper_limit=5.0
 )
 
@@ -150,7 +150,7 @@ model-fit.
 disk = af.Model(ag.lp_linear.Sersic)
 
 disk.effective_radius = result_1.model.galaxies.galaxy.disk.effective_radius
-disk.sersic_index = af.GaussianPrior(
+disk.sersic_index = af.TruncatedGaussianPrior(
     mean=1.0, sigma=2.0, lower_limit=0.0, upper_limit=5.0
 )
 

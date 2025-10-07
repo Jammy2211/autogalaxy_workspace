@@ -126,27 +126,27 @@ disk.centre_0 = af.UniformPrior(lower_limit=-0.05, upper_limit=0.05)
 disk.centre_1 = af.UniformPrior(lower_limit=-0.05, upper_limit=0.05)
 
 """
-By default, the elliptical components of the of our galaxy's elliptical `LightProfile` are `GaussianPrior`'s 
+By default, the elliptical components of the of our galaxy's elliptical `LightProfile` are `TruncatedGaussianPrior`'s 
 with `mean=0.0` and `sigma=0.5`. Note that the solution `ell_comps=(0.0, 0.0)` corresponds to a spherical system
 and that all physical solutions (e.g. with axis-ratios running from 0.0 -> 1.0 and position angles 0.0 -> 180.0 degrees) 
 are encapsulated for solutions where each component runs from -1.0 -> 1.0). 
 
 However, through visual inspection of the image we can often determine the position angle of the galaxy's light, which 
 for this data is clearly 45.0 degrees counter-clockwise from the x-axis. We can update the priors on our elliptical 
-components to reflect this. The `lower_limit` and `upper_limit` on a `GaussianPrior` ensure the solutions cannot go
+components to reflect this. The `lower_limit` and `upper_limit` on a `TruncatedGaussianPrior` ensure the solutions cannot go
 outside the physically plausible range -1.0 -> 1.0.
 """
-bulge.ell_comps.ell_comps_0 = af.GaussianPrior(
+bulge.ell_comps.ell_comps_0 = af.TruncatedGaussianPrior(
     mean=0.333333, sigma=0.1, lower_limit=-1.0, upper_limit=1.0
 )
-bulge.ell_comps.ell_comps_1 = af.GaussianPrior(
+bulge.ell_comps.ell_comps_1 = af.TruncatedGaussianPrior(
     mean=0.0, sigma=0.1, lower_limit=-1.0, upper_limit=1.0
 )
 
-disk.ell_comps.ell_comps_0 = af.GaussianPrior(
+disk.ell_comps.ell_comps_0 = af.TruncatedGaussianPrior(
     mean=0.333333, sigma=0.1, lower_limit=-1.0, upper_limit=1.0
 )
-disk.ell_comps.ell_comps_1 = af.GaussianPrior(
+disk.ell_comps.ell_comps_1 = af.TruncatedGaussianPrior(
     mean=0.0, sigma=0.1, lower_limit=-1.0, upper_limit=1.0
 )
 
@@ -159,10 +159,10 @@ observed in the Universe.
 However, inspection of this image shows the galaxy's light does not extend anywhere near 30.0", so lets reduce its
 value for both bulge and disk components.
 """
-bulge.effective_radius = af.GaussianPrior(
+bulge.effective_radius = af.TruncatedGaussianPrior(
     mean=1.0, sigma=0.8, lower_limit=0.0, upper_limit=np.inf
 )
-disk.effective_radius = af.GaussianPrior(
+disk.effective_radius = af.TruncatedGaussianPrior(
     mean=1.0, sigma=0.8, lower_limit=0.0, upper_limit=np.inf
 )
 
@@ -176,7 +176,7 @@ where the galaxy is of any morphology.
 
 We are assuming the `bulge` component is a bulge, thus we can change its prior on the `sersic_index` to a value near 3.
 """
-bulge.sersic_index = af.GaussianPrior(
+bulge.sersic_index = af.TruncatedGaussianPrior(
     mean=3.0, sigma=1.0, lower_limit=0.0, upper_limit=np.inf
 )
 
@@ -207,7 +207,6 @@ search = af.Nautilus(
     name="tutorial_4_custom_priors",
     unique_tag=dataset_name,
     n_live=100,
-    number_of_cores=1,
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset)
@@ -297,7 +296,6 @@ search = af.Nautilus(
     name="tutorial_4_reducing_complexity",
     unique_tag=dataset_name,
     n_live=100,
-    number_of_cores=1,
 )
 
 print(
@@ -365,7 +363,6 @@ search = af.Nautilus(
     name="tutorial_4_look_harder",
     unique_tag=dataset_name,
     n_live=200,
-    number_of_cores=1,
 )
 
 print(

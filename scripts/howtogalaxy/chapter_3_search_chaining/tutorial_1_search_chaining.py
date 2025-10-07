@@ -169,7 +169,7 @@ __Prior Passing__
 Now all we need to do is look at the results of search 1 and pass the results as priors for search 2. Lets setup 
 a custom search that does exactly that.
 
-`GaussianPrior`'s are a nice way to pass priors. They tell the non-linear search where to look, but leave open the 
+`TruncatedGaussianPrior`'s are a nice way to pass priors. They tell the non-linear search where to look, but leave open the 
 possibility that there might be a better solution nearby. In contrast, `UniformPrior`'s put hard limits on what values a 
 parameter can or can`t take. It makes it more likely we will accidentally cut-out the global maxima solution.
 
@@ -185,44 +185,44 @@ values for now, I've chosen values that I know will ensure reasonable sampling, 
 
 __LENS BULGE PRIORS:__
 """
-bulge.centre.centre_0 = af.GaussianPrior(
+bulge.centre.centre_0 = af.TruncatedGaussianPrior(
     mean=0.0, sigma=0.1, lower_limit=-np.inf, upper_limit=np.inf
 )
-bulge.centre.centre_1 = af.GaussianPrior(
+bulge.centre.centre_1 = af.TruncatedGaussianPrior(
     mean=0.0, sigma=0.1, lower_limit=-np.inf, upper_limit=np.inf
 )
-bulge.ell_comps.ell_comps_0 = af.GaussianPrior(
+bulge.ell_comps.ell_comps_0 = af.TruncatedGaussianPrior(
     mean=0.11, sigma=0.2, lower_limit=-1.0, upper_limit=1.0
 )
-bulge.ell_comps.ell_comps_1 = af.GaussianPrior(
+bulge.ell_comps.ell_comps_1 = af.TruncatedGaussianPrior(
     mean=0.05, sigma=0.2, lower_limit=-1.0, upper_limit=1.0
 )
-bulge.effective_radius = af.GaussianPrior(
+bulge.effective_radius = af.TruncatedGaussianPrior(
     mean=0.75, sigma=0.4, lower_limit=0.0, upper_limit=np.inf
 )
-bulge.sersic_index = af.GaussianPrior(
+bulge.sersic_index = af.TruncatedGaussianPrior(
     mean=4.0, sigma=2.0, lower_limit=0.0, upper_limit=np.inf
 )
 
 """
 __LENS DISK PRIORS:__
 """
-disk.centre.centre_0 = af.GaussianPrior(
+disk.centre.centre_0 = af.TruncatedGaussianPrior(
     mean=0.0, sigma=0.1, lower_limit=-np.inf, upper_limit=np.inf
 )
-disk.centre.centre_1 = af.GaussianPrior(
+disk.centre.centre_1 = af.TruncatedGaussianPrior(
     mean=0.0, sigma=0.1, lower_limit=-np.inf, upper_limit=np.inf
 )
-disk.ell_comps.ell_comps_0 = af.GaussianPrior(
+disk.ell_comps.ell_comps_0 = af.TruncatedGaussianPrior(
     mean=0.11, sigma=0.2, lower_limit=-1.0, upper_limit=1.0
 )
-disk.ell_comps.ell_comps_1 = af.GaussianPrior(
+disk.ell_comps.ell_comps_1 = af.TruncatedGaussianPrior(
     mean=0.05, sigma=0.2, lower_limit=-1.0, upper_limit=1.0
 )
-disk.effective_radius = af.GaussianPrior(
+disk.effective_radius = af.TruncatedGaussianPrior(
     mean=1.52, sigma=0.4, lower_limit=0.0, upper_limit=np.inf
 )
-disk.sersic_index = af.GaussianPrior(
+disk.sersic_index = af.TruncatedGaussianPrior(
     mean=1.0, sigma=2.0, lower_limit=0.0, upper_limit=np.inf
 )
 
