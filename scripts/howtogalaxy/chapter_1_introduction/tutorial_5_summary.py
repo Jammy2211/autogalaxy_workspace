@@ -140,7 +140,6 @@ light_profile_plotter = aplt.LightProfilePlotter(
     light_profile=galaxies[0].bulge,
     grid=grid,
     mat_plot_2d=mat_plot,
-    include_2d=include,
     visuals_2d=visuals,
 )
 light_profile_plotter.set_title("Bulge Image")

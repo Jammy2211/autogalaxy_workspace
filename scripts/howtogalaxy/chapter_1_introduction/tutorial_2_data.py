@@ -136,8 +136,8 @@ image = galaxies.image_2d_from(grid=grid)  # The original unblurred image of the
 padded_image = galaxies.padded_image_2d_from(
     grid=grid, psf_shape_2d=psf.shape_native  # Adding padding based on the PSF size.
 )
-convolved_image = psf.convolved_array_from(
-    array=padded_image
+convolved_image = psf.convolved_image_from(
+    image=padded_image, blurring_image=None
 )  # Applying the PSF convolution.
 blurred_image = convolved_image.trimmed_after_convolution_from(
     kernel_shape=psf.shape_native
