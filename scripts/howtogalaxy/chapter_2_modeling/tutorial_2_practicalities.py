@@ -228,7 +228,7 @@ __Analysis__
 We again create the `AnalysisImaging` object which contains the `log_likelihood_function` that the non-linear search
 calls to fit the model to the data.
 """
-analysis = ag.AnalysisImaging(dataset=dataset)
+analysis = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 """
 __Run Times__

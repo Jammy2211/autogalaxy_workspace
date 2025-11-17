@@ -134,7 +134,7 @@ search_1 = af.Nautilus(
     n_live=100,
 )
 
-analysis_1 = ag.AnalysisImaging(dataset=dataset)
+analysis_1 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 """
 Lets run the search, noting that our liberal approach to reducing the model complexity has reduced it to just 
@@ -249,7 +249,7 @@ search_2 = af.Nautilus(
     n_live=100,
 )
 
-analysis_2 = ag.AnalysisImaging(dataset=dataset)
+analysis_2 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 print(
     "The non-linear search has begun running - checkout the workspace/output/5_chaining_searches"

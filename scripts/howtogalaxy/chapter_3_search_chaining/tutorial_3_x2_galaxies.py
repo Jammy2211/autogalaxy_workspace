@@ -131,7 +131,7 @@ print(model_1.info)
 """
 __Search + Analysis + Model-Fit (Search 1)__
 """
-analysis_1 = ag.AnalysisImaging(dataset=dataset)
+analysis_1 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 search_1 = af.Nautilus(
     path_prefix=path_prefix,
@@ -185,7 +185,7 @@ print(model_2.info)
 """
 __Search + Analysis + Model-Fit (Search 2)__
 """
-analysis_2 = ag.AnalysisImaging(dataset=dataset)
+analysis_2 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 search_2 = af.Nautilus(
     path_prefix=path_prefix,
@@ -235,7 +235,7 @@ model_3 = af.Collection(
     galaxies=af.Collection(left_galaxy=left_galaxy, right_galaxy=right_galaxy)
 )
 
-analysis_3 = ag.AnalysisImaging(dataset=dataset)
+analysis_3 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 search_3 = af.Nautilus(
     path_prefix=path_prefix,

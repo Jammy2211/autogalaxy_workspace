@@ -101,7 +101,7 @@ search = af.Nautilus(
     n_live=100,
 )
 
-analysis = ag.AnalysisImaging(dataset=dataset)
+analysis = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 print(
     "The non-linear search has begun running - checkout the autogalaxy_workspace/output/howtogalaxy/chapter_2/tutorial_3_realism_and_complexity"

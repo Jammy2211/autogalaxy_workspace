@@ -85,7 +85,7 @@ search = af.Nautilus(
     n_live=80,
 )
 
-analysis = ag.AnalysisImaging(dataset=dataset)
+analysis = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 search.fit(model=model, analysis=analysis)
 
