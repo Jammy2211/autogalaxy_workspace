@@ -1,0 +1,50 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "number_of_cores": 1,
+        "n_networks": 4,
+        "path_prefix": {
+            "type": "path",
+            "path": "imaging/features"
+        },
+        "n_shell": 1,
+        "unique_tag": "extra_galaxies",
+        "n_live": 150,
+        "n_update": null,
+        "n_eff": 500,
+        "iterations_per_full_update": 20000,
+        "n_points_min": null,
+        "inplace": false,
+        "seed": null,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "name": "extra_galaxies_simple_mask",
+        "enlarge_per_dim": 1.1,
+        "n_like_new_bound": null,
+        "split_threshold": 100,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "name": "extra_galaxies_simple_mask",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "imaging/features"
+                },
+                "parent": null,
+                "unique_tag": "extra_galaxies",
+                "image_path_suffix": "",
+                "is_identifier_in_paths": true,
+                "identifier": "af8723f381730841f74e6c64427ae331"
+            }
+        }
+    }
+}

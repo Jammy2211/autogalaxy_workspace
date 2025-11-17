@@ -1,0 +1,50 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_networks": 4,
+        "split_threshold": 100,
+        "enlarge_per_dim": 1.1,
+        "seed": null,
+        "n_points_min": null,
+        "path_prefix": {
+            "type": "path",
+            "path": "results_folder"
+        },
+        "iterations_per_full_update": 2500,
+        "n_update": null,
+        "n_shell": 1,
+        "unique_tag": "simple",
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "unique_tag": "simple",
+                "parent": null,
+                "name": "results",
+                "is_identifier_in_paths": true,
+                "image_path_suffix": "",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "results_folder"
+                },
+                "identifier": "04a10f767d1670fbc51acda8dc58239f"
+            }
+        },
+        "n_eff": 500,
+        "name": "results",
+        "n_live": 100,
+        "number_of_cores": 1,
+        "n_like_new_bound": null,
+        "inplace": false,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        }
+    }
+}

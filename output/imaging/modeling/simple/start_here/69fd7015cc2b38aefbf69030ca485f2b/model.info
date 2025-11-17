@@ -1,0 +1,26 @@
+Total Free Parameters = 9
+
+model                                                                           Collection (N=9)
+    galaxies                                                                    Collection (N=9)
+        galaxy                                                                  Galaxy (N=9)
+            bulge                                                               Sersic (N=6)
+            disk                                                                Exponential (N=5)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge - disk
+            centre
+                centre_0                                                        GaussianPrior [6], mean = 0.0, sigma = 0.3
+                centre_1                                                        GaussianPrior [7], mean = 0.0, sigma = 0.3
+        bulge
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [2], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [3], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius                                                    UniformPrior [4], lower_limit = 0.0, upper_limit = 30.0
+            sersic_index                                                        UniformPrior [5], lower_limit = 0.8, upper_limit = 5.0
+        disk
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [8], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [9], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius                                                    UniformPrior [10], lower_limit = 0.0, upper_limit = 30.0

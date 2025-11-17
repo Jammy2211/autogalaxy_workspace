@@ -1,0 +1,86 @@
+Bayesian Evidence                                                               -185332.45514209
+Maximum Log Likelihood                                                          -185327.84997190
+Maximum Log Posterior                                                           -185323.31864116
+
+model                                                                           Collection (N=13)
+    galaxies                                                                    Collection (N=9)
+        galaxy                                                                  Galaxy (N=9)
+            bulge                                                               Sersic (N=6)
+            disk                                                                Exponential (N=5)
+    extra_galaxies                                                              Collection (N=4)
+        0 - 1                                                                   Galaxy (N=2)
+            bulge                                                               SersicSph (N=2)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     0.017
+                ell_comps_1                                                     0.206
+            effective_radius                                                    0.703
+            sersic_index                                                        0.932
+        bulge - disk
+            centre
+                centre_0                                                        0.872
+                centre_1                                                        0.112
+        disk
+            ell_comps
+                ell_comps_0                                                     0.294
+                ell_comps_1                                                     -0.182
+            effective_radius                                                    1.820
+extra_galaxies
+    0
+        bulge
+            effective_radius                                                    16.356
+            sersic_index                                                        4.840
+    1
+        bulge
+            effective_radius                                                    1.982
+            sersic_index                                                        4.248
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     0.0175 (-0.6004, 0.6781)
+                ell_comps_1                                                     0.2059 (-0.7740, 0.7494)
+            effective_radius                                                    0.7025 (0.0914, 29.9853)
+            sersic_index                                                        0.9316 (0.8181, 4.9959)
+        bulge - disk
+            centre
+                centre_0                                                        0.8716 (-0.7214, 0.8716)
+                centre_1                                                        0.1117 (-0.7257, 0.7507)
+        disk
+            ell_comps
+                ell_comps_0                                                     0.2942 (-0.8191, 0.7246)
+                ell_comps_1                                                     -0.1820 (-0.5465, 0.6796)
+            effective_radius                                                    1.8200 (0.0255, 29.9614)
+extra_galaxies
+    0
+        bulge
+            effective_radius                                                    16.3561 (0.0802, 29.6366)
+            sersic_index                                                        4.8402 (0.8300, 4.9926)
+    1
+        bulge
+            effective_radius                                                    1.9819 (1.9819, 29.3741)
+            sersic_index                                                        4.2480 (0.8019, 4.9794)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+extra_galaxies
+    0
+        redshift                                                                0.5
+    1
+        redshift                                                                0.5

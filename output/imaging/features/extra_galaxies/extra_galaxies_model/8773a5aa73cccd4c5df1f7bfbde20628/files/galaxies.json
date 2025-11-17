@@ -1,0 +1,138 @@
+{
+    "type": "list",
+    "values": [
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "redshift": 0.5,
+                "label": "cls5",
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "sersic_index": 0.9315756607620123,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.017479601842030793,
+                                0.20593674106066626
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.4790469012978486,
+                            "dtype": "float64"
+                        },
+                        "effective_radius": 0.7025436654294082,
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.8716167413417627,
+                                0.1117049584096613
+                            ]
+                        }
+                    }
+                },
+                "disk": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.exponential.Exponential",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.8716167413417627,
+                                0.1117049584096613
+                            ]
+                        },
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.29420776673823756,
+                                -0.18199809538351558
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.14843201998620348,
+                            "dtype": "float64"
+                        },
+                        "effective_radius": 1.8199826349253245
+                    }
+                }
+            }
+        },
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "redshift": 0.5,
+                "label": "cls5",
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "sersic_index": 4.840151769177833,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.0,
+                                0.0
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.003832716782268103,
+                            "dtype": "float64"
+                        },
+                        "effective_radius": 16.35612257058201,
+                        "centre": {
+                            "type": "ndarray",
+                            "array": [
+                                1.0,
+                                3.5
+                            ],
+                            "dtype": "float64"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "redshift": 0.5,
+                "label": "cls5",
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "sersic_index": 4.248021323261066,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.0,
+                                0.0
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.26127850066910113,
+                            "dtype": "float64"
+                        },
+                        "effective_radius": 1.9818885491285931,
+                        "centre": {
+                            "type": "ndarray",
+                            "array": [
+                                -2.0,
+                                -3.5
+                            ],
+                            "dtype": "float64"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

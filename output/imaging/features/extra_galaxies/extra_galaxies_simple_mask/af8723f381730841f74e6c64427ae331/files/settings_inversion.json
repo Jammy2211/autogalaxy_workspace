@@ -1,0 +1,21 @@
+{
+    "type": "instance",
+    "class_path": "autoarray.inversion.inversion.settings.SettingsInversion",
+    "arguments": {
+        "use_border_relocator": false,
+        "image_mesh_adapt_background_percent_threshold": null,
+        "use_source_loop": false,
+        "image_mesh_min_mesh_number": 5,
+        "image_mesh_adapt_background_percent_check": 0.8,
+        "force_edge_pixels_to_zeros": true,
+        "maxiter": 250,
+        "tolerance": 1e-08,
+        "use_linear_operators": false,
+        "use_w_tilde": true,
+        "image_mesh_min_mesh_pixels_per_pixel": null,
+        "use_positive_only_solver": true,
+        "positive_only_uses_p_initial": true,
+        "use_w_tilde_numpy": false,
+        "no_regularization_add_to_curvature_diag_value": 0.001
+    }
+}
