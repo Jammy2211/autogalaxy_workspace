@@ -96,7 +96,7 @@ __Search__
 We also create the same search as the previous tutorial, using the same name to ensure we use the same results, and 
 run it.
 """
-analysis_1 = ag.AnalysisImaging(dataset=dataset)
+analysis_1 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 search_1 = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_3"),
@@ -172,7 +172,7 @@ __Search__
 Lets setup and run the search. I have given it a different name to the previous tutorial so we can compare the priors
 that were passed.
 """
-analysis_2 = ag.AnalysisImaging(dataset=dataset)
+analysis_2 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 search_2 = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_3"),

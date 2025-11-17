@@ -336,7 +336,7 @@ fitted the data.
 A detailed step-by-step visual guide of the likelihood function is provided 
 at `autogalaxy_workspace/*/imaging/log_likelihood_function/parametric.ipynb`.
 """
-analysis = ag.AnalysisImaging(dataset=dataset)
+analysis = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 """
 __Searches__

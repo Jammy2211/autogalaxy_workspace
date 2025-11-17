@@ -102,7 +102,7 @@ search_1 = af.Nautilus(
     n_live=100,
 )
 
-analysis_1 = ag.AnalysisImaging(dataset=dataset)
+analysis_1 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 result_1 = search_1.fit(model=model_1, analysis=analysis_1)
 
@@ -149,7 +149,9 @@ search_2 = af.Nautilus(
 )
 
 analysis_2 = ag.AnalysisImaging(
-    dataset=dataset, settings_inversion=ag.SettingsInversion(use_border_relocator=True)
+    dataset=dataset,
+    settings_inversion=ag.SettingsInversion(use_border_relocator=True),
+    use_jax=True,
 )
 
 result_2 = search_2.fit(model=model_2, analysis=analysis_2)
@@ -199,7 +201,7 @@ search_3 = af.Nautilus(
     n_live=100,
 )
 
-analysis_3 = ag.AnalysisImaging(dataset=dataset)
+analysis_3 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 result_3 = search_3.fit(model=model_3, analysis=analysis_3)
 
