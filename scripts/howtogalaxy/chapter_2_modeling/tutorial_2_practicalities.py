@@ -167,37 +167,6 @@ In practice, the optimal number of live points is often found through trial and 
 on how well the search is performing, which we’ll cover below. For this single Sersic model with a linear light 
 profile, 80 live points is sufficient to achieve reliable results.
 
-__Number Of Cores__
-
-We may include an input `number_of_cores`, which when above 1 means that Nautilus uses parallel processing to sample 
-multiple models at once on your CPU. When `number_of_cores=2` the search will run roughly two times as
-fast, for `number_of_cores=3` three times as fast, and so on. The downside is more cores on your CPU will be in-use
-which may hurt the general performance of your computer.
-
-You should experiment to figure out the highest value which does not give a noticeable loss in performance of your 
-computer. If you know that your processor is a quad-core processor you should be able to use `number_of_cores=4`. 
-
-Above `number_of_cores=4` the speed-up from parallelization diminishes greatly. We therefore recommend you do not
-use a value above this.
-
-For users on a Windows Operating system, using `number_of_cores>1` may lead to an error, in which case it should be 
-reduced back to 1 to fix it.
-
-__Parallel Script__
-
-Depending on the operating system (e.g. Linux, Mac, Windows), Python version, if you are running a Jupyter notebook 
-and other factors, this script may not run a successful parallel fit (e.g. running the script 
-with `number_of_cores` > 1 will produce an error). It is also common for Jupyter notebooks to not run in parallel 
-correctly, requiring a Python script to be run, often from a command line terminal.
-
-To fix these issues, the Python script needs to be adapted to use an `if __name__ == "__main__":` API, as this allows
-the Python `multiprocessing` module to allocate threads and jobs correctly. An adaptation of this example script 
-is provided at `autolens_workspace/scripts/modeling/imaging/customize/parallel.py`, which will hopefully run 
-successfully in parallel on your computer!
-
-Therefore if paralellization for this script doesn't work, check out the `parallel.py` example. You will need to update
-all scripts you run to use the this format and API. 
-
 __Iterations Per Update__
 
 Every N iterations, the non-linear search outputs the current results to the folder `autogalaxy_workspace/output`,
