@@ -97,7 +97,7 @@ model_1 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 search_1 = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_4"),
-    name="search[1]_source[lp]",
+    name="search[1]",
     unique_tag=dataset_name,
     n_live=100,
 )
@@ -105,6 +105,42 @@ search_1 = af.Nautilus(
 analysis_1 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
 
 result_1 = search_1.fit(model=model_1, analysis=analysis_1)
+
+"""
+__JAX & Preloads__
+
+In JAX, calculations must use static shaped arrays with known and fixed indexes. For certain calculations in the
+pixelization, this information has to be passed in before the pixelization is performed. Below, we do this for 3
+inputs:
+
+- `total_linear_light_profiles`: The number of linear light profiles in the model. This is 0 because we are not
+  fitting any linear light profiles to the data, primarily because the lens light is omitted.
+
+- `total_mapper_pixels`: The number of source pixels in the rectangular pixelization mesh. This is required to set up 
+  the arrays that perform the linear algebra of the pixelization.
+
+- `source_pixel_zeroed_indices`: The indices of source pixels on its edge, which when the source is reconstructed 
+  are forced to values of zero, a technique tests have shown are required to give accruate lens models.
+
+The `image_mesh` can be ignored, it is legacy API from previous versions which may or may not be reintegrated in future
+versions.
+"""
+image_mesh = None
+mesh_shape = (20, 20)
+total_mapper_pixels = mesh_shape[0] * mesh_shape[1]
+
+total_linear_light_profiles = 0
+
+preloads = ag.Preloads(
+    mapper_indices=ag.mapper_indices_from(
+        total_linear_light_profiles=total_linear_light_profiles,
+        total_mapper_pixels=total_mapper_pixels,
+    ),
+    source_pixel_zeroed_indices=ag.util.mesh.rectangular_edge_pixel_list_from(
+        total_linear_light_profiles=total_linear_light_profiles,
+        shape_native=mesh_shape,
+    ),
+)
 
 """
 __Model + Search + Analysis + Model-Fit (Search 2)__
@@ -124,12 +160,11 @@ The number of free parameters and therefore the dimensionality of non-linear par
 This search allows us to very efficiently set up the resolution of the mesh and regularization coefficient 
 of the regularization scheme, before using these models to refit the galaxy mass model.
 """
-mesh = af.Model(ag.mesh.RectangularMagnification)
-
-mesh.shape_0 = af.UniformPrior(lower_limit=36, upper_limit=42)
-mesh.shape_1 = af.UniformPrior(lower_limit=36, upper_limit=42)
-
-pixelization = af.Model(ag.Pixelization, mesh=mesh, regularization=ag.reg.Constant)
+pixelization = af.Model(
+    ag.Pixelization,
+    mesh=ag.mesh.RectangularMagnification(shape=mesh_shape),
+    regularization=ag.reg.GaussianKernel,
+)
 
 galaxy = af.Model(
     ag.Galaxy,
@@ -143,7 +178,7 @@ model_2 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 search_2 = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_4"),
-    name="search[2]_source[inversion_initialization]",
+    name="search[2]",
     unique_tag=dataset_name,
     n_live=50,
 )
@@ -151,6 +186,7 @@ search_2 = af.Nautilus(
 analysis_2 = ag.AnalysisImaging(
     dataset=dataset,
     settings_inversion=ag.SettingsInversion(use_border_relocator=True),
+    preloads=preloads,
     use_jax=True,
 )
 
@@ -184,9 +220,11 @@ disk.ell_comps = result_1.model.galaxies.galaxy.disk.ell_comps
 disk.intensity = result_1.model.galaxies.galaxy.disk.intensity
 disk.effective_radius = result_1.model.galaxies.galaxy.disk.effective_radius
 
-mesh = af.Model(ag.mesh.RectangularMagnification, shape=(40, 40))
-
-pixelization = af.Model(ag.Pixelization, mesh=mesh, regularization=ag.reg.Constant)
+pixelization = af.Model(
+    ag.Pixelization,
+    mesh=ag.mesh.RectangularMagnification(shape=mesh_shape),
+    regularization=ag.reg.GaussianKernel,
+)
 
 galaxy = af.Model(
     ag.Galaxy, redshift=0.5, bulge=bulge, disk=disk, pixelization=pixelization
@@ -196,12 +234,12 @@ model_3 = af.Collection(galaxies=af.Collection(galaxy=galaxy))
 
 search_3 = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_4"),
-    name="search[3]_source[pix]",
+    name="search[3]",
     unique_tag=dataset_name,
     n_live=100,
 )
 
-analysis_3 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
+analysis_3 = ag.AnalysisImaging(dataset=dataset, preloads=preloads, use_jax=True)
 
 result_3 = search_3.fit(model=model_3, analysis=analysis_3)
 
