@@ -127,11 +127,14 @@ __Search + Analysis__
 
 Now lets create the search and analysis.
 """
+batch_size = 50  # Explained chapter 2 tutorial 2
+
 search_1 = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_1",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 analysis_1 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
@@ -242,11 +245,14 @@ print(model_2.info)
 Lets setup and run the search. As expected, it gives us the correct model. However, it does so significantly 
 faster than we are used to!
 """
+batch_size = 50  # Explained chapter 2 tutorial 2
+
 search_2 = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_2",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 analysis_2 = ag.AnalysisImaging(dataset=dataset, use_jax=True)

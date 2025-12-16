@@ -610,6 +610,7 @@ their uncertainties.
 """
 search = af.Nautilus(
     n_live=100,
+    n_batch=50,  # Explained in next tutorial
 )
 
 """

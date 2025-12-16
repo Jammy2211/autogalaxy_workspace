@@ -103,6 +103,7 @@ search_1 = af.Nautilus(
     name="tutorial_1_search_chaining_1",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 result_1 = search_1.fit(model=model_1, analysis=analysis_1)
@@ -179,6 +180,7 @@ search_2 = af.Nautilus(
     name="tutorial_2_search_chaining_2",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 print(

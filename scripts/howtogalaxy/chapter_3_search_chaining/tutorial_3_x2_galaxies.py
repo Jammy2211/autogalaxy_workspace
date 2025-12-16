@@ -138,6 +138,7 @@ search_1 = af.Nautilus(
     name="search[1]__left_galaxy_light[bulge_linear]",
     unique_tag=dataset_name,
     n_live=75,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 result_1 = search_1.fit(model=model_1, analysis=analysis_1)
@@ -192,6 +193,7 @@ search_2 = af.Nautilus(
     name="search[2]__right_galaxy_light[bulge_linear]",
     unique_tag=dataset_name,
     n_live=75,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 result_2 = search_2.fit(model=model_2, analysis=analysis_2)
@@ -242,6 +244,7 @@ search_3 = af.Nautilus(
     name="search[3]_light_x2[bulge_linear]",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 result_3 = search_3.fit(model=model_3, analysis=analysis_3)

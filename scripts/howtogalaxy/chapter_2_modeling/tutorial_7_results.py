@@ -56,6 +56,7 @@ search = af.Nautilus(
     name="tutorial_1_non_linear_search",
     unique_tag=dataset_name,
     n_live=80,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset, use_jax=True)

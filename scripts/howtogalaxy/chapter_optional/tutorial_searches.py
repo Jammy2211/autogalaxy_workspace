@@ -116,6 +116,7 @@ search = af.Nautilus(
     name="tutorial_searches_slow",
     unique_tag=dataset_name,
     n_live=400,
+    n_batch=50,  # GPU lens model fits are batched and run simultaneously, see VRAM section below.
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset, use_jax=True)
@@ -148,6 +149,7 @@ search = af.Nautilus(
     name="tutorial_searches_fast",
     unique_tag=dataset_name,
     n_live=75,
+    n_batch=50,  # GPU lens model fits are batched and run simultaneously, see VRAM section below.
 )
 
 print(
