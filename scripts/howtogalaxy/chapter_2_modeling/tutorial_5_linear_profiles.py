@@ -128,9 +128,10 @@ We now create this search and run it.
 """
 search = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_2"),
-    name="tutorial_7_linear_light_profile",
+    name="tutorial_5_linear_light_profile",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset, use_jax=True)
@@ -413,9 +414,10 @@ We now fit the model, with just `n_live=50` given the simiplicity of parameter s
 """
 search = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_2"),
-    name="tutorial_7_basis",
+    name="tutorial_5_basis",
     unique_tag=dataset_name,
     n_live=50,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 print(

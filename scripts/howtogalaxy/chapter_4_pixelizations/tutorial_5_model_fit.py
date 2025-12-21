@@ -100,6 +100,7 @@ search_1 = af.Nautilus(
     name="search[1]",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 analysis_1 = ag.AnalysisImaging(dataset=dataset, use_jax=True)
@@ -177,6 +178,7 @@ search_2 = af.Nautilus(
     name="search[2]",
     unique_tag=dataset_name,
     n_live=50,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 analysis_2 = ag.AnalysisImaging(
@@ -233,6 +235,7 @@ search_3 = af.Nautilus(
     name="search[3]",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 analysis_3 = ag.AnalysisImaging(dataset=dataset, preloads=preloads, use_jax=True)

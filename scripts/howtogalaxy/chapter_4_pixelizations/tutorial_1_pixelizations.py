@@ -1,5 +1,5 @@
 """
-Tutorial 1: Pixelizations
+Tutorial 1: pixelizations
 =========================
 
 In the previous chapters, we used light profiles to model the light of a galaxy, where the light profile was an

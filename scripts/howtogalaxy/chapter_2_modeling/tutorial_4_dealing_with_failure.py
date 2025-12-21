@@ -209,11 +209,14 @@ print(model.info)
 We can now create this custom search and run it. Our non-linear search will now start by sampling higher likelihood 
 regions of parameter space, given our improved and more informed priors.
 """
+batch_size = 50  # Explained chapter 2 tutorial 2
+
 search = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_4_custom_priors",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 analysis = ag.AnalysisImaging(dataset=dataset, use_jax=True)
@@ -303,6 +306,7 @@ search = af.Nautilus(
     name="tutorial_4_reducing_complexity",
     unique_tag=dataset_name,
     n_live=100,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 print(
@@ -370,6 +374,7 @@ search = af.Nautilus(
     name="tutorial_4_look_harder",
     unique_tag=dataset_name,
     n_live=200,
+    n_batch=50,  # GPU batching and VRAM use explained in chapter 2 tutorial 2.
 )
 
 print(

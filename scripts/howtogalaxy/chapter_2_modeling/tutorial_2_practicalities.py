@@ -187,8 +187,8 @@ search = af.Nautilus(
     name="tutorial_2_practicalities",
     unique_tag=dataset_name,
     n_live=80,
+    n_batch=50,  # GPU lens model fits are batched and run simultaneously, see VRAM section below.
     iterations_per_quick_update=2500,
-    # number_of_cores=1, # Try uncommenting this line to run in parallel but see "Parallel Script" above.
 )
 
 """
