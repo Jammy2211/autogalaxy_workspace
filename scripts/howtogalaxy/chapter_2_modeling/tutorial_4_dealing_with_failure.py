@@ -209,8 +209,6 @@ print(model.info)
 We can now create this custom search and run it. Our non-linear search will now start by sampling higher likelihood 
 regions of parameter space, given our improved and more informed priors.
 """
-batch_size = 50  # Explained chapter 2 tutorial 2
-
 search = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_4_custom_priors",

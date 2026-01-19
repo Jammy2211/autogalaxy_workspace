@@ -127,8 +127,6 @@ __Search + Analysis__
 
 Now lets create the search and analysis.
 """
-batch_size = 50  # Explained chapter 2 tutorial 2
-
 search_1 = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_3"),
     name="tutorial_1_search_chaining_1",
