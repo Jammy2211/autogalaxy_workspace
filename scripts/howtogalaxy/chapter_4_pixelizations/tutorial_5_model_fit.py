@@ -148,7 +148,7 @@ We use the results of search 1 to create the model fitted in search 2, where:
  
  - The galaxy's disk is an `Exponential` [0 parameters: parameters fixed from search 1].
 
- - The galaxy's clumps are reconstructed `RectangularMagnification` mesh with resolution as free parameters [2 parameters].
+ - The galaxy's clumps are reconstructed `RectangularAdaptDensity` mesh with resolution as free parameters [2 parameters].
 
  - This pixelization is regularized using a `Constant` scheme [1 parameter]. 
 
@@ -159,7 +159,7 @@ of the regularization scheme, before using these models to refit the galaxy mass
 """
 pixelization = af.Model(
     ag.Pixelization,
-    mesh=ag.mesh.RectangularMagnification(shape=mesh_shape),
+    mesh=ag.mesh.RectangularAdaptDensity(shape=mesh_shape),
     regularization=ag.reg.GaussianKernel,
 )
 
@@ -199,7 +199,7 @@ We use the results of searches 1 and 2 to create the model fitted in search 3, w
  
  - The galaxy's disk is an `Exponential` [6 parameters: priors initialized from search 1].
 
- - The galaxy's light uses a `RectangularMagnification` mesh[parameters fixed to results of search 2].
+ - The galaxy's light uses a `RectangularAdaptDensity` mesh[parameters fixed to results of search 2].
 
  - This pixelization is regularized using a `Constant` scheme [parameters fixed to results of search 2]. 
 
@@ -220,7 +220,7 @@ disk.effective_radius = result_1.model.galaxies.galaxy.disk.effective_radius
 
 pixelization = af.Model(
     ag.Pixelization,
-    mesh=ag.mesh.RectangularMagnification(shape=mesh_shape),
+    mesh=ag.mesh.RectangularAdaptDensity(shape=mesh_shape),
     regularization=ag.reg.GaussianKernel,
 )
 
