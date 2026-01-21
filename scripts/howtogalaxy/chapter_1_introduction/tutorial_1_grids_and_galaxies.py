@@ -385,7 +385,7 @@ grid_2d_projected = ag.Grid2DIrregular(
 )
 
 """
-As in this example, we often already have a 2D grid we are using to calculate images of a ligth profile
+As in this example, we often already have a 2D grid we are using to calculate images of a light profile
 and it would be convenient to simply create `grid_2d_projected` from that.
 
 For example, we may want the project grid which traces it major axis in uniform radial steps.
@@ -529,9 +529,11 @@ galaxy_plotter.figures_2d(image=True)
 Using the tools above, we can visualize each light profile's contribution in 1D.
 
 1D plots show the intensity of the light profile as a function of distance from the profile’s center. The bulge
-and disk profiles share the same `centre`, meaning that plotting them together shows how they overlap. If the
-`centre` of the profiles were different, they would still be plotted on top of each other, but as a user you
-would need to remember that the profiles are not aligned in 2D.
+and disk profiles in this example share the same `centre`, meaning that plotting them together on the same 1D plot 
+shows how they vary relative to one another. 
+
+If the `centre` of the profiles were different, when you make the 1D plot you would need to decide if you should the
+profiles offset from one another or plot them both from zero.
 """
 grid_2d_projected = grid.grid_2d_radial_projected_from(
     centre=galaxy.bulge.centre, angle=galaxy.bulge.angle()

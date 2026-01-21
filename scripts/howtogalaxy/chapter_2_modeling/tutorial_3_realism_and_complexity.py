@@ -94,8 +94,6 @@ model = af.Collection(
     )
 )
 
-batch_size = 50  # Explained chapter 2 tutorial 2
-
 search = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_3_realism_and_complexity",
@@ -156,8 +154,6 @@ happen! Lets infer a local maxima, by reducing the number of live points, `n_liv
 parameter space. We are going to use so few that the initial search over parameter space has an extremely low 
 probability of getting close the global maxima, meaning it converges on a local maxima. 
 """
-batch_size = 50  # Explained chapter 2 tutorial 2
-
 search = af.Nautilus(
     path_prefix=Path("howtogalaxy", "chapter_2"),
     name="tutorial_3_realism_and_complexity__local_maxima",

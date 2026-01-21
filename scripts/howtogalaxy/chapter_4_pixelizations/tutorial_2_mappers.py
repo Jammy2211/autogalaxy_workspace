@@ -52,7 +52,7 @@ the previous tutorial.
 
 We will make its pixelization resolution half that of the grid above.
 """
-mesh = ag.mesh.RectangularMagnification(
+mesh = ag.mesh.RectangularAdaptDensity(
     shape=(dataset.shape_native[0] / 2, dataset.shape_native[1] / 2)
 )
 

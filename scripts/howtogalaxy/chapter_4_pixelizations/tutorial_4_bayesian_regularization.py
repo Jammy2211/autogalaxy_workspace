@@ -68,7 +68,7 @@ __Pixelization__
 Okay, so lets look at our fit from the previous tutorial in more detail.
 """
 pixelization = ag.Pixelization(
-    mesh=ag.mesh.RectangularMagnification(shape=(50, 50)),
+    mesh=ag.mesh.RectangularAdaptDensity(shape=(50, 50)),
     regularization=ag.reg.Constant(coefficient=1.0),
 )
 
@@ -91,7 +91,7 @@ However, the high quality of this solution was possible because I chose a `coeff
 1.0. If we reduce this `coefficient` to 0.01, the galaxy reconstruction goes *very* weird.
 """
 pixelization = ag.Pixelization(
-    mesh=ag.mesh.RectangularMagnification(shape=(50, 50)),
+    mesh=ag.mesh.RectangularAdaptDensity(shape=(50, 50)),
     regularization=ag.reg.Constant(coefficient=0.01),
 )
 
@@ -130,7 +130,7 @@ galaxy. By smoothing our galaxy reconstruction we ensure it does not over fit no
 So, what happens if we apply a high value for the regularization coefficient?
 """
 pixelization = ag.Pixelization(
-    mesh=ag.mesh.RectangularMagnification(shape=(50, 50)),
+    mesh=ag.mesh.RectangularAdaptDensity(shape=(50, 50)),
     regularization=ag.reg.Constant(coefficient=100.0),
 )
 
@@ -219,7 +219,7 @@ Here are a few questions for you to think about.
  from the value above by changing these parameters, I've set you up with a code to do so below.
 """
 pixelization = ag.Pixelization(
-    mesh=ag.mesh.RectangularMagnification(shape=(50, 50)),
+    mesh=ag.mesh.RectangularAdaptDensity(shape=(50, 50)),
     regularization=ag.reg.Constant(coefficient=1.0),
 )
 
