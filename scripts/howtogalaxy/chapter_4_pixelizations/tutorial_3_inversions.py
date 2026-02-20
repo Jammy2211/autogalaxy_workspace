@@ -66,12 +66,13 @@ mesh = ag.mesh.RectangularAdaptDensity(shape=dataset.shape_native)
 
 pixelization = ag.Pixelization(mesh=mesh)
 
-mapper_grids = pixelization.mapper_grids_from(
-    mask=mask,
+interpolator = mesh.interpolator_from(
     source_plane_data_grid=dataset.grids.pixelization,
+    source_plane_mesh_grid=None,
 )
+
 mapper = ag.Mapper(
-    mapper_grids=mapper_grids,
+    interpolator=interpolator,
     regularization=ag.reg.Constant(coefficient=1.0),
 )
 

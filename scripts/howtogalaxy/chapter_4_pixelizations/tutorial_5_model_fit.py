@@ -133,7 +133,7 @@ preloads = ag.Preloads(
         total_linear_light_profiles=total_linear_light_profiles,
         total_mapper_pixels=total_mapper_pixels,
     ),
-    source_pixel_zeroed_indices=ag.util.mesh.rectangular_edge_pixel_list_from(
+    source_pixel_zeroed_indices=ag.rectangular_edge_pixel_list_from(
         total_linear_light_profiles=total_linear_light_profiles,
         shape_native=mesh_shape,
     ),
@@ -183,7 +183,7 @@ search_2 = af.Nautilus(
 
 analysis_2 = ag.AnalysisImaging(
     dataset=dataset,
-    settings_inversion=ag.SettingsInversion(use_border_relocator=True),
+    settings=ag.Settings(use_border_relocator=True),
     preloads=preloads,
     use_jax=True,
 )

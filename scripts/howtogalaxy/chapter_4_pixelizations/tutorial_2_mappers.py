@@ -58,14 +58,11 @@ mesh = ag.mesh.RectangularAdaptDensity(
 
 pixelization = ag.Pixelization(mesh=mesh)
 
-mapper_grids = pixelization.mapper_grids_from(
-    mask=grid.mask, source_plane_data_grid=grid
+interpolator = mesh.interpolator_from(
+    source_plane_data_grid=grid, source_plane_mesh_grid=None
 )
 
-mapper = ag.Mapper(
-    mapper_grids=mapper_grids,
-    regularization=None,
-)
+mapper = ag.Mapper(interpolator=interpolator)
 
 """
 We now plot the `Mapper` alongside the image we used to generate the source-plane grid.
@@ -134,15 +131,10 @@ dataset_plotter.figures_2d(data=True)
 We can now use the masked grid to create a new `Mapper` (using the same rectangular 25 x 25 pixelization 
 as before).
 """
-mapper_grids = mesh.mapper_grids_from(
-    mask=mask,
-    source_plane_data_grid=dataset.grids.pixelization,
+interpolator = mesh.interpolator_from(
+    source_plane_data_grid=dataset.grids.pixelization, source_plane_mesh_grid=None
 )
-
-mapper = ag.Mapper(
-    mapper_grids=mapper_grids,
-    regularization=None,
-)
+mapper = ag.Mapper(interpolator=interpolator)
 
 """
 Lets plot it.
