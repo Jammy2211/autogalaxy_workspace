@@ -48,11 +48,11 @@ about the galaxy we are fitting.
 This information comes when we use the pixelization to create up a `Mapper`, which we perform below using the grid 
 that we created above.
 """
-mapper_grids = pixelization.mapper_grids_from(
-    mask=grid.mask, source_plane_data_grid=grid
+interpolator = mesh.interpolator_from(
+    source_plane_data_grid=grid, source_plane_mesh_grid=None
 )
 
-mapper = ag.Mapper(mapper_grids=mapper_grids, regularization=None)
+mapper = ag.Mapper(interpolator=interpolator)
 
 """
 This `Mapper` is a `RectangularMapper` -- every `Mesh` and `Pixelization` generates it owns mapper.
