@@ -307,7 +307,7 @@ It's crucial for accurately deconvolving the PSF from the galaxy image, allowing
 of the galaxy. We'll explore this further in the next tutorial.
 """
 array_plotter = aplt.Array2DPlotter(
-    array=dataset.psf, mat_plot_2d=aplt.MatPlot2D(use_log10=True)
+    array=dataset.psf.kernel, mat_plot_2d=aplt.MatPlot2D(use_log10=True)
 )
 array_plotter.set_title("Simulated PSF")
 array_plotter.figure_2d()
