@@ -306,13 +306,13 @@ pixelization is used.
 #         arrays=(reconstruction_dict["x"], reconstruction_dict["y"]), axis=-1
 #     )
 #
-#     interpolation_grid = al.Grid2D.from_extent(
+#     interpolation_grid = ag.Grid2D.from_extent(
 #         extent=(-1.0, 1.0, -1.0, 1.0), shape_native=(201, 201)
 #     )
 #
 #     interpolated_array = griddata(points=points, values=values, xi=interpolation_grid)
 #
-#     al.output_to_fits(
+#     ag.output_to_fits(
 #         values=interpolated_array,
 #         file_path=workflow_path / f"interpolated_reconstruction_{i}.fits",
 #     )

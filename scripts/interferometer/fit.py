@@ -281,13 +281,13 @@ The `FitInterferometer` object has specific quantities which break down each ima
 
  - `galaxy_model_visibilities_dict`: A dictionary which maps each galaxy in the galaxies to its model visibilities.
 
- - `galaxy_model_image_dict`: A dictionary which maps the model images of each galaxy.
+ - `galaxy_image_dict`: A dictionary which maps the model images of each galaxy.
 
 These are not the dirty images, but instead the images of each galaxy that come from the galaxies object
 (e.g. simply evaluating the galaxies image on the interferometer's real-space grid).
 """
 print(fit.galaxy_model_visibilities_dict[galaxy].slim)
-print(fit.galaxy_model_image_dict[galaxy].slim)
+print(fit.galaxy_image_dict[galaxy].slim)
 
 """
 __Outputting Results__
@@ -297,7 +297,7 @@ You may wish to output certain results to .fits files for later inspection.
 For example, one could output the galaxy model image to a .fits file such that
 we could fit this image again with an independent pipeline.
 """
-galaxy_model_image = fit.galaxy_model_image_dict[galaxy]
+galaxy_model_image = fit.galaxy_image_dict[galaxy]
 galaxy_model_image.output_to_fits(
     file_path=dataset_path / "galaxy_model_image.fits", overwrite=True
 )

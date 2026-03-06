@@ -45,7 +45,7 @@ data = ag.Array2D.from_fits(
     file_path=dataset_path / "data.fits", pixel_scales=pixel_scales
 )
 
-data = al.Array2D(
+data = ag.Array2D(
     values=np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0), mask=data.mask
 )
 
@@ -58,7 +58,7 @@ Create a 3.0" mask to plot over the image to guide where extra galaxy light need
 """
 mask_radius = 3.0
 
-mask = al.Mask2D.circular(
+mask = ag.Mask2D.circular(
     shape_native=data.shape_native, pixel_scales=data.pixel_scales, radius=mask_radius
 )
 
