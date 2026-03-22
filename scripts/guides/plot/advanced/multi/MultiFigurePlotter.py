@@ -1,21 +1,18 @@
 """
-Plots: MultiFigurePlotter
+Plots: Multi Figure Plots
 =========================
 
-This example illustrates how to plot figures from different plotters on the same subplot, assuming that the same
-type of `Plotter` and figure is being plotted.
+This example illustrates how to produce multiple separate figures for different datasets, using the
+function-based plotting API.
 
-An example of when to use this plotter would be when two different datasets (e.g. at different wavelengths) are loaded
-and visualized, and the images of each dataset are plotted on the same subplot side-by-side. This is the example we
+The "multi-figure plotter" concept of adding MatPlot objects together no longer exists in the new API. Instead,
+each call to a plotting function produces an independent figure. To visualize multiple datasets side-by-side,
+simply call the relevant plotting function for each dataset with a distinct `output_filename` so each figure is
+saved separately.
+
+An example of when to use this approach is when two different datasets (e.g. at different wavelengths) are loaded
+and we want to visualize the image of each dataset as a separate output file. This is the example we
 will use in this example script.
-
-This uses a `MultiFigurePlotter` object, which requires only a list of imaging datasets and `ImagingPlotter` objects
-to be passed to it. The `MultiFigurePlotter` object then plots the same figure from each `ImagingPlotter` on the same
-subplot.
-
-The script `MultiSubplot.py` illustrates a similar example, but a more general use-case where different figures
-from different plotters are plotted on the same subplot. This script offers a more concise way of plotting the same
-figures on the same subplot, but is less generag.
 
 __Start Here Notebook__
 
@@ -58,39 +55,46 @@ dataset_list = [
 ]
 
 """
-__Plot__
+__Individual Subplots__
 
-Plot the subhplot of each `Imaging` dataset individually using an `ImagingPlotter` object.
+Plot a full subplot of each dataset individually using `aplt.subplot_imaging_dataset`.
 """
 for dataset in dataset_list:
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
-__Multi Subplot__
+__Multiple Output Files__
 
-We now pass the list of `ImagingPlotter` objects to a `MultiFigurePlotter` object, which we use to plot the 
-image of each dataset on the same subplot.
+To produce a separate figure for each dataset (e.g. its data image), call `aplt.plot_array` for each dataset
+with a distinct `output_filename`.
 
-The `MultiFigurePlotter` object uses the `subplot_of_figure` method to plot the same figure from each `ImagingPlotter`,
-with the inputs:
-
- - `func_name`: The name of the function used to plot the figure in the `ImagingPlotter` (e.g. `figures_2d`).
- - `figure_name`: The name of the figure plotted by the function (e.g. `image`).
+This replaces the old `MultiFigurePlotter` approach of adding MatPlot objects together.
+"""
+for color, dataset in zip(color_list, dataset_list):
+    aplt.plot_array(
+        array=dataset.data,
+        title=f"Data ({color}-band)",
+        output_path=dataset_path,
+        output_filename=f"data_{color}",
+        output_format="png",
+    )
 
 """
-imaging_plotter_list = [
-    aplt.ImagingPlotter(dataset=dataset) for dataset in dataset_list
-]
-
-multi_figure_plotter = aplt.MultiFigurePlotter(plotter_list=imaging_plotter_list)
-
-multi_figure_plotter.subplot_of_figure(func_name="figures_2d", figure_name="data")
+We can do the same for the noise map of each dataset.
+"""
+for color, dataset in zip(color_list, dataset_list):
+    aplt.plot_array(
+        array=dataset.noise_map,
+        title=f"Noise Map ({color}-band)",
+        output_path=dataset_path,
+        output_filename=f"noise_map_{color}",
+        output_format="png",
+    )
 
 """
 __Multi Fits__
 
-We can also output a list of figures to a single `.fits` file, where each image goes in each hdu extension as it is 
+We can also output a list of figures to a single `.fits` file, where each image goes in each hdu extension as it is
 called.
 
 This interface uses a specific method from autoconf called `hdu_list_for_output_from`, which takes a list of
@@ -98,6 +102,7 @@ values and a list of extension names, and returns a `HDUList` object that can be
 """
 from autoconf.fitsable import hdu_list_for_output_from
 
+dataset = dataset_list[0]
 image_list = [dataset.data, dataset.noise_map]
 
 hdu_list = hdu_list_for_output_from(
@@ -111,9 +116,7 @@ hdu_list.writeto("dataset.fits", overwrite=True)
 """
 __Wrap Up__
 
-In the simple example above, we used a `MultiFigurePlotter` to plot the same figure from each `ImagingPlotter` on
-the same `matplotlib` subplot. 
-
-This can be used for any figure plotted by any `Plotter` object, as long as the figure is plotted using the same
-function name and figure name.
+In the new API, each call to a plotting function produces an independent figure. To visualize multiple datasets,
+simply iterate over them and call the relevant plotting function for each, using `output_filename` to distinguish
+the output files.
 """

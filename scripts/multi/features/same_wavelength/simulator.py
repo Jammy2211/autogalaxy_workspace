@@ -133,8 +133,7 @@ galaxies = ag.Galaxies(galaxies=[galaxy])
 Lets look at the galaxies images, which are the images we'll be simulating.
 """
 for grid in grid_list:
-    galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-    galaxies_plotter.figures_2d(image=True)
+    aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 
 """
 We can now pass this simulator galaxies, which creates the image plotted above and simulates it as an
@@ -149,8 +148,7 @@ dataset_list = [
 Plot the simulated `Imaging` dataset before outputting it to fits.
 """
 for dataset in dataset_list:
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Output__
@@ -173,24 +171,11 @@ Output a subplot of the simulated dataset, the image and the galaxies quantities
 For a faster run time, the galaxies visualization uses the binned grid instead of the iterative grid.
 """
 for i, dataset in enumerate(dataset_list):
-    mat_plot = aplt.MatPlot2D(
-        output=aplt.Output(path=dataset_path, suffix=f"_{i}", format="png")
-    )
-
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset, mat_plot_2d=mat_plot)
-    dataset_plotter.subplot_dataset()
-    dataset_plotter.figures_2d(data=True)
+    aplt.subplot_imaging_dataset(dataset=dataset, output_path=dataset_path, output_format="png")
+    aplt.plot_array(array=dataset.data, title="Data", output_path=dataset_path, output_format="png")
 
 for i, grid in enumerate(grid_list):
-    mat_plot = aplt.MatPlot2D(
-        output=aplt.Output(path=dataset_path, suffix=f"_{i}", format="png")
-    )
-
-    galaxies_plotter = aplt.GalaxiesPlotter(
-        galaxies=galaxies, grid=grid, mat_plot_2d=mat_plot
-    )
-    galaxies_plotter.subplot_galaxies()
-    galaxies_plotter.subplot_galaxy_images()
+    aplt.subplot_galaxies(galaxies=galaxies, grid=grid, output_path=dataset_path, output_format="png")
 
 """
 __Galaxies json__

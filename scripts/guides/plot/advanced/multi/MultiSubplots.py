@@ -2,8 +2,14 @@
 Plots: MultiSubPlots
 ====================
 
-This example illustrates how to plot figures from different plotters on the same subplot, using the example of
-combining an `ImagingPlotter` and `FitImagingPlotter`.
+This example illustrates how to produce multiple subplot figures from different data objects, using the
+function-based plotting API.
+
+In the new API, each subplot function (e.g. `subplot_imaging_dataset`, `subplot_fit_imaging`,
+`subplot_galaxies`) produces a self-contained subplot. There is no need to manually manage MatPlot objects,
+open/close subplot figures, or chain plotters together.
+
+To show multiple subplots for a given dataset and fit, simply call each function in sequence.
 
 __Start Here Notebook__
 
@@ -21,7 +27,7 @@ import autogalaxy as ag
 import autogalaxy.plot as aplt
 
 """
-First, lets load example imaging of of a galaxy as an `Imaging` object.
+First, load example imaging of a galaxy and create a `FitImaging` object.
 """
 dataset_name = "simple__sersic"
 dataset_path = Path("dataset") / "imaging" / dataset_name
@@ -33,9 +39,6 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-"""
-We now mask the data and fit it with a `Plane` to create a `FitImaging` object.
-"""
 mask = ag.Mask2D.circular(
     shape_native=dataset.shape_native, pixel_scales=dataset.pixel_scales, radius=3.0
 )
@@ -58,42 +61,62 @@ galaxies = ag.Galaxies(galaxies=[galaxy])
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 """
-We now pass the imaging to an `ImagingPlotter` and the fit to an `FitImagingPlotter`.
+__Imaging Dataset Subplot__
+
+Plot a subplot of the imaging dataset, showing the data, noise map and PSF.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
-We next pair the `MatPlot2D` objects of the two plotters, which ensures the figures plot on the same subplot.
+__Fit Imaging Subplot__
+
+Plot a subplot of the fit to the imaging dataset, showing the data, model image, residuals and chi-squared map.
 """
-dataset_plotter.mat_plot = fit_plotter.mat_plot_2d
+aplt.subplot_fit_imaging(fit=fit)
 
 """
-We next open the subplot figure, specifying: 
+__Galaxies Subplot__
 
- - How many subplot figures will be on our image.
- - The shape of the subplot.
- - The figure size of the subplot. 
+Plot a subplot of the galaxies, showing the image of each individual galaxy.
 """
-dataset_plotter.open_subplot_figure(
-    number_subplots=5, subplot_shape=(1, 5), subplot_figsize=(18, 3)
+grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
+
+aplt.subplot_galaxies(galaxies=galaxies, grid=grid)
+
+"""
+__Output__
+
+Each subplot function accepts `output_path`, `output_filename` and `output_format` arguments to save the
+subplot to disk as a file.
+
+Below we output all three subplots to `.png` files.
+"""
+aplt.subplot_imaging_dataset(
+    dataset=dataset,
+    output_path=dataset_path,
+    output_filename="subplot_dataset",
+    output_format="png",
+)
+
+aplt.subplot_fit_imaging(
+    fit=fit,
+    output_path=dataset_path,
+    output_filename="subplot_fit",
+    output_format="png",
+)
+
+aplt.subplot_galaxies(
+    galaxies=galaxies,
+    grid=grid,
+    output_path=dataset_path,
+    output_filename="subplot_galaxies",
+    output_format="png",
 )
 
 """
-We now call the `figures_2d` method of all the plots we want to be included on our subplot. These figures will appear
-sequencially in the subplot in the order we call them.
-"""
-dataset_plotter.figures_2d(data=True, signal_to_noise_map=True)
-fit_plotter.figures_2d(
-    model_image=True, normalized_residual_map=True, chi_squared_map=True
-)
+__Wrap Up__
 
+In the new API, each subplot function is self-contained and independent. To produce multiple subplots for a
+given analysis, simply call the relevant functions one after another, optionally providing output arguments to
+save each subplot to disk.
 """
-This outputs the figure, which in this example goes to your display as we did not specify a file format.
-"""
-dataset_plotter.mat_plot_2d.output.subplot_to_figure(auto_filename="subplot")
-
-"""
-Close the subplot figure, in case we were to make another subplot.
-"""
-dataset_plotter.close_subplot_figure()

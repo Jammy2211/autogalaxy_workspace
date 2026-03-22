@@ -92,8 +92,6 @@ visualization of the dirty images are often used in radio interferometry to show
 interpretable to the human eye.
 """
 aplt.subplot_interferometer_dataset(dataset=dataset)
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dirty_images()
 
 """
 __Over Sampling__
@@ -119,8 +117,7 @@ does not).
 Each (y,x) coordinate coordinates to the centre of each image-pixel in the dataset, meaning that when this grid is
 used to construct a pixelization there is a straight forward mapping between the image data and pixelization pixels.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=dataset.grids.pixelization)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=dataset.grids.pixelization, title="Grid")
 
 """
 __Galaxy__

@@ -111,10 +111,7 @@ First, lets make a uniform 100 x 100 grid of (y,x) coordinates and plot it.
 """
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Uniform 100 x 100 Grid2D"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=grid, title="Uniform 100 x 100 Grid2D")
 
 """
 __Native__

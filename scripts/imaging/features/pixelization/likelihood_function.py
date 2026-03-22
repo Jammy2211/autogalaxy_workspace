@@ -64,12 +64,11 @@ dataset = ag.Imaging.from_fits(
 )
 
 """
-I will use in-built visualization tools for plotting. 
+I will use in-built visualization tools for plotting.
 
 For example, using the `ImagingPlotter` I can plot the imaging dataset we performed a likelihood evaluation on.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -92,8 +91,7 @@ masked_dataset = dataset.apply_mask(mask=mask)
 """
 When we plot the masked imaging, only the circular masked region is shown.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=masked_dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=masked_dataset)
 
 """
 __Over Sampling__
@@ -348,8 +346,7 @@ print(indexes_pix_200[0])
 
 array_2d = ag.Array2D(values=mapping_matrix[:, 200], mask=masked_dataset.mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Image")
 
 """
 __Blurred Mapping Matrix ($f$)__
@@ -390,8 +387,7 @@ print(indexes_pix_200[0])
 
 array_2d = ag.Array2D(values=blurred_mapping_matrix[:, 200], mask=masked_dataset.mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Image")
 
 """
 In Warren & Dye 2003 (https://arxiv.org/abs/astro-ph/0302587) the `blurred_mapping_matrix` is denoted $f_{ij}$
@@ -501,15 +497,13 @@ array_2d = ag.Array2D(
     values=blurred_mapping_matrix[:, source_pixel_0], mask=masked_dataset.mask
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Image")
 
 array_2d = ag.Array2D(
     values=blurred_mapping_matrix[:, source_pixel_1], mask=masked_dataset.mask
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Image")
 
 """
 The following chi-squared is minimized when we perform the inversion and reconstruct the galaxy:
@@ -645,8 +639,7 @@ mapped_reconstructed_operated_data = ag.Array2D(
     values=mapped_reconstructed_operated_data, mask=mask
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=mapped_reconstructed_operated_data)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=mapped_reconstructed_operated_data, title="Image")
 
 """
 __Likelihood Function__
@@ -694,8 +687,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Array2D(values=chi_squared_map, mask=mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=chi_squared_map)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=chi_squared_map, title="Image")
 
 """
 __Regularization Term__
@@ -799,8 +791,7 @@ fit = ag.FitImaging(
 fit_log_evidence = fit.log_evidence
 print(fit_log_evidence)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 __Galaxy Modeling__

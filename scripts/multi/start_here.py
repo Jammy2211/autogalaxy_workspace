@@ -124,8 +124,7 @@ for dataset_waveband in waveband_list:
         pixel_scales=pixel_scale,
     )
 
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
     dataset_list.append(dataset)
 
@@ -164,8 +163,7 @@ for dataset, dataset_waveband in zip(dataset_list, waveband_list):
 
     dataset = dataset.apply_noise_scaling(mask=mask_extra_galaxies)
 
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
     dataset_scaled_list.append(dataset)
 
@@ -209,8 +207,7 @@ for dataset in dataset_scaled_list:
 
     dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
     dataset_masked_list.append(dataset)
 
@@ -365,8 +362,7 @@ and fit to the data.
 """
 for result in result_list:
 
-    fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-    fit_plotter.subplot_fit()
+    aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 __Model Your Own Galaxy__

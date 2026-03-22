@@ -67,32 +67,22 @@ We compute this value and plot the image in converted units of kiloparsecs.
 This passes the plotting modules `Units` object a `ticks_convert_factor` and manually specified the new units of the
 plot ticks.
 """
-units = aplt.Units(ticks_convert_factor=kpc_per_arcsec, ticks_label=" kpc")
-
-mat_plot = aplt.MatPlot2D(units=units)
-
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid, mat_plot_2d=mat_plot)
-galaxy_plotter.figures_2d(image=True)
-
+aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Image")
 
 """
 __Brightness Units / Luminosity__
 
 When plotting the image of a galaxy, each pixel value is plotted in electrons / second, which is the unit values
-displayed in the colorbar. 
+displayed in the colorbar.
 
 A conversion factor between electrons per second and another unit can be input when plotting images of galaxies.
 
 Below, we pass the exposure time of the image, which converts the units of the image from `electrons / second` to
-electrons. 
+electrons.
 """
 exposure_time_seconds = 2000.0
-units = aplt.Units(
-    colorbar_convert_factor=exposure_time_seconds, colorbar_label=" seconds"
-)
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid, mat_plot_2d=mat_plot)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Image")
 
 """
 The luminosity of a galaxy is the total amount of light it emits, which is computed by integrating the light profile.

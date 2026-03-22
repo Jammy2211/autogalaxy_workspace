@@ -140,8 +140,6 @@ dataset = ag.Interferometer.from_fits(
 )
 
 aplt.subplot_interferometer_dataset(dataset=dataset)
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dirty_images()  # quick look at dirty image / PSF
 
 """
 __Model__
@@ -334,8 +332,6 @@ dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 
 aplt.plot_array(array=dataset.dirty_image, title="Dirty Image")
 aplt.subplot_interferometer_dataset(dataset=dataset)
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dirty_images()
 
 dataset_path = Path("dataset") / "interferometer" / "simulated_galaxy"
 
@@ -375,8 +371,7 @@ for sample_index in range(total_datasets):
 
     dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 
-    dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-    dataset_plotter.subplot_dirty_images()
+    aplt.subplot_interferometer_dataset(dataset=dataset)
 
 """
 __Wrap Up__

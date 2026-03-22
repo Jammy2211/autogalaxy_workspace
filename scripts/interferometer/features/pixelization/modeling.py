@@ -174,8 +174,6 @@ dataset = ag.Interferometer.from_fits(
 )
 
 aplt.subplot_interferometer_dataset(dataset=dataset)
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dirty_images()
 
 """
 __Sparse Operators__

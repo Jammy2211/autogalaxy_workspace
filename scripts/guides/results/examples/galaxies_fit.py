@@ -110,10 +110,7 @@ As seen elsewhere in the workspace, the result contains a `max_log_likelihood_ga
 """
 galaxies = result.max_log_likelihood_galaxies
 
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=galaxies, grid=mask.derive_grid.all_false
-)
-galaxies_plotter.subplot_galaxies()
+aplt.subplot_galaxies(galaxies=galaxies, grid=mask.derive_grid.all_false)
 
 """
 This ensures that when interpreting results, the intensities are adjusted to reflect the true non-linear values.

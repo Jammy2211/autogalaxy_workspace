@@ -83,8 +83,7 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Over Sampling__
@@ -101,8 +100,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Model__
@@ -218,13 +216,9 @@ the inversion process are accurate.
 """
 print(result.max_log_likelihood_instance)
 
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp
-)
-galaxies_plotter.subplot()
+aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 plotter = aplt.NestPlotter(samples=result.samples)
 plotter.corner_cornerpy()

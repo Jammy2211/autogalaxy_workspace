@@ -568,6 +568,7 @@ aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 """
 A subplot of each individual galaxy image can also be created.
 """
+galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
 galaxies_plotter.subplot_galaxy_images()
 
 """

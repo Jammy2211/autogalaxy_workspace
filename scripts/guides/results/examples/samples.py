@@ -95,10 +95,7 @@ the results of the fit.
 The `Result` object has already perform the linear algebra calculation which sets the `intensity` values of
 the line profiles.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result.max_log_likelihood_galaxies, grid=mask.derive_grid.all_false
-)
-galaxies_plotter.subplot_galaxies()
+aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=mask.derive_grid.all_false)
 aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
@@ -202,10 +199,7 @@ print(mask.derive_grid.all_false)
 fit = ag.FitImaging(dataset=dataset, galaxies=max_lh_galaxies)
 max_lh_galaxies = fit.galaxies_linear_light_profiles_to_light_profiles
 
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=max_lh_galaxies, grid=mask.derive_grid.all_false
-)
-galaxies_plotter.subplot_galaxies()
+aplt.subplot_galaxies(galaxies=max_lh_galaxies, grid=mask.derive_grid.all_false)
 
 """
 __Posterior / PDF__

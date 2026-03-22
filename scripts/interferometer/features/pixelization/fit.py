@@ -149,8 +149,6 @@ dataset = ag.Interferometer.from_fits(
 )
 
 aplt.subplot_interferometer_dataset(dataset=dataset)
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dirty_images()
 
 """
 __Sparse Operators__
@@ -246,9 +244,7 @@ fit = ag.FitInterferometer(
 By plotting the fit, we see that the pixelized reconstruction does a good job at capturing the appearance of the galaxy
 and fitting the data to roughly the noise level.
 """
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
 aplt.subplot_fit_interferometer(fit=fit)
-fit_plotter.subplot_fit_dirty_images()
 
 """
 Pixelizations have bespoke visualizations which show more details about the reconstruction, image-mesh

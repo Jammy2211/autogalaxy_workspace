@@ -51,8 +51,7 @@ Lets inspect an image which conforms to **PyAutoGalaxy** standards:
 """
 visibilities = ag.Visibilities.from_fits(file_path=dataset_path / "data.fits", hdu=0)
 
-array_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-array_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Grid")
 
 """
 These visibilities conforms to **PyAutoGalaxy** standards, because they come from a standard CASA data reduction
@@ -72,8 +71,7 @@ visibilities = ag.VisibilitiesNoiseMap.from_fits(
     file_path=dataset_path / "noise_map.fits", hdu=0
 )
 
-array_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-array_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Grid")
 
 """
 __UV Wavelengths__
@@ -90,8 +88,7 @@ uv_wavelengths = ag.Grid2DIrregular.from_yx_1d(
     x=uv_wavelengths[:, 0] / 10**3.0,
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=uv_wavelengths)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=uv_wavelengths, title="Grid")
 
 """
 These uv wavelengths conform to **PyAutoGalaxy** standards, because they come from a standard CASA data reduction

@@ -133,8 +133,7 @@ format.]
 #     array_counts=data_counts, exposure_time_map=exposure_time_map
 # )
 #
-# array_plotter = aplt.Array2DPlotter(array=data_eps)
-# array_plotter.figure_2d()
+# aplt.plot_array(array=data_eps, title="Image")
 
 """
 **PyAutoGalaxy** can also convert data to / from units of electrons per second to ADUs, which uses both the exposure 
