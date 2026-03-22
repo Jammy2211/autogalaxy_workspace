@@ -373,8 +373,7 @@ __Result__
 
 By plotting the maximum log likelihood `FitImaging` object we can confirm the extra galaxies contribute to the fit.
 """
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 Checkout `autogalaxy_workspace/*/results` for a full description of analysing results in **PyAutoGalaxy**.

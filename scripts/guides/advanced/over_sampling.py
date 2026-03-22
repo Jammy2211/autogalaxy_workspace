@@ -192,12 +192,7 @@ to compute the fractional residuals.
 """
 fractional_residual_map = residual_map / image_sub_2
 
-plotter = aplt.Array2DPlotter(
-    array=fractional_residual_map,
-)
-plotter.set_title("Fractional Residuals")
-
-plotter.figure_2d()
+aplt.plot_array(array=fractional_residual_map, title="Fractional Residuals")
 
 """
 The fractional residuals in the centre exceed 0.1, or 10%, which is a significant error in the image and
@@ -221,19 +216,11 @@ image_sub_32 = light.image_2d_from(grid=grid_sub_32)
 
 residual_map = image_sub_32 - image_sub_16
 
-plotter = aplt.Array2DPlotter(
-    array=residual_map,
-)
-plotter.set_title("Over-Sampling Residuals (32 vs 16)")
-plotter.figure_2d()
+aplt.plot_array(array=residual_map, title="Over-Sampling Residuals (32 vs 16)")
 
 fractional_residual_map = residual_map / image_sub_32
 
-plotter = aplt.Array2DPlotter(
-    array=fractional_residual_map,
-)
-plotter.set_title("Fractional Residuals (32 vs 16)")
-plotter.figure_2d()
+aplt.plot_array(array=fractional_residual_map, title="Fractional Residuals (32 vs 16)")
 
 """
 __Adaptive Over Sampling__
@@ -271,10 +258,7 @@ grid_adaptive = ag.Grid2D.no_mask(
     over_sample_size=over_sample_size,
 )
 
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Adaptive Over-Sampling"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid_adaptive, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d(plot_grid_lines=True, plot_over_sampled_grid=True)
+aplt.plot_grid(grid=grid_adaptive, title="Adaptive Over-Sampling", plot_grid_lines=True, plot_over_sampled_grid=True)
 
 print(over_sample_size)
 
@@ -296,10 +280,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 grid_adaptive = ag.Grid2D(values=grid, mask=mask, over_sample_size=over_sample_size)
 
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Adaptive Over-Sampling"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid_adaptive, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d(plot_grid_lines=True, plot_over_sampled_grid=True)
+aplt.plot_grid(grid=grid_adaptive, title="Adaptive Over-Sampling", plot_grid_lines=True, plot_over_sampled_grid=True)
 
 """
 We can compare this adaptive grid to the grid with over sampling of 32 x 32 to confine it produces low amounts

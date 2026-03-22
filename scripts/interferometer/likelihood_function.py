@@ -73,8 +73,6 @@ visualization of the dirty images are often used in radio interferometry to show
 interpretable to the human eye.
 """
 aplt.subplot_interferometer_dataset(dataset=dataset)
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dirty_images()
 
 """
 __Over Sampling__
@@ -99,8 +97,7 @@ Each (y,x) coordinate coordinates to the centre of each image-pixel in the datas
 used to evaluate a light profile the intensity of the profile at the centre of each image-pixel is computed, making
 it straight forward to compute the light profile's image to the image data.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=dataset.grids.lp)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=dataset.grids.lp, title="Grid")
 
 print(f"(y,x) coordinates of first ten unmasked image-pixels {dataset.grid[0:9]}")
 
@@ -133,8 +130,7 @@ transformed_grid = profile.transformed_to_reference_frame_grid_from(
     grid=dataset.grids.lp
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=transformed_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=transformed_grid, title="Grid")
 print(
     f"transformed coordinates of first ten unmasked image-pixels {transformed_grid[0:9]}"
 )
