@@ -493,6 +493,7 @@ scale. The disk's emission is present, but it is much fainter and spread over a 
 
 We can confirm this using the `subplot_of_light_profiles` method, which plots each individual light profile separately.
 """
+galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid)
 galaxy_plotter.set_title("Galaxy Bulge+Disk Subplot")
 galaxy_plotter.subplot_of_light_profiles(image=True)
 

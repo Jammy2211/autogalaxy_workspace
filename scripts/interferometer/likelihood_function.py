@@ -247,8 +247,7 @@ uv-plane coordinate.
 If you are not familiar with interferometer data and the uv-plane, you will need to read up on interferometry to
 fully understand how this likelihood function works.
 """
-grid_2d_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-grid_2d_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Grid")
 
 
 """
@@ -294,8 +293,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Visibilities(visibilities=chi_squared_map)
 
-grid_2d_plotter = aplt.Grid2DPlotter(grid=chi_squared_map.in_grid)
-grid_2d_plotter.figure_2d()
+aplt.plot_grid(grid=chi_squared_map.in_grid, title="Grid")
 
 """
 __Noise Normalization Term__

@@ -293,12 +293,7 @@ residual_map = image_adaptive - image_sub_32
 
 fractional_residual_map = residual_map / image_sub_32
 
-plotter = aplt.Array2DPlotter(
-    array=fractional_residual_map,
-)
-
-plotter.set_title("Adaptive Fractional Residuals")
-plotter.figure_2d()
+aplt.plot_array(array=fractional_residual_map, title="Adaptive Fractional Residuals")
 
 """
 __Default Over-Sampling__
