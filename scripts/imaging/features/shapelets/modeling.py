@@ -99,8 +99,7 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -113,13 +112,12 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Over Sampling__
 
-Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via 
+Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via
 the `autogalaxy_workspace/*/guides/over_sampling.ipynb` notebook.
 """
 over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
@@ -131,8 +129,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Positive Negative Solver__
@@ -281,13 +278,9 @@ the inversion process are accurate.
 """
 print(result.max_log_likelihood_instance)
 
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp
-)
-galaxies_plotter.subplot()
+aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 plotter = aplt.NestPlotter(samples=result.samples)
 plotter.corner_cornerpy()
@@ -398,8 +391,7 @@ fit = ag.FitImaging(
     galaxies=galaxies,
     settings=ag.Settings(use_positive_only_solver=False),
 )
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 galaxies = fit.model_obj_linear_light_profiles_to_light_profiles
 

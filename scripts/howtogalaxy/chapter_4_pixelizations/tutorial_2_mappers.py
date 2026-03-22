@@ -72,17 +72,7 @@ can see how they map from the image grid to the pixelization grid.
 """
 indexes = [range(250), [150, 250, 350, 450, 550, 650, 750, 850, 950, 1050]]
 
-visuals = aplt.Visuals2D(
-    indexes=indexes,
-)
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper,
-    visuals_2d=visuals,
-)
-mapper_plotter.subplot_image_and_mapper(
-    image=dataset.data,
-)
+aplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 
 """
@@ -96,14 +86,7 @@ pix_indexes = [[312]]
 
 indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
 
-visuals = aplt.Visuals2D(indexes=indexes)
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper,
-    visuals_2d=visuals,
-)
-
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+aplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 Okay, so I think we can agree, mapper's map things! More specifically, they map pixelization pixels to multiple pixels 
@@ -124,8 +107,7 @@ mask = ag.Mask2D.circular(
 )
 
 dataset = dataset.apply_mask(mask=mask)
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, visuals_2d=visuals)
-dataset_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 We can now use the masked grid to create a new `Mapper` (using the same rectangular 25 x 25 pixelization 
@@ -139,8 +121,7 @@ mapper = ag.Mapper(interpolator=interpolator)
 """
 Lets plot it.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+aplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 First, We can see a red circle of dots in both the image and pixelization, showing where the edge of the mask
@@ -152,16 +133,7 @@ pix_indexes = [[312], [314], [316], [318]]
 
 indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
 
-visuals = aplt.Visuals2D(
-    indexes=indexes,
-)
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper,
-    visuals_2d=visuals,
-)
-
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+aplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 __Wrap Up__

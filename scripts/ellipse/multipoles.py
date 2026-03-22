@@ -42,11 +42,10 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.figures_2d(data=True, noise_map=True)
+aplt.plot_array(array=dataset.data, title="Data")
+aplt.plot_array(array=dataset.noise_map, title="Noise Map")
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -63,9 +62,7 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.set_title("Image Data With Mask Applied")
-dataset_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Image Data With Mask Applied")
 
 """
 __Multipole Fit__
@@ -76,10 +73,7 @@ ellipse = ag.Ellipse(centre=(0.0, 0.0), ell_comps=(0.0, 0.0), major_axis=1.0)
 
 fit = ag.FitEllipse(dataset=dataset, ellipse=ellipse)
 
-fit_plotter = aplt.FitEllipsePlotter(
-    fit_list=[fit], mat_plot_2d=aplt.MatPlot2D(use_log10=True)
-)
-fit_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 To perform ellipse fitting with multipoles, we simply create an `EllipseMultipole` object and pass it to 
@@ -103,10 +97,7 @@ from an ellipse.
 This is shown by the white lines in the figure below, which because the multipole is a quadrupole, show a
 boxy shape.
 """
-fit_plotter = aplt.FitEllipsePlotter(
-    fit_list=[fit_multipole], mat_plot_2d=aplt.MatPlot2D(use_log10=True)
-)
-fit_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 __Multipole Order__
@@ -128,10 +119,7 @@ fit_multipole = ag.FitEllipse(
     multipole_list=[multipole_order_1, multipole_order_3, multipole_order_4],
 )
 
-fit_plotter = aplt.FitEllipsePlotter(
-    fit_list=[fit_multipole], mat_plot_2d=aplt.MatPlot2D(use_log10=True)
-)
-fit_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 __Multiple Perturbed Ellipses__
@@ -158,10 +146,7 @@ for i in range(len(major_axis_list)):
 
     fit_list.append(fit)
 
-fit_plotter = aplt.FitEllipsePlotter(
-    fit_list=fit_list, mat_plot_2d=aplt.MatPlot2D(use_log10=True)
-)
-fit_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 __Modeling__
@@ -297,11 +282,7 @@ print(
 """
 The maximum log likelihood fit is also available via the result, which can visualize the fit.
 """
-fit_plotter = aplt.FitEllipsePlotter(
-    fit_list=result.max_log_likelihood_fit_list,
-    mat_plot_2d=aplt.MatPlot2D(use_log10=True),
-)
-fit_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 The result contains the full posterior information of our non-linear search, including all parameter samples, 

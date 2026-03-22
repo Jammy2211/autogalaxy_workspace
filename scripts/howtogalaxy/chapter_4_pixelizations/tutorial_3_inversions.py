@@ -47,10 +47,7 @@ mask = ag.Mask2D.circular(
     shape_native=dataset.shape_native, pixel_scales=dataset.pixel_scales, radius=2.0
 )
 
-visuals = aplt.Visuals2D(mask=mask)
-
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, visuals_2d=visuals)
-dataset_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data", mask=mask)
 
 """
 We now create the masked imaging, as we did in the previous tutorial.
@@ -76,8 +73,7 @@ mapper = ag.Mapper(
     regularization=ag.reg.Constant(coefficient=1.0),
 )
 
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+aplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 __Pixelization__
@@ -102,9 +98,8 @@ Both of these can be plotted using an `InversionPlotter`.
 It is possible for an inversion to have multiple `Mapper`'s, therefore for certain figures we specify the index 
 of the mapper we wish to plot. In this case, because we only have one mapper we specify the index 0.
 """
-inversion_plotter = aplt.InversionPlotter(inversion=inversion)
-inversion_plotter.figures_2d(reconstructed_operated_data=True)
-inversion_plotter.figures_2d_of_pixelization(pixelization_index=0, reconstruction=True)
+aplt.plot_array(array=inversion.reconstruction_to_native, title="Reconstruction")
+aplt.subplot_of_mapper(mapper_index=0, inversion=inversion)
 
 """
 There we have it, we have successfully reconstructed the galaxy using a rectangular pixel-grid. This has reconstructed
@@ -124,13 +119,7 @@ pix_indexes = [[445], [285], [313], [132], [11]]
 
 indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
 
-visuals = aplt.Visuals2D(indexes=indexes)
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper,
-    visuals_2d=visuals,
-)
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+aplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 These mappings are known before the inversion reconstructs the galaxy, which means before this inversion is performed 
@@ -180,8 +169,8 @@ We can use the `subplot_of_galaxies` method to specifically visualize the invers
 """
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
+aplt.subplot_fit_imaging(fit=fit)
 fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
 fit_plotter.subplot_of_galaxies(galaxy_index=0)
 
 """

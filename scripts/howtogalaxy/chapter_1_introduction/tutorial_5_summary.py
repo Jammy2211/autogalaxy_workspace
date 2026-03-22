@@ -89,11 +89,9 @@ any specific aspect, whether it be a profile, galaxy or galaxies.
 For example, if we want to plot the image of the first galaxy's bulge and disk, we can do this in a variety of 
 different ways.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxies[0], grid=grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].image_2d_from(grid=grid), title="Image")
 
 """
 Understanding how these objects decompose into the different components of a galaxy is important for general 

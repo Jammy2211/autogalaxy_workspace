@@ -73,14 +73,14 @@ dataset = ag.Imaging.from_fits(
 """
 We can use the `ImagingPlotter` to plot the image, noise-map and psf of the dataset.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.figures_2d(data=True, noise_map=True, psf=True)
+aplt.plot_array(array=dataset.data, title="Data")
+aplt.plot_array(array=dataset.noise_map, title="Noise Map")
+aplt.plot_array(array=dataset.psf, title="PSF")
 
 """
 The `ImagingPlotter` also contains a subplot which plots all these properties simultaneously.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Grid__
@@ -118,15 +118,13 @@ emission, where this grid has the mask applied to it.
 """
 dataset = dataset.apply_mask(mask=mask)
 
-grid_plotter = aplt.Grid2DPlotter(grid=dataset.grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=dataset.grid, title="Grid")
 
 """
 Here is what our image looks like with the mask applied, where PyAutoGalaxy has automatically zoomed around the mask
 to make the galaxyed source appear bigger.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 __Fitting__
@@ -163,8 +161,7 @@ galaxy_1 = ag.Galaxy(
 
 galaxies = ag.Galaxies(galaxies=[galaxy_0, galaxy_1])
 
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=dataset.grid)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=dataset.grid), title="Image")
 
 """
 We now use the `FitImaging` object to fit the galaxies to the dataset. 
@@ -178,8 +175,7 @@ the telescope optics when it is observed. It mimicks this blurring effect via a 
 """
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.figures_2d(model_image=True)
+aplt.plot_array(array=fit.model_data, title="Model Image")
 
 """
 The fit creates the following:
@@ -194,10 +190,10 @@ model image and individual galaxies in the fit.
 For a good model where the model image and galaxies are representative of the galaxy system the
 residuals, normalized residuals and chi-squared are minimized:
 """
-fit_plotter.figures_2d(
-    residual_map=True, normalized_residual_map=True, chi_squared_map=True
-)
-fit_plotter.subplot_fit()
+aplt.plot_array(array=fit.residual_map, title="Residual Map")
+aplt.plot_array(array=fit.normalized_residual_map, title="Normalized Residual Map")
+aplt.plot_array(array=fit.chi_squared_map, title="Chi-Squared Map")
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 The overall quality of the fit is quantified with the `log_likelihood` (the **HowToGalaxy** tutorials explains how
@@ -241,14 +237,12 @@ galaxies = ag.Galaxies(galaxies=[galaxy_0, galaxy_1])
 fit_bad = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 """
-A new fit using these galaxies shows residuals, normalized residuals and chi-squared which are non-zero. 
+A new fit using these galaxies shows residuals, normalized residuals and chi-squared which are non-zero.
 """
-fit_plotter = aplt.FitImagingPlotter(fit=fit_bad)
-
-fit_plotter.figures_2d(
-    residual_map=True, normalized_residual_map=True, chi_squared_map=True
-)
-fit_plotter.subplot_fit()
+aplt.plot_array(array=fit_bad.residual_map, title="Residual Map")
+aplt.plot_array(array=fit_bad.normalized_residual_map, title="Normalized Residual Map")
+aplt.plot_array(array=fit_bad.chi_squared_map, title="Chi-Squared Map")
+aplt.subplot_fit_imaging(fit=fit_bad)
 
 """
 We also note that its likelihood decreases.

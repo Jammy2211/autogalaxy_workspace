@@ -85,26 +85,24 @@ __Output__
 
 Output to a .png file for easy inspection.
 """
-mat_plot = aplt.MatPlot2D(
-    output=aplt.Output(
-        path=dataset_path, filename=f"data_mask_extra_galaxies", format="png"
-    )
+aplt.plot_array(
+    array=data,
+    title="Data",
+    output_path=dataset_path,
+    output_filename="data_mask_extra_galaxies",
+    output_format="png",
 )
-array_plotter = aplt.Array2DPlotter(array=data, mat_plot_2d=mat_plot)
-array_plotter.figure_2d()
 
 """
 The new image is plotted for inspection.
 """
-array_2d_plotter = aplt.Array2DPlotter(array=data)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=data, title="Data")
 
 """
 Plot the data with the new mask, in order to check that the mask removes the regions of the image corresponding to the
 extra galaxies.
 """
-array_plotter = aplt.Array2DPlotter(array=data)
-array_plotter.figure_2d()
+aplt.plot_array(array=data, title="Data")
 
 """
 __Output__

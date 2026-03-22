@@ -91,8 +91,8 @@ using an inverse Fourier transform to convert these to real-space. These dirty i
 visualization of the dirty images are often used in radio interferometry to show the data in a way that is more
 interpretable to the human eye.
 """
+aplt.subplot_interferometer_dataset(dataset=dataset)
 dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
 dataset_plotter.subplot_dirty_images()
 
 """
@@ -840,8 +840,7 @@ fit = ag.FitInterferometer(
 fit_log_evidence = fit.log_evidence
 print(fit_log_evidence)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_interferometer(fit=fit)
 
 """
 __Galaxy Modeling__

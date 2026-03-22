@@ -72,8 +72,8 @@ using an inverse Fourier transform to convert these to real-space. These dirty i
 visualization of the dirty images are often used in radio interferometry to show the data in a way that is more
 interpretable to the human eye.
 """
+aplt.subplot_interferometer_dataset(dataset=dataset)
 dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
 dataset_plotter.subplot_dirty_images()
 
 """
@@ -224,8 +224,7 @@ This computes the `image` of each light profile and adds them together.
 """
 galaxy_image_2d = galaxy.image_2d_from(grid=dataset.grid)
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=dataset.grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=dataset.grid), title="Image")
 
 """
 If you are familiar with imaging data, you may have seen that a `blurring_image` of pixels surrounding the mask,
@@ -336,8 +335,7 @@ fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 fit_figure_of_merit = fit.figure_of_merit
 print(fit_figure_of_merit)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_interferometer(fit=fit)
 
 
 """

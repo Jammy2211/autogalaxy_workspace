@@ -160,8 +160,7 @@ galaxies = ag.Galaxies(galaxies=instance.galaxies)
 
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 Fin.

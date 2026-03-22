@@ -99,8 +99,7 @@ galaxies_plotter = aplt.GalaxiesPlotter(
     galaxies=result.max_log_likelihood_galaxies, grid=mask.derive_grid.all_false
 )
 galaxies_plotter.subplot_galaxies()
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 Results tutorials `galaxies.py` and `fits.py` expand on the `max_log_likelihood_galaxies` and `max_log_likelihood_fit`, 

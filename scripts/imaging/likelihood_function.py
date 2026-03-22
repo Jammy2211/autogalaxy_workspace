@@ -49,8 +49,7 @@ This guide uses in-built visualization tools for plotting.
 
 For example, using the `ImagingPlotter` the imaging dataset we perform a likelihood evaluation on is plotted.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -69,8 +68,7 @@ masked_dataset = dataset.apply_mask(mask=mask)
 """
 When we plot the masked imaging, only the circular masked region is shown.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=masked_dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=masked_dataset)
 
 """
 __Over Sampling__
@@ -95,8 +93,7 @@ Each (y,x) coordinate coordinates to the centre of each image-pixel in the datas
 used to evaluate a light profile the intensity of the profile at the centre of each image-pixel is computed, making
 it straight forward to compute the light profile's image to the image data.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=masked_dataset.grids.lp)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=masked_dataset.grids.lp, title="Grid")
 
 print(
     f"(y,x) coordinates of first ten unmasked image-pixels {masked_dataset.grid[0:9]}"
@@ -130,8 +127,7 @@ transformed_grid = profile.transformed_to_reference_frame_grid_from(
     grid=masked_dataset.grids.lp
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=transformed_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=transformed_grid, title="Grid")
 print(
     f"transformed coordinates of first ten unmasked image-pixels {transformed_grid[0:9]}"
 )
@@ -190,13 +186,11 @@ implicitly).
 """
 image_2d_bulge = bulge.image_2d_from(grid=masked_dataset.grid)
 
-bulge_plotter = aplt.LightProfilePlotter(light_profile=bulge, grid=masked_dataset.grid)
-bulge_plotter.figures_2d(image=True)
+aplt.plot_array(array=image_2d_bulge, title="Image")
 
 image_2d_disk = disk.image_2d_from(grid=masked_dataset.grid)
 
-disk_plotter = aplt.LightProfilePlotter(light_profile=disk, grid=masked_dataset.grid)
-disk_plotter.figures_2d(image=True)
+aplt.plot_array(array=image_2d_disk, title="Image")
 
 """
 __Galaxy__
@@ -221,11 +215,10 @@ This computes the `image` of each light profile and adds them together.
 """
 galaxy_image_2d = galaxy.image_2d_from(grid=masked_dataset.grid)
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=masked_dataset.grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=masked_dataset.grid), title="Image")
 
 """
-To convolve the galaxy's 2D image with the imaging data's PSF, we need its `blurring_image`. 
+To convolve the galaxy's 2D image with the imaging data's PSF, we need its `blurring_image`.
 
 This represents all flux values not within the mask, which are close enough to it that their flux blurs into the mask 
 after PSF convolution.
@@ -235,8 +228,7 @@ actual mask whose light blurs into the image:
 """
 galaxy_blurring_image_2d = galaxy.image_2d_from(grid=masked_dataset.grids.blurring)
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=masked_dataset.grids.blurring)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=masked_dataset.grids.blurring), title="Image")
 
 """
 __Convolution__
@@ -247,8 +239,7 @@ convolved_image_2d = masked_dataset.psf.convolved_image_from(
     image=galaxy_image_2d, blurring_image=galaxy_blurring_image_2d
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=convolved_image_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=convolved_image_2d, title="Image")
 
 """
 __Likelihood Function__
@@ -293,8 +284,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Array2D(values=chi_squared_map, mask=mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=chi_squared_map)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=chi_squared_map, title="Image")
 
 """
 __Noise Normalization Term__

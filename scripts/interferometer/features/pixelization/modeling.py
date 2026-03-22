@@ -173,8 +173,8 @@ dataset = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
+aplt.subplot_interferometer_dataset(dataset=dataset)
 dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
 dataset_plotter.subplot_dirty_images()
 
 """
@@ -359,8 +359,7 @@ The end of this example provides a detailed description of all result options fo
 """
 print(result.max_log_likelihood_instance)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_interferometer(fit=result.max_log_likelihood_fit)
 
 plotter = aplt.NestPlotter(samples=result.samples)
 plotter.corner_anesthetic()

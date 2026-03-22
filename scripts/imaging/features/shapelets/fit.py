@@ -97,8 +97,7 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -111,13 +110,12 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Over Sampling__
 
-Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via 
+Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via
 the `autogalaxy_workspace/*/guides/over_sampling.ipynb` notebook.
 """
 over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
@@ -129,8 +127,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 
 """
@@ -299,8 +296,7 @@ with only faint residuals visible where the lensed source is located.
 This is despite the beta parameter of the shapelets being a complete guess and not the optimal value for fitting the
 source galaxy's light. 
 """
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 We can use the `BasisPlotter` to plot each individual shapelet in the reconstructed basis.
@@ -410,8 +406,7 @@ fit = ag.FitImaging(
     settings=ag.Settings(use_positive_only_solver=False),
 )
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 galaxies = fit.model_obj_linear_light_profiles_to_light_profiles
 

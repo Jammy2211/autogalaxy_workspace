@@ -68,14 +68,13 @@ dataset = ag.Imaging.from_fits(
 """
 We can use the `ImagingPlotter` to plot the image and noise-map of the dataset.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.figures_2d(data=True, noise_map=True)
+aplt.plot_array(array=dataset.data, title="Data")
+aplt.plot_array(array=dataset.noise_map, title="Noise Map")
 
 """
-The `ImagingPlotter` also contains a subplot which plots all these properties simultaneously.
+We can also plot a subplot which shows all these properties simultaneously.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -97,9 +96,7 @@ dataset = dataset.apply_mask(mask=mask)
 We now plot the image with the mask applied, where the image automatically zooms around the mask to make the galaxy
 appear bigger.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.set_title("Image Data With Mask Applied")
-dataset_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Image Data With Mask Applied")
 
 """
 The mask is also used to compute a `Grid2D`, where the (y,x) arc-second coordinates are only computed in unmasked
@@ -108,9 +105,7 @@ pixels within the masks' circle.
 As shown in the previous overview example, this grid will be used to perform galaxying calculations when fitting the
 data below.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=dataset.grid)
-grid_plotter.set_title("Grid2D of Masked Dataset")
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=dataset.grid, title="Grid2D of Masked Dataset")
 
 """
 __Ellipse Interpolation__
@@ -273,10 +268,7 @@ match the mean of the data over the ellipse.
 A good fit indicates that the white ellipse traces round the black contour well, which is close for the example
 below but not perfect.
 """
-fit_plotter = aplt.FitEllipsePlotter(
-    fit_list=[fit], mat_plot_2d=aplt.MatPlot2D(use_log10=True)
-)
-fit_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 __Multiple Ellipses__
@@ -305,15 +297,12 @@ print([fit.log_likelihood for fit in fit_list])
 print("Overall Log Likelihood:")
 print(sum([fit.log_likelihood for fit in fit_list]))
 
-fit_plotter = aplt.FitEllipsePlotter(
-    fit_list=fit_list, mat_plot_2d=aplt.MatPlot2D(use_log10=True)
-)
-fit_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 A subplot can be plotted which contains all of the above quantities.
 """
-# fit_plotter.subplot_fit()
+# aplt.subplot_fit_ellipse(fit_list=fit_list, grid=dataset.grid)
 #
 # """
 # __Bad Fit__

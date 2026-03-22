@@ -148,8 +148,8 @@ dataset = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
+aplt.subplot_interferometer_dataset(dataset=dataset)
 dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
 dataset_plotter.subplot_dirty_images()
 
 """
@@ -247,7 +247,7 @@ By plotting the fit, we see that the pixelized reconstruction does a good job at
 and fitting the data to roughly the noise level.
 """
 fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_interferometer(fit=fit)
 fit_plotter.subplot_fit_dirty_images()
 
 """
@@ -269,8 +269,7 @@ for various calculations
 """
 inversion = fit.inversion
 
-inversion_plotter = aplt.InversionPlotter(inversion=inversion)
-inversion_plotter.subplot_of_mapper(mapper_index=0)
+aplt.subplot_of_mapper(mapper_index=0, inversion=inversion)
 
 """
 __Wrap Up__
@@ -464,13 +463,6 @@ simulator = ag.SimulatorInterferometer(
 
 dataset = simulator.via_image_from(image=interpolated_reconstruction)
 
-plotter = aplt.InterferometerPlotter(dataset=dataset)
-
-output = aplt.Output(path=".", filename="interpolated_reconstruction", format="png")
-
-plotter = aplt.InterferometerPlotter(
-    dataset=dataset, mat_plot_2d=aplt.MatPlot2D(output=output)
-)
 
 """
 __Future Ideas / Contributions__

@@ -99,8 +99,7 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Extra Galaxy Removal__
@@ -129,8 +128,7 @@ mask_extra_galaxies = ag.Mask2D.from_fits(
 
 dataset = dataset.apply_noise_scaling(mask=mask_extra_galaxies)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Masking__
@@ -166,8 +164,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Model__
@@ -275,8 +272,7 @@ print(result.info)
 The result also contains the maximum likelihood galaxy model which can be used to plot the best-fit information
 and fit to the data.
 """
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The result object contains pretty much everything you need to do science with your own galaxy, but details
@@ -377,8 +373,7 @@ galaxy = ag.Galaxy(
     ),
 )
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Image")
 
 """
 The image can be saved to .fits for later use.
@@ -422,8 +417,7 @@ simulator = ag.SimulatorImaging(
 galaxies = ag.Galaxies([galaxy])
 dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 dataset_path = Path("dataset") / "imaging" / "simulated_galaxy"
 
@@ -434,16 +428,13 @@ dataset.output_to_fits(
     overwrite=True,
 )
 
-mat_plot = aplt.MatPlot2D(output=aplt.Output(path=dataset_path, format="png"))
-
 """
 We can now inspect the simulated dataset: image, noise-map, and PSF. These can also be
 written to FITS files and visualized as PNGs. This is exactly the same format as real data,
 so you can immediately try fitting the simulated dataset with the modeling workflow above.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, mat_plot_2d=mat_plot)
-dataset_plotter.subplot_dataset()
-dataset_plotter.figures_2d(data=True)
+aplt.subplot_imaging_dataset(dataset=dataset, output_path=dataset_path, output_format="png")
+aplt.plot_array(array=dataset.data, title="Data", output_path=dataset_path, output_format="png")
 
 """
 __Sample__
@@ -473,8 +464,7 @@ for sample_index in range(total_datasets):
 
     dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Wrap Up__
