@@ -78,8 +78,6 @@ Visibility data is in uv space, making it hard to interpret by eye.
 The dirty images of the interferometer dataset can plotted, which use the transformer of the interferometer
 to map the visibilities, noise-map or other quantity to a real-space image.
 """
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dirty_images()
 
 """
 __Fitting__
@@ -129,6 +127,7 @@ fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 
 fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
 fit_plotter.figures_2d(model_data=True)
+
 
 """
 The visibilities are again hard to interpret by eye, so we can plot the dirty image of the fit's model data. This

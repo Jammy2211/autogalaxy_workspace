@@ -256,8 +256,7 @@ for fit_lists_list in fit_gen:
 
     print(fit_list[0].multipole_list)
 
-    fit_plotter = aplt.FitEllipsePlotter(fit_list=fit_list)
-    fit_plotter.figures_2d(data=True)
+    aplt.plot_array(array=dataset.data, title="Data")
 
 """
 Finished.

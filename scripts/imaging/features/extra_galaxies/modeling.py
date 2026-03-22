@@ -68,8 +68,7 @@ dataset = ag.Imaging.from_fits(
 """
 Visualization of this dataset shows two galaxies either side of the main galaxy.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -90,8 +89,7 @@ dataset = dataset.apply_mask(mask=mask_main)
 """
 Lets plot the masked imaging to make sure the extra galaxies are included.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Extra Galaxies Over Sampling__
@@ -117,8 +115,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Extra Galaxies Noise Scaling__
@@ -167,8 +164,7 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 We now perform a model-fit using the standard API, where the extra galaxies are not included in the model.
@@ -264,11 +260,10 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
-__Model__ 
+__Model__
 
 Perform the normal steps to set up the main model of the galaxy and source.
 

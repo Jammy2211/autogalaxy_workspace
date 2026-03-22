@@ -67,10 +67,7 @@ grid_sub_1 = ag.Grid2D.uniform(
 We now plot the grid, over laying a uniform grid of pixels to illustrate the area of each pixel within which we
 want light profile intensities to be computed.
 """
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Grid Without Over-Sampling"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid_sub_1, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d(plot_grid_lines=True)
+aplt.plot_grid(grid=grid_sub_1, title="Grid Without Over-Sampling", plot_grid_lines=True)
 
 """
 We now create and plot a uniform grid which does over-sample the pixels, by inputting `over_sample_size=2`.
@@ -111,10 +108,7 @@ intensity within each pixel if there is a significant gradient in intensity with
 
 In the code below, it is the input `plot_over_sampled_grid=True` which ensures we plot the over sampled grid.
 """
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Grid With 2x2 Over-Sampling"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid_sub_2, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d(plot_grid_lines=True, plot_over_sampled_grid=True)
+aplt.plot_grid(grid=grid_sub_2, title="Grid With 2x2 Over-Sampling", plot_grid_lines=True, plot_over_sampled_grid=True)
 
 """
 __Numerics__
@@ -175,19 +169,11 @@ light = ag.lp.Sersic(
 image_sub_1 = light.image_2d_from(grid=grid_sub_1)
 image_sub_2 = light.image_2d_from(grid=grid_sub_2)
 
-plotter = aplt.Array2DPlotter(
-    array=image_sub_1,
-)
-plotter.set_title("Image of Sersic Profile")
-plotter.figure_2d()
+aplt.plot_array(array=image_sub_1, title="Image of Sersic Profile")
 
 residual_map = image_sub_2 - image_sub_1
 
-plotter = aplt.Array2DPlotter(
-    array=residual_map,
-)
-plotter.set_title("Over-Sampling Residuals")
-plotter.figure_2d()
+aplt.plot_array(array=residual_map, title="Over-Sampling Residuals")
 
 
 """
