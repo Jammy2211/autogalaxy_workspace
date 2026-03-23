@@ -121,8 +121,7 @@ does not).
 Each (y,x) coordinate coordinates to the centre of each image-pixel in the dataset, meaning that when this grid is
 used to construct a pixelization there is a straight forward mapping between the image data and pixelization pixels.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=masked_dataset.grids.pixelization)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=masked_dataset.grids.pixelization, title="Pixelization Grid")
 
 """
 __Galaxy__

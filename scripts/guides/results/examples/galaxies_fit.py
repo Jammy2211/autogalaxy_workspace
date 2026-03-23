@@ -137,8 +137,7 @@ bulge = galaxies[0].bulge
 bulge_image_2d = bulge.image_2d_from(grid=dataset.grid)
 print(bulge_image_2d.slim[0])
 
-bulge_plotter = aplt.LightProfilePlotter(light_profile=bulge, grid=dataset.grid)
-bulge_plotter.figures_2d(image=True)
+aplt.plot_array(array=bulge.image_2d_from(grid=dataset.grid), title="Image")
 
 
 """

@@ -341,8 +341,7 @@ print(indexes_pix_200[0])
 
 array_2d = ag.Array2D(values=mapping_matrix[:, 200], mask=dataset.mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-grid_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Mapping Matrix Column")
 
 """
 __Transformed Mapping Matrix ($f$)__
@@ -399,8 +398,7 @@ print(indexes_pix_200[0])
 
 visibilities = ag.Visibilities(visibilities=transformed_mapping_matrix[:, 200])
 
-grid_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Visibilities")
 
 """
 In Warren & Dye 2003 (https://arxiv.org/abs/astro-ph/0302587) the `transformed_mapping_matrix` is denoted $f_{ij}$
@@ -518,15 +516,13 @@ visibilities = ag.Visibilities(
     visibilities=transformed_mapping_matrix[:, source_pixel_0],
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Visibilities")
 
 visibilities = ag.Visibilities(
     visibilities=transformed_mapping_matrix[:, source_pixel_1],
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Visibilities")
 
 """
 The following chi-squared is minimized when we perform the inversion and reconstruct the galaxy:
@@ -663,8 +659,7 @@ mapped_reconstructed_visibilities = ag.Visibilities(
     visibilities=mapped_reconstructed_visibilities
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=mapped_reconstructed_visibilities.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=mapped_reconstructed_visibilities.in_grid, title="Mapped Reconstructed Visibilities")
 
 
 """
@@ -730,8 +725,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Visibilities(visibilities=chi_squared_map)
 
-grid_plotter = aplt.Grid2DPlotter(grid=chi_squared_map.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=chi_squared_map.in_grid, title="Chi-Squared Map")
 
 """
 __Regularization Term__

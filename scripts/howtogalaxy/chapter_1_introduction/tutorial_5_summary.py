@@ -103,17 +103,9 @@ profiles, galaxies and galaxies to extract different pieces of information about
 For example, we made our galaxy above with two light profiles, a `bulge` and `disk`. We can plot the image of 
 each component individually, now that we know how to break-up the different components of the galaxies.
 """
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=galaxies[0].bulge, grid=grid
-)
-light_profile_plotter.set_title("Bulge Image")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].bulge.image_2d_from(grid=grid), title="Bulge Image")
 
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=galaxies[0].disk, grid=grid
-)
-light_profile_plotter.set_title("Disk Image")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].disk.image_2d_from(grid=grid), title="Disk Image")
 
 """
 __Visualization__
@@ -134,14 +126,7 @@ mat_plot = aplt.MatPlot2D(
 
 visuals = aplt.Visuals2D(origin=(0.0, 0.0))
 
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=galaxies[0].bulge,
-    grid=grid,
-    mat_plot_2d=mat_plot,
-    visuals_2d=visuals,
-)
-light_profile_plotter.set_title("Bulge Image")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].bulge.image_2d_from(grid=grid), title="Bulge Image")
 
 """
 And, we're done, not just with the tutorial, but the chapter!

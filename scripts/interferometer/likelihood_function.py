@@ -189,13 +189,11 @@ implicitly).
 """
 image_2d_bulge = bulge.image_2d_from(grid=dataset.grid)
 
-bulge_plotter = aplt.LightProfilePlotter(light_profile=bulge, grid=dataset.grid)
-bulge_plotter.figures_2d(image=True)
+aplt.plot_array(array=bulge.image_2d_from(grid=dataset.grid), title="Image")
 
 image_2d_disk = disk.image_2d_from(grid=dataset.grid)
 
-disk_plotter = aplt.LightProfilePlotter(light_profile=disk, grid=dataset.grid)
-disk_plotter.figures_2d(image=True)
+aplt.plot_array(array=disk.image_2d_from(grid=dataset.grid), title="Image")
 
 """
 __Galaxy__

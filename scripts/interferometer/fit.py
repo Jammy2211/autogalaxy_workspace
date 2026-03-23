@@ -125,8 +125,7 @@ on the galaxy image above and plots the result visibilities in uv-space.
 """
 fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.figures_2d(model_data=True)
+aplt.plot_array(array=fit.dirty_image, title="Dirty Image")
 
 
 """
@@ -137,8 +136,7 @@ convolved with it).
 """
 fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.figures_2d(dirty_image=True)
+aplt.plot_array(array=fit.dirty_image, title="Dirty Image")
 
 """
 The fit does a lot more than just Fourier transform the galaxy image it also creates the following:
@@ -165,12 +163,6 @@ galaxies such as the image and a normalized residual map where the colorbar
 goes from 1.0 sigma to -1.0 sigma, to highlight regions where the fit is poor.
 """
 aplt.subplot_fit_interferometer(fit=fit)
-
-"""
-Once again, dirty images are often easier to interpret, so we can plot a subplot of the dirty images of the data, model
-data, residuals and chi-squared.
-"""
-fit_plotter.subplot_fit_dirty_images()
 
 """
 The fit also provides us with a ``log_likelihood``, a single value quantifying how good the galaxies fitted the dataset.
@@ -206,9 +198,7 @@ A new fit using this galaxies shows residuals, normalized residuals and chi-squa
 """
 fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
 aplt.subplot_fit_interferometer(fit=fit)
-fit_plotter.subplot_fit_dirty_images()
 
 """
 We also note that its likelihood decreases.

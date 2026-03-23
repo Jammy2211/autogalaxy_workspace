@@ -460,8 +460,7 @@ good model fit with a much higher likelihood than the incorrect model above.
 """
 print(result.info)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The MLE is a great starting point for model-fitting because it’s fast, conceptually simple, and often yields 
@@ -520,8 +519,7 @@ print("The search has finished run - you may now continue the notebook.")
 
 print(result.info)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The MCMC search succeeded, finding the same high-likelihood model that the MLE search with a good starting point 
@@ -630,8 +628,7 @@ print("The search has finished run - you may now continue the notebook.")
 
 print(result.info)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The **Nested Sampling** search was successful, identifying the same high-likelihood model as the MLE and MCMC searches. 

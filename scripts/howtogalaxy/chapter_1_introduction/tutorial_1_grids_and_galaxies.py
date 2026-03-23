@@ -347,11 +347,7 @@ To visualize the light profile's image, we use a `LightProfilePlotter`.
 
 We provide it with the light profile and the grid, which are used to create and plot the image.
 """
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=sersic_light_profile, grid=grid
-)
-light_profile_plotter.set_title("Image via LightProfilePlotter")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Image via LightProfilePlotter")
 
 """
 __One Dimension Projection__
@@ -419,13 +415,7 @@ scale. This approach helps highlight details in the faint outskirts of a light p
 The `MatPlot2D` object has a `use_log10` option that applies this transformation automatically. Below, you can see 
 that the image plotted in log10 space reveals more details.
 """
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=sersic_light_profile,
-    grid=grid,
-    mat_plot_2d=aplt.MatPlot2D(use_log10=True),
-)
-light_profile_plotter.set_title("Sersic Image")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Sersic Image", use_log10=True)
 
 """
 __Galaxies__
@@ -493,9 +483,7 @@ scale. The disk's emission is present, but it is much fainter and spread over a 
 
 We can confirm this using the `subplot_of_light_profiles` method, which plots each individual light profile separately.
 """
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid)
-galaxy_plotter.set_title("Galaxy Bulge+Disk Subplot")
-galaxy_plotter.subplot_of_light_profiles(image=True)
+aplt.subplot_of_light_profiles(galaxy=galaxy, grid=grid)
 
 """
 Because galaxy light distributions often follow a log10 pattern, plotting in log10 space helps reveal details in the 
@@ -568,8 +556,7 @@ aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 """
 A subplot of each individual galaxy image can also be created.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-galaxies_plotter.subplot_galaxy_images()
+aplt.subplot_galaxies(galaxies=galaxies, grid=grid)
 
 """
 Because galaxy light distributions often follow a log10 pattern, plotting in log10 space helps reveal details in the 

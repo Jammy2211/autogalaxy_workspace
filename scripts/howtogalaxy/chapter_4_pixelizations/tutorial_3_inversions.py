@@ -170,8 +170,6 @@ We can use the `subplot_of_galaxies` method to specifically visualize the invers
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
 aplt.subplot_fit_imaging(fit=fit)
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_of_galaxies(galaxy_index=0)
 
 """
 __Positive Only Solver__
