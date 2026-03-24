@@ -483,7 +483,7 @@ scale. The disk's emission is present, but it is much fainter and spread over a 
 
 We can confirm this using the `subplot_of_light_profiles` method, which plots each individual light profile separately.
 """
-aplt.subplot_of_light_profiles(galaxy=galaxy, grid=grid)
+aplt.subplot_galaxy_light_profiles(galaxy=galaxy, grid=grid)
 
 """
 Because galaxy light distributions often follow a log10 pattern, plotting in log10 space helps reveal details in the 

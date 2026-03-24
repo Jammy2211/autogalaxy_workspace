@@ -144,7 +144,7 @@ aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Galaxy Image")
 """
 The individual light profiles of the galaxy can be plotted on a subplot.
 """
-aplt.subplot_of_light_profiles(galaxy=galaxy, grid=grid)
+aplt.subplot_galaxy_light_profiles(galaxy=galaxy, grid=grid)
 
 """
 __Galaxies__
