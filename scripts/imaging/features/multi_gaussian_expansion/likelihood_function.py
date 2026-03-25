@@ -70,8 +70,7 @@ masked_dataset = dataset.apply_mask(mask=mask)
 
 masked_dataset = masked_dataset.apply_over_sampling(over_sample_size_lp=1)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=masked_dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=masked_dataset)
 
 """
 __Masked Image Grid__
@@ -139,7 +138,7 @@ basis = ag.lp_basis.Basis(profile_list=basis_gaussian_list)
 The `Basis` is composed of many Gaussians, each with different sizes (the `sigma` value) and therefore capturing
 emission on different scales.
 
-These Gaussians are visualized below using a `BasisPlotter`, which shows that the Gaussians expand in size as the
+These Gaussians are visualized below using `aplt.subplot_basis_image`, which shows that the Gaussians expand in size as the
 sigma value increases, in log10 increments.
 
 This figure is a brilliant way to visualize the multi-Gaussian expansion, showing the 30 different Gaussian light
@@ -165,8 +164,7 @@ basis_plot = ag.lp_basis.Basis(profile_list=basis_plot_gaussian_list)
 
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
-basis_plotter = aplt.BasisPlotter(basis=basis_plot, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=basis_plot, grid=grid)
 
 """
 Internally in the source code, linear light profiles have an `intensity` parameter, but its value is always set to 
@@ -196,12 +194,10 @@ algebra.
 
 Uncomment and run the code below to see the exception.
 
-Note that the `BasisPlotter` used above did not raise an exception, because its intended purpose is to visualize
+Note that `aplt.subplot_basis_image` used above did not raise an exception, because its intended purpose is to visualize
 the basis light profiles and not the intensity of the light profiles.
 """
 print("This will raise an exception")
-
-# basis_plotter = aplt.LightProfilePlotter(light_profile=basis, grid=masked_dataset.grid)
 
 """
 __Comparison To Linear Light Profiles Example__
@@ -556,8 +552,7 @@ mapped_reconstructed_operated_data = ag.Array2D(
     values=mapped_reconstructed_operated_data, mask=mask
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=mapped_reconstructed_operated_data)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=mapped_reconstructed_operated_data, title="Image")
 
 """
 __Likelihood Function__
@@ -602,8 +597,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Array2D(values=chi_squared_map, mask=mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=chi_squared_map)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=chi_squared_map, title="Image")
 
 """
 __Noise Normalization Term__
@@ -648,8 +642,7 @@ fit = ag.FitImaging(
 fit_log_evidence = fit.log_evidence
 print(fit_log_evidence)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 The fit contains an `Inversion` object, which handles all the linear algebra we have covered in this script.

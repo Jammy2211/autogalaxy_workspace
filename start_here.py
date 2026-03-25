@@ -77,8 +77,7 @@ grid = ag.Grid2D.uniform(
     pixel_scales=0.05,  # The pixel-scale describes the conversion from pixel units to arc-seconds.
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=grid, title="Uniform Grid")
 
 """
 __Light Profiles__
@@ -114,17 +113,13 @@ __Plotting__
 In-built plotting methods are provided for plotting objects and their properties, like the image of
 a light profile we just created.
 
-By using a `LightProfilePlotter` to plot the light profile's image, the figured is improved. 
-
-Its axis units are scaled to arc-seconds, a color-bar is added, its given a descriptive labels, etc.
+By using the plot module, the image is improved: axis units are scaled to arc-seconds, a color-bar is added,
+descriptive labels are included, etc.
 
 The plot module is highly customizable and designed to make it straight forward to create clean and informative figures
 for fits to large datasets.
 """
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=sersic_light_profile, grid=grid
-)
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Sersic Light Profile Image")
 
 """
 __Galaxy__
@@ -144,17 +139,12 @@ galaxy = ag.Galaxy(
     redshift=0.5, bulge=sersic_light_profile, disk=exponential_light_profile
 )
 
-"""
-The `GalaxyPlotter` object plots the image of the galaxy, which is the sum of its bulge and disk light profiles.
-"""
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Galaxy Image")
 
 """
-One example of the plotter's customizability is the ability to plot the individual light profiles of the galaxy
-on a subplot.
+The individual light profiles of the galaxy can be plotted on a subplot.
 """
-galaxy_plotter.subplot_of_light_profiles(image=True)
+aplt.subplot_galaxy_light_profiles(galaxy=galaxy, grid=grid)
 
 """
 __Galaxies__
@@ -177,8 +167,7 @@ galaxies = ag.Galaxies(
     galaxies=[galaxy, galaxy_1],
 )
 
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Galaxies Image")
 
 """
 __Units__
@@ -244,8 +233,7 @@ galaxy_1 = ag.Galaxy(
 
 galaxies = ag.Galaxies(galaxies=[galaxy_0, galaxy_1])
 
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Galaxies Image")
 
 """
 __Galaxy Modeling__

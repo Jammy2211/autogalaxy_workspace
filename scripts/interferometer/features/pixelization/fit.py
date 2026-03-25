@@ -110,6 +110,7 @@ from pathlib import Path
 
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.inversion_plots import subplot_of_mapper, subplot_mappings
 
 """
 __Mask__
@@ -148,9 +149,7 @@ dataset = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
-dataset_plotter.subplot_dirty_images()
+aplt.subplot_interferometer_dataset(dataset=dataset)
 
 """
 __Sparse Operators__
@@ -246,31 +245,19 @@ fit = ag.FitInterferometer(
 By plotting the fit, we see that the pixelized reconstruction does a good job at capturing the appearance of the galaxy
 and fitting the data to roughly the noise level.
 """
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.subplot_fit()
-fit_plotter.subplot_fit_dirty_images()
+aplt.subplot_fit_interferometer(fit=fit)
 
 """
 Pixelizations have bespoke visualizations which show more details about the reconstruction, image-mesh
 and other quantities.
 
-These plots use an `InversionPlotter`, which gets its name from the internals of how pixelizations are performed in
-the source code, where the linear algebra process which computes the pixel fluxes is called an inversion.
-
-The `subplot_mappings` overlays colored circles in the image and reconstruction planes that map to one another.
-"""
-inversion_plotter = fit_plotter.inversion_plotter
-inversion_plotter.subplot_of_mapper(mapper_index=0)
-inversion_plotter.subplot_mappings(pixelization_index=0)
-
-"""
-The inversion can be extracted directly from the fit the perform these plots, which we also use below
-for various calculations
+The `subplot_of_mapper` function produces a comprehensive diagnostic subplot for the inversion. The
+`subplot_mappings` overlays colored circles in the image and reconstruction planes that map to one another.
 """
 inversion = fit.inversion
 
-inversion_plotter = aplt.InversionPlotter(inversion=inversion)
-inversion_plotter.subplot_of_mapper(mapper_index=0)
+subplot_of_mapper(inversion=inversion, mapper_index=0)
+subplot_mappings(inversion=inversion, pixelization_index=0)
 
 """
 __Wrap Up__
@@ -464,13 +451,6 @@ simulator = ag.SimulatorInterferometer(
 
 dataset = simulator.via_image_from(image=interpolated_reconstruction)
 
-plotter = aplt.InterferometerPlotter(dataset=dataset)
-
-output = aplt.Output(path=".", filename="interpolated_reconstruction", format="png")
-
-plotter = aplt.InterferometerPlotter(
-    dataset=dataset, mat_plot_2d=aplt.MatPlot2D(output=output)
-)
 
 """
 __Future Ideas / Contributions__

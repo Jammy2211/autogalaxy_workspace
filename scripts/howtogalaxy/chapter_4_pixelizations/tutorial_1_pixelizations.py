@@ -17,6 +17,7 @@ learn how to create a pixelization in **PyAutoGalaxy**.
 
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.mapper_plots import plot_mapper
 
 """
 __Initial Setup__
@@ -62,9 +63,7 @@ print(type(mapper))
 """
 By plotting our mapper, we now see our `Pixelization`. Its a fairly boring grid of rectangular pixels.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-mapper_plotter.set_title("Fairly Boring Grid2D of RectangularAdaptDensity Pixels")
-mapper_plotter.figure_2d()
+plot_mapper(mapper=mapper, title="Fairly Boring Grid2D of RectangularAdaptDensity Pixels")
 
 """
 However, the `Mapper` does contain lots of interesting information about our `Pixelization`, for example its 
@@ -81,11 +80,7 @@ print("etc.")
 """
 We can plot these centre on our grid, to make it look slightly less boring!
 """
-visuals_2d = aplt.Visuals2D(mesh_grid=mapper.source_plane_mesh_grid)
-
-mapper_plotter = aplt.MapperPlotter(mapper=mapper, visuals_2d=visuals_2d)
-mapper_plotter.set_title("Recntagular Grid With Pixel Cenres")
-mapper_plotter.figure_2d()
+plot_mapper(mapper=mapper, mesh_grid=mapper.source_plane_mesh_grid, title="Recntagular Grid With Pixel Cenres")
 
 """
 The `Mapper` also has the grid that we passed when we set it up. Lets check they`re the same.
@@ -101,19 +96,9 @@ print("etc.")
 """
 We can over-lay this grid on the figure, which is starting to look a bit less boring now!
 """
-visuals_2d = aplt.Visuals2D(mesh_grid=mapper.source_plane_data_grid)
+plot_mapper(mapper=mapper, mesh_grid=mapper.source_plane_data_grid, title="Even less Boring Grid2D of RectangularAdaptDensity Pixels")
 
-mapper_plotter = aplt.MapperPlotter(mapper=mapper, visuals_2d=visuals_2d)
-mapper_plotter.set_title("Even less Boring Grid2D of RectangularAdaptDensity Pixels")
-mapper_plotter.figure_2d()
-
-mat_plot = aplt.MatPlot2D(axis=aplt.Axis(extent=[-0.3, 0.3, -0.3, 0.3]))
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper, mat_plot_2d=mat_plot, visuals_2d=visuals_2d
-)
-mapper_plotter.set_title("Zoomed Grid2D of RectangularAdaptDensity Pixels")
-mapper_plotter.figure_2d()
+plot_mapper(mapper=mapper, mesh_grid=mapper.source_plane_data_grid, title="Zoomed Grid2D of RectangularAdaptDensity Pixels")
 
 """
 Finally, the mapper`s `mesh_grid` has lots of information about the pixelization, for example, the arc-second 

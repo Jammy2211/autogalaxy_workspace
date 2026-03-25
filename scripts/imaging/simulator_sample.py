@@ -128,13 +128,11 @@ for sample_index in range(total_datasets):
     """
     galaxies = ag.Galaxies(galaxies=[galaxy])
 
-    galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-    galaxies_plotter.figures_2d(image=True)
+    aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 
     dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
     """
     __Output__
@@ -155,18 +153,9 @@ for sample_index in range(total_datasets):
 
     Output a subplot of the simulated dataset, the image and the galaxies quantities to the dataset path as .png files.
     """
-    mat_plot = aplt.MatPlot2D(
-        output=aplt.Output(path=dataset_sample_path, format="png")
-    )
-
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset, mat_plot_2d=mat_plot)
-    dataset_plotter.subplot_dataset()
-    dataset_plotter.figures_2d(data=True)
-
-    galaxies_plotter = aplt.GalaxiesPlotter(
-        galaxies=galaxies, grid=grid, mat_plot_2d=mat_plot
-    )
-    galaxies_plotter.subplot()
+    aplt.subplot_imaging_dataset(dataset=dataset, output_path=dataset_sample_path, output_format="png")
+    aplt.plot_array(array=dataset.data, title="Data", output_path=dataset_sample_path, output_format="png")
+    aplt.subplot_galaxies(galaxies=galaxies, grid=grid, output_path=dataset_sample_path, output_format="png")
 
     """
     __Plane Output__

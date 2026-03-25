@@ -68,8 +68,7 @@ data = ag.Array2D.from_fits(
     file_path=dataset_path / "data.fits", pixel_scales=pixel_scales
 )
 
-array_plotter = aplt.Array2DPlotter(array=data)
-array_plotter.figure_2d()
+aplt.plot_array(array=data, title="Data")
 
 """
 Manually define the extra galaxies mask corresponding to the regions of the image where extra galaxies are located
@@ -90,21 +89,20 @@ data = data.apply_mask(mask=mask)
 Plot the data with the new mask, in order to check that the mask removes the regions of the image corresponding to the
 extra galaxies.
 """
-array_plotter = aplt.Array2DPlotter(array=data)
-array_plotter.figure_2d()
+aplt.plot_array(array=data, title="Data")
 
 """
 __Output__
 
 Output to a .png file for easy inspection.
 """
-mat_plot = aplt.MatPlot2D(
-    output=aplt.Output(
-        path=dataset_path, filename=f"data_mask_extra_galaxies", format="png"
-    )
+aplt.plot_array(
+    array=data,
+    title="Data",
+    output_path=dataset_path,
+    output_filename="data_mask_extra_galaxies",
+    output_format="png",
 )
-array_plotter = aplt.Array2DPlotter(array=data, mat_plot_2d=mat_plot)
-array_plotter.figure_2d()
 
 """
 Output the extra galaxies mask, which will be load and used before a model fit.

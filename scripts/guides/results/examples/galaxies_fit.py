@@ -13,15 +13,6 @@ The galaxies and fit API is described fully in the guides:
 This result example only explains specific functionality for using a `Result` object to inspect galaxies or a fit
 and therefore you should read these guides in detail first.
 
-__Plot Module__
-
-This example uses the plot module to plot the results, including `Plotter` objects that make
-the figures and `MatPlot` objects that wrap matplotlib to customize the figures.
-
-The visualization API is straightforward but is explained in the `autogalaxy_workspace/*/plot` package in full.
-This includes detailed guides on how to customize every aspect of the figures, which can easily be combined with the
-code outlined in this tutorial.
-
 __Units__
 
 In this example, all quantities are **PyAutoGalaxy**'s internal unit coordinates, with spatial coordinates in
@@ -110,10 +101,7 @@ As seen elsewhere in the workspace, the result contains a `max_log_likelihood_ga
 """
 galaxies = result.max_log_likelihood_galaxies
 
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=galaxies, grid=mask.derive_grid.all_false
-)
-galaxies_plotter.subplot_galaxies()
+aplt.subplot_galaxies(galaxies=galaxies, grid=mask.derive_grid.all_false)
 
 """
 This ensures that when interpreting results, the intensities are adjusted to reflect the true non-linear values.
@@ -140,8 +128,7 @@ bulge = galaxies[0].bulge
 bulge_image_2d = bulge.image_2d_from(grid=dataset.grid)
 print(bulge_image_2d.slim[0])
 
-bulge_plotter = aplt.LightProfilePlotter(light_profile=bulge, grid=dataset.grid)
-bulge_plotter.figures_2d(image=True)
+aplt.plot_array(array=bulge.image_2d_from(grid=dataset.grid), title="Image")
 
 
 """
@@ -160,8 +147,7 @@ galaxies = ag.Galaxies(galaxies=instance.galaxies)
 
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 Fin.

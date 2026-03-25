@@ -64,8 +64,7 @@ masked_dataset = dataset.apply_mask(mask=mask)
 
 masked_dataset = masked_dataset.apply_over_sampling(over_sample_size_lp=1)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=masked_dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=masked_dataset)
 
 """
 __Masked Image Grid__
@@ -133,13 +132,6 @@ This is to ensure that a user does not plot and interpret the intensity of a lin
 physical quantity. Plotting only works after a linear light profile has had its `intensity` computed via linear
 algebra.
 
-Uncomment and run the code below to see the exception.
-"""
-print("This will raise an exception")
-
-# bulge_plotter = aplt.LightProfilePlotter(light_profile=bulge, grid=masked_dataset.grid)
-
-"""
 __LightProfileLinearObjFuncList__
 
 For standard light profiles, we combined our linear light profiles into a single `Galaxy` object. The 
@@ -430,8 +422,7 @@ mapped_reconstructed_operated_data = ag.Array2D(
     values=mapped_reconstructed_operated_data, mask=mask
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=mapped_reconstructed_operated_data)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=mapped_reconstructed_operated_data, title="Image")
 
 
 """
@@ -477,8 +468,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Array2D(values=chi_squared_map, mask=mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=chi_squared_map)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=chi_squared_map, title="Image")
 
 
 """
@@ -525,8 +515,7 @@ fit = ag.FitImaging(
 fit_log_evidence = fit.log_evidence
 print(fit_log_evidence)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 The fit contains an `Inversion` object, which handles all the linear algebra we have covered in this script.

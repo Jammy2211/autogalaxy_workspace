@@ -26,15 +26,6 @@ analysis you have done.
 in the central regions of the image, 4x4 further out and 1x1 beyond that.
 
 This guide will explain why these choices were made for the default over-sampling behaviour.
-
-__Plot Module__
-
-This example uses the plot module to plot the results, including `Plotter` objects that make
-the figures and `MatPlot` objects that wrap matplotlib to customize the figures.
-
-The visualization API is straightforward but is explained in the `autogalaxy_workspace/*/plot` package in full.
-This includes detailed guides on how to customize every aspect of the figures, which can easily be combined with the
-code outlined in this tutoriag.
 """
 
 # %matplotlib inline
@@ -67,10 +58,7 @@ grid_sub_1 = ag.Grid2D.uniform(
 We now plot the grid, over laying a uniform grid of pixels to illustrate the area of each pixel within which we
 want light profile intensities to be computed.
 """
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Grid Without Over-Sampling"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid_sub_1, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d(plot_grid_lines=True)
+aplt.plot_grid(grid=grid_sub_1, title="Grid Without Over-Sampling", plot_grid_lines=True)
 
 """
 We now create and plot a uniform grid which does over-sample the pixels, by inputting `over_sample_size=2`.
@@ -111,10 +99,7 @@ intensity within each pixel if there is a significant gradient in intensity with
 
 In the code below, it is the input `plot_over_sampled_grid=True` which ensures we plot the over sampled grid.
 """
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Grid With 2x2 Over-Sampling"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid_sub_2, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d(plot_grid_lines=True, plot_over_sampled_grid=True)
+aplt.plot_grid(grid=grid_sub_2, title="Grid With 2x2 Over-Sampling", plot_grid_lines=True, plot_over_sampled_grid=True)
 
 """
 __Numerics__
@@ -175,19 +160,11 @@ light = ag.lp.Sersic(
 image_sub_1 = light.image_2d_from(grid=grid_sub_1)
 image_sub_2 = light.image_2d_from(grid=grid_sub_2)
 
-plotter = aplt.Array2DPlotter(
-    array=image_sub_1,
-)
-plotter.set_title("Image of Sersic Profile")
-plotter.figure_2d()
+aplt.plot_array(array=image_sub_1, title="Image of Sersic Profile")
 
 residual_map = image_sub_2 - image_sub_1
 
-plotter = aplt.Array2DPlotter(
-    array=residual_map,
-)
-plotter.set_title("Over-Sampling Residuals")
-plotter.figure_2d()
+aplt.plot_array(array=residual_map, title="Over-Sampling Residuals")
 
 
 """
@@ -206,12 +183,7 @@ to compute the fractional residuals.
 """
 fractional_residual_map = residual_map / image_sub_2
 
-plotter = aplt.Array2DPlotter(
-    array=fractional_residual_map,
-)
-plotter.set_title("Fractional Residuals")
-
-plotter.figure_2d()
+aplt.plot_array(array=fractional_residual_map, title="Fractional Residuals")
 
 """
 The fractional residuals in the centre exceed 0.1, or 10%, which is a significant error in the image and
@@ -235,19 +207,11 @@ image_sub_32 = light.image_2d_from(grid=grid_sub_32)
 
 residual_map = image_sub_32 - image_sub_16
 
-plotter = aplt.Array2DPlotter(
-    array=residual_map,
-)
-plotter.set_title("Over-Sampling Residuals (32 vs 16)")
-plotter.figure_2d()
+aplt.plot_array(array=residual_map, title="Over-Sampling Residuals (32 vs 16)")
 
 fractional_residual_map = residual_map / image_sub_32
 
-plotter = aplt.Array2DPlotter(
-    array=fractional_residual_map,
-)
-plotter.set_title("Fractional Residuals (32 vs 16)")
-plotter.figure_2d()
+aplt.plot_array(array=fractional_residual_map, title="Fractional Residuals (32 vs 16)")
 
 """
 __Adaptive Over Sampling__
@@ -285,10 +249,7 @@ grid_adaptive = ag.Grid2D.no_mask(
     over_sample_size=over_sample_size,
 )
 
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Adaptive Over-Sampling"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid_adaptive, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d(plot_grid_lines=True, plot_over_sampled_grid=True)
+aplt.plot_grid(grid=grid_adaptive, title="Adaptive Over-Sampling", plot_grid_lines=True, plot_over_sampled_grid=True)
 
 print(over_sample_size)
 
@@ -310,10 +271,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 grid_adaptive = ag.Grid2D(values=grid, mask=mask, over_sample_size=over_sample_size)
 
-mat_plot = aplt.MatPlot2D(title=aplt.Title(label="Adaptive Over-Sampling"))
-
-grid_plotter = aplt.Grid2DPlotter(grid=grid_adaptive, mat_plot_2d=mat_plot)
-grid_plotter.figure_2d(plot_grid_lines=True, plot_over_sampled_grid=True)
+aplt.plot_grid(grid=grid_adaptive, title="Adaptive Over-Sampling", plot_grid_lines=True, plot_over_sampled_grid=True)
 
 """
 We can compare this adaptive grid to the grid with over sampling of 32 x 32 to confine it produces low amounts
@@ -326,12 +284,7 @@ residual_map = image_adaptive - image_sub_32
 
 fractional_residual_map = residual_map / image_sub_32
 
-plotter = aplt.Array2DPlotter(
-    array=fractional_residual_map,
-)
-
-plotter.set_title("Adaptive Fractional Residuals")
-plotter.figure_2d()
+aplt.plot_array(array=fractional_residual_map, title="Adaptive Fractional Residuals")
 
 """
 __Default Over-Sampling__

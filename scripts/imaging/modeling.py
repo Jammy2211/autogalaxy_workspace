@@ -65,15 +65,14 @@ dataset = ag.Imaging.from_fits(
 )
 
 """
-Use an `ImagingPlotter` the plot the data, including: 
+Use an `Imaging` the plot the data, including: 
 
  - `data`: The image of the strong lens.
  - `noise_map`: The noise-map of the image, which quantifies the noise in every pixel as their RMS values.
  - `psf`: The point spread function of the image, which describes the blurring of the image by the telescope optics.
  - `signal_to_noise_map`: Quantifies the signal-to-noise in every pixel.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -95,8 +94,7 @@ galaxy.
 The mask used to fit the data can be customized, as described in 
 the script `autogalaxy_workspace/*/modeling/imaging/customize/custom_mask.py`
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Over Sampling__
@@ -126,8 +124,7 @@ values in the centre.
 Whilst you may not yet understand the details of over-sampling, you can at least track it visually in the plots
 and later learnt more about it in the `over_sampling.ipynb` guide.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Model__
@@ -392,13 +389,9 @@ The `Result` object also contains:
 """
 print(result.max_log_likelihood_instance)
 
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp
-)
-galaxies_plotter.subplot()
+aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The result contains the full posterior information of our non-linear search, including all parameter samples, 

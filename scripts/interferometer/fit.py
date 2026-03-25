@@ -66,12 +66,11 @@ dataset = ag.Interferometer.from_fits(
 )
 
 """
-The `InterferometerPlotter` contains a subplot which plots all the key properties of the dataset simultaneously.
+The `Interferometer` contains a subplot which plots all the key properties of the dataset simultaneously.
 
 This includes the observed visibility data, RMS noise map and other information.
 """
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_interferometer_dataset(dataset=dataset)
 
 """
 Visibility data is in uv space, making it hard to interpret by eye.
@@ -79,7 +78,6 @@ Visibility data is in uv space, making it hard to interpret by eye.
 The dirty images of the interferometer dataset can plotted, which use the transformer of the interferometer
 to map the visibilities, noise-map or other quantity to a real-space image.
 """
-dataset_plotter.subplot_dirty_images()
 
 """
 __Fitting__
@@ -111,9 +109,7 @@ observed image.
 We can plot the image of the galaxies to confirm this, noting that its images are always in real space
 (not Fourier space like the interferometer dataset) and therefore they can be directly visualized.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=dataset.grid)
-galaxies_plotter.set_title("Galaxies Image")
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=dataset.grid), title="Image")
 
 """
 However, the galaxy image is not what we observe in the interferometer dataset, because we observe the image as
@@ -129,8 +125,8 @@ on the galaxy image above and plots the result visibilities in uv-space.
 """
 fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.figures_2d(model_data=True)
+aplt.plot_array(array=fit.dirty_image, title="Dirty Image")
+
 
 """
 The visibilities are again hard to interpret by eye, so we can plot the dirty image of the fit's model data. This
@@ -140,8 +136,7 @@ convolved with it).
 """
 fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.figures_2d(dirty_image=True)
+aplt.plot_array(array=fit.dirty_image, title="Dirty Image")
 
 """
 The fit does a lot more than just Fourier transform the galaxy image it also creates the following:
@@ -153,8 +148,8 @@ The fit does a lot more than just Fourier transform the galaxy image it also cre
 For a good galaxy model where the model and galaxies are representative of the dataset
 residuals, normalized residuals and chi-squareds are minimized:
 """
+aplt.plot_array(array=fit.residual_map.real, title="Residual Map (Real)")
 fit_plotter.figures_2d(
-    residual_map_real=True,
     residual_map_imag=True,
     normalized_residual_map_real=True,
     normalized_residual_map_imag=True,
@@ -167,13 +162,7 @@ A subplot can be plotted which contains all of the above quantities, as well as 
 galaxies such as the image and a normalized residual map where the colorbar
 goes from 1.0 sigma to -1.0 sigma, to highlight regions where the fit is poor.
 """
-fit_plotter.subplot_fit()
-
-"""
-Once again, dirty images are often easier to interpret, so we can plot a subplot of the dirty images of the data, model
-data, residuals and chi-squared.
-"""
-fit_plotter.subplot_fit_dirty_images()
+aplt.subplot_fit_interferometer(fit=fit)
 
 """
 The fit also provides us with a ``log_likelihood``, a single value quantifying how good the galaxies fitted the dataset.
@@ -209,9 +198,7 @@ A new fit using this galaxies shows residuals, normalized residuals and chi-squa
 """
 fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.subplot_fit()
-fit_plotter.subplot_fit_dirty_images()
+aplt.subplot_fit_interferometer(fit=fit)
 
 """
 We also note that its likelihood decreases.
@@ -281,13 +268,13 @@ The `FitInterferometer` object has specific quantities which break down each ima
 
  - `galaxy_model_visibilities_dict`: A dictionary which maps each galaxy in the galaxies to its model visibilities.
 
- - `galaxy_model_image_dict`: A dictionary which maps the model images of each galaxy.
+ - `galaxy_image_dict`: A dictionary which maps the model images of each galaxy.
 
 These are not the dirty images, but instead the images of each galaxy that come from the galaxies object
 (e.g. simply evaluating the galaxies image on the interferometer's real-space grid).
 """
 print(fit.galaxy_model_visibilities_dict[galaxy].slim)
-print(fit.galaxy_model_image_dict[galaxy].slim)
+print(fit.galaxy_image_dict[galaxy].slim)
 
 """
 __Outputting Results__
@@ -297,7 +284,7 @@ You may wish to output certain results to .fits files for later inspection.
 For example, one could output the galaxy model image to a .fits file such that
 we could fit this image again with an independent pipeline.
 """
-galaxy_model_image = fit.galaxy_model_image_dict[galaxy]
+galaxy_model_image = fit.galaxy_image_dict[galaxy]
 galaxy_model_image.output_to_fits(
     file_path=dataset_path / "galaxy_model_image.fits", overwrite=True
 )

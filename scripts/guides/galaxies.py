@@ -4,15 +4,6 @@ Galaxies
 
 This tutorial shows how to use galaxies, including visualizing and extracting their individual light profiles.
 
-__Plot Module__
-
-This example uses the plot module to plot the results, including `Plotter` objects that make
-the figures and `MatPlot` objects that wrap matplotlib to customize the figures.
-
-The visualization API is straightforward but is explained in the `autogalaxy_workspace/*/plot` package in full.
-This includes detailed guides on how to customize every aspect of the figures, which can easily be combined with the
-code outlined in this tutorial.
-
 __Units__
 
 In this example, all quantities are **PyAutoGalaxy**'s internal unit coordinates, with spatial coordinates in
@@ -60,8 +51,7 @@ grid = ag.Grid2D.uniform(
     pixel_scales=0.1,  # The pixel-scale describes the conversion from pixel units to arc-seconds.
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=grid, title="Grid")
 
 """
 __Light Profiles__
@@ -90,10 +80,7 @@ image = sersic_light_profile.image_2d_from(grid=grid)
 The PyAutoGalaxy plot module provides methods for plotting objects and their properties, like 
 the `LightProfile`'s image.
 """
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=sersic_light_profile, grid=grid
-)
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Image")
 
 """
 __Galaxies__
@@ -129,8 +116,7 @@ The **PyAutoGalaxy** plot module provides methods for plotting galaxies.
 
 Below, we plot its image, which is the sum of the bulge and disk components.
 """
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Image")
 
 """
 __Galaxies__
@@ -170,9 +156,8 @@ The image of all galaxies summed can easily be computed from this object.
 """
 image = galaxies.image_2d_from(grid=grid)
 
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-galaxies_plotter.figures_2d(image=True)
-galaxies_plotter.subplot_galaxy_images()
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
+aplt.subplot_galaxies(galaxies=galaxies, grid=grid)
 
 """
 __Log10__
@@ -185,12 +170,7 @@ logarithm of its values and plot it in log10 space.
 The `MatPlot2D` object has an input `use_log10`, which will do this automatically when we call the `figures_2d` method.
 Below, we can see that the image plotted now appears more clearly, with the outskirts of the light profile more visible.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=galaxies,
-    grid=grid,
-    mat_plot_2d=aplt.MatPlot2D(use_log10=True),
-)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image", use_log10=True)
 
 """
 __Extending Objects__
@@ -239,8 +219,7 @@ galaxies = ag.Galaxies(galaxies=[galaxy_0, galaxy_1])
 """
 This is what the merging galaxies look like:
 """
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 
 """
 __Data Structures Slim / Native__
@@ -292,10 +271,9 @@ It is more concise to extract these quantities in one line of Python:
 bulge_0_image_2d = galaxies[0].bulge.image_2d_from(grid=grid)
 
 """
-The `LightProfilePlotter` makes it straight forward to extract and plot an individual light profile component.
+It is straight forward to extract and plot an individual light profile component.
 """
-bulge_plotter = aplt.LightProfilePlotter(light_profile=galaxies[0].bulge, grid=grid)
-bulge_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].bulge.image_2d_from(grid=grid), title="Image")
 
 """
 __Galaxies__
@@ -309,11 +287,10 @@ galaxy_0 = galaxies[0]
 galaxy_0_image_2d = galaxy_0.image_2d_from(grid=grid)
 
 """
-We can also use the `GalaxyPlotter` to plot the galaxy, for example a subplot of each individual light profile 
+We can also plot the galaxy, for example a subplot of each individual light profile 
 image (which because this galxy is only a single bulge, is a single image).
 """
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy_0, grid=grid)
-galaxy_plotter.subplot_of_light_profiles(image=True)
+aplt.plot_array(array=galaxy_0.image_2d_from(grid=grid), title="Image")
 
 """
 __Galaxies Composition__

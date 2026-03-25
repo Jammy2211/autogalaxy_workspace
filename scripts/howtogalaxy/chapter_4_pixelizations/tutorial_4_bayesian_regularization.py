@@ -22,6 +22,7 @@ conceptually challenging!
 from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.inversion_plots import subplot_of_mapper
 
 """
 __Initial Setup__
@@ -76,11 +77,8 @@ galaxy = ag.Galaxy(redshift=1.0, pixelization=pixelization)
 
 fit = perform_fit_with_galaxy(dataset=dataset, galaxy=galaxy)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
-
-inversion_plotter = aplt.InversionPlotter(inversion=fit.inversion)
-inversion_plotter.figures_2d_of_pixelization(pixelization_index=0, reconstruction=True)
+aplt.subplot_fit_imaging(fit=fit)
+subplot_of_mapper(inversion=fit.inversion, mapper_index=0)
 
 """
 __Regularization__
@@ -99,11 +97,8 @@ galaxy = ag.Galaxy(redshift=1.0, pixelization=pixelization)
 
 no_regularization_fit = perform_fit_with_galaxy(dataset=dataset, galaxy=galaxy)
 
-fit_plotter = aplt.FitImagingPlotter(fit=no_regularization_fit)
-fit_plotter.subplot_fit()
-
-inversion_plotter = aplt.InversionPlotter(inversion=no_regularization_fit.inversion)
-inversion_plotter.figures_2d_of_pixelization(pixelization_index=0, reconstruction=True)
+aplt.subplot_fit_imaging(fit=no_regularization_fit)
+subplot_of_mapper(inversion=no_regularization_fit.inversion, mapper_index=0)
 
 """
 So, what is happening here? Why does reducing the `coefficient` do this to our reconstruction? First, we need
@@ -138,11 +133,8 @@ galaxy = ag.Galaxy(redshift=1.0, pixelization=pixelization)
 
 high_regularization_fit = perform_fit_with_galaxy(dataset=dataset, galaxy=galaxy)
 
-fit_plotter = aplt.FitImagingPlotter(fit=high_regularization_fit)
-fit_plotter.subplot_fit()
-
-inversion_plotter = aplt.InversionPlotter(inversion=high_regularization_fit.inversion)
-inversion_plotter.figures_2d_of_pixelization(pixelization_index=0, reconstruction=True)
+aplt.subplot_fit_imaging(fit=high_regularization_fit)
+subplot_of_mapper(inversion=high_regularization_fit.inversion, mapper_index=0)
 
 """
 The figure above shows that we completely remove over-fitting. However, we now fit the image data less poorly,
@@ -232,8 +224,7 @@ print(3988.0716851250163)
 print("New Bayesian Evidence:")
 print(fit.log_evidence)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """ 
 __Detailed Description__

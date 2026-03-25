@@ -83,9 +83,7 @@ grid = ag.Grid2D.uniform(
 """
 We can visualize this grid as a uniform grid of dots, each representing a coordinate where the light is measured.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=grid)
-grid_plotter.set_title("Uniform Grid of Coordinates")
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=grid, title="Uniform Grid of Coordinates")
 
 """
 Each coordinate in the grid corresponds to an arc-second position. Below, we print a few of these coordinates to see 
@@ -150,9 +148,7 @@ The grid is now centered around (0.3", 0.5"). We can plot the shifted grid to se
 *Exercise*: Try shifting the grid to a different center, for example (0.0", 0.0") or (2.0", 3.0"). Observe how the
 center of the grid changes when you adjust the `centre` variable.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=grid_shifted)
-grid_plotter.set_title("Grid Centered Around (0.3, 0.5)")
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=grid_shifted, title="Grid Centered Around (0.3, 0.5)")
 
 """
 Next, we can rotate the grid by an angle `phi` (in degrees). The rotation is counter-clockwise from the positive x-axis.
@@ -184,9 +180,7 @@ The grid has now been rotated 60 degrees counter-clockwise. We can plot it to se
 *Exercise*: Try rotating the grid by a different angle, for example 30 degrees or 90 degrees. Observe how the grid
 changes when you adjust the `angle_degrees` variable.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=grid_rotated)
-grid_plotter.set_title("Grid Rotated 60 Degrees")
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=grid_rotated, title="Grid Rotated 60 Degrees")
 
 """
 Next, we convert the rotated grid to elliptical coordinates using:
@@ -299,13 +293,12 @@ This demonstrates how the geometry of the grid directly influences the appearanc
 *Exercise*: Try changing the values of `centre`, `ell_comps`, `effective_radius`, and `sersic_index` above. 
 Observe how these adjustments change the Sersic profile image.
 """
-array_plotter = aplt.Array2DPlotter(
+aplt.plot_array(
     array=ag.Array2D(
         values=sersic_image, mask=grid.mask
     ),  # The `Array2D` object is discussed below.
+    title="Sersic Image",
 )
-array_plotter.set_title("Sersic Image")
-array_plotter.figure_2d()
 
 """
 Instead of manually handling these transformations, we can use `LightProfile` objects from the `light_profile` 
@@ -334,11 +327,7 @@ so the image will look different. However, the process is the same.
 """
 image = sersic_light_profile.image_2d_from(grid=grid)
 
-array_plotter = aplt.Array2DPlotter(
-    array=image,
-)
-array_plotter.set_title("Sersic Image via Light Profile")
-array_plotter.figure_2d()
+aplt.plot_array(array=image, title="Sersic Image via Light Profile")
 
 """
 The `image` is returned as an `Array2D` object. Similar to a `Grid2D`, it has two forms:
@@ -354,15 +343,11 @@ print("Intensity of pixel 1:")
 print(image.slim[1])
 
 """
-To visualize the light profile's image, we use a `LightProfilePlotter`.
+We can visualize the light profile's image.
 
 We provide it with the light profile and the grid, which are used to create and plot the image.
 """
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=sersic_light_profile, grid=grid
-)
-light_profile_plotter.set_title("Image via LightProfilePlotter")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Image via LightProfile")
 
 """
 __One Dimension Projection__
@@ -430,13 +415,7 @@ scale. This approach helps highlight details in the faint outskirts of a light p
 The `MatPlot2D` object has a `use_log10` option that applies this transformation automatically. Below, you can see 
 that the image plotted in log10 space reveals more details.
 """
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=sersic_light_profile,
-    grid=grid,
-    mat_plot_2d=aplt.MatPlot2D(use_log10=True),
-)
-light_profile_plotter.set_title("Sersic Image")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Sersic Image", use_log10=True)
 
 """
 __Galaxies__
@@ -490,19 +469,12 @@ print("Intensity of `Grid2D` pixel 2:")
 print(image.native[0, 2])
 print("...")
 
-array_plotter = aplt.Array2DPlotter(
-    array=image,
-)
-array_plotter.set_title("Bulge+Disk Image via Galaxy")
-array_plotter.figure_2d()
+aplt.plot_array(array=image, title="Bulge+Disk Image via Galaxy")
 
 """
-We can use a `GalaxyPlotter` to plot the galaxy's image, just like how we used `LightProfilePlotter` for a light 
-profile.
+We can plot the galaxy's image, just like how we did for a light profile.
 """
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid)
-galaxy_plotter.set_title("Galaxy Bulge+Disk Image")
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Galaxy Bulge+Disk Image")
 
 """
 The bulge dominates the center of the image, and is pretty much the only luminous emission we see can see on a linear
@@ -510,8 +482,7 @@ scale. The disk's emission is present, but it is much fainter and spread over a 
 
 We can confirm this using the `subplot_of_light_profiles` method, which plots each individual light profile separately.
 """
-galaxy_plotter.set_title("Galaxy Bulge+Disk Subplot")
-galaxy_plotter.subplot_of_light_profiles(image=True)
+aplt.subplot_galaxy_light_profiles(galaxy=galaxy, grid=grid)
 
 """
 Because galaxy light distributions often follow a log10 pattern, plotting in log10 space helps reveal details in the 
@@ -519,11 +490,7 @@ outskirts of the light profile, in this case the emission of the disk.
 
 This is especially helpful to separate the bulge and disk profiles, which have different intensities and sizes.
 """
-galaxy_plotter = aplt.GalaxyPlotter(
-    galaxy=galaxy, grid=grid, mat_plot_2d=aplt.MatPlot2D(use_log10=True)
-)
-galaxy_plotter.set_title("Galaxy Bulge+Disk Image")
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Galaxy Bulge+Disk Image", use_log10=True)
 
 """
 Using the tools above, we can visualize each light profile's contribution in 1D.
@@ -581,15 +548,14 @@ For example, `image_2d_from` sums the images of all the galaxies.
 image = galaxies.image_2d_from(grid=grid)
 
 """
-We can plot the combined image using a `GalaxiesPlotter`, just like with other plotters.
+We can plot the combined image using a `Galaxies`, just like with other plotters.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 
 """
 A subplot of each individual galaxy image can also be created.
 """
-galaxies_plotter.subplot_galaxy_images()
+aplt.subplot_galaxies(galaxies=galaxies, grid=grid)
 
 """
 Because galaxy light distributions often follow a log10 pattern, plotting in log10 space helps reveal details in the 
@@ -597,10 +563,7 @@ outskirts of the light profile.
 
 This is especially helpful when visualizing how multiple galaxies overlap.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=galaxies, grid=grid, mat_plot_2d=aplt.MatPlot2D(use_log10=True)
-)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image", use_log10=True)
 
 """
 __Unit Conversion__
@@ -633,10 +596,7 @@ plot ticks.
 """
 units = aplt.Units(ticks_convert_factor=kpc_per_arcsec, ticks_label=" kpc")
 
-mat_plot = aplt.MatPlot2D(units=units)
-
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=grid, mat_plot_2d=mat_plot)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Image")
 
 """
 __Wrap Up__

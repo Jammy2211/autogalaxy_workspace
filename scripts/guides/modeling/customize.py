@@ -71,10 +71,7 @@ mask = ag.Mask2D.circular_annular(
 
 dataset = dataset.apply_mask(mask=mask)  # <----- The custom mask is used here!
 
-visuals = aplt.Visuals2D(mask=mask)
-
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, visuals_2d=visuals)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 We can also load the mask from a .fits file, which could have been produced in a way which is even more customized
@@ -102,10 +99,7 @@ mask = ag.Mask2D.from_fits(
 
 dataset = dataset.apply_mask(mask=mask)  # <----- The custom mask is used here!
 
-visuals = aplt.Visuals2D(mask=mask)
-
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, visuals_2d=visuals)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Over Sampling__

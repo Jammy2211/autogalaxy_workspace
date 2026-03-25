@@ -37,6 +37,7 @@ from pathlib import Path
 
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.mapper_plots import plot_mapper, subplot_image_and_mapper
 
 """
 __Mesh Shape__
@@ -64,12 +65,11 @@ dataset = ag.Imaging.from_fits(
 )
 
 """
-I will use in-built visualization tools for plotting. 
+I will use in-built visualization tools for plotting.
 
-For example, using the `ImagingPlotter` I can plot the imaging dataset we performed a likelihood evaluation on.
+For example, using the `Imaging` I can plot the imaging dataset we performed a likelihood evaluation on.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -92,8 +92,7 @@ masked_dataset = dataset.apply_mask(mask=mask)
 """
 When we plot the masked imaging, only the circular masked region is shown.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=masked_dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=masked_dataset)
 
 """
 __Over Sampling__
@@ -123,8 +122,7 @@ does not).
 Each (y,x) coordinate coordinates to the centre of each image-pixel in the dataset, meaning that when this grid is
 used to construct a pixelization there is a straight forward mapping between the image data and pixelization pixels.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=masked_dataset.grids.pixelization)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=masked_dataset.grids.pixelization, title="Pixelization Grid")
 
 """
 __Galaxy__
@@ -197,14 +195,9 @@ Plotting the rectangular mesh shows that the source-plane has been discretized i
 Below, we plot the rectangular mesh without the image-grid pixels (for clarity) and with them as black dots in order
 to show how each set of image-pixels fall within a rectangular pixel.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-mapper_plotter.figure_2d()
+plot_mapper(mapper=mapper)
 
-visuals = aplt.Visuals2D(
-    grid=mapper.source_plane_data_grid,
-)
-mapper_plotter = aplt.MapperPlotter(mapper=mapper, visuals_2d=visuals)
-mapper_plotter.figure_2d()
+plot_mapper(mapper=mapper, mesh_grid=mapper.source_plane_data_grid)
 
 """
 The `Mapper` contains:
@@ -235,13 +228,7 @@ This array can be used to visualize how an input list of image-pixel indexes map
 It also shows that image-pixel indexing begins from the top-left and goes rightwards and downwards, accounting for 
 all image-pixels which are not masked.
 """
-visuals = aplt.Visuals2D(indexes=[list(range(2050, 2090))])
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper,
-    visuals_2d=visuals,
-)
-mapper_plotter.subplot_image_and_mapper(image=masked_dataset.data)
+subplot_image_and_mapper(mapper=mapper, image=masked_dataset.data)
 
 """
 The reverse mappings of pixelization pixels to image-pixels can also be used.
@@ -250,14 +237,7 @@ pix_indexes = [[200]]
 
 indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
 
-visuals = aplt.Visuals2D(indexes=indexes)
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper,
-    visuals_2d=visuals,
-)
-
-mapper_plotter.subplot_image_and_mapper(image=masked_dataset.data)
+subplot_image_and_mapper(mapper=mapper, image=masked_dataset.data)
 
 """
 __Interpolation__
@@ -348,8 +328,7 @@ print(indexes_pix_200[0])
 
 array_2d = ag.Array2D(values=mapping_matrix[:, 200], mask=masked_dataset.mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Image")
 
 """
 __Blurred Mapping Matrix ($f$)__
@@ -390,8 +369,7 @@ print(indexes_pix_200[0])
 
 array_2d = ag.Array2D(values=blurred_mapping_matrix[:, 200], mask=masked_dataset.mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Image")
 
 """
 In Warren & Dye 2003 (https://arxiv.org/abs/astro-ph/0302587) the `blurred_mapping_matrix` is denoted $f_{ij}$
@@ -501,15 +479,13 @@ array_2d = ag.Array2D(
     values=blurred_mapping_matrix[:, source_pixel_0], mask=masked_dataset.mask
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Image")
 
 array_2d = ag.Array2D(
     values=blurred_mapping_matrix[:, source_pixel_1], mask=masked_dataset.mask
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Image")
 
 """
 The following chi-squared is minimized when we perform the inversion and reconstruct the galaxy:
@@ -543,9 +519,7 @@ reconstructed.
 In fact, the linear inversion is (over-)fitting noise in the image data, meaning this system of equations is 
 ill-posed. We need to apply some form of smoothing on the reconstruction to avoid over fitting noise.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-
-mapper_plotter.figure_2d(solution_vector=reconstruction)
+plot_mapper(mapper=mapper, solution_vector=reconstruction)
 
 """
 __Regularization Matrix (H)__
@@ -625,9 +599,7 @@ which actually looks like the star forming clumps in the galaxy imaging data!
 
 This also implies we are not over-fitting the noise.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-
-mapper_plotter.figure_2d(solution_vector=reconstruction)
+plot_mapper(mapper=mapper, solution_vector=reconstruction)
 
 """
 __Image Reconstruction__
@@ -645,8 +617,7 @@ mapped_reconstructed_operated_data = ag.Array2D(
     values=mapped_reconstructed_operated_data, mask=mask
 )
 
-array_2d_plotter = aplt.Array2DPlotter(array=mapped_reconstructed_operated_data)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=mapped_reconstructed_operated_data, title="Image")
 
 """
 __Likelihood Function__
@@ -694,8 +665,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Array2D(values=chi_squared_map, mask=mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=chi_squared_map)
-array_2d_plotter.figure_2d()
+aplt.plot_array(array=chi_squared_map, title="Image")
 
 """
 __Regularization Term__
@@ -799,8 +769,7 @@ fit = ag.FitImaging(
 fit_log_evidence = fit.log_evidence
 print(fit_log_evidence)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 __Galaxy Modeling__

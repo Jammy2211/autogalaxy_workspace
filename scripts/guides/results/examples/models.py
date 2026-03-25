@@ -96,8 +96,7 @@ for dataset_list, galaxies_list in zip(dataset_gen, galaxies_gen):
     fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
     galaxies = fit.galaxies_linear_light_profiles_to_light_profiles
 
-    galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-    galaxies_plotter.figures_2d(convergence=True, potential=True)
+    aplt.subplot_galaxies(galaxies=galaxies, grid=grid)
 
 """
 __Luminosity Example__

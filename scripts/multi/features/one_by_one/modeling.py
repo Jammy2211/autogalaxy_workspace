@@ -95,8 +95,7 @@ dataset_list = [
 ]
 
 for dataset in dataset_list:
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -118,8 +117,7 @@ dataset_list = [
 ]
 
 for dataset in dataset_list:
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Analysis__
@@ -179,13 +177,8 @@ print(result.max_log_likelihood_instance)
 """
 Plotting the result's galaxy shows it at this wavelength.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp
-)
-galaxies_plotter.subplot_galaxies()
-
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp)
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 __Second Dataset Bulge Model Fixed__

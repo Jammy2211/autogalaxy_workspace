@@ -62,7 +62,7 @@ dataset = ag.Interferometer.from_fits(
 """
 This guide uses in-built visualization tools for plotting. 
 
-For example, using the `InterferometerPlotter` the dataset we perform a likelihood evaluation on is plotted.
+For example, using the `Interferometer` the dataset we perform a likelihood evaluation on is plotted.
 
 The `subplot_dataset` displays the visibilities in the uv-plane, which are the raw data of the interferometer
 dataset. These are what will ultimately be directly fitted in the Fourier space.
@@ -72,9 +72,7 @@ using an inverse Fourier transform to convert these to real-space. These dirty i
 visualization of the dirty images are often used in radio interferometry to show the data in a way that is more
 interpretable to the human eye.
 """
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
-dataset_plotter.subplot_dirty_images()
+aplt.subplot_interferometer_dataset(dataset=dataset)
 
 """
 __Over Sampling__
@@ -99,8 +97,7 @@ Each (y,x) coordinate coordinates to the centre of each image-pixel in the datas
 used to evaluate a light profile the intensity of the profile at the centre of each image-pixel is computed, making
 it straight forward to compute the light profile's image to the image data.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=dataset.grids.lp)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=dataset.grids.lp, title="Grid")
 
 print(f"(y,x) coordinates of first ten unmasked image-pixels {dataset.grid[0:9]}")
 
@@ -133,8 +130,7 @@ transformed_grid = profile.transformed_to_reference_frame_grid_from(
     grid=dataset.grids.lp
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=transformed_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=transformed_grid, title="Grid")
 print(
     f"transformed coordinates of first ten unmasked image-pixels {transformed_grid[0:9]}"
 )
@@ -193,13 +189,11 @@ implicitly).
 """
 image_2d_bulge = bulge.image_2d_from(grid=dataset.grid)
 
-bulge_plotter = aplt.LightProfilePlotter(light_profile=bulge, grid=dataset.grid)
-bulge_plotter.figures_2d(image=True)
+aplt.plot_array(array=bulge.image_2d_from(grid=dataset.grid), title="Image")
 
 image_2d_disk = disk.image_2d_from(grid=dataset.grid)
 
-disk_plotter = aplt.LightProfilePlotter(light_profile=disk, grid=dataset.grid)
-disk_plotter.figures_2d(image=True)
+aplt.plot_array(array=disk.image_2d_from(grid=dataset.grid), title="Image")
 
 """
 __Galaxy__
@@ -224,8 +218,7 @@ This computes the `image` of each light profile and adds them together.
 """
 galaxy_image_2d = galaxy.image_2d_from(grid=dataset.grid)
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxy, grid=dataset.grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxy.image_2d_from(grid=dataset.grid), title="Image")
 
 """
 If you are familiar with imaging data, you may have seen that a `blurring_image` of pixels surrounding the mask,
@@ -252,8 +245,7 @@ uv-plane coordinate.
 If you are not familiar with interferometer data and the uv-plane, you will need to read up on interferometry to
 fully understand how this likelihood function works.
 """
-grid_2d_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-grid_2d_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Grid")
 
 
 """
@@ -299,8 +291,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Visibilities(visibilities=chi_squared_map)
 
-grid_2d_plotter = aplt.Grid2DPlotter(grid=chi_squared_map.in_grid)
-grid_2d_plotter.figure_2d()
+aplt.plot_grid(grid=chi_squared_map.in_grid, title="Grid")
 
 """
 __Noise Normalization Term__
@@ -336,8 +327,7 @@ fit = ag.FitInterferometer(dataset=dataset, galaxies=galaxies)
 fit_figure_of_merit = fit.figure_of_merit
 print(fit_figure_of_merit)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_interferometer(fit=fit)
 
 
 """

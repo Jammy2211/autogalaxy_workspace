@@ -101,8 +101,7 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -115,14 +114,13 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 
 """
 __Over Sampling__
 
-Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via 
+Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via
 the `autogalaxy_workspace/*/guides/over_sampling.ipynb` notebook.
 """
 over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
@@ -134,8 +132,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Basis__
@@ -183,13 +180,12 @@ __Gaussians__
 The `Basis` is composed of many Gaussians, each with different sizes (the `sigma` value) and therefore capturing
 emission on different scales.
 
-These Gaussians are visualized below using a `BasisPlotter`, which shows that the Gaussians expand in size as the
+These Gaussians are visualized below using `aplt.subplot_basis_image`, which shows that the Gaussians expand in size as the
 sigma value increases, in log10 increments.
 """
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
-basis_plotter = aplt.BasisPlotter(basis=bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=bulge, grid=grid)
 
 
 """
@@ -259,18 +255,16 @@ By plotting the fit, we see that the MGE does a reasonable job at capturing the 
 
 Given that there was no non-linear search to determine the optimal values of the Gaussians this is a pretty good fit!
 """
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
-We can use the `BasisPlotter` to plot each individual Gaussian in the reconstructed basis.
+We can use `aplt.subplot_basis_image` to plot each individual Gaussian in the reconstructed basis.
 
 This plot shows each Gaussian has a unique positive `intensity` that was solved for via linear algebra.
 """
 galaxies = fit.model_obj_linear_light_profiles_to_light_profiles
 
-basis_plotter = aplt.BasisPlotter(basis=galaxies[0].bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=galaxies[0].bulge, grid=grid)
 
 """
 __Intensities__

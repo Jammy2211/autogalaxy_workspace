@@ -129,16 +129,22 @@ __Visualize__
 
 Output a subplot of the simulated dataset, the image and the galaxies quantities to the dataset path as .png files.
 """
-mat_plot = aplt.MatPlot2D(output=aplt.Output(path=dataset_path, format="png"))
-
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, mat_plot_2d=mat_plot)
-dataset_plotter.subplot_dataset()
-dataset_plotter.figures_2d(data=True)
-
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=galaxies, grid=grid, mat_plot_2d=mat_plot
+aplt.subplot_imaging_dataset(
+    dataset=dataset, output_path=dataset_path, output_format="png"
 )
-galaxies_plotter.subplot()
+aplt.plot_array(
+    array=dataset.data,
+    title="Data",
+    output_path=dataset_path,
+    output_format="png",
+)
+
+aplt.subplot_galaxies(
+    galaxies=galaxies,
+    grid=grid,
+    output_path=dataset_path,
+    output_format="png",
+)
 
 """
 __Plane Output__
