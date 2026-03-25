@@ -189,12 +189,11 @@ emission on different scales, with low coefficients corresponding to smooth feat
 corresponding to more variable wave-like features. The size of the coefficients is determined by the input 
 parameter `beta`, where larger values correspond to larger coefficients and therefore larger shapelets.
 
-These coefficients are visualized below using a `BasisPlotter`.
+These coefficients are visualized below using `aplt.subplot_basis_image`.
 """
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
-basis_plotter = aplt.BasisPlotter(basis=bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=bulge, grid=grid)
 
 
 """
@@ -299,14 +298,13 @@ source galaxy's light.
 aplt.subplot_fit_imaging(fit=fit)
 
 """
-We can use the `BasisPlotter` to plot each individual shapelet in the reconstructed basis.
+We can use `aplt.subplot_basis_image` to plot each individual shapelet in the reconstructed basis.
 
 This plot shows each shapelet has a unique `intensity` that was solved for via linear algebra.
 """
 galaxies = fit.model_obj_linear_light_profiles_to_light_profiles
 
-basis_plotter = aplt.BasisPlotter(basis=galaxies[0].bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=galaxies[0].bulge, grid=grid)
 
 """
 __Intensities__
@@ -372,8 +370,7 @@ bulge = ag.lp_basis.Basis(profile_list=shapelets_bulge_list)
 
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
-basis_plotter = aplt.BasisPlotter(basis=bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=bulge, grid=grid)
 
 """
 For fitting, we again use the linear light profile version of the Cartesian shapelets, which solves for the
@@ -410,8 +407,7 @@ aplt.subplot_fit_imaging(fit=fit)
 
 galaxies = fit.model_obj_linear_light_profiles_to_light_profiles
 
-basis_plotter = aplt.BasisPlotter(basis=galaxies[0].bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=galaxies[0].bulge, grid=grid)
 
 """
 __Wrap Up__

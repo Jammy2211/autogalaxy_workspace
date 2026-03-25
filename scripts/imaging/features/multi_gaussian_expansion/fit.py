@@ -180,13 +180,12 @@ __Gaussians__
 The `Basis` is composed of many Gaussians, each with different sizes (the `sigma` value) and therefore capturing
 emission on different scales.
 
-These Gaussians are visualized below using a `BasisPlotter`, which shows that the Gaussians expand in size as the
+These Gaussians are visualized below using `aplt.subplot_basis_image`, which shows that the Gaussians expand in size as the
 sigma value increases, in log10 increments.
 """
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
-basis_plotter = aplt.BasisPlotter(basis=bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=bulge, grid=grid)
 
 
 """
@@ -259,14 +258,13 @@ Given that there was no non-linear search to determine the optimal values of the
 aplt.subplot_fit_imaging(fit=fit)
 
 """
-We can use the `BasisPlotter` to plot each individual Gaussian in the reconstructed basis.
+We can use `aplt.subplot_basis_image` to plot each individual Gaussian in the reconstructed basis.
 
 This plot shows each Gaussian has a unique positive `intensity` that was solved for via linear algebra.
 """
 galaxies = fit.model_obj_linear_light_profiles_to_light_profiles
 
-basis_plotter = aplt.BasisPlotter(basis=galaxies[0].bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=galaxies[0].bulge, grid=grid)
 
 """
 __Intensities__

@@ -121,6 +121,21 @@ To enable HPC mode (disables GUI, reduces logging): set `hpc_mode: true` in `con
 
 Notebooks in `notebooks/` are generated from the Python files in `scripts/`. **Always edit the `.py` scripts**, not the notebooks directly. The `# %%` marker alternates between code and markdown cells.
 
+### Building Notebooks
+
+Notebooks are generated from Python scripts using `generate.py` from the `PyAutoBuild` repo. Run from the workspace root:
+
+```bash
+PYTHONPATH=../PyAutoBuild/autobuild python3 ../PyAutoBuild/autobuild/generate.py autogalaxy
+```
+
+This converts every `.py` file in `scripts/` to a `.ipynb` in `notebooks/` by:
+1. Converting triple-quoted docstrings into `# %%` Jupyter cell markers
+2. Running `ipynb-py-convert` to produce `.ipynb` files
+3. Restoring commented Jupyter magic commands (e.g. `# %matplotlib` → `%matplotlib`)
+
+Use the `/generate_and_merge` skill to build notebooks, commit, push, raise a PR, and merge into `main`.
+
 ## Output
 
 Results are written to `output/` under a path determined by `path_prefix`, `name`, and `unique_tag` passed to the search. The unique identifier is hash-based on the model + search + dataset, so re-running the same configuration resumes from existing results automatically.

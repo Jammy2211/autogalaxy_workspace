@@ -359,8 +359,7 @@ bulge = ag.lp_basis.Basis(profile_list=shapelets_bulge_list)
 
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
-basis_plotter = aplt.BasisPlotter(basis=bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=bulge, grid=grid)
 
 """
 __Cartesian Shapelets__
@@ -395,8 +394,7 @@ aplt.subplot_fit_imaging(fit=fit)
 
 galaxies = fit.model_obj_linear_light_profiles_to_light_profiles
 
-basis_plotter = aplt.BasisPlotter(basis=galaxies[0].bulge, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=galaxies[0].bulge, grid=grid)
 
 """
 __Model__

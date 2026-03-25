@@ -5,7 +5,7 @@ Plots: Plotters
 This example illustrates the API for plotting using standalone functions, which enable quick visualization of all
 key quantities.
 
-The new plotting API replaces class-based plotters (e.g. `ImagingPlotter`, `FitImagingPlotter`) with standalone
+The new plotting API replaces class-based plotters (e.g. `Imaging`, `FitImaging`) with standalone
 functions that are simpler to call and require less boilerplate code.
 
 __Start Here Notebook__

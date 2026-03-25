@@ -47,7 +47,7 @@ dataset = ag.Imaging.from_fits(
 """
 This guide uses in-built visualization tools for plotting. 
 
-For example, using the `ImagingPlotter` the imaging dataset we perform a likelihood evaluation on is plotted.
+For example, using the `Imaging` the imaging dataset we perform a likelihood evaluation on is plotted.
 """
 aplt.subplot_imaging_dataset(dataset=dataset)
 

@@ -26,15 +26,6 @@ analysis you have done.
 in the central regions of the image, 4x4 further out and 1x1 beyond that.
 
 This guide will explain why these choices were made for the default over-sampling behaviour.
-
-__Plot Module__
-
-This example uses the plot module to plot the results, including `Plotter` objects that make
-the figures and `MatPlot` objects that wrap matplotlib to customize the figures.
-
-The visualization API is straightforward but is explained in the `autogalaxy_workspace/*/plot` package in full.
-This includes detailed guides on how to customize every aspect of the figures, which can easily be combined with the
-code outlined in this tutoriag.
 """
 
 # %matplotlib inline

@@ -62,7 +62,7 @@ dataset = ag.Interferometer.from_fits(
 """
 This guide uses in-built visualization tools for plotting. 
 
-For example, using the `InterferometerPlotter` the dataset we perform a likelihood evaluation on is plotted.
+For example, using the `Interferometer` the dataset we perform a likelihood evaluation on is plotted.
 
 The `subplot_dataset` displays the visibilities in the uv-plane, which are the raw data of the interferometer
 dataset. These are what will ultimately be directly fitted in the Fourier space.

@@ -109,7 +109,7 @@ print(mask)  # 1 = True, meaning the pixel is masked. Edge pixels are indeed mas
 print(mask[48:53, 48:53])  # Central pixels are `False` and therefore unmasked.
 
 """
-We can visualize the mask over the galaxy image using an `ImagingPlotter`, which helps us adjust the mask as needed. 
+We can visualize the mask over the galaxy image using an `Imaging`, which helps us adjust the mask as needed. 
 This is useful to ensure that the mask appropriately covers the galaxy's light and does not exclude important regions.
 
 To overlay objects like a mask onto a figure, we use the `Visuals2D` object. This tool allows us to add custom 
@@ -442,7 +442,7 @@ As a rule of thumb:
 - A difference in log likelihood of **5.0** indicates a preference at the **3.0 sigma** level.
 - A difference in log likelihood of **10.0** suggests a preference at the **5.0 sigma** level.
 
-All these metrics can be visualized together using the `FitImagingPlotter` object, which offers a comprehensive 
+All these metrics can be visualized together using the `FitImaging` object, which offers a comprehensive 
 overview of the fit quality.
 """
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)

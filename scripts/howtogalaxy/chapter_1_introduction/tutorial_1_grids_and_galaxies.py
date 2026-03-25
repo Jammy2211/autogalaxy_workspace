@@ -343,11 +343,11 @@ print("Intensity of pixel 1:")
 print(image.slim[1])
 
 """
-To visualize the light profile's image, we use a `LightProfilePlotter`.
+We can visualize the light profile's image.
 
 We provide it with the light profile and the grid, which are used to create and plot the image.
 """
-aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Image via LightProfilePlotter")
+aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Image via LightProfile")
 
 """
 __One Dimension Projection__
@@ -472,8 +472,7 @@ print("...")
 aplt.plot_array(array=image, title="Bulge+Disk Image via Galaxy")
 
 """
-We can use a `GalaxyPlotter` to plot the galaxy's image, just like how we used `LightProfilePlotter` for a light 
-profile.
+We can plot the galaxy's image, just like how we did for a light profile.
 """
 aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Galaxy Bulge+Disk Image")
 
@@ -549,7 +548,7 @@ For example, `image_2d_from` sums the images of all the galaxies.
 image = galaxies.image_2d_from(grid=grid)
 
 """
-We can plot the combined image using a `GalaxiesPlotter`, just like with other plotters.
+We can plot the combined image using a `Galaxies`, just like with other plotters.
 """
 aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 

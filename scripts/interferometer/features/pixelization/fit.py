@@ -110,6 +110,7 @@ from pathlib import Path
 
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.inversion_plots import subplot_of_mapper, subplot_mappings
 
 """
 __Mask__
@@ -250,22 +251,13 @@ aplt.subplot_fit_interferometer(fit=fit)
 Pixelizations have bespoke visualizations which show more details about the reconstruction, image-mesh
 and other quantities.
 
-These plots use an `InversionPlotter`, which gets its name from the internals of how pixelizations are performed in
-the source code, where the linear algebra process which computes the pixel fluxes is called an inversion.
-
-The `subplot_mappings` overlays colored circles in the image and reconstruction planes that map to one another.
-"""
-inversion_plotter = fit_plotter.inversion_plotter
-inversion_plotter.subplot_of_mapper(mapper_index=0)
-inversion_plotter.subplot_mappings(pixelization_index=0)
-
-"""
-The inversion can be extracted directly from the fit the perform these plots, which we also use below
-for various calculations
+The `subplot_of_mapper` function produces a comprehensive diagnostic subplot for the inversion. The
+`subplot_mappings` overlays colored circles in the image and reconstruction planes that map to one another.
 """
 inversion = fit.inversion
 
-aplt.subplot_of_mapper(mapper_index=0, inversion=inversion)
+subplot_of_mapper(inversion=inversion, mapper_index=0)
+subplot_mappings(inversion=inversion, pixelization_index=0)
 
 """
 __Wrap Up__

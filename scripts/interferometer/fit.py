@@ -66,7 +66,7 @@ dataset = ag.Interferometer.from_fits(
 )
 
 """
-The `InterferometerPlotter` contains a subplot which plots all the key properties of the dataset simultaneously.
+The `Interferometer` contains a subplot which plots all the key properties of the dataset simultaneously.
 
 This includes the observed visibility data, RMS noise map and other information.
 """

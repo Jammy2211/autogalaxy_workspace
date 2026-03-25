@@ -20,6 +20,7 @@ of this tutorial, where the process of reconstructing the galaxy's light on the 
 from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.inversion_plots import subplot_of_mapper
 
 """
 __Initial Setup__
@@ -93,13 +94,13 @@ print(inversion.reconstruction)
 print(inversion.mapped_reconstructed_operated_data)
 
 """
-Both of these can be plotted using an `InversionPlotter`.
+Both of these can be plotted using `subplot_of_mapper`.
 
 It is possible for an inversion to have multiple `Mapper`'s, therefore for certain figures we specify the index 
 of the mapper we wish to plot. In this case, because we only have one mapper we specify the index 0.
 """
 aplt.plot_array(array=inversion.reconstruction_to_native, title="Reconstruction")
-aplt.subplot_of_mapper(mapper_index=0, inversion=inversion)
+subplot_of_mapper(inversion=inversion, mapper_index=0)
 
 """
 There we have it, we have successfully reconstructed the galaxy using a rectangular pixel-grid. This has reconstructed

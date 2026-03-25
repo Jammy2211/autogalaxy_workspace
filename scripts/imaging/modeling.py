@@ -65,7 +65,7 @@ dataset = ag.Imaging.from_fits(
 )
 
 """
-Use an `ImagingPlotter` the plot the data, including: 
+Use an `Imaging` the plot the data, including: 
 
  - `data`: The image of the strong lens.
  - `noise_map`: The noise-map of the image, which quantifies the noise in every pixel as their RMS values.

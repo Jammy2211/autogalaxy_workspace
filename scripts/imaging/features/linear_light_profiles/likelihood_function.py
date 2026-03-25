@@ -132,13 +132,6 @@ This is to ensure that a user does not plot and interpret the intensity of a lin
 physical quantity. Plotting only works after a linear light profile has had its `intensity` computed via linear
 algebra.
 
-Uncomment and run the code below to see the exception.
-"""
-print("This will raise an exception")
-
-# bulge_plotter = aplt.LightProfilePlotter(light_profile=bulge, grid=masked_dataset.grid)
-
-"""
 __LightProfileLinearObjFuncList__
 
 For standard light profiles, we combined our linear light profiles into a single `Galaxy` object. The 
