@@ -45,8 +45,7 @@ Lets inspect an image which conforms to **PyAutoGalaxy** standards:
 """
 data = ag.Array2D.from_fits(file_path=dataset_path / "data.fits", pixel_scales=0.1)
 
-array_plotter = aplt.Array2DPlotter(array=data)
-array_plotter.figure_2d()
+aplt.plot_array(array=data, title="Image")
 
 """
 This image conforms to **PyAutoGalaxy** standards for the following reasons.
@@ -81,8 +80,7 @@ noise_map = ag.Array2D.from_fits(
     file_path=dataset_path / "noise_map.fits", pixel_scales=0.1
 )
 
-array_plotter = aplt.Array2DPlotter(array=noise_map)
-array_plotter.figure_2d()
+aplt.plot_array(array=noise_map, title="Image")
 
 """
 This noise-map conforms to **PyAutoGalaxy** standards for the following reasons:
@@ -125,8 +123,7 @@ psf = ag.Convolver.from_fits(
     file_path=dataset_path / "psf.fits", hdu=0, pixel_scales=0.1
 )
 
-array_plotter = aplt.Array2DPlotter(array=psf.kernel)
-array_plotter.figure_2d()
+aplt.plot_array(array=psf.kernel, title="Image")
 
 """
 This psf conforms to **PyAutoGalaxy** standards for the following reasons.

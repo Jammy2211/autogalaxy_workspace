@@ -71,13 +71,11 @@ a fast way to visualize the result.
 
 It also contains the maximum log likelihood galaxies.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(
+aplt.subplot_galaxies(
     galaxies=result.max_log_likelihood_galaxies, grid=mask.derive_grid.all_false
 )
-galaxies_plotter.subplot()
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 __Samples__

@@ -75,28 +75,21 @@ extra_galaxies_centres = ag.Grid2DIrregular(values=[(1.0, 3.5), (-2.0, -3.5)])
 """
 Plot the image and extra galaxy centres, so we can check that the centre overlaps the galaxy light.
 """
-visuals = aplt.Visuals2D(light_profile_centres=extra_galaxies_centres)
-
-array_plotter = aplt.Array2DPlotter(
-    array=data, visuals_2d=visuals, mat_plot_2d=aplt.MatPlot2D()
-)
-array_plotter.figure_2d()
+aplt.plot_array(array=data, title="Data", light_profile_centres=extra_galaxies_centres)
 
 """
 __Output__
 
 Save this as a .png image in the dataset folder for easy inspection later.
 """
-mat_plot = aplt.MatPlot2D(
-    output=aplt.Output(
-        path=dataset_path, filename="data_with_extra_galaxies", format="png"
-    )
+aplt.plot_array(
+    array=data,
+    title="Data",
+    light_profile_centres=extra_galaxies_centres,
+    output_path=dataset_path,
+    output_filename="data_with_extra_galaxies",
+    output_format="png",
 )
-
-array_plotter = aplt.Array2DPlotter(
-    array=data, visuals_2d=visuals, mat_plot_2d=mat_plot
-)
-array_plotter.figure_2d()
 
 """
 Output the extra galaxy centres to the dataset folder of the galaxy, so that we can load them from a .json file 

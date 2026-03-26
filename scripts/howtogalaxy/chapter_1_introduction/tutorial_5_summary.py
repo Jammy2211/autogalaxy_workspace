@@ -83,17 +83,15 @@ print(galaxies[1].bulge)
 print()
 
 """
-Once we have galaxies, we can therefore use any of the `Plotter` objects throughout this chapter to plot
-any specific aspect, whether it be a profile, galaxy or galaxies. 
+Once we have defined the galaxies, we can plot any quantity introduced throughout this chapter for a specific component, 
+a single galaxy, or multiple galaxies as needed.
 
 For example, if we want to plot the image of the first galaxy's bulge and disk, we can do this in a variety of 
 different ways.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxies[0], grid=grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].image_2d_from(grid=grid), title="Image")
 
 """
 Understanding how these objects decompose into the different components of a galaxy is important for general 
@@ -105,17 +103,9 @@ profiles, galaxies and galaxies to extract different pieces of information about
 For example, we made our galaxy above with two light profiles, a `bulge` and `disk`. We can plot the image of 
 each component individually, now that we know how to break-up the different components of the galaxies.
 """
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=galaxies[0].bulge, grid=grid
-)
-light_profile_plotter.set_title("Bulge Image")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].bulge.image_2d_from(grid=grid), title="Bulge Image")
 
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=galaxies[0].disk, grid=grid
-)
-light_profile_plotter.set_title("Disk Image")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].disk.image_2d_from(grid=grid), title="Disk Image")
 
 """
 __Visualization__
@@ -136,14 +126,7 @@ mat_plot = aplt.MatPlot2D(
 
 visuals = aplt.Visuals2D(origin=(0.0, 0.0))
 
-light_profile_plotter = aplt.LightProfilePlotter(
-    light_profile=galaxies[0].bulge,
-    grid=grid,
-    mat_plot_2d=mat_plot,
-    visuals_2d=visuals,
-)
-light_profile_plotter.set_title("Bulge Image")
-light_profile_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].bulge.image_2d_from(grid=grid), title="Bulge Image")
 
 """
 And, we're done, not just with the tutorial, but the chapter!

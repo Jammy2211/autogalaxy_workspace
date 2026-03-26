@@ -38,6 +38,7 @@ from pathlib import Path
 
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.mapper_plots import plot_mapper, subplot_image_and_mapper
 
 """
 __Mesh Shape__
@@ -81,7 +82,7 @@ dataset = ag.Interferometer.from_fits(
 """
 This guide uses in-built visualization tools for plotting. 
 
-For example, using the `InterferometerPlotter` the dataset we perform a likelihood evaluation on is plotted.
+For example, using the `Interferometer` the dataset we perform a likelihood evaluation on is plotted.
 
 The `subplot_dataset` displays the visibilities in the uv-plane, which are the raw data of the interferometer
 dataset. These are what will ultimately be directly fitted in the Fourier space.
@@ -91,9 +92,7 @@ using an inverse Fourier transform to convert these to real-space. These dirty i
 visualization of the dirty images are often used in radio interferometry to show the data in a way that is more
 interpretable to the human eye.
 """
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
-dataset_plotter.subplot_dirty_images()
+aplt.subplot_interferometer_dataset(dataset=dataset)
 
 """
 __Over Sampling__
@@ -119,8 +118,7 @@ does not).
 Each (y,x) coordinate coordinates to the centre of each image-pixel in the dataset, meaning that when this grid is
 used to construct a pixelization there is a straight forward mapping between the image data and pixelization pixels.
 """
-grid_plotter = aplt.Grid2DPlotter(grid=dataset.grids.pixelization)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=dataset.grids.pixelization, title="Grid")
 
 """
 __Galaxy__
@@ -193,14 +191,9 @@ Plotting the rectangular mesh shows that the source-plane has been discretized i
 Below, we plot the rectangular mesh without the image-grid pixels (for clarity) and with them as black dots in order
 to show how each set of image-pixels fall within a rectangular pixel.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-mapper_plotter.figure_2d()
+plot_mapper(mapper=mapper)
 
-visuals = aplt.Visuals2D(
-    grid=mapper.source_plane_data_grid,
-)
-mapper_plotter = aplt.MapperPlotter(mapper=mapper, visuals_2d=visuals)
-mapper_plotter.figure_2d()
+plot_mapper(mapper=mapper, mesh_grid=mapper.source_plane_data_grid)
 
 """
 The `Mapper` contains:
@@ -231,13 +224,7 @@ This array can be used to visualize how an input list of image-pixel indexes map
 It also shows that image-pixel indexing begins from the top-left and goes rightwards and downwards, accounting for 
 all image-pixels which are not masked.
 """
-visuals = aplt.Visuals2D(indexes=[list(range(2050, 2090))])
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper,
-    visuals_2d=visuals,
-)
-mapper_plotter.subplot_image_and_mapper(image=dataset.dirty_image)
+subplot_image_and_mapper(mapper=mapper, image=dataset.dirty_image)
 
 """
 The reverse mappings of pixelization pixels to image-pixels can also be used.
@@ -246,14 +233,7 @@ pix_indexes = [[200]]
 
 indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
 
-visuals = aplt.Visuals2D(indexes=indexes)
-
-mapper_plotter = aplt.MapperPlotter(
-    mapper=mapper,
-    visuals_2d=visuals,
-)
-
-mapper_plotter.subplot_image_and_mapper(image=dataset.dirty_image)
+subplot_image_and_mapper(mapper=mapper, image=dataset.dirty_image)
 
 """
 __Interpolation__
@@ -344,8 +324,7 @@ print(indexes_pix_200[0])
 
 array_2d = ag.Array2D(values=mapping_matrix[:, 200], mask=dataset.mask)
 
-array_2d_plotter = aplt.Array2DPlotter(array=array_2d)
-grid_plotter.figure_2d()
+aplt.plot_array(array=array_2d, title="Mapping Matrix Column")
 
 """
 __Transformed Mapping Matrix ($f$)__
@@ -402,8 +381,7 @@ print(indexes_pix_200[0])
 
 visibilities = ag.Visibilities(visibilities=transformed_mapping_matrix[:, 200])
 
-grid_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Visibilities")
 
 """
 In Warren & Dye 2003 (https://arxiv.org/abs/astro-ph/0302587) the `transformed_mapping_matrix` is denoted $f_{ij}$
@@ -521,15 +499,13 @@ visibilities = ag.Visibilities(
     visibilities=transformed_mapping_matrix[:, source_pixel_0],
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Visibilities")
 
 visibilities = ag.Visibilities(
     visibilities=transformed_mapping_matrix[:, source_pixel_1],
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=visibilities.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=visibilities.in_grid, title="Visibilities")
 
 """
 The following chi-squared is minimized when we perform the inversion and reconstruct the galaxy:
@@ -563,9 +539,7 @@ reconstructed.
 In fact, the linear inversion is (over-)fitting noise in the image data, meaning this system of equations is 
 ill-posed. We need to apply some form of smoothing on the reconstruction to avoid over fitting noise.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-
-mapper_plotter.figure_2d(solution_vector=reconstruction)
+plot_mapper(mapper=mapper, solution_vector=reconstruction)
 
 """
 __Regularization Matrix (H)__
@@ -645,9 +619,7 @@ which actually looks like the star forming clumps in the galaxy imaging data!
 
 This also implies we are not over-fitting the noise.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-
-mapper_plotter.figure_2d(solution_vector=reconstruction)
+plot_mapper(mapper=mapper, solution_vector=reconstruction)
 
 """
 __Visibilities Reconstruction__
@@ -666,8 +638,7 @@ mapped_reconstructed_visibilities = ag.Visibilities(
     visibilities=mapped_reconstructed_visibilities
 )
 
-grid_plotter = aplt.Grid2DPlotter(grid=mapped_reconstructed_visibilities.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=mapped_reconstructed_visibilities.in_grid, title="Mapped Reconstructed Visibilities")
 
 
 """
@@ -733,8 +704,7 @@ The `chi_squared_map` indicates which regions of the image we did and did not fi
 """
 chi_squared_map = ag.Visibilities(visibilities=chi_squared_map)
 
-grid_plotter = aplt.Grid2DPlotter(grid=chi_squared_map.in_grid)
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=chi_squared_map.in_grid, title="Chi-Squared Map")
 
 """
 __Regularization Term__
@@ -840,8 +810,7 @@ fit = ag.FitInterferometer(
 fit_log_evidence = fit.log_evidence
 print(fit_log_evidence)
 
-fit_plotter = aplt.FitInterferometerPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_interferometer(fit=fit)
 
 """
 __Galaxy Modeling__

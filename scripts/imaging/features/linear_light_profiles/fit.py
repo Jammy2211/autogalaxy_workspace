@@ -89,8 +89,7 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -103,13 +102,12 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Over Sampling__
 
-Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via 
+Apply adaptive over sampling to ensure the calculation is accurate, you can read up on over-sampling in more detail via
 the `autogalaxy_workspace/*/guides/over_sampling.ipynb` notebook.
 """
 over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
@@ -121,8 +119,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Fit__
@@ -158,8 +155,7 @@ fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 By plotting the fit, we see that the linear light profiles have solved for `intensity` values that give a good fit
 to the image. 
 """
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 __Intensities__
@@ -211,11 +207,9 @@ used for visualization:
 """
 galaxies = fit.model_obj_linear_light_profiles_to_light_profiles
 
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=dataset.grid)
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=dataset.grid), title="Image")
 
-galaxy_plotter = aplt.GalaxyPlotter(galaxy=galaxies[0], grid=dataset.grid)
-galaxy_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies[0].image_2d_from(grid=dataset.grid), title="Image")
 
 """
 __Wrap Up__

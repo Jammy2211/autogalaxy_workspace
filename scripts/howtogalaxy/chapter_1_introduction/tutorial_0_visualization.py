@@ -2,7 +2,7 @@
 Tutorial 0: Visualization
 =========================
 
-In this tutorial, we quickly cover visualization in **PyAutoGalaxy** and make sure images display clealry in your
+In this tutorial, we quickly cover visualization in **PyAutoGalaxy** and make sure images display clearly in your
 Jupyter notebook and on your computer screen.
 """
 
@@ -16,11 +16,11 @@ import autogalaxy.plot as aplt
 __Directories__
 
 **PyAutoGalaxy assumes** the working directory is `autogalaxy_workspace` on your hard-disk. This is so that it can:
- 
+
  - Load configuration settings from config files in the `autogalaxy_workspace/config` folder.
  - Load example data from the `autogalaxy_workspace/dataset` folder.
- - Output the results of models fits to your hard-disk to the `autogalaxy/output` folder. 
-    
+ - Output the results of models fits to your hard-disk to the `autogalaxy/output` folder.
+
 At the top of every tutorial notebook, you'll see the following cell. This cell uses the project `pyprojroot` to
 locate the path to the workspace on your computer and use it to set the working directory of the notebook.
 """
@@ -42,10 +42,10 @@ use this path in this tutorial!
 """
 __Dataset__
 
-The `dataset_path` specifies where the dataset is located, which is the 
+The `dataset_path` specifies where the dataset is located, which is the
 directory `autogalaxy_workspace/dataset/imaging/simple__sersic`.
 
-There are many example simulated images of galaxies in this directory that will be used throughout the 
+There are many example simulated images of galaxies in this directory that will be used throughout the
 **HowToGalaxy** lectures.
 """
 dataset_path = Path("dataset", "imaging", "simple__sersic")
@@ -61,48 +61,40 @@ dataset = ag.Imaging.from_fits(
 )
 
 """
-We can plot an image as follows:
+We can plot the data as follows:
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 __Plot Customization__
 
-Does the figure display correctly on your computer screen? 
+Does the figure display correctly on your computer screen?
 
-If not, you can customize a number of matplotlib setup options using a `MatPlot2D` object, which 
-wraps the `matplotlib` methods used to display the image.
+If not, you can customize common matplotlib options by passing them directly to `plot_array`:
 
-(For example, the `Figure` class wraps the `matplotlib` method `plt.figure()`, whereas the `YTicks` class wraps
-`plt.yticks`).
+ - `title=`: Set the figure title.
+ - `figsize=`: Control the figure size as a `(width, height)` tuple.
+ - `colormap=`: Set the matplotlib colormap name (e.g. `"jet"`, `"gray"`).
+ - `xlabel=`, `ylabel=`: Override the default axis labels.
 """
-mat_plot = aplt.MatPlot2D(
-    figure=aplt.Figure(figsize=(7, 7)),
-    yticks=aplt.YTicks(fontsize=8),
-    xticks=aplt.XTicks(fontsize=8),
-    title=aplt.Title(fontsize=12),
-    ylabel=aplt.YLabel(fontsize=6),
-    xlabel=aplt.XLabel(fontsize=6),
+aplt.plot_array(
+    array=dataset.data,
+    title="Data",
+    figsize=(7, 7),
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, mat_plot_2d=mat_plot)
-dataset_plotter.figures_2d(data=True)
-
 """
-Many matplotlib options can be customized, but for now we're only concerned with making sure figures display clear in 
-your Jupyter Notebooks. Nevertheless, a comprehensive API reference guide of all `matplotlib` wrappers and methods can 
-be found in the `autogalaxy_workspace/plot` package. You should check this out once you are more familiar with 
+Many matplotlib options can be customized, but for now we're only concerned with making sure figures display clear in
+your Jupyter Notebooks. Nevertheless, a comprehensive API reference guide of all available plot arguments can
+be found in the `autogalaxy_workspace/*/guides/plot` package. You should check this out once you are more familiar with
 **PyAutoGalaxy**.
 
-Ideally, we would not specify a new `MatPlot2D` object every time we plot an image, especially as you would be 
-changing the same option to the same values every time (e.g. the `figsize`) to make the figure display correctly over 
-and over again. Fortunately, the default values can be fully customized via the config files.
+Ideally, we would not specify a `figsize` every time we plot an image. Fortunately, default values can be fully
+customized via the config files.
 
-Checkout the `mat_wrap.yaml`, `mat_wrap_1d.yaml` and `mat_wrap_2d.yaml` files 
-in `autogalaxy_workspace/config/visualize/mat_wrap`.
+Checkout the `mat_wrap.yaml` file in `autogalaxy_workspace/config/visualize/mat_wrap`.
 
-All default matplotlib values are here. There are a lot of entries, so lets focus on whats important for displaying 
+All default matplotlib values are here. There are a lot of entries, so lets focus on whats important for displaying
 figures:
 
  - mat_wrap.yaml -> Figure -> figure: -> figsize
@@ -112,46 +104,30 @@ figures:
  - mat_wrap.yaml -> YTicks -> figure: -> labelsize
  - mat_wrap.yaml -> XTicks -> figure: -> labelsize
 
-Don't worry about all the other files or options listed for now, as they`ll make a lot more sense once you are familiar 
+Don't worry about all the other files or options listed for now, as they'll make a lot more sense once you are familiar
 with **PyAutoGalaxy**.
 
 If you had to change any of the above settings to get the figures to display clearly, you should update their values
-in the corresponding config files above (you will need to reset your Jupyter notebook server for these changes to 
-take effect, so make sure you have the right values using the `mat_plot_2d` object in the cell above beforehand!).
+in the corresponding config files above (you will need to reset your Jupyter notebook server for these changes to
+take effect, so make sure you have the right values using the `figsize` argument in the cell above beforehand!).
 
 __Subplots__
 
-In addition to plotting individual `figures`, **PyAutoGalaxy** can also plot `subplots` which are again customized via
-the `mat_plot` objects.
+In addition to plotting individual figures, **PyAutoGalaxy** can also plot subplots showing all components of a
+dataset simultaneously.
 
 Lets plot a subplot of our `Imaging` data:
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
-
-"""
-Again, we can customize this using a `MatPlot2D`.
-"""
-mat_plot = aplt.MatPlot2D(
-    figure=aplt.Figure(figsize=(7, 7)),
-    yticks=aplt.YTicks(fontsize=8),
-    xticks=aplt.XTicks(fontsize=8),
-    title=aplt.Title(fontsize=12),
-    ylabel=aplt.YLabel(fontsize=6),
-    xlabel=aplt.XLabel(fontsize=6),
-)
-
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, mat_plot_2d=mat_plot)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Visuals__
 
-Visuals can be added to any figure, using standard quantities.
+Visuals can be added to any figure by passing them as keyword arguments directly to `plot_array`.
 
-For example, we can plot a mask on the image above using a `Visuals2D` object.
+For example, we can plot a mask on the image above by passing `mask=mask`.
 
-The `visuals` example illustrates every `Visuals` object, for example `MaskScatter`, `LightProfileCentreScatter`, etc.
+The `visuals` example illustrates every overlay argument, for example `mask=`, `grid=`, `positions=`, `lines=`, etc.
 """
 mask = ag.Mask2D.circular_annular(
     shape_native=dataset.shape_native,
@@ -160,16 +136,13 @@ mask = ag.Mask2D.circular_annular(
     outer_radius=3.0,
 )
 
-visuals = aplt.Visuals2D(mask=mask)
-
-array_plotter = aplt.ImagingPlotter(dataset=dataset, visuals_2d=visuals)
-array_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Data", mask=mask)
 
 """
 __Wrap Up__
 
-Throughout lectures you'll see lots more visuals that are ploted on figures and subplots.
+Throughout lectures you'll see lots more visuals that are plotted on figures and subplots.
 
-Great! Hopefully, visualization in **PyAutoLens** is displaying nicely for us to get on with the **HowToLens** 
+Great! Hopefully, visualization in **PyAutoGalaxy** is displaying nicely for us to get on with the **HowToGalaxy**
 lecture series.
 """

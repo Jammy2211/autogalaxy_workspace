@@ -209,8 +209,7 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -223,8 +222,7 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Model__
@@ -413,11 +411,10 @@ parameters that gave the maximum log likelihood solution.
 
 We plot this object to inspect how good our fit was.
 """
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
-The fit quality is poor, with significant residuals, meaning that the MLE failed to identify the correct model. 
+The fit quality is poor, with significant residuals, meaning that the MLE failed to identify the correct model.
 
 This happened because the starting point of the search was a poor match to the data, placing it far from the true 
 solution in parameter space. As a result, after moving "up" the likelihood gradient several times, the search 
@@ -463,8 +460,7 @@ good model fit with a much higher likelihood than the incorrect model above.
 """
 print(result.info)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The MLE is a great starting point for model-fitting because it’s fast, conceptually simple, and often yields 
@@ -523,8 +519,7 @@ print("The search has finished run - you may now continue the notebook.")
 
 print(result.info)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The MCMC search succeeded, finding the same high-likelihood model that the MLE search with a good starting point 
@@ -633,8 +628,7 @@ print("The search has finished run - you may now continue the notebook.")
 
 print(result.info)
 
-fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The **Nested Sampling** search was successful, identifying the same high-likelihood model as the MLE and MCMC searches. 

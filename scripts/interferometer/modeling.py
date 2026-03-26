@@ -77,9 +77,7 @@ dataset = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
-dataset_plotter = aplt.InterferometerPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
-dataset_plotter.subplot_dirty_images()
+aplt.subplot_interferometer_dataset(dataset=dataset)
 
 """
 __Over Sampling__
@@ -297,14 +295,8 @@ The `Result` object also contains:
 """
 print(result.max_log_likelihood_instance)
 
-galaxies_plotter = aplt.GalaxiesPlotter(
-    galaxies=result.max_log_likelihood_galaxies,
-    grid=real_space_mask.derive_grid.unmasked,
-)
-galaxies_plotter.subplot()
-fit_plotter = aplt.FitInterferometerPlotter(fit=result.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
-fit_plotter.subplot_fit_dirty_images()
+aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=real_space_mask.derive_grid.unmasked)
+aplt.subplot_fit_interferometer(fit=result.max_log_likelihood_fit)
 
 """
 The result contains the full posterior information of our non-linear search, including all parameter samples, 

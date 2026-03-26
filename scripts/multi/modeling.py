@@ -64,8 +64,7 @@ dataset_list = [
 ]
 
 for dataset in dataset_list:
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -88,8 +87,7 @@ dataset_list = [
 ]
 
 for dataset in dataset_list:
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Over Sampling__
@@ -278,13 +276,8 @@ print(result_list[1].max_log_likelihood_instance)
 Plotting each result's galaxies shows that the galaxy appears different, owning to its different intensities.
 """
 for result in result_list:
-    galaxies_plotter = aplt.GalaxiesPlotter(
-        galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp
-    )
-    galaxies_plotter.subplot_galaxies()
-
-    fit_plotter = aplt.FitImagingPlotter(fit=result.max_log_likelihood_fit)
-    fit_plotter.subplot_fit()
+    aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=result.grids.lp)
+    aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The `Samples` object still has the dimensions of the overall non-linear search (in this case N=16). 

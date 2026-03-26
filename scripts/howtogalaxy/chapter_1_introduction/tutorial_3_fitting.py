@@ -79,8 +79,7 @@ print(dataset.noise_map.native[0, 0])
 print("Value of first pixel in PSF:")
 print(dataset.psf.kernel.native[0, 0])
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -110,17 +109,13 @@ print(mask)  # 1 = True, meaning the pixel is masked. Edge pixels are indeed mas
 print(mask[48:53, 48:53])  # Central pixels are `False` and therefore unmasked.
 
 """
-We can visualize the mask over the galaxy image using an `ImagingPlotter`, which helps us adjust the mask as needed. 
+We can visualize the mask over the galaxy image using an `Imaging`, which helps us adjust the mask as needed. 
 This is useful to ensure that the mask appropriately covers the galaxy's light and does not exclude important regions.
 
 To overlay objects like a mask onto a figure, we use the `Visuals2D` object. This tool allows us to add custom 
 visuals to any plot, providing flexibility in creating tailored visual representations.
 """
-visuals = aplt.Visuals2D(mask=mask)
-
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset, visuals_2d=visuals)
-dataset_plotter.set_title("Imaging Data With Mask")
-dataset_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Imaging Data With Mask", mask=mask)
 
 """
 Once we are satisfied with the mask, we apply it to the imaging data using the `apply_mask()` method. This ensures 
@@ -134,9 +129,7 @@ not explicitly pass it using the `Visuals2D` object. The plot also zooms into th
 region where we will focus our analysis. This is particularly helpful when working with large images, as it centers 
 the view on the regions where the galaxy's signal is detected.
 """
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.set_title("Masked Imaging Data")
-dataset_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Masked Imaging Data")
 
 """
 The mask is now stored as an additional attribute of the `Imaging` object, meaning it remains attached to the 
@@ -205,9 +198,7 @@ Below, we plot the masked grid:
 """
 masked_grid = mask.derive_grid.unmasked
 
-grid_plotter = aplt.Grid2DPlotter(grid=masked_grid)
-grid_plotter.set_title("Masked Grid2D")
-grid_plotter.figure_2d()
+aplt.plot_grid(grid=masked_grid, title="Masked Grid2D")
 
 """
 By plotting this masked grid over the galaxy image, we can see that the grid aligns with the unmasked pixels of the 
@@ -216,10 +207,7 @@ image.
 This alignment **is crucial** for accurate fitting because it ensures that when we evaluate a galaxy's light profile, 
 the calculations occur only at positions where we have real data from.
 """
-visuals = aplt.Visuals2D(grid=masked_grid)
-imaging_plotter = aplt.ImagingPlotter(dataset=dataset, visuals_2d=visuals)
-imaging_plotter.set_title("Image Data With 2D Grid Overlaid")
-imaging_plotter.figures_2d(data=True)
+aplt.plot_array(array=dataset.data, title="Image Data With 2D Grid Overlaid")
 
 """
 __Fitting__
@@ -249,9 +237,7 @@ previous tutorials. The difference now is that we use the dataset's `grid`, whic
 we defined earlier. This means that the galaxy image is only evaluated in the unmasked region, skipping calculations 
 in masked regions.
 """
-galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=dataset.grid)
-galaxies_plotter.set_title("Galaxy Image To Be Fitted")
-galaxies_plotter.figures_2d(image=True)
+aplt.plot_array(array=galaxies.image_2d_from(grid=dataset.grid), title="Galaxy Image To Be Fitted")
 
 """
 Now, we proceed to fit the image by passing both the `Imaging` and `Galaxies` objects to a `FitImaging` object. 
@@ -268,10 +254,9 @@ a log_likelihood, which measures how well the model fits the data (higher values
 Let's create the fit and inspect each of these attributes:
 """
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
-fit_imaging_plotter = aplt.FitImagingPlotter(fit=fit)
 
 """
-The `model_data` represents the galaxy's image after accounting for effects like PSF convolution. 
+The `model_data` represents the galaxy's image after accounting for effects like PSF convolution.
 
 An important technical note is that when we mask data, we discussed above how the image of the galaxy is not evaluated
 outside the mask and is set to zero. This is a problem for PSF convolution, as the PSF blurs light from these regions
@@ -283,7 +268,7 @@ that are close enough to the mask edge to be blurred into the mask.
 """
 print("First model image pixel:")
 print(fit.model_data.slim[0])
-fit_imaging_plotter.figures_2d(model_image=True)
+aplt.plot_array(array=fit.model_data, title="Model Image")
 
 """
 Even before computing other fit quantities, we can normally assess if the fit is going to be good by visually comparing
@@ -292,8 +277,8 @@ the `data` and `model_data` and assessing if they look similar.
 In this example, the galaxies used to fit the data are the same as the galaxies used to simulate it, so the two
 look very similar (the only difference is the noise in the image).
 """
-fit_imaging_plotter.figures_2d(data=True)
-fit_imaging_plotter.figures_2d(model_image=True)
+aplt.plot_array(array=dataset.data, title="Data")
+aplt.plot_array(array=fit.model_data, title="Model Image")
 
 """
 The `residual_map` is the different between the observed image and model image, showing where in the image the fit is
@@ -313,7 +298,7 @@ print(residual_map.slim[0])
 print("First residual-map pixel via fit:")
 print(fit.residual_map.slim[0])
 
-fit_imaging_plotter.figures_2d(residual_map=True)
+aplt.plot_array(array=fit.residual_map, title="Residual Map")
 
 """
 Are these residuals indicative of a good fit to the data? Without considering the noise in the data, it's difficult 
@@ -337,7 +322,7 @@ print(normalized_residual_map.slim[0])
 print("First normalized residual-map pixel via fit:")
 print(fit.normalized_residual_map.slim[0])
 
-fit_imaging_plotter.figures_2d(normalized_residual_map=True)
+aplt.plot_array(array=fit.normalized_residual_map, title="Normalized Residual Map")
 
 """
 Next, we define the `chi_squared_map`, which is obtained by squaring the `normalized_residual_map` and serves as a 
@@ -360,7 +345,7 @@ print(chi_squared_map.slim[0])
 print("First chi-squared pixel via fit:")
 print(fit.chi_squared_map.slim[0])
 
-fit_imaging_plotter.figures_2d(chi_squared_map=True)
+aplt.plot_array(array=fit.chi_squared_map, title="Chi-Squared Map")
 
 """
 Now, we consolidate all the information in our `chi_squared_map` into a single measure of goodness-of-fit 
@@ -457,13 +442,12 @@ As a rule of thumb:
 - A difference in log likelihood of **5.0** indicates a preference at the **3.0 sigma** level.
 - A difference in log likelihood of **10.0** suggests a preference at the **5.0 sigma** level.
 
-All these metrics can be visualized together using the `FitImagingPlotter` object, which offers a comprehensive 
+All these metrics can be visualized together using the `FitImaging` object, which offers a comprehensive 
 overview of the fit quality.
 """
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
-fit_bad_imaging_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_bad_imaging_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 If you're familiar with model-fitting, you've likely encountered terms like 'residuals', 'chi-squared', 
@@ -503,8 +487,7 @@ this discrepancy results in increased chi-squared values, which in turn affects 
 """
 fit_bad = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
-fit_bad_imaging_plotter = aplt.FitImagingPlotter(fit=fit_bad)
-fit_bad_imaging_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit_bad)
 
 """
 Next, we can compare the log likelihood of our current model to the log likelihood value we computed previously.
@@ -539,10 +522,7 @@ galaxies = ag.Galaxies(galaxies=[galaxy])
 
 fit_very_bad = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
-fit_very_bad_imaging_plotter = aplt.FitImagingPlotter(
-    fit=fit_very_bad,
-)
-fit_very_bad_imaging_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit_very_bad)
 
 """
 It is now evident that this model provides a terrible fit to the data. The galaxies do not resemble a plausible 
@@ -590,8 +570,7 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 
 """
@@ -626,8 +605,7 @@ galaxies = ag.Galaxies(galaxies=[galaxy])
 
 fit = ag.FitImaging(dataset=dataset, galaxies=galaxies)
 
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 print("Log Likelihood:")
 print(fit.log_likelihood)

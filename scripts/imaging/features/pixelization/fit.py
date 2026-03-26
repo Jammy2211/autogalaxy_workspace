@@ -99,6 +99,7 @@ from pathlib import Path
 import autofit as af
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.inversion_plots import subplot_of_mapper
 
 """
 __Dataset__
@@ -115,8 +116,7 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mask__
@@ -129,8 +129,7 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 
 """
@@ -145,8 +144,7 @@ dataset = dataset.apply_over_sampling(
     over_sample_size_pixelization=4,
 )
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Mesh Shape__
@@ -206,27 +204,17 @@ fit = ag.FitImaging(
 By plotting the fit, we see that the pixelized source does a good job at capturing the appearance of the galaxy
 and fitting the data to roughly the noise level.
 """
-fit_plotter = aplt.FitImagingPlotter(fit=fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=fit)
 
 """
 Pixelizations have bespoke visualizations which show more details about the reconstruction, image-mesh
 and other quantities.
 
-These plots use an `InversionPlotter`, which gets its name from the internals of how pixelizations are performed in
-the source code, where the linear algebra process which computes the source pixel fluxes is called an inversion.
-"""
-inversion_plotter = fit_plotter.inversion_plotter
-inversion_plotter.subplot_of_mapper(mapper_index=0)
-
-"""
-The inversion can be extracted directly from the fit the perform these plots, which we also use below
-for various calculations
+The `subplot_of_mapper` function produces a comprehensive diagnostic subplot for the inversion.
 """
 inversion = fit.inversion
 
-inversion_plotter = aplt.InversionPlotter(inversion=inversion)
-inversion_plotter.subplot_of_mapper(mapper_index=0)
+subplot_of_mapper(inversion=inversion, mapper_index=0)
 
 """
 __Mask Extra Galaxies__
@@ -273,8 +261,7 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 We do not explictly fit this data, for the sake of brevity, however if your data has these nearby galaxies you should

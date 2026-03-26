@@ -57,8 +57,7 @@ psf = ag.Convolver.from_fits(
     file_path=dataset_path / "psf.fits", hdu=0, pixel_scales=0.1
 )
 
-array_plotter = aplt.Array2DPlotter(array=psf.kernel)
-array_plotter.figure_2d()
+aplt.plot_array(array=psf.kernel, title="Image")
 
 """
 This psf conforms to **PyAutoGalaxy** standards for the following reasons.
@@ -100,8 +99,7 @@ psf = ag.Convolver.from_fits(
     file_path=dataset_path / "psf.fits", hdu=0, pixel_scales=0.1
 )
 
-array_plotter = aplt.Array2DPlotter(array=psf.kernel)
-array_plotter.figure_2d()
+aplt.plot_array(array=psf.kernel, title="Image")
 
 """
 We can resize a psf the same way that we resize an image.
@@ -113,8 +111,7 @@ trimmed_psf_kernel = ag.preprocess.array_with_new_shape(
     array=psf.kernel, new_shape=(5, 5)
 )
 
-array_plotter = aplt.Array2DPlotter(array=trimmed_psf_kernel)
-array_plotter.figure_2d()
+aplt.plot_array(array=trimmed_psf_kernel, title="Image")
 
 """
 __PSF Dimensions__

@@ -48,8 +48,7 @@ dataset_path = Path("dataset", "imaging", "simple")
 
 data = ag.Array2D.from_fits(file_path=dataset_path / "data.fits", pixel_scales=0.1)
 
-array_plotter = aplt.Array2DPlotter(array=data)
-array_plotter.figure_2d()
+aplt.plot_array(array=data, title="Image")
 
 """
 This image conforms to **PyAutoGalaxy** standards for the following reasons.
@@ -107,8 +106,7 @@ data_counts = ag.preprocess.array_eps_to_counts(
 By plotting the image in counts, we can see that the flux values are now much higher values (e.g. ~1000 or above)
 compared to the data in electrons per second (e.g. ~1 or below).
 """
-array_plotter = aplt.Array2DPlotter(array=data_counts)
-array_plotter.figure_2d()
+aplt.plot_array(array=data_counts, title="Image")
 
 """
 It is therefore straightforward to convert an image to electrons per second from counts.
@@ -117,8 +115,7 @@ data_eps = ag.preprocess.array_counts_to_eps(
     array_counts=data_counts, exposure_time_map=exposure_time_map
 )
 
-array_plotter = aplt.Array2DPlotter(array=data_eps)
-array_plotter.figure_2d()
+aplt.plot_array(array=data_eps, title="Image")
 
 """
 If the effective exposure-time map is output as part of the data reduction, you can use this to convert the image to 
@@ -136,8 +133,7 @@ format.]
 #     array_counts=data_counts, exposure_time_map=exposure_time_map
 # )
 #
-# array_plotter = aplt.Array2DPlotter(array=data_eps)
-# array_plotter.figure_2d()
+# aplt.plot_array(array=data_eps, title="Image")
 
 """
 **PyAutoGalaxy** can also convert data to / from units of electrons per second to ADUs, which uses both the exposure 
@@ -147,15 +143,13 @@ data_in_adus = ag.preprocess.array_eps_to_adus(
     array_eps=data, gain=4.0, exposure_time_map=exposure_time_map
 )
 
-array_plotter = aplt.Array2DPlotter(array=data_in_adus)
-array_plotter.figure_2d()
+aplt.plot_array(array=data_in_adus, title="Image")
 
 data_eps = ag.preprocess.array_adus_to_eps(
     array_adus=data_in_adus, gain=4.0, exposure_time_map=exposure_time_map
 )
 
-array_plotter = aplt.Array2DPlotter(array=data_eps)
-array_plotter.figure_2d()
+aplt.plot_array(array=data_eps, title="Image")
 
 """
 In `autogalaxy_workspace/*/data_preparation/noise_map.py` we show that a noise-map must also be in units of 
@@ -175,8 +169,7 @@ data_large_stamp = ag.Array2D.from_fits(
     file_path=dataset_path / "data.fits", pixel_scales=0.1
 )
 
-array_plotter = aplt.Array2DPlotter(array=data_large_stamp)
-array_plotter.figure_2d()
+aplt.plot_array(array=data_large_stamp, title="Image")
 
 """
 If you have a large postage stamp you can trim it using the preprocess module, which is centered on the image.
@@ -185,8 +178,7 @@ data_large_stamp_trimmed = ag.preprocess.array_with_new_shape(
     array=data_large_stamp, new_shape=(130, 130)
 )
 
-array_plotter = aplt.Array2DPlotter(array=data_large_stamp_trimmed)
-array_plotter.figure_2d()
+aplt.plot_array(array=data_large_stamp_trimmed, title="Image")
 
 """
 Stamps can also be too small, if the mask you input to the analysis is larger than the postage stamp extends.

@@ -58,10 +58,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-dataset_plotter = aplt.ImagingPlotter(
-    dataset=dataset, visuals_2d=aplt.Visuals2D(mask=mask)
-)
-dataset_plotter.subplot_dataset()
+aplt.subplot_imaging_dataset(dataset=dataset, mask=mask)
 
 """
 __Model__
@@ -204,8 +201,7 @@ print(result_2.info)
 """
 And a plot of the image shows we get a good model again!
 """
-fit_plotter = aplt.FitImagingPlotter(fit=result_2.max_log_likelihood_fit)
-fit_plotter.subplot_fit()
+aplt.subplot_fit_imaging(fit=result_2.max_log_likelihood_fit)
 
 """
 __Wrap Up__

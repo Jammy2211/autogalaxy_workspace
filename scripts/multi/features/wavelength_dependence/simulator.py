@@ -183,8 +183,7 @@ galaxies_list = [ag.Galaxies(galaxies=[galaxy]) for galaxy in galaxy_list]
 Lets look at the images, which are the images we'll be simulating.
 """
 for galaxies, grid in zip(galaxies_list, grid_list):
-    galaxies_plotter = aplt.GalaxiesPlotter(galaxies=galaxies, grid=grid)
-    galaxies_plotter.figures_2d(image=True)
+    aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Image")
 
 """
 We can now pass this simulator galaxies, which creates the image plotted above and simulates it as an
@@ -199,8 +198,7 @@ dataset_list = [
 Plot the simulated `Imaging` dataset before outputting it to fits.
 """
 for dataset in dataset_list:
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset)
-    dataset_plotter.subplot_dataset()
+    aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Output__
@@ -223,24 +221,35 @@ Output a subplot of the simulated dataset, the image and the galaxies quantities
 For a faster run time, the galaxies visualization uses the binned grid instead of the iterative grid.
 """
 for waveband, dataset in zip(waveband_list, dataset_list):
-    mat_plot = aplt.MatPlot2D(
-        output=aplt.Output(path=dataset_path, prefix=f"{waveband}_", format="png")
+    aplt.subplot_imaging_dataset(
+        dataset=dataset,
+        output_path=dataset_path,
+        output_filename=f"{waveband}_subplot_dataset",
+        output_format="png",
     )
-
-    dataset_plotter = aplt.ImagingPlotter(dataset=dataset, mat_plot_2d=mat_plot)
-    dataset_plotter.subplot_dataset()
-    dataset_plotter.figures_2d(data=True)
+    aplt.plot_array(
+        array=dataset.data,
+        title="Data",
+        output_path=dataset_path,
+        output_filename=f"{waveband}_data",
+        output_format="png",
+    )
 
 for waveband, grid, galaxies in zip(waveband_list, grid_list, galaxies_list):
-    mat_plot = aplt.MatPlot2D(
-        output=aplt.Output(path=dataset_path, prefix=f"{waveband}_", format="png")
+    aplt.subplot_galaxies(
+        galaxies=galaxies,
+        grid=grid,
+        output_path=dataset_path,
+        output_filename=f"{waveband}_subplot_galaxies",
+        output_format="png",
     )
-
-    galaxies_plotter = aplt.GalaxiesPlotter(
-        galaxies=galaxies, grid=grid, mat_plot_2d=mat_plot
+    aplt.subplot_galaxies(
+        galaxies=galaxies,
+        grid=grid,
+        output_path=dataset_path,
+        output_filename=f"{waveband}_subplot_galaxy_images",
+        output_format="png",
     )
-    galaxies_plotter.subplot_galaxies()
-    galaxies_plotter.subplot_galaxy_images()
 
 """
 __Galaxies json__
