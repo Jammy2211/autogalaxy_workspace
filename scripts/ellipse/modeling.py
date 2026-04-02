@@ -43,6 +43,7 @@ These are documented fully in the `autogalaxy_workspace/*/guides/data_structures
 import numpy as np
 from pathlib import Path
 import autofit as af
+import autofit.plot as aplt_af
 import autogalaxy as ag
 import autogalaxy.plot as aplt
 
@@ -386,7 +387,7 @@ parameter `n`). These mappings ate specified in the `config/notation.yaml` file 
 The superscripts of labels correspond to the name each component was given in the model (e.g. for the `Isothermal`
 mass its name `mass` defined when making the `Model` above is used).
 """
-plotter = aplt.NestPlotter(samples=result.samples)
+plotter = aplt_af.NestPlotter(samples=result.samples)
 plotter.corner_cornerpy()
 
 """
