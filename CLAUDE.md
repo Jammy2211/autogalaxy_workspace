@@ -28,6 +28,14 @@ Jupyter notebooks mirror the scripts in `notebooks/` and use `# %%` markers to s
 PYAUTOFIT_TEST_MODE=1 python scripts/imaging/modeling.py
 ```
 
+**Codex / sandboxed runs**: when running from Codex or any restricted environment, set writable cache directories so `numba` and `matplotlib` do not fail on unwritable home or source-tree paths:
+
+```bash
+NUMBA_CACHE_DIR=/tmp/numba_cache MPLCONFIGDIR=/tmp/matplotlib python scripts/imaging/modeling.py
+```
+
+This workspace is often imported from `/mnt/c/...` and Codex may not be able to write to module `__pycache__` directories or `/home/jammy/.cache`, which can cause import-time `numba` caching failures without this override.
+
 **Parallelization bug fix**: On Linux/Windows, model fits using JAX + multiprocessing may error unless the fit is wrapped in `if __name__ == "__main__": fit()`. See `scripts/guides/modeling/bug_fix.py` for the pattern.
 
 ## Testing All Scripts
