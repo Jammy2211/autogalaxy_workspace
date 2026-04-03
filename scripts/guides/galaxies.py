@@ -4,15 +4,6 @@ Galaxies
 
 This tutorial shows how to use galaxies, including visualizing and extracting their individual light profiles.
 
-__Plot Module__
-
-This example uses the plot module to plot the results, including `Plotter` objects that make
-the figures and `MatPlot` objects that wrap matplotlib to customize the figures.
-
-The visualization API is straightforward but is explained in the `autogalaxy_workspace/*/plot` package in full.
-This includes detailed guides on how to customize every aspect of the figures, which can easily be combined with the
-code outlined in this tutorial.
-
 __Units__
 
 In this example, all quantities are **PyAutoGalaxy**'s internal unit coordinates, with spatial coordinates in
@@ -280,7 +271,7 @@ It is more concise to extract these quantities in one line of Python:
 bulge_0_image_2d = galaxies[0].bulge.image_2d_from(grid=grid)
 
 """
-The `LightProfilePlotter` makes it straight forward to extract and plot an individual light profile component.
+It is straight forward to extract and plot an individual light profile component.
 """
 aplt.plot_array(array=galaxies[0].bulge.image_2d_from(grid=grid), title="Image")
 
@@ -296,7 +287,7 @@ galaxy_0 = galaxies[0]
 galaxy_0_image_2d = galaxy_0.image_2d_from(grid=grid)
 
 """
-We can also use the `GalaxyPlotter` to plot the galaxy, for example a subplot of each individual light profile 
+We can also plot the galaxy, for example a subplot of each individual light profile 
 image (which because this galxy is only a single bulge, is a single image).
 """
 aplt.plot_array(array=galaxy_0.image_2d_from(grid=grid), title="Image")

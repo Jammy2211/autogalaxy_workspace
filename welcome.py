@@ -77,7 +77,7 @@ sersic_light_profile = ag.lp.Exponential(
     centre=(0.3, 0.2), ell_comps=(0.2, 0.0), intensity=0.05, effective_radius=1.0
 )
 
-light_profile_plotter = aplt.LightProfilePlotter(
+light_profile_plotter = aplt.LightProfile(
     light_profile=sersic_light_profile, grid=grid
 )
 light_profile_plotter.figures_2d(image=True)

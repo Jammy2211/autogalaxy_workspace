@@ -138,7 +138,7 @@ basis = ag.lp_basis.Basis(profile_list=basis_gaussian_list)
 The `Basis` is composed of many Gaussians, each with different sizes (the `sigma` value) and therefore capturing
 emission on different scales.
 
-These Gaussians are visualized below using a `BasisPlotter`, which shows that the Gaussians expand in size as the
+These Gaussians are visualized below using `aplt.subplot_basis_image`, which shows that the Gaussians expand in size as the
 sigma value increases, in log10 increments.
 
 This figure is a brilliant way to visualize the multi-Gaussian expansion, showing the 30 different Gaussian light
@@ -164,8 +164,7 @@ basis_plot = ag.lp_basis.Basis(profile_list=basis_plot_gaussian_list)
 
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
-basis_plotter = aplt.BasisPlotter(basis=basis_plot, grid=grid)
-basis_plotter.subplot_image()
+aplt.subplot_basis_image(basis=basis_plot, grid=grid)
 
 """
 Internally in the source code, linear light profiles have an `intensity` parameter, but its value is always set to 
@@ -195,12 +194,10 @@ algebra.
 
 Uncomment and run the code below to see the exception.
 
-Note that the `BasisPlotter` used above did not raise an exception, because its intended purpose is to visualize
+Note that `aplt.subplot_basis_image` used above did not raise an exception, because its intended purpose is to visualize
 the basis light profiles and not the intensity of the light profiles.
 """
 print("This will raise an exception")
-
-# basis_plotter = aplt.LightProfilePlotter(light_profile=basis, grid=masked_dataset.grid)
 
 """
 __Comparison To Linear Light Profiles Example__

@@ -8,5 +8,4 @@ This is illustrated in the ``overview`` / ``overview.ipynb`` file, where new use
 Files (Advanced)
 ----------------
 
-- ``multi``: Plotting multiple subplots or lines on 1D figures.
-- ``plotters_pixelization``: Plotters for pixelized source inversions.
+- ``plotters_pixelization``: Plots for pixelized source inversions.

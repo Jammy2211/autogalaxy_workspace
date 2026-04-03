@@ -28,6 +28,14 @@ Jupyter notebooks mirror the scripts in `notebooks/` and use `# %%` markers to s
 PYAUTOFIT_TEST_MODE=1 python scripts/imaging/modeling.py
 ```
 
+**Codex / sandboxed runs**: when running from Codex or any restricted environment, set writable cache directories so `numba` and `matplotlib` do not fail on unwritable home or source-tree paths:
+
+```bash
+NUMBA_CACHE_DIR=/tmp/numba_cache MPLCONFIGDIR=/tmp/matplotlib python scripts/imaging/modeling.py
+```
+
+This workspace is often imported from `/mnt/c/...` and Codex may not be able to write to module `__pycache__` directories or `/home/jammy/.cache`, which can cause import-time `numba` caching failures without this override.
+
 **Parallelization bug fix**: On Linux/Windows, model fits using JAX + multiprocessing may error unless the fit is wrapped in `if __name__ == "__main__": fit()`. See `scripts/guides/modeling/bug_fix.py` for the pattern.
 
 ## Testing All Scripts
@@ -120,6 +128,21 @@ To enable HPC mode (disables GUI, reduces logging): set `hpc_mode: true` in `con
 ## Notebooks vs Scripts
 
 Notebooks in `notebooks/` are generated from the Python files in `scripts/`. **Always edit the `.py` scripts**, not the notebooks directly. The `# %%` marker alternates between code and markdown cells.
+
+### Building Notebooks
+
+Notebooks are generated from Python scripts using `generate.py` from the `PyAutoBuild` repo. Run from the workspace root:
+
+```bash
+PYTHONPATH=../PyAutoBuild/autobuild python3 ../PyAutoBuild/autobuild/generate.py autogalaxy
+```
+
+This converts every `.py` file in `scripts/` to a `.ipynb` in `notebooks/` by:
+1. Converting triple-quoted docstrings into `# %%` Jupyter cell markers
+2. Running `ipynb-py-convert` to produce `.ipynb` files
+3. Restoring commented Jupyter magic commands (e.g. `# %matplotlib` → `%matplotlib`)
+
+Use the `/generate_and_merge` skill to build notebooks, commit, push, raise a PR, and merge into `main`.
 
 ## Output
 

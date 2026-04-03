@@ -1,9 +1,9 @@
 """
-Plots: Plotters Pixelization
-============================
+Plots: Pixelization
+===================
 
 This example illustrates the API for plotting pixelized source reconstructions using the new function-based
-plotting API and the dedicated `InversionPlotter` and `MapperPlotter` objects for mesh-specific visualizations.
+plotting API and dedicated functions like `subplot_of_mapper` for mesh-specific visualizations.
 
 __Start Here Notebook__
 
@@ -31,6 +31,8 @@ To illustrate plotting, we require standard objects like a grid, dataset and fit
 from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+from autoarray.inversion.plot.mapper_plots import plot_mapper, subplot_image_and_mapper
+from autoarray.inversion.plot.inversion_plots import subplot_of_mapper
 
 grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
@@ -82,39 +84,19 @@ aplt.plot_array(
 )
 
 """
-__Inversion Plotter__
+__Inversion Plots__
 
-The `InversionPlotter` provides dedicated methods for plotting the properties of an inversion and its mapper.
-
-We can extract an `InversionPlotter` from the fit and use it to plot the reconstruction and regularization weights.
+The `subplot_of_mapper` function provides a comprehensive diagnostic subplot of the inversion properties for
+a single mapper, including the reconstructed image, source reconstruction, noise map and regularization weights.
 """
-inversion_plotter = aplt.InversionPlotter(inversion=inversion)
-inversion_plotter.figures_2d(reconstructed_operated_data=True)
-
-"""
-To plot properties specific to a single pixelization (mapper), we use `figures_2d_of_pixelization`, specifying
-the `pixelization_index` of the mapper we want to plot.
-"""
-inversion_plotter.figures_2d_of_pixelization(
-    pixelization_index=0,
-    reconstructed_operated_data=True,
-    reconstruction=True,
-    reconstruction_noise_map=True,
-    regularization_weights=True,
-)
-
-"""
-The `InversionPlotter` can also produce a subplot of the mapper, showing the image-plane pixels mapped to
-the source-plane pixelization alongside the source-plane reconstruction.
-"""
-aplt.subplot_of_mapper(mapper_index=0, inversion=inversion)
+subplot_of_mapper(inversion=inversion, mapper_index=0)
 
 """
 __Mapper__
 
 The `Mapper` maps image-plane pixels to the source-plane pixelization.
 
-We extract the mapper from the inversion and pass it to a `MapperPlotter`.
+We extract the mapper from the inversion and plot it using `plot_mapper` and `subplot_image_and_mapper`.
 """
 galaxies_to_inversion = ag.GalaxiesToInversion(
     galaxies=galaxies,
@@ -127,22 +109,17 @@ mapper_galaxy_dict = galaxies_to_inversion.mapper_galaxy_dict
 
 mapper = list(mapper_galaxy_dict)[0]
 
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-mapper_plotter.figure_2d()
+plot_mapper(mapper=mapper)
 
 """
 The `Mapper` can also be plotted with a subplot showing the original image alongside the source-plane reconstruction.
 """
-mapper_plotter = aplt.MapperPlotter(mapper=mapper)
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 The indexes of `Mapper` plots can be highlighted to show how certain image pixels map to the source plane.
 """
-visuals = aplt.Visuals2D(indexes=[0, 1, 2, 3, 4])
-
-mapper_plotter = aplt.MapperPlotter(mapper=mapper, visuals_2d=visuals)
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 __Mesh Grids__
@@ -151,35 +128,16 @@ The image and source plane mesh grids, showing the centre of every source pixel,
 """
 image_plane_mesh_grid = mapper.mask.derive_grid.unmasked
 
-visuals_2d = aplt.Visuals2D(mesh_grid=image_plane_mesh_grid)
-
-mapper_plotter = aplt.MapperPlotter(mapper=mapper, visuals_2d=visuals_2d)
-mapper_plotter.subplot_image_and_mapper(image=dataset.data)
+subplot_image_and_mapper(mapper=mapper, image=dataset.data, mesh_grid=image_plane_mesh_grid)
 
 """
-__DelaunayDrawer / VoronoiDrawer__
+__Delaunay__
 
-We can customize the filling of Voronoi cells using the `VoronoiDrawer` object which wraps the
-method `matplotlib.fill()`:
+We can customize the filling of object which wraps the method `matplotlib.fill()`:
 
 https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.fill.html
 """
-delaunay_drawer = aplt.DelaunayDrawer(edgecolor="b", linewidth=1.0, linestyle="--")
-# voronoi_drawer = aplt.VoronoiDrawer(edgecolor="b", linewidth=1.0, linestyle="--")
-
-mat_plot = aplt.MatPlot2D(delaunay_drawer=delaunay_drawer)
-
-inversion_plotter = aplt.InversionPlotter(inversion=inversion, mat_plot_2d=mat_plot)
-
-try:
-    inversion_plotter.figures_2d_of_pixelization(
-        pixelization_index=0, reconstruction=True
-    )
-    inversion_plotter.subplot_of_mapper(mapper_index=0)
-except ImportError:
-    print(
-        "You have not installed the Voronoi natural neighbor interpolation package, see instructions at top of notebook."
-    )
+subplot_of_mapper(inversion=inversion, mapper_index=0)
 
 """
 Finish.

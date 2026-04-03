@@ -83,8 +83,8 @@ print(galaxies[1].bulge)
 print()
 
 """
-Once we have galaxies, we can therefore use any of the `Plotter` objects throughout this chapter to plot
-any specific aspect, whether it be a profile, galaxy or galaxies. 
+Once we have defined the galaxies, we can plot any quantity introduced throughout this chapter for a specific component, 
+a single galaxy, or multiple galaxies as needed.
 
 For example, if we want to plot the image of the first galaxy's bulge and disk, we can do this in a variety of 
 different ways.

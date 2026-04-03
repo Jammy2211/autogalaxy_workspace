@@ -317,7 +317,7 @@ image.
 aplt.plot_array(array=dataset.signal_to_noise_map, title="Signal-To-Noise Map")
 
 """
-The `ImagingPlotter` object can display all of these components together, making it a powerful tool for visualizing 
+The `Imaging` object can display all of these components together, making it a powerful tool for visualizing 
 simulated imaging data.
 
 It also shows the Data and PSF on a logarithmic (log10) scale, which helps highlight the faint details in these 

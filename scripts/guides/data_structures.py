@@ -12,15 +12,6 @@ to be performed internally by **PyAutoGalaxy**.
 These data structures use the `slim` and `native` data representations API to make it simple to map quantities from
 1D dimensions to their native dimensions.
 
-__Plot Module__
-
-This example uses the plot module to plot the results, including `Plotter` objects that make
-the figures and `MatPlot` objects that wrap matplotlib to customize the figures.
-
-The visualization API is straightforward but is explained in the `autogalaxy_workspace/*/plot` package in full.
-This includes detailed guides on how to customize every aspect of the figures, which can easily be combined with the
-code outlined in this tutoriag.
-
 __Units__
 
 In this example, all quantities are **PyAutoGalaxy**'s internal unit coordinates, with spatial coordinates in

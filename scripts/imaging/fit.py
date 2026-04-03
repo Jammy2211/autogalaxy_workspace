@@ -4,15 +4,6 @@ Fits
 
 This guide shows how to fit data using the `FitImaging` object, including visualizing and interpreting its results.
 
-__Plot Module__
-
-This example uses the plot module to plot the results, including `Plotter` objects that make
-the figures and `MatPlot` objects that wrap matplotlib to customize the figures.
-
-The visualization API is straightforward but is explained in the `autogalaxy_workspace/*/plot` package in full.
-This includes detailed guides on how to customize every aspect of the figures, which can easily be combined with the
-code outlined in this tutorial.
-
 __Units__
 
 In this example, all quantities are **PyAutoGalaxy**'s internal unit coordinates, with spatial coordinates in
@@ -71,14 +62,14 @@ dataset = ag.Imaging.from_fits(
 )
 
 """
-We can use the `ImagingPlotter` to plot the image, noise-map and psf of the dataset.
+We can use the `Imaging` to plot the image, noise-map and psf of the dataset.
 """
 aplt.plot_array(array=dataset.data, title="Data")
 aplt.plot_array(array=dataset.noise_map, title="Noise Map")
 aplt.plot_array(array=dataset.psf.kernel, title="PSF")
 
 """
-The `ImagingPlotter` also contains a subplot which plots all these properties simultaneously.
+The `Imaging` also contains a subplot which plots all these properties simultaneously.
 """
 aplt.subplot_imaging_dataset(dataset=dataset)
 
