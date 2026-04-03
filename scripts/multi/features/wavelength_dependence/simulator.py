@@ -206,7 +206,8 @@ __Output__
 Output each simulated dataset to the dataset path as .fits files, with a tag describing its color.
 """
 for waveband, dataset in zip(waveband_list, dataset_list):
-    dataset.output_to_fits(
+    aplt.fits_imaging(
+        dataset=dataset,
         data_path=Path(dataset_path) / f"{waveband}_data.fits",
         psf_path=Path(dataset_path) / f"{waveband}_psf.fits",
         noise_map_path=Path(dataset_path) / f"{waveband}_noise_map.fits",
@@ -224,14 +225,12 @@ for waveband, dataset in zip(waveband_list, dataset_list):
     aplt.subplot_imaging_dataset(
         dataset=dataset,
         output_path=dataset_path,
-        output_filename=f"{waveband}_subplot_dataset",
         output_format="png",
     )
     aplt.plot_array(
         array=dataset.data,
         title="Data",
         output_path=dataset_path,
-        output_filename=f"{waveband}_data",
         output_format="png",
     )
 
@@ -240,14 +239,12 @@ for waveband, grid, galaxies in zip(waveband_list, grid_list, galaxies_list):
         galaxies=galaxies,
         grid=grid,
         output_path=dataset_path,
-        output_filename=f"{waveband}_subplot_galaxies",
         output_format="png",
     )
     aplt.subplot_galaxies(
         galaxies=galaxies,
         grid=grid,
         output_path=dataset_path,
-        output_filename=f"{waveband}_subplot_galaxy_images",
         output_format="png",
     )
 

@@ -66,7 +66,7 @@ We can use the `Imaging` to plot the image, noise-map and psf of the dataset.
 """
 aplt.plot_array(array=dataset.data, title="Data")
 aplt.plot_array(array=dataset.noise_map, title="Noise Map")
-aplt.plot_array(array=dataset.psf, title="PSF")
+aplt.plot_array(array=dataset.psf.kernel, title="PSF")
 
 """
 The `Imaging` also contains a subplot which plots all these properties simultaneously.
@@ -363,8 +363,10 @@ For example, one could output the galaxy subtracted image of the second galaxy t
 we could fit this image again with an independent modeling script.
 """
 galaxy_subtracted_image_2d = fit.subtracted_images_of_galaxies_list[1]
-galaxy_subtracted_image_2d.output_to_fits(
-    file_path=Path(dataset_path, "galaxy_subtracted_data.fits"), overwrite=True
+aplt.fits_array(
+    array=galaxy_subtracted_image_2d,
+    file_path=Path(dataset_path, "galaxy_subtracted_data.fits"),
+    overwrite=True,
 )
 
 """

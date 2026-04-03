@@ -101,7 +101,6 @@ aplt.subplot_imaging_dataset(
 aplt.subplot_fit_imaging(
     fit=fit,
     output_path=dataset_path,
-    output_filename="subplot_fit",
     output_format="png",
 )
 
@@ -109,7 +108,6 @@ aplt.subplot_galaxies(
     galaxies=galaxies,
     grid=grid,
     output_path=dataset_path,
-    output_filename="subplot_galaxies",
     output_format="png",
 )
 

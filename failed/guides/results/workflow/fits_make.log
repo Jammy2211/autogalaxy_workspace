@@ -1,0 +1,37 @@
+Script: guides/results/workflow/fits_make.py
+Exit: 1
+
+2026-04-03 01:20:46,940 - autoarray.dataset.imaging.dataset - INFO - IMAGING - Data masked, contains a total of 2828 image-pixels
+2026-04-03 01:20:47,698 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+2026-04-03 01:20:47,698 - autofit.non_linear.search.abstract_search - INFO - Starting non-linear search with 1 cores.
+2026-04-03 01:20:48,538 - results - INFO - The output path of this fit is /home/user/autogalaxy_workspace/output/results_folder_csv_png_fits/simple_0/results/0c98ec4d6f88be6c8f8a725851b96b4a
+2026-04-03 01:20:48,540 - results - INFO - Fit Already Completed: skipping non-linear search.
+2026-04-03 01:20:48,569 - results - INFO - Removing search internal folder.
+2026-04-03 01:20:48,569 - results - INFO - Removing all files except for .zip file
+2026-04-03 01:20:48,676 - results - INFO - Search complete, returning result
+2026-04-03 01:20:48,685 - autoarray.dataset.imaging.dataset - INFO - IMAGING - Data masked, contains a total of 2828 image-pixels
+2026-04-03 01:20:48,704 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+2026-04-03 01:20:48,705 - autofit.non_linear.search.abstract_search - INFO - Starting non-linear search with 1 cores.
+2026-04-03 01:20:49,334 - results - INFO - The output path of this fit is /home/user/autogalaxy_workspace/output/results_folder_csv_png_fits/simple_1/results/539f11177df7c7942cadb32e1a3cbd5e
+2026-04-03 01:20:49,336 - results - INFO - Fit Already Completed: skipping non-linear search.
+2026-04-03 01:20:49,337 - results - INFO - Removing search internal folder.
+2026-04-03 01:20:49,337 - results - INFO - Removing all files except for .zip file
+2026-04-03 01:20:49,445 - results - INFO - Search complete, returning result
+Aggregator loading search_outputs... could take some time.
+
+ A total of 2 search_outputs and results were found.
+Traceback (most recent call last):
+  File "/home/user/autogalaxy_workspace/scripts/guides/results/workflow/fits_make.py", line 215, in <module>
+    hdu_list = agg_fits.extract_fits(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/aggregator/summary/aggregate_fits.py", line 98, in extract_fits
+    output.extend(self._hdus(result, hdus, extname_prefix))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/aggregator/summary/aggregate_fits.py", line 63, in _hdus
+    source_hdu = source[source.index_of(hdu.value)]
+                        ^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'index_of'

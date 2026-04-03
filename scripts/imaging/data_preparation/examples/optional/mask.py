@@ -117,7 +117,7 @@ mask = ag.Mask2D.circular_annular(
 """
 Now lets plot the image and mask, so we can check that the mask includes the regions of the image we want.
 """
-aplt.plot_array(array=data, title="Data", mask=mask)
+aplt.plot_array(array=data, title="Data")
 
 """
 Output the masked image to clearly show what parts of the source are included.
@@ -136,7 +136,7 @@ aplt.plot_array(
 Now we`re happy with the mask, lets output it to the dataset folder of the galaxy, so that we can load it from a .fits
 file in our pipelines!
 """
-mask.output_to_fits(file_path=Path(dataset_path, "mask.fits"), overwrite=True)
+aplt.fits_array(array=mask, file_path=Path(dataset_path, "mask.fits"), overwrite=True)
 
 """
 The workspace also includes a GUI for drawing a mask, which can be found at 

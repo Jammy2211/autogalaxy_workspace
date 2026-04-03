@@ -77,7 +77,7 @@ dataset = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
-aplt.subplot_interferometer_dataset(dataset=dataset)
+aplt.subplot_interferometer_dirty_images(dataset=dataset)
 
 """
 __Over Sampling__
@@ -296,7 +296,7 @@ The `Result` object also contains:
 print(result.max_log_likelihood_instance)
 
 aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=real_space_mask.derive_grid.unmasked)
-aplt.subplot_fit_interferometer(fit=result.max_log_likelihood_fit)
+aplt.subplot_fit_dirty_images(fit=result.max_log_likelihood_fit)
 
 """
 The result contains the full posterior information of our non-linear search, including all parameter samples, 
@@ -310,8 +310,6 @@ parameter `n`). These mappings ate specified in the `config/notation.yaml` file 
 The superscripts of labels correspond to the name each component was given in the model (e.g. for the `Isothermal`
 mass its name `mass` defined when making the `Model` above is used).
 """
-plotter = aplt.NestPlotter(samples=result.samples)
-plotter.corner_cornerpy()
 
 """
 This script gives a concise overview of the basic modeling API, fitting one of the simplest galaxy models possible.

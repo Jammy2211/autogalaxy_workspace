@@ -49,7 +49,7 @@ mask = ag.Mask2D.circular(
 
 dataset = dataset.apply_mask(mask=mask)
 
-aplt.subplot_imaging_dataset(dataset=dataset, mask=mask)
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Over Sampling__

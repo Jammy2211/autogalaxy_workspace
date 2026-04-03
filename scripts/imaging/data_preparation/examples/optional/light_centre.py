@@ -1,3 +1,4 @@
+import numpy as np
 """
 Data Preparation: Lens Light Centre (Optional)
 ==============================================
@@ -64,7 +65,7 @@ light_centre = ag.Grid2DIrregular(values=[(0.0, 0.0)])
 """
 Now lets plot the image and lens light centre, so we can check that the centre overlaps the galaxy light.
 """
-aplt.plot_array(array=data, title="Data", light_profile_centres=light_centre)
+aplt.plot_array(array=data, title="Data", positions=[np.array(light_centre)])
 
 """
 Now we`re happy with the galaxy light centre(s), lets output them to the dataset folder of the galaxy, so that we can 

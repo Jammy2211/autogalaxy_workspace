@@ -173,7 +173,7 @@ dataset = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
-aplt.subplot_interferometer_dataset(dataset=dataset)
+aplt.subplot_interferometer_dirty_images(dataset=dataset)
 
 """
 __Sparse Operators__
@@ -357,10 +357,8 @@ The end of this example provides a detailed description of all result options fo
 """
 print(result.max_log_likelihood_instance)
 
-aplt.subplot_fit_interferometer(fit=result.max_log_likelihood_fit)
+aplt.subplot_fit_dirty_images(fit=result.max_log_likelihood_fit)
 
-plotter = aplt.NestPlotter(samples=result.samples)
-plotter.corner_anesthetic()
 
 """
 The example `pixelization/fit` provides a full description of the different calculations that can be performed

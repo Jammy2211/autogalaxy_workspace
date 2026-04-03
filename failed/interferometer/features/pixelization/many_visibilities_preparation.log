@@ -1,0 +1,26 @@
+Script: interferometer/features/pixelization/many_visibilities_preparation.py
+Exit: 1
+
+Traceback (most recent call last):
+  File "/home/user/autogalaxy_workspace/scripts/interferometer/features/pixelization/many_visibilities_preparation.py", line 77, in <module>
+    dataset = ag.Interferometer.from_fits(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/dataset/interferometer/dataset.py", line 196, in from_fits
+    return Interferometer(
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/dataset/interferometer/dataset.py", line 102, in __init__
+    self.transformer = transformer_class(
+                       ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/operators/transformer.py", line 227, in __init__
+    pynufft_exception()
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/operators/transformer.py", line 27, in pynufft_exception
+    raise ModuleNotFoundError(
+ModuleNotFoundError: 
+--------------------
+You are attempting to perform interferometer analysis.
+
+However, the optional library PyNUFFT (https://github.com/jyhmiinlin/pynufft) is not installed.
+
+Install it via the command `pip install pynufft==2022.2.2`.
+
+----------------------

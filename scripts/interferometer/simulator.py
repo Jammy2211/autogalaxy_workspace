@@ -130,14 +130,15 @@ dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 Lets plot the simulated interferometer dataset before we output it to fits.
 """
 aplt.plot_array(array=dataset.dirty_image, title="Dirty Image")
-aplt.subplot_interferometer_dataset(dataset=dataset)
+aplt.subplot_interferometer_dirty_images(dataset=dataset)
 
 """
 __Output__
 
 Output the simulated dataset to the dataset path as .fits files.
 """
-dataset.output_to_fits(
+aplt.fits_interferometer(
+    dataset=dataset,
     data_path=dataset_path / "data.fits",
     noise_map_path=dataset_path / "noise_map.fits",
     uv_wavelengths_path=dataset_path / "uv_wavelengths.fits",
@@ -149,8 +150,8 @@ __Visualize__
 
 Output a subplot of the simulated dataset, the image and the galaxies quantities to the dataset path as .png files.
 """
-aplt.subplot_interferometer_dataset(dataset=dataset, output_path=dataset_path, output_format="png")
-aplt.plot_array(array=dataset.data, title="Data", output_path=dataset_path, output_format="png")
+aplt.subplot_interferometer_dirty_images(dataset=dataset, output_path=dataset_path, output_format="png")
+aplt.plot_array(array=dataset.dirty_image, title="Data", output_path=dataset_path, output_format="png")
 
 aplt.subplot_galaxies(galaxies=galaxies, grid=grid, output_path=dataset_path, output_format="png")
 

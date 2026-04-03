@@ -76,7 +76,7 @@ dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 """
 When plotted, the galaxy's bulge and disk are clearly visible in the centre of the image.
 """
-aplt.subplot_imaging_dataset(dataset=dataset, mask=mask)
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 """
 __Model + Search + Analysis__

@@ -149,7 +149,7 @@ dataset = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
-aplt.subplot_interferometer_dataset(dataset=dataset)
+aplt.subplot_interferometer_dirty_images(dataset=dataset)
 
 """
 __Sparse Operators__

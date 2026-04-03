@@ -61,7 +61,6 @@ Common options:
 aplt.plot_array(
     array=data,
     title="Image",
-    figsize=(7, 7),
 )
 
 """
@@ -115,7 +114,7 @@ mask = ag.Mask2D.circular_annular(
     outer_radius=3.0,
 )
 
-aplt.plot_array(array=data, title="Image", mask=mask)
+aplt.plot_array(array=data, title="Image")
 
 """
 __Customize Visuals With Config__

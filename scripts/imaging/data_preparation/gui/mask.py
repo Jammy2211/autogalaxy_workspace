@@ -57,7 +57,7 @@ __Output__
 
 Now lets plot the image and mask, so we can check that the mask includes the regions of the image we want.
 """
-aplt.plot_array(array=data, title="Data", mask=mask)
+aplt.plot_array(array=data, title="Data")
 
 """
 Output this image of the mask to a .png file in the dataset folder for future reference.
@@ -65,7 +65,6 @@ Output this image of the mask to a .png file in the dataset folder for future re
 aplt.plot_array(
     array=data,
     title="Data",
-    mask=mask,
     output_path=dataset_path,
     output_filename="mask_gui",
     output_format="png",
@@ -74,4 +73,4 @@ aplt.plot_array(
 """
 Output it to the dataset folder of the galaxy, so that we can load it from a .fits in our modeling scripts.
 """
-mask.output_to_fits(file_path=Path(dataset_path, "mask_gui.fits"), overwrite=True)
+aplt.fits_array(array=mask, file_path=Path(dataset_path, "mask_gui.fits"), overwrite=True)
