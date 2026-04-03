@@ -263,7 +263,6 @@ aplt.subplot_imaging_dataset(
 aplt.subplot_fit_imaging(
     fit=fit,
     output_path=dataset_path,
-    output_filename="subplot_fit",
     output_format="png",
 )
 

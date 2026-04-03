@@ -286,8 +286,6 @@ aplt.subplot_galaxies(galaxies=result.max_log_likelihood_galaxies, grid=result.g
 
 aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
-plotter = aplt.NestPlotter(samples=result.samples)
-plotter.corner_cornerpy()
 
 """
 __Wrap Up__

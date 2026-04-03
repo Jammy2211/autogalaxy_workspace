@@ -1,3 +1,4 @@
+import numpy as np
 """
 Data Preparation: Extra Galaxies (Optional)
 ===========================================
@@ -75,7 +76,7 @@ extra_galaxies_centres = ag.Grid2DIrregular(values=[(1.0, 3.5), (-2.0, -3.5)])
 """
 Plot the image and extra galaxy centres, so we can check that the centre overlaps the galaxy light.
 """
-aplt.plot_array(array=data, title="Data", light_profile_centres=extra_galaxies_centres)
+aplt.plot_array(array=data, title="Data", positions=[np.array(extra_galaxies_centres)])
 
 """
 __Output__
@@ -85,7 +86,7 @@ Save this as a .png image in the dataset folder for easy inspection later.
 aplt.plot_array(
     array=data,
     title="Data",
-    light_profile_centres=extra_galaxies_centres,
+    positions=[np.array(extra_galaxies_centres)],
     output_path=dataset_path,
     output_filename="data_with_extra_galaxies",
     output_format="png",

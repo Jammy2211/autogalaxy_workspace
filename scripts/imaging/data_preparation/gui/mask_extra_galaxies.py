@@ -49,8 +49,6 @@ data = ag.Array2D(
     values=np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0), mask=data.mask
 )
 
-cmap = aplt.Cmap(cmap="jet", norm="log", vmin=1.0e-3, vmax=np.max(data) / 3.0)
-
 """
 __Mask__
 
@@ -65,11 +63,11 @@ mask = ag.Mask2D.circular(
 """
 __Scribbler__
 
-Load the Scribbler GUI for spray painting the scaled regions of the dataset. 
+Load the Scribbler GUI for spray painting the scaled regions of the dataset.
 
 Push Esc when you are finished spray painting.
 """
-scribbler = ag.Scribbler(image=data.native, cmap=cmap, mask_overlay=mask)
+scribbler = ag.Scribbler(image=data.native, mask_overlay=mask)
 mask = scribbler.show_mask()
 mask = ag.Mask2D(mask=mask, pixel_scales=pixel_scales)
 
@@ -109,6 +107,8 @@ __Output__
 
 Output the extra galaxies mask, which will be load and used before a model fit.
 """
-mask.output_to_fits(
-    file_path=Path(dataset_path, "mask_extra_galaxies.fits"), overwrite=True
+aplt.fits_array(
+    array=mask,
+    file_path=Path(dataset_path, "mask_extra_galaxies.fits"),
+    overwrite=True,
 )

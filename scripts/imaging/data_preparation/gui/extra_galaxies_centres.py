@@ -1,3 +1,4 @@
+import numpy as np
 """
 GUI Preprocessing: Extra Galaxies
 =================================
@@ -88,7 +89,8 @@ __Output__
 Now lets plot the image and extra galaxy centres, so we can check that the centre overlaps the brightest pixels in the
 extra galaxies.
 """
-aplt.plot_array(array=data, title="Data", mass_profile_centres=extra_galaxies_centres)
+positions = [np.array(extra_galaxies_centres)] if len(clicker.click_list) > 0 else None
+aplt.plot_array(array=data, title="Data", positions=positions)
 
 """
 Output this image of the extra galaxy centres to a .png file in the dataset folder for future reference.
@@ -96,7 +98,7 @@ Output this image of the extra galaxy centres to a .png file in the dataset fold
 aplt.plot_array(
     array=data,
     title="Data",
-    mass_profile_centres=extra_galaxies_centres,
+    positions=positions,
     output_path=dataset_path,
     output_filename="extra_galaxies_centres",
     output_format="png",

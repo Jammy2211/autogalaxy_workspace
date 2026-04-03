@@ -1,0 +1,44 @@
+Script: guides/results/workflow/png_make.py
+Exit: 1
+
+2026-04-03 01:20:51,927 - autoarray.dataset.imaging.dataset - INFO - IMAGING - Data masked, contains a total of 2828 image-pixels
+2026-04-03 01:20:52,708 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+2026-04-03 01:20:52,709 - autofit.non_linear.search.abstract_search - INFO - Starting non-linear search with 1 cores.
+2026-04-03 01:20:53,537 - results - INFO - The output path of this fit is /home/user/autogalaxy_workspace/output/results_folder_csv_png_fits/simple_0/results/0c98ec4d6f88be6c8f8a725851b96b4a
+2026-04-03 01:20:53,540 - results - INFO - Fit Already Completed: skipping non-linear search.
+2026-04-03 01:20:53,569 - results - INFO - Removing search internal folder.
+2026-04-03 01:20:53,569 - results - INFO - Removing all files except for .zip file
+2026-04-03 01:20:53,684 - results - INFO - Search complete, returning result
+2026-04-03 01:20:53,693 - autoarray.dataset.imaging.dataset - INFO - IMAGING - Data masked, contains a total of 2828 image-pixels
+2026-04-03 01:20:53,713 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+2026-04-03 01:20:53,714 - autofit.non_linear.search.abstract_search - INFO - Starting non-linear search with 1 cores.
+2026-04-03 01:20:54,344 - results - INFO - The output path of this fit is /home/user/autogalaxy_workspace/output/results_folder_csv_png_fits/simple_1/results/539f11177df7c7942cadb32e1a3cbd5e
+2026-04-03 01:20:54,347 - results - INFO - Fit Already Completed: skipping non-linear search.
+2026-04-03 01:20:54,347 - results - INFO - Removing search internal folder.
+2026-04-03 01:20:54,347 - results - INFO - Removing all files except for .zip file
+2026-04-03 01:20:54,473 - results - INFO - Search complete, returning result
+Aggregator loading search_outputs... could take some time.
+
+ A total of 2 search_outputs and results were found.
+Traceback (most recent call last):
+  File "/home/user/autogalaxy_workspace/scripts/guides/results/workflow/png_make.py", line 220, in <module>
+    image = agg_image.extract_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/aggregator/summary/aggregate_images.py", line 137, in extract_image
+    self._matrix_for_result(
+  File "/usr/local/lib/python3.11/dist-packages/autofit/aggregator/summary/aggregate_images.py", line 264, in _matrix_for_result
+    get_image(subplot).image_at_coordinates(
+    ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/aggregator/summary/aggregate_images.py", line 252, in get_image
+    result.image(
+  File "/usr/local/lib/python3.11/dist-packages/autofit/aggregator/search_output.py", line 152, in image
+    return Image.open(self.directory / "image" / f"{name}.png")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/PIL/Image.py", line 3635, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'output/results_folder_csv_png_fits/simple_1/results/539f11177df7c7942cadb32e1a3cbd5e/image/fit.png'

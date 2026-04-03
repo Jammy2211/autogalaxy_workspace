@@ -115,7 +115,7 @@ This is useful to ensure that the mask appropriately covers the galaxy's light a
 To overlay objects like a mask onto a figure, we use the `Visuals2D` object. This tool allows us to add custom 
 visuals to any plot, providing flexibility in creating tailored visual representations.
 """
-aplt.plot_array(array=dataset.data, title="Imaging Data With Mask", mask=mask)
+aplt.plot_array(array=dataset.data, title="Imaging Data With Mask")
 
 """
 Once we are satisfied with the mask, we apply it to the imaging data using the `apply_mask()` method. This ensures 

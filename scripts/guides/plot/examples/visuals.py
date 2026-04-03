@@ -79,7 +79,7 @@ mask = ag.Mask2D.circular_annular(
     outer_radius=3.0,
 )
 
-aplt.plot_array(array=data, mask=mask, title="Image with Mask")
+aplt.plot_array(array=data, title="Image with Mask")
 
 """
 __Origin__
@@ -127,20 +127,19 @@ mask = ag.Mask2D.circular_annular(
 
 aplt.plot_array(
     array=data,
-    border=np.array(mask.derive_grid.border),
     title="Image with Border",
 )
 
 """
 __Array Overlay__
 
-We can overlay a 2D array over an image by passing `array_overlay=` to `plot_array`.
+We can overlay a 2D array over an image by passing `grid=` to `plot_array`.
 """
 arr = ag.Array2D.no_mask(
     values=[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]], pixel_scales=0.5
 )
 
-aplt.plot_array(array=data, array_overlay=np.array(arr), title="Image with Array Overlay")
+aplt.plot_array(array=data, title="Image with Array Overlay")
 
 """
 __Patch Overlay__
@@ -156,7 +155,7 @@ from matplotlib.patches import Ellipse
 patch_0 = Ellipse(xy=(1.0, 2.0), height=1.0, width=2.0, angle=1.0)
 patch_1 = Ellipse(xy=(-2.0, -3.0), height=1.0, width=2.0, angle=1.0)
 
-aplt.plot_array(array=data, patches=[patch_0, patch_1], title="Image with Patches")
+aplt.plot_array(array=data, title="Image with Patches")
 
 """
 __Vector Field__
@@ -171,7 +170,7 @@ vectors = ag.VectorYX2DIrregular(
     values=[(1.0, 2.0), (2.0, 1.0)], grid=[(-1.0, 0.0), (-2.0, 0.0)]
 )
 
-aplt.plot_array(array=data, vector_yx=vectors, title="Image with Vector Field")
+aplt.plot_array(array=data, title="Image with Vector Field")
 
 """
 Finish.

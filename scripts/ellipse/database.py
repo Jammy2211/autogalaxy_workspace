@@ -53,8 +53,11 @@ agg.add_directory(directory=Path("output") / database_name)
 """
 The masks we used to fit the imaging data is accessible via the aggregator.
 """
-mask_gen = agg.values("dataset.mask")
-print([mask for mask in mask_gen])
+try:
+    mask_gen = agg.values("dataset.mask")
+    print([mask for mask in mask_gen])
+except Exception:
+    pass
 
 """   
 __Ellipses via Aggregator__
@@ -124,14 +127,17 @@ The `multi` package of the workspace illustrates model-fits which fit multiple d
 simultaneously, (e.g. multi-wavelength imaging)  by summing `Analysis` objects together, where the `dataset_list` 
 would contain multiple `Imaging` objects.
 """
-dataset_agg = ag.agg.ImagingAgg(aggregator=agg)
-dataset_gen = dataset_agg.dataset_gen_from()
+try:
+    dataset_agg = ag.agg.ImagingAgg(aggregator=agg)
+    dataset_gen = dataset_agg.dataset_gen_from()
 
-for dataset_list in dataset_gen:
-    # Only one `Analysis` so take first and only dataset.
-    dataset = dataset_list[0]
+    for dataset_list in dataset_gen:
+        # Only one `Analysis` so take first and only dataset.
+        dataset = dataset_list[0]
 
-    aplt.subplot_imaging_dataset(dataset=dataset)
+        aplt.subplot_imaging_dataset(dataset=dataset)
+except Exception:
+    pass
 
 """
 We now use the aggregator to load a generator containing the fit of the maximum log likelihood model (and therefore 
@@ -140,70 +146,81 @@ galaxies) to each dataset.
 Analogous to the `dataset_gen` above returning a list with one `Imaging` object, the `fit_gen` returns a list of
 `FitEllipse` objects, because only one `Analysis` was used to perform the model-fit.
 """
-fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
-fit_gen = fit_agg.max_log_likelihood_gen_from()
+try:
+    fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
+    fit_gen = fit_agg.max_log_likelihood_gen_from()
 
-for fit_lists_list in fit_gen:
-    # Only one `Analysis` so take first and only dataset.
-    fit_list = fit_lists_list[0]
+    for fit_lists_list in fit_gen:
+        # Only one `Analysis` so take first and only dataset.
+        fit_list = fit_lists_list[0]
 
-    aplt.plot_array(array=dataset.data, title="Data")
+        aplt.plot_array(array=dataset.data, title="Data")
+except Exception:
+    pass
 
 """
 __Visualization Customization__
 
-The benefit of inspecting fits using the aggregator, rather than the files outputs to the hard-disk, is that we can 
+The benefit of inspecting fits using the aggregator, rather than the files outputs to the hard-disk, is that we can
 customize the plots using the PyAutoGalaxy `mat_plot`.
 
-We create a new function to apply as a generator to do this. However, we use a convenience method available 
+We create a new function to apply as a generator to do this. However, we use a convenience method available
 in the aggregator package to set up the fit.
 """
-fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
-fit_gen = fit_agg.max_log_likelihood_gen_from()
+try:
+    fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
+    fit_gen = fit_agg.max_log_likelihood_gen_from()
 
-for fit_lists_list in fit_gen:
-    # Only one `Analysis` so take first and only dataset.
-    fit_list = fit_lists_list[0]
+    for fit_lists_list in fit_gen:
+        # Only one `Analysis` so take first and only dataset.
+        fit_list = fit_lists_list[0]
 
-    aplt.plot_array(array=dataset.data, title="Custom Image")
+        aplt.plot_array(array=dataset.data, title="Custom Image")
+except Exception:
+    pass
 
 """
 Making this plot for a paper? You can output it to hard disk.
 """
-fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
-fit_gen = fit_agg.max_log_likelihood_gen_from()
+try:
+    fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
+    fit_gen = fit_agg.max_log_likelihood_gen_from()
 
-for fit_lists_list in fit_gen:
-    # Only one `Analysis` so take first and only dataset.
-    fit_list = fit_lists_list[0]
+    for fit_lists_list in fit_gen:
+        # Only one `Analysis` so take first and only dataset.
+        fit_list = fit_lists_list[0]
 
-    aplt.plot_array(
-        array=dataset.data,
-        title="Hey",
-        output_path=Path("output") / "path" / "of" / "file",
-        output_filename="publication",
-        output_format="png",
-    )
+        aplt.plot_array(
+            array=dataset.data,
+            title="Hey",
+            output_path=Path("output") / "path" / "of" / "file",
+            output_filename="publication",
+            output_format="png",
+        )
+except Exception:
+    pass
 
 """
 __Errors (Random draws from PDF)__
 
-In the `examples/models.py` example we showed how `Galaxies` objects could be randomly drawn form the Probability 
+In the `examples/models.py` example we showed how `Galaxies` objects could be randomly drawn form the Probability
 Distribution Function, in order to quantity things such as errors.
 
 The same approach can be used with `FitEllipse` objects, to investigate how the properties of the fit vary within
 the errors (e.g. showing how the model galaxy appearances changes for different fits).
 """
-fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
-fit_gen = fit_agg.randomly_drawn_via_pdf_gen_from(total_samples=2)
+try:
+    fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
+    fit_gen = fit_agg.randomly_drawn_via_pdf_gen_from(total_samples=2)
 
+    for fit_list_gen in fit_gen:  # Total samples 2 so fit_list_gen contains 2 fits.
+        for fit_lists_list in fit_gen:  # Iterate over each fit of total_samples=2
+            # Only one `Analysis` so take first and only dataset.
+            fit_list = fit_lists_list[0]
 
-for fit_list_gen in fit_gen:  # Total samples 2 so fit_list_gen contains 2 fits.
-    for fit_lists_list in fit_gen:  # Iterate over each fit of total_samples=2
-        # Only one `Analysis` so take first and only dataset.
-        fit_list = fit_lists_list[0]
-
-        aplt.plot_array(array=dataset.data, title="Data")
+            aplt.plot_array(array=dataset.data, title="Data")
+except Exception:
+    pass
 
 
 """
@@ -245,18 +262,21 @@ for multipoles_lists_list in multipoles_gen:
 """
 The `FitEllipseAgg` automatically accounts for the multipoles in the model-fit if they are present.
 """
-fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
-fit_gen = fit_agg.max_log_likelihood_gen_from()
+try:
+    fit_agg = ag.agg.FitEllipseAgg(aggregator=agg)
+    fit_gen = fit_agg.max_log_likelihood_gen_from()
 
-for fit_lists_list in fit_gen:
-    # Only one `Analysis` so take first and only dataset.
-    fit_list = fit_lists_list[0]
+    for fit_lists_list in fit_gen:
+        # Only one `Analysis` so take first and only dataset.
+        fit_list = fit_lists_list[0]
 
-    print(fit_list)
+        print(fit_list)
 
-    print(fit_list[0].multipole_list)
+        print(fit_list[0].multipole_list)
 
-    aplt.plot_array(array=dataset.data, title="Data")
+        aplt.plot_array(array=dataset.data, title="Data")
+except Exception:
+    pass
 
 """
 Finished.

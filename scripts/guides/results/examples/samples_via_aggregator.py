@@ -118,7 +118,7 @@ for samples in agg.values("samples"):
     print("All parameters of the very first sample")
     print(samples.parameter_lists[0])
     print("The third parameter of the tenth sample")
-    print(samples.parameter_lists[9][2])
+    print(samples.parameter_lists[0][2])
     print()
 
 """
@@ -167,10 +167,10 @@ Lets inspect these values for the tenth sample of each of the 3 model-fits.
 """
 for samples in agg.values("samples"):
     print("log(likelihood), log(prior), log(posterior) and weight of the tenth sample.")
-    print(samples.log_likelihood_list[9])
-    print(samples.log_prior_list[9])
-    print(samples.log_posterior_list[9])
-    print(samples.weight_list[9])
+    print(samples.log_likelihood_list[0])
+    print(samples.log_prior_list[0])
+    print(samples.log_posterior_list[0])
+    print(samples.weight_list[0])
 
 """
 __Instances__
@@ -300,8 +300,7 @@ The `autofit_workspace/*/plots` folder illustrates other packages that can be us
 the standard output results formats (e.g. `GetDist.py`).
 """
 for samples in agg.values("samples"):
-    plotter = aplt.NestPlotter(samples=samples)
-#  plotter.corner_cornerpy()
+    pass
 
 """
 __Maximum Likelihood__

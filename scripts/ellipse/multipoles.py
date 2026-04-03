@@ -291,8 +291,6 @@ log likelihood values and tools to compute the errors on the model.
 When multipoles are included in the model, the parameter space complexity increases, producing more
 significant degeneracies between the model parameters.
 """
-plotter = aplt.NestPlotter(samples=result.samples)
-plotter.corner_cornerpy()
 
 """
 __Multiple Ellipses__
