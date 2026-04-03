@@ -1,4 +1,0 @@
-                       unique_id,            name,    unique_tag,total_free_parameters,is_complete
-94e26c01481173b823ee7ffad9cfe7fc,database_example,     sersic_x2,                   11,       True
-04a10f767d1670fbc51acda8dc58239f,database_example,        simple,                   11,       True
-6b1fb2cf4aa6c073984caceb3a6cc2de,database_example,simple__sersic,                   11,       True

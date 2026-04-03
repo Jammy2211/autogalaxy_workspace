@@ -1,8 +1,0 @@
-{
-    "log_evidence": 283.75333820508473,
-    "total_samples": 50,
-    "total_accepted_samples": 50,
-    "time": "92.61556720733643",
-    "number_live_points": 100,
-    "class_path": "autofit.non_linear.samples.nest.SamplesNest"
-}
