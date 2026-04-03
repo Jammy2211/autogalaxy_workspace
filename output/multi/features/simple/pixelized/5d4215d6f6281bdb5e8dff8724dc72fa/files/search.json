@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_networks": 4,
+        "number_of_cores": 1,
+        "n_eff": 500,
+        "split_threshold": 100,
+        "n_live": 100,
+        "name": "pixelized",
+        "n_shell": 1,
+        "inplace": false,
+        "seed": null,
+        "n_points_min": null,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "iterations_per_quick_update": 1e+99,
+        "unique_tag": "simple",
+        "path_prefix": {
+            "type": "path",
+            "path": "multi/features"
+        },
+        "iterations_per_full_update": 1e+99,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "parent": null,
+                "identifier": "5d4215d6f6281bdb5e8dff8724dc72fa",
+                "is_identifier_in_paths": true,
+                "unique_tag": "simple",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "multi/features"
+                },
+                "name": "pixelized",
+                "image_path_suffix": ""
+            }
+        },
+        "enlarge_per_dim": 1.1,
+        "n_update": null,
+        "use_jax_vmap": true,
+        "n_like_new_bound": null
+    }
+}

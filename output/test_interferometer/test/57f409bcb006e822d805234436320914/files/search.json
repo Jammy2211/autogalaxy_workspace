@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "number_of_cores": 1,
+        "enlarge_per_dim": 1.1,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "iterations_per_full_update": 1e+99,
+        "use_jax_vmap": true,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "n_eff": 500,
+        "n_points_min": null,
+        "name": "test",
+        "path_prefix": {
+            "type": "path",
+            "path": "test_interferometer"
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "name": "test",
+                "identifier": "57f409bcb006e822d805234436320914",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "test_interferometer"
+                },
+                "parent": null,
+                "image_path_suffix": "",
+                "unique_tag": null,
+                "is_identifier_in_paths": true
+            }
+        },
+        "n_update": null,
+        "n_like_new_bound": null,
+        "iterations_per_quick_update": 1e+99,
+        "unique_tag": null,
+        "n_shell": 1,
+        "inplace": false,
+        "seed": null,
+        "split_threshold": 100,
+        "n_live": 10,
+        "n_networks": 4
+    }
+}

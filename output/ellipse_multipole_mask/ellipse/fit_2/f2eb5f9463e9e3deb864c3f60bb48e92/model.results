@@ -1,0 +1,59 @@
+Bayesian Evidence                                                               -2450.00106673
+Maximum Log Likelihood                                                          -2445.33648866
+
+model                                                                           Collection (N=6)
+    ellipses                                                                    Collection (N=2)
+        0                                                                       Ellipse (N=2)
+    multipoles                                                                  Collection (N=4)
+        0                                                                       Collection (N=4)
+            0 - 1                                                               EllipseMultipole (N=2)
+
+Maximum Log Likelihood Model:
+
+ellipses
+    0
+        ell_comps
+            ell_comps_0                                                         0.044
+            ell_comps_1                                                         -0.154
+multipoles
+    0
+        0
+            multipole_comps
+                multipole_comps_0                                               0.109
+                multipole_comps_1                                               0.197
+        1
+            multipole_comps
+                multipole_comps_0                                               0.121
+                multipole_comps_1                                               -0.090
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+ellipses
+    0
+        ell_comps
+            ell_comps_0                                                         0.0435 (-0.5922, 0.5648)
+            ell_comps_1                                                         -0.1538 (-0.5720, 0.5986)
+multipoles
+    0
+        0
+            multipole_comps
+                multipole_comps_0                                               0.1089 (-0.1794, 0.1677)
+                multipole_comps_1                                               0.1973 (-0.2589, 0.1973)
+        1
+            multipole_comps
+                multipole_comps_0                                               0.1214 (-0.2529, 0.2962)
+                multipole_comps_1                                               -0.0901 (-0.2813, 0.2057)
+
+instances
+
+ellipses
+    0
+        centre
+            centre_0                                                            0.05407920230118
+            centre_1                                                            -0.0664421614891
+        major_axis                                                              1.2333333333333334

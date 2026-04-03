@@ -1,0 +1,39 @@
+{
+    "type": "list",
+    "values": [
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "redshift": 0.5,
+                "label": "cls0",
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.dev_vaucouleurs.DevVaucouleurs",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.0,
+                                -1.0
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.0015341032734519583,
+                            "dtype": "float64"
+                        },
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.17050443112275934,
+                                0.4918857938613897
+                            ]
+                        },
+                        "effective_radius": 3.770047478427764
+                    }
+                }
+            }
+        }
+    ]
+}

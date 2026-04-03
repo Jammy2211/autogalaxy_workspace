@@ -1,0 +1,621 @@
+{
+    "type": "collection",
+    "arguments": {
+        "ellipses": {
+            "type": "collection",
+            "arguments": {
+                "0": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 0.3,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.16488820774766,
+                                0.57653745037065
+                            ]
+                        }
+                    }
+                },
+                "1": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 0.7666666666666666,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.17719867970216,
+                                0.50709672769049
+                            ]
+                        }
+                    }
+                },
+                "2": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 1.2333333333333334,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.20111086932954,
+                                -0.2270748059021
+                            ]
+                        }
+                    }
+                },
+                "3": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 1.7,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.29655371768839,
+                                -0.10336604019724
+                            ]
+                        }
+                    }
+                },
+                "4": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 2.1666666666666665,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.35063394626525,
+                                -0.1737170808422
+                            ]
+                        }
+                    }
+                },
+                "5": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 2.6333333333333333,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.02908750629871,
+                                0.51882619846962
+                            ]
+                        }
+                    }
+                },
+                "6": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 3.0999999999999996,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.51398858154145,
+                                -0.18201154272266
+                            ]
+                        }
+                    }
+                },
+                "7": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 3.5666666666666664,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.5540855765216,
+                                0.36513359589461
+                            ]
+                        }
+                    }
+                },
+                "8": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 4.033333333333333,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.38620014702256,
+                                -0.20409225068967
+                            ]
+                        }
+                    }
+                },
+                "9": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.05407920230118,
+                                -0.0664421614891
+                            ]
+                        },
+                        "major_axis": 4.5,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.07166804119187,
+                                0.58488420467529
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "multipoles": {
+            "type": "collection",
+            "arguments": {
+                "0": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.014855778701437684,
+                                                -0.06637887436518897
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.04780001284740752,
+                                                -0.02384243062994649
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "1": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.035209687694388966,
+                                                0.06768385928105752
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.14308509462804989,
+                                                -0.016511529226631048
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "2": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.05032530547030195,
+                                                -0.14486590818241837
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.2712641118023927,
+                                                -0.03471228903668054
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "3": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.14921140356085644,
+                                                -0.012622948452296041
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.04867672625024286,
+                                                -0.050868172940275735
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "4": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.008987802278324306,
+                                                0.05383511222054562
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.03213803701587305,
+                                                -0.17048296075076247
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "5": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.047490839683442324,
+                                                0.08843897522324175
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.1260508143208151,
+                                                0.14116078373143948
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "6": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.07818001440716892,
+                                                0.09030414650674795
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.09596512745113502,
+                                                0.11836454987054432
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "7": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.06313771248854326,
+                                                0.027060434731544365
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.050325740334410736,
+                                                0.019433600867027282
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "8": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.016763802155876396,
+                                                0.15062565121851973
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.17229864564889769,
+                                                -0.057681921434290476
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "9": {
+                    "type": "instance",
+                    "class_path": "autofit.mapper.model.ModelInstance",
+                    "arguments": {
+                        "child_items": {
+                            "type": "dict",
+                            "arguments": {
+                                "0": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 3,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.13057849730761856,
+                                                0.010050620873835996
+                                            ]
+                                        }
+                                    }
+                                },
+                                "1": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                                    "arguments": {
+                                        "m": 4,
+                                        "multipole_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                0.08722377102491553,
+                                                -0.007522838758501291
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "dummy_0": {
+            "type": "Uniform",
+            "id": 156,
+            "lower_limit": -0.1,
+            "upper_limit": 0.1
+        }
+    }
+}

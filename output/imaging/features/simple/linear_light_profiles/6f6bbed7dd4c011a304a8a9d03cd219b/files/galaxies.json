@@ -1,0 +1,66 @@
+{
+    "type": "list",
+    "values": [
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "redshift": 0.5,
+                "label": "cls2",
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.015120024312912386,
+                            "dtype": "float64"
+                        },
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.12883673436716014,
+                                -0.12847005813677537
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.27051600970138867,
+                                -0.0391564810516808
+                            ]
+                        },
+                        "effective_radius": 16.79885286662803,
+                        "sersic_index": 4.830411049544919
+                    }
+                },
+                "disk": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.exponential.Exponential",
+                    "arguments": {
+                        "effective_radius": 24.762063913974906,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.20008891064782125,
+                                0.20745609060980894
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 1.162594559029432e-23,
+                            "dtype": "float64"
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.27051600970138867,
+                                -0.0391564810516808
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_shell": 1,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "iterations_per_full_update": 1e+99,
+        "n_eff": 500,
+        "n_points_min": null,
+        "n_like_new_bound": null,
+        "number_of_cores": 1,
+        "inplace": false,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "n_update": null,
+        "seed": null,
+        "name": "sky_background",
+        "path_prefix": {
+            "type": "path",
+            "path": "imaging/features"
+        },
+        "use_jax_vmap": true,
+        "iterations_per_quick_update": 1e+99,
+        "enlarge_per_dim": 1.1,
+        "n_networks": 4,
+        "unique_tag": "sky_background",
+        "n_live": 75,
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "image_path_suffix": "",
+                "name": "sky_background",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "imaging/features"
+                },
+                "parent": null,
+                "is_identifier_in_paths": true,
+                "unique_tag": "sky_background",
+                "identifier": "341c4986f6f47b05c9cc9ab27abc3c05"
+            }
+        },
+        "split_threshold": 100
+    }
+}

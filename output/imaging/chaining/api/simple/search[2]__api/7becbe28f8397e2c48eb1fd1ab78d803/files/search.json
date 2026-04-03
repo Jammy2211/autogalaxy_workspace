@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "use_jax_vmap": true,
+        "unique_tag": "simple",
+        "split_threshold": 100,
+        "path_prefix": {
+            "type": "path",
+            "path": "imaging/chaining/api"
+        },
+        "seed": null,
+        "n_live": 75,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "unique_tag": "simple",
+                "parent": null,
+                "image_path_suffix": "",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "imaging/chaining/api"
+                },
+                "identifier": "7becbe28f8397e2c48eb1fd1ab78d803",
+                "name": "search[2]__api",
+                "is_identifier_in_paths": true
+            }
+        },
+        "n_like_new_bound": null,
+        "name": "search[2]__api",
+        "n_networks": 4,
+        "iterations_per_full_update": 1e+99,
+        "number_of_cores": 1,
+        "n_update": null,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "n_eff": 500,
+        "n_shell": 1,
+        "n_points_min": null,
+        "iterations_per_quick_update": 1e+99,
+        "enlarge_per_dim": 1.1,
+        "inplace": false
+    }
+}

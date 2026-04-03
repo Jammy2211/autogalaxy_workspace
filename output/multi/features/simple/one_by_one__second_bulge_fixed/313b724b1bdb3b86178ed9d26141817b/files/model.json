@@ -1,0 +1,92 @@
+{
+    "type": "collection",
+    "arguments": {
+        "galaxies": {
+            "type": "collection",
+            "arguments": {
+                "galaxy": {
+                    "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                    "type": "model",
+                    "arguments": {
+                        "redshift": {
+                            "type": "Constant",
+                            "value": 0.5
+                        },
+                        "bulge": {
+                            "type": "instance",
+                            "class_path": "autogalaxy.profiles.light.linear.sersic.Sersic",
+                            "arguments": {
+                                "ell_comps": {
+                                    "type": "tuple",
+                                    "values": [
+                                        -0.2537196984143061,
+                                        -0.13412076502758288
+                                    ]
+                                },
+                                "sersic_index": 4.89155785548274,
+                                "effective_radius": 4.216537423935815,
+                                "centre": {
+                                    "type": "tuple",
+                                    "values": [
+                                        -0.0018070704345329368,
+                                        0.10362556943451069
+                                    ]
+                                }
+                            }
+                        },
+                        "disk": {
+                            "class_path": "autogalaxy.profiles.light.linear.exponential.Exponential",
+                            "type": "model",
+                            "arguments": {
+                                "centre": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "centre_0": {
+                                            "type": "Gaussian",
+                                            "id": 6,
+                                            "mean": 0.0,
+                                            "sigma": 0.3
+                                        },
+                                        "centre_1": {
+                                            "type": "Gaussian",
+                                            "id": 7,
+                                            "mean": 0.0,
+                                            "sigma": 0.3
+                                        }
+                                    }
+                                },
+                                "ell_comps": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "ell_comps_0": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 8,
+                                            "mean": 0.0,
+                                            "sigma": 0.3,
+                                            "lower_limit": -1.0,
+                                            "upper_limit": 1.0
+                                        },
+                                        "ell_comps_1": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 9,
+                                            "mean": 0.0,
+                                            "sigma": 0.3,
+                                            "lower_limit": -1.0,
+                                            "upper_limit": 1.0
+                                        }
+                                    }
+                                },
+                                "effective_radius": {
+                                    "type": "Uniform",
+                                    "id": 10,
+                                    "lower_limit": 0.0,
+                                    "upper_limit": 30.0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

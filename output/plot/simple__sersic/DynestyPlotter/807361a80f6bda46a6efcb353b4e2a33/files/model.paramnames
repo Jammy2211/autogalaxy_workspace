@@ -1,0 +1,7 @@
+galaxies.galaxy.bulge.centre_0                                        y_
+galaxies.galaxy.bulge.centre_1                                        x_
+galaxies.galaxy.bulge.ell_comps_0                                     \epsilon_{\rm 1}_
+galaxies.galaxy.bulge.ell_comps_1                                     \epsilon_{\rm 2}_
+galaxies.galaxy.bulge.intensity                                       I_{\rm b}_
+galaxies.galaxy.bulge.effective_radius                                R_{\rm eff}_
+galaxies.galaxy.bulge.sersic_index                                    n_

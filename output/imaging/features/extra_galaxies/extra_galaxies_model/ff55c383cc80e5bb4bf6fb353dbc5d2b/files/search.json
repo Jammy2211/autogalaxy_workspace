@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "identifier": "ff55c383cc80e5bb4bf6fb353dbc5d2b",
+                "image_path_suffix": "",
+                "is_identifier_in_paths": true,
+                "path_prefix": {
+                    "type": "path",
+                    "path": "imaging/features"
+                },
+                "name": "extra_galaxies_model",
+                "unique_tag": "extra_galaxies",
+                "parent": null
+            }
+        },
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "path_prefix": {
+            "type": "path",
+            "path": "imaging/features"
+        },
+        "n_networks": 4,
+        "n_like_new_bound": null,
+        "unique_tag": "extra_galaxies",
+        "enlarge_per_dim": 1.1,
+        "n_update": null,
+        "iterations_per_quick_update": 20000.0,
+        "split_threshold": 100,
+        "number_of_cores": 1,
+        "inplace": false,
+        "n_shell": 1,
+        "n_points_min": null,
+        "n_eff": 500,
+        "name": "extra_galaxies_model",
+        "use_jax_vmap": true,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "iterations_per_full_update": 1e+99,
+        "seed": null,
+        "n_live": 150
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "inplace": false,
+        "n_eff": 500,
+        "n_like_new_bound": null,
+        "name": "linear_light_profiles",
+        "enlarge_per_dim": 1.1,
+        "iterations_per_quick_update": 1e+99,
+        "seed": null,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "n_networks": 4,
+        "n_shell": 1,
+        "number_of_cores": 1,
+        "path_prefix": {
+            "type": "path",
+            "path": "imaging/features"
+        },
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "n_live": 300,
+        "n_points_min": null,
+        "iterations_per_full_update": 1e+99,
+        "unique_tag": "simple",
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "path_prefix": {
+                    "type": "path",
+                    "path": "imaging/features"
+                },
+                "is_identifier_in_paths": true,
+                "name": "linear_light_profiles",
+                "unique_tag": "simple",
+                "image_path_suffix": "",
+                "parent": null,
+                "identifier": "6f6bbed7dd4c011a304a8a9d03cd219b"
+            }
+        },
+        "split_threshold": 100,
+        "use_jax_vmap": true,
+        "n_update": null
+    }
+}

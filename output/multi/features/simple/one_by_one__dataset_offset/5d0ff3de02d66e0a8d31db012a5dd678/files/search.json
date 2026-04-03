@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "use_jax_vmap": true,
+        "inplace": false,
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "identifier": "5d0ff3de02d66e0a8d31db012a5dd678",
+                "parent": null,
+                "image_path_suffix": "",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "multi/features"
+                },
+                "name": "one_by_one__dataset_offset",
+                "unique_tag": "simple",
+                "is_identifier_in_paths": true
+            }
+        },
+        "enlarge_per_dim": 1.1,
+        "n_points_min": null,
+        "path_prefix": {
+            "type": "path",
+            "path": "multi/features"
+        },
+        "number_of_cores": 1,
+        "iterations_per_full_update": 1e+99,
+        "unique_tag": "simple",
+        "n_update": null,
+        "n_eff": 500,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "n_shell": 1,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "n_like_new_bound": null,
+        "n_networks": 4,
+        "split_threshold": 100,
+        "name": "one_by_one__dataset_offset",
+        "n_live": 100,
+        "seed": null,
+        "iterations_per_quick_update": 1e+99
+    }
+}

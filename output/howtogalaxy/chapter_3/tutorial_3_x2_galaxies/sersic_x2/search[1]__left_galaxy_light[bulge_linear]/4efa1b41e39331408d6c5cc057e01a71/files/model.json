@@ -1,0 +1,60 @@
+{
+    "type": "collection",
+    "arguments": {
+        "galaxies": {
+            "type": "collection",
+            "arguments": {
+                "left_galaxy": {
+                    "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                    "type": "model",
+                    "arguments": {
+                        "redshift": {
+                            "type": "Constant",
+                            "value": 0.5
+                        },
+                        "bulge": {
+                            "class_path": "autogalaxy.profiles.light.linear.dev_vaucouleurs.DevVaucouleurs",
+                            "type": "model",
+                            "arguments": {
+                                "centre": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "centre_0": 0.0,
+                                        "centre_1": -1.0
+                                    }
+                                },
+                                "ell_comps": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "ell_comps_0": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 2,
+                                            "mean": 0.0,
+                                            "sigma": 0.3,
+                                            "lower_limit": -1.0,
+                                            "upper_limit": 1.0
+                                        },
+                                        "ell_comps_1": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 3,
+                                            "mean": 0.0,
+                                            "sigma": 0.3,
+                                            "lower_limit": -1.0,
+                                            "upper_limit": 1.0
+                                        }
+                                    }
+                                },
+                                "effective_radius": {
+                                    "type": "Uniform",
+                                    "id": 4,
+                                    "lower_limit": 0.0,
+                                    "upper_limit": 30.0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

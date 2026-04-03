@@ -1,0 +1,63 @@
+Script: howtogalaxy/chapter_optional/tutorial_searches.py
+Exit: 1
+
+2026-04-03 01:25:50,345 - autoarray.dataset.imaging.dataset - INFO - IMAGING - Data masked, contains a total of 2128 image-pixels
+2026-04-03 01:25:51,918 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+The non-linear search has begun running - checkout the workspace/output  folder for live output of the results, images and model.  This Jupyter notebook cell with progress once search has completed - this could take some time!
+2026-04-03 01:25:51,918 - autofit.non_linear.search.abstract_search - INFO - Starting non-linear search with 1 cores.
+2026-04-03 01:25:52,417 - tutorial_searches_slow - INFO - The output path of this fit is /home/user/autogalaxy_workspace/output/howtogalaxy/chapter_optional/simple__sersic/tutorial_searches_slow/77139b319c629e0b1affe6de84a8e88c
+2026-04-03 01:25:52,421 - tutorial_searches_slow - INFO - Fit Already Completed: skipping non-linear search.
+2026-04-03 01:25:52,450 - tutorial_searches_slow - INFO - Removing search internal folder.
+2026-04-03 01:25:52,451 - tutorial_searches_slow - INFO - Removing all files except for .zip file
+2026-04-03 01:25:52,604 - tutorial_searches_slow - INFO - Search complete, returning result
+INFO:2026-04-03 01:25:52,618:jax._src.xla_bridge:927: Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+2026-04-03 01:25:52,618 - jax._src.xla_bridge - INFO - Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:2026-04-03 01:25:52,618:jax._src.xla_bridge:927: Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-04-03 01:25:52,618 - jax._src.xla_bridge - INFO - Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+Total Nautilus Iterations (If you skip running the search, this is ~ 500000):
+50
+2026-04-03 01:25:54,441 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+The non-linear search has begun running - checkout the workspace/output  folder for live output of the results, images and model.  This Jupyter notebook cell with progress once search has completed - this could take some time!
+2026-04-03 01:25:54,442 - autofit.non_linear.search.abstract_search - INFO - Starting non-linear search with 1 cores.
+2026-04-03 01:25:54,449 - tutorial_searches_fast - INFO - The output path of this fit is /home/user/autogalaxy_workspace/output/howtogalaxy/chapter_2/simple__sersic/tutorial_searches_fast/5ce4cdf70f5993ce49c0652efed20c4e
+2026-04-03 01:25:54,452 - tutorial_searches_fast - INFO - Fit Already Completed: skipping non-linear search.
+2026-04-03 01:25:54,452 - tutorial_searches_fast - INFO - Removing search internal folder.
+2026-04-03 01:25:54,452 - tutorial_searches_fast - INFO - Removing all files except for .zip file
+2026-04-03 01:25:54,637 - tutorial_searches_fast - INFO - Search complete, returning result
+Search has finished run - you may now continue the notebook.
+Total Nautilus Iterations:
+Slow settings: ~500000
+50
+Fast settings:  50
+2026-04-03 01:25:55,033 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+The non-linear search has begun running - checkout the workspace/output  folder for live output of the results, images and model.  This Jupyter notebook cell with progress once search has completed - this could take some time!
+2026-04-03 01:25:55,033 - autofit.non_linear.search.abstract_search - INFO - Starting non-linear search with 1 cores.
+2026-04-03 01:25:55,037 - tutorial_searches_pso - INFO - The output path of this fit is /home/user/autogalaxy_workspace/output/howtogalaxy/chapter_optional/simple__sersic/tutorial_searches_pso/4f0365a518aca7f4b751ca75e313f2af
+2026-04-03 01:25:55,037 - tutorial_searches_pso - INFO - Outputting pre-fit files (e.g. model.info, visualization).
+2026-04-03 01:25:55,059 - autofit.non_linear.initializer - WARNING - TEST MODE ON: SAMPLES BEING ASSIGNED ABRITRARY LARGE LIKELIHOODS
+2026-04-03 01:25:55,206 - tutorial_searches_pso - INFO - Starting new PySwarms non-linear search (no previous samples found).
+Traceback (most recent call last):
+  File "/home/user/autogalaxy_workspace/scripts/howtogalaxy/chapter_optional/tutorial_searches.py", line 257, in <module>
+    result_pso = search.fit(model=model, analysis=analysis)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py", line 493, in fit
+    result = self.start_resume_fit(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py", line 116, in decorated
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py", line 641, in start_resume_fit
+    search_internal, fitness = self._fit(
+                               ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/mle/pyswarms/search/abstract.py", line 205, in _fit
+    search_internal = self.search_internal_from(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/mle/pyswarms/search/local.py", line 71, in search_internal_from
+    import pyswarms
+ModuleNotFoundError: No module named 'pyswarms'

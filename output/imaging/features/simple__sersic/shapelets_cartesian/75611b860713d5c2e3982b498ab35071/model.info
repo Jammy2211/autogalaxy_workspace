@@ -1,0 +1,214 @@
+Total Free Parameters = 125
+
+model                                                                           Collection (N=125)
+    galaxies                                                                    Collection (N=125)
+        galaxy                                                                  Galaxy (N=125)
+            bulge                                                               Basis (N=125)
+                profile_list                                                    Collection (N=125)
+                    0 - 24                                                      ShapeletCartesian (N=5)
+
+galaxies
+    galaxy
+        redshift                                                                1.0
+        bulge
+            profile_list
+                0
+                    centre
+                        centre_0                                                GaussianPrior [101], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [102], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [103], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [104], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [105], lower_limit = 0.0, upper_limit = 30.0
+                1
+                    centre
+                        centre_0                                                GaussianPrior [106], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [107], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [108], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [109], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [110], lower_limit = 0.0, upper_limit = 30.0
+                2
+                    centre
+                        centre_0                                                GaussianPrior [111], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [112], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [113], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [114], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [115], lower_limit = 0.0, upper_limit = 30.0
+                3
+                    centre
+                        centre_0                                                GaussianPrior [116], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [117], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [118], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [119], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [120], lower_limit = 0.0, upper_limit = 30.0
+                4
+                    centre
+                        centre_0                                                GaussianPrior [121], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [122], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [123], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [124], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [125], lower_limit = 0.0, upper_limit = 30.0
+                5
+                    centre
+                        centre_0                                                GaussianPrior [126], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [127], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [128], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [129], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [130], lower_limit = 0.0, upper_limit = 30.0
+                6
+                    centre
+                        centre_0                                                GaussianPrior [131], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [132], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [133], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [134], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [135], lower_limit = 0.0, upper_limit = 30.0
+                7
+                    centre
+                        centre_0                                                GaussianPrior [136], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [137], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [138], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [139], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [140], lower_limit = 0.0, upper_limit = 30.0
+                8
+                    centre
+                        centre_0                                                GaussianPrior [141], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [142], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [143], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [144], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [145], lower_limit = 0.0, upper_limit = 30.0
+                9
+                    centre
+                        centre_0                                                GaussianPrior [146], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [147], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [148], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [149], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [150], lower_limit = 0.0, upper_limit = 30.0
+                10
+                    centre
+                        centre_0                                                GaussianPrior [151], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [152], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [153], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [154], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [155], lower_limit = 0.0, upper_limit = 30.0
+                11
+                    centre
+                        centre_0                                                GaussianPrior [156], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [157], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [158], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [159], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [160], lower_limit = 0.0, upper_limit = 30.0
+                12
+                    centre
+                        centre_0                                                GaussianPrior [161], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [162], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [163], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [164], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [165], lower_limit = 0.0, upper_limit = 30.0
+                13
+                    centre
+                        centre_0                                                GaussianPrior [166], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [167], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [168], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [169], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [170], lower_limit = 0.0, upper_limit = 30.0
+                14
+                    centre
+                        centre_0                                                GaussianPrior [171], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [172], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [173], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [174], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [175], lower_limit = 0.0, upper_limit = 30.0
+                15
+                    centre
+                        centre_0                                                GaussianPrior [176], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [177], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [178], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [179], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [180], lower_limit = 0.0, upper_limit = 30.0
+                16
+                    centre
+                        centre_0                                                GaussianPrior [181], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [182], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [183], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [184], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [185], lower_limit = 0.0, upper_limit = 30.0
+                17
+                    centre
+                        centre_0                                                GaussianPrior [186], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [187], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [188], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [189], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [190], lower_limit = 0.0, upper_limit = 30.0
+                18
+                    centre
+                        centre_0                                                GaussianPrior [191], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [192], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [193], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [194], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [195], lower_limit = 0.0, upper_limit = 30.0
+                19
+                    centre
+                        centre_0                                                GaussianPrior [196], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [197], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [198], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [199], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [200], lower_limit = 0.0, upper_limit = 30.0
+                20
+                    centre
+                        centre_0                                                GaussianPrior [201], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [202], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [203], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [204], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [205], lower_limit = 0.0, upper_limit = 30.0
+                21
+                    centre
+                        centre_0                                                GaussianPrior [206], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [207], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [208], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [209], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [210], lower_limit = 0.0, upper_limit = 30.0
+                22
+                    centre
+                        centre_0                                                GaussianPrior [211], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [212], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [213], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [214], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [215], lower_limit = 0.0, upper_limit = 30.0
+                23
+                    centre
+                        centre_0                                                GaussianPrior [216], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [217], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [218], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [219], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [220], lower_limit = 0.0, upper_limit = 30.0
+                24
+                    centre
+                        centre_0                                                GaussianPrior [221], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [222], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [223], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [224], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                    beta                                                        UniformPrior [225], lower_limit = 0.0, upper_limit = 30.0

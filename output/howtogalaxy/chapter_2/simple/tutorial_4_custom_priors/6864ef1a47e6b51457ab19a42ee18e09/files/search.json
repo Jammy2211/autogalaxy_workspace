@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_points_min": null,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "n_networks": 4,
+        "n_like_new_bound": null,
+        "n_live": 100,
+        "n_shell": 1,
+        "enlarge_per_dim": 1.1,
+        "unique_tag": "simple",
+        "n_eff": 500,
+        "seed": null,
+        "iterations_per_full_update": 1e+99,
+        "split_threshold": 100,
+        "use_jax_vmap": true,
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "parent": null,
+                "identifier": "6864ef1a47e6b51457ab19a42ee18e09",
+                "image_path_suffix": "",
+                "name": "tutorial_4_custom_priors",
+                "unique_tag": "simple",
+                "is_identifier_in_paths": true,
+                "path_prefix": {
+                    "type": "path",
+                    "path": "howtogalaxy/chapter_2"
+                }
+            }
+        },
+        "number_of_cores": 1,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "name": "tutorial_4_custom_priors",
+        "n_update": null,
+        "inplace": false,
+        "path_prefix": {
+            "type": "path",
+            "path": "howtogalaxy/chapter_2"
+        },
+        "iterations_per_quick_update": 1e+99
+    }
+}

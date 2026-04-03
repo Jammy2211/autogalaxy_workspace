@@ -1,0 +1,51 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.dynesty.search.static.DynestyStatic",
+    "arguments": {
+        "path_prefix": {
+            "type": "path",
+            "path": "ellipse_multipole"
+        },
+        "fmove": 0.9,
+        "iterations_per_quick_update": 10000.0,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "facc": 0.2,
+        "unique_tag": "ellipse",
+        "sample": "rwalk",
+        "bootstrap": null,
+        "slices": 5,
+        "number_of_cores": 4,
+        "walks": 5,
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "is_identifier_in_paths": true,
+                "parent": null,
+                "path_prefix": {
+                    "type": "path",
+                    "path": "ellipse_multipole"
+                },
+                "image_path_suffix": "",
+                "unique_tag": "ellipse",
+                "identifier": "8cf7a41ea85cc073b2658131086abdea",
+                "name": "fit_1"
+            }
+        },
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "nlive": 50,
+        "max_move": 100,
+        "enlarge": null,
+        "iterations_per_full_update": 1e+99,
+        "bound": "multi",
+        "inplace": false,
+        "name": "fit_1"
+    }
+}

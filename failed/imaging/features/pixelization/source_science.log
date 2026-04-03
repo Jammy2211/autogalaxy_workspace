@@ -1,0 +1,135 @@
+Script: imaging/features/pixelization/source_science.py
+Exit: 1
+
+2026-04-03 01:30:45,865 - autoarray.dataset.imaging.dataset - INFO - IMAGING - Data masked, contains a total of 2828 image-pixels
+2026-04-03 01:30:46,608 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+2026-04-03 01:30:46,608 - autofit.non_linear.search.abstract_search - INFO - Starting non-linear search with 1 cores.
+2026-04-03 01:30:47,447 - pixelization - INFO - The output path of this fit is /home/user/autogalaxy_workspace/output/features/simple__sersic/pixelization/200c7791e870f234f555816563cd3445
+2026-04-03 01:30:47,447 - pixelization - INFO - Outputting pre-fit files (e.g. model.info, visualization).
+2026-04-03 01:30:47,456 - pixelization - INFO - Starting new Nautilus non-linear search (no previous samples found).
+2026-04-03 01:30:47,456 - autofit.non_linear.fitness - INFO - JAX: Applying vmap and jit to likelihood function -- may take a few seconds.
+2026-04-03 01:30:47,457 - autofit.non_linear.fitness - INFO - JAX: vmap and jit applied in 0.0002734661102294922 seconds.
+2026-04-03 01:30:47,457 - pixelization - INFO - 
+            Running search where parallelization is disabled.
+            
+Starting the nautilus sampler...
+Please report issues at github.com/johannesulf/nautilus.
+Status    | Bounds | Ellipses | Networks | Calls    | f_live | N_eff | log Z    
+Sampling  | 1      | 0        | 0        | 0        | 1.0000 | 0     | N/A      Computing | 1      | 0        | 0        | 0        | 1.0000 | 0     | N/A      Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/regularization/matern_kernel.py", line 37, in kv_xp
+    import tensorflow_probability.substrates.jax as tfp
+ModuleNotFoundError: No module named 'tensorflow_probability'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/autogalaxy_workspace/scripts/imaging/features/pixelization/source_science.py", line 83, in <module>
+    result = search.fit(model=model, analysis=analysis)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py", line 493, in fit
+    result = self.start_resume_fit(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py", line 116, in decorated
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py", line 641, in start_resume_fit
+    search_internal, fitness = self._fit(
+                               ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/nest/nautilus/search.py", line 147, in _fit
+    search_internal = self.fit_x1_cpu(
+                      ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/nest/nautilus/search.py", line 243, in fit_x1_cpu
+    return self.call_search(search_internal=search_internal, model=model, analysis=analysis, fitness=fitness)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/nest/nautilus/search.py", line 340, in call_search
+    search_internal.run(
+  File "/usr/local/lib/python3.11/dist-packages/nautilus/sampler.py", line 447, in run
+    self.n_update_iter += self.add_samples(-1, verbose=verbose)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/nautilus/sampler.py", line 1134, in add_samples
+    log_l, blobs = self.evaluate_likelihood(points)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/nautilus/sampler.py", line 873, in evaluate_likelihood
+    result = list(map(self.likelihood, args))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/fitness.py", line 220, in call_wrap
+    figure_of_merit = self._call(parameters)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/fitness.py", line 162, in call
+    log_likelihood = self.analysis.log_likelihood_function(instance=instance)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autogalaxy/imaging/model/analysis.py", line 123, in log_likelihood_function
+    return self.fit_from(instance=instance).figure_of_merit
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/fit/fit_dataset.py", line 362, in figure_of_merit
+    return self.log_evidence
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/fit/fit_dataset.py", line 347, in log_evidence
+    chi_squared=self.chi_squared,
+                ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/fit/fit_dataset.py", line 295, in chi_squared
+    return super().chi_squared
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/fit/fit_dataset.py", line 87, in chi_squared
+    chi_squared_map=self.chi_squared_map.array, xp=self._xp
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/fit/fit_dataset.py", line 274, in chi_squared_map
+    return super().chi_squared_map
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/fit/fit_dataset.py", line 78, in chi_squared_map
+    residual_map=self.residual_map, noise_map=self.noise_map
+                 ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/fit/fit_dataset.py", line 242, in residual_map
+    return super().residual_map
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/fit/fit_dataset.py", line 57, in residual_map
+    return fit_util.residual_map_from(data=self.data, model_data=self.model_data)
+                                                                 ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autogalaxy/imaging/fit_imaging.py", line 185, in model_data
+    self.blurred_image + self.inversion.mapped_reconstructed_operated_data
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/inversion/abstract.py", line 639, in mapped_reconstructed_operated_data
+    return sum(self.mapped_reconstructed_operated_data_dict.values())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/inversion/imaging/mapping.py", line 195, in mapped_reconstructed_operated_data_dict
+    return self._mapped_reconstructed_data_dict_from(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/inversion/imaging/mapping.py", line 112, in _mapped_reconstructed_data_dict_from
+    source_quantity=self.reconstruction
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoconf/tools/decorators.py", line 19, in __get__
+    obj.__dict__[self.func.__name__] = self.func(obj)
+                                       ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/inversion/abstract.py", line 504, in reconstruction
+    curvature_reg_matrix = self.curvature_reg_matrix[
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/inversion/abstract.py", line 355, in curvature_reg_matrix
+    return self._xp.add(self.curvature_matrix, self.regularization_matrix)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoconf/tools/decorators.py", line 19, in __get__
+    obj.__dict__[self.func.__name__] = self.func(obj)
+                                       ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/inversion/abstract.py", line 308, in regularization_matrix
+    *[
+     ^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/inversion/abstract.py", line 309, in <listcomp>
+    linear_obj.regularization_matrix
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/linear_obj/linear_obj.py", line 160, in regularization_matrix
+    return self.regularization.regularization_matrix_from(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/regularization/matern_kernel.py", line 231, in regularization_matrix_from
+    covariance_matrix = matern_cov_matrix_from(
+                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/regularization/matern_kernel.py", line 128, in matern_cov_matrix_from
+    covariance_matrix = matern_kernel(d_ij, l=scale, v=nu, xp=xp)  # (N, N)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/regularization/matern_kernel.py", line 74, in matern_kernel
+    part3 = kv_xp(v, z, xp)
+            ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoarray/inversion/regularization/matern_kernel.py", line 41, in kv_xp
+    raise ImportError(
+ImportError: To use the JAX backend with the Matérn kernel, please install tensorflow-probability via `pip install tensorflow-probability==0.25.0`.
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.

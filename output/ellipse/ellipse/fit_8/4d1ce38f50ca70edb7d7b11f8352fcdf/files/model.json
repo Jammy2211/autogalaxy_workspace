@@ -1,0 +1,44 @@
+{
+    "type": "collection",
+    "arguments": {
+        "ellipses": {
+            "type": "collection",
+            "arguments": {
+                "0": {
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "type": "model",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple_prior",
+                            "arguments": {
+                                "centre_0": -0.07023162473933,
+                                "centre_1": 0.02730953213633
+                            }
+                        },
+                        "ell_comps": {
+                            "type": "tuple_prior",
+                            "arguments": {
+                                "ell_comps_0": {
+                                    "type": "Uniform",
+                                    "id": 60,
+                                    "lower_limit": -0.6,
+                                    "upper_limit": 0.6
+                                },
+                                "ell_comps_1": {
+                                    "type": "Uniform",
+                                    "id": 61,
+                                    "lower_limit": -0.6,
+                                    "upper_limit": 0.6
+                                }
+                            }
+                        },
+                        "major_axis": {
+                            "type": "Constant",
+                            "value": 4.033333333333333
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

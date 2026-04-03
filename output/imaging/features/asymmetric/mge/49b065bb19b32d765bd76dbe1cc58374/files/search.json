@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_shell": 1,
+        "n_live": 75,
+        "name": "mge",
+        "iterations_per_quick_update": 1e+99,
+        "unique_tag": "asymmetric",
+        "inplace": false,
+        "n_like_new_bound": null,
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "is_identifier_in_paths": true,
+                "identifier": "49b065bb19b32d765bd76dbe1cc58374",
+                "name": "mge",
+                "unique_tag": "asymmetric",
+                "parent": null,
+                "image_path_suffix": "",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "imaging/features"
+                }
+            }
+        },
+        "n_eff": 500,
+        "iterations_per_full_update": 1e+99,
+        "number_of_cores": 1,
+        "split_threshold": 100,
+        "n_networks": 4,
+        "seed": null,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "use_jax_vmap": true,
+        "enlarge_per_dim": 1.1,
+        "n_update": null,
+        "n_points_min": null,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "path_prefix": {
+            "type": "path",
+            "path": "imaging/features"
+        }
+    }
+}

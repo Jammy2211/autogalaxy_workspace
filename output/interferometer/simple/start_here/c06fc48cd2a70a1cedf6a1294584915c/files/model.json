@@ -1,0 +1,992 @@
+{
+    "type": "collection",
+    "arguments": {
+        "galaxies": {
+            "type": "collection",
+            "arguments": {
+                "galaxy": {
+                    "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                    "type": "model",
+                    "arguments": {
+                        "redshift": {
+                            "type": "Constant",
+                            "value": 0.5
+                        },
+                        "bulge": {
+                            "class_path": "autogalaxy.profiles.basis.Basis",
+                            "type": "model",
+                            "arguments": {
+                                "profile_list": {
+                                    "type": "collection",
+                                    "arguments": {
+                                        "0": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.0001
+                                                }
+                                            }
+                                        },
+                                        "1": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.00017344487672185226
+                                                }
+                                            }
+                                        },
+                                        "2": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.0003008312526105853
+                                                }
+                                            }
+                                        },
+                                        "3": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.0005217763952312335
+                                                }
+                                            }
+                                        },
+                                        "4": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.0009049944254725376
+                                                }
+                                            }
+                                        },
+                                        "5": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.001569666465600478
+                                                }
+                                            }
+                                        },
+                                        "6": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.002722506066205007
+                                                }
+                                            }
+                                        },
+                                        "7": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.004722047290274224
+                                                }
+                                            }
+                                        },
+                                        "8": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.008190149101363692
+                                                }
+                                            }
+                                        },
+                                        "9": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.014205394012196147
+                                                }
+                                            }
+                                        },
+                                        "10": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.024638528132306988
+                                                }
+                                            }
+                                        },
+                                        "11": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.04273426474515874
+                                                }
+                                            }
+                                        },
+                                        "12": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.07412039280523063
+                                                }
+                                            }
+                                        },
+                                        "13": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.12855802392678492
+                                                }
+                                            }
+                                        },
+                                        "14": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.22297730611586142
+                                                }
+                                            }
+                                        },
+                                        "15": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.38674271371036295
+                                                }
+                                            }
+                                        },
+                                        "16": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 0.670785423025685
+                                                }
+                                            }
+                                        },
+                                        "17": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 1.1634429500350545
+                                                }
+                                            }
+                                        },
+                                        "18": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 2.0179321904173815
+                                                }
+                                            }
+                                        },
+                                        "19": {
+                                            "class_path": "autogalaxy.profiles.light.linear.gaussian.Gaussian",
+                                            "type": "model",
+                                            "arguments": {
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "sigma": {
+                                                    "type": "Constant",
+                                                    "value": 3.5000000000000004
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "regularization": null
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

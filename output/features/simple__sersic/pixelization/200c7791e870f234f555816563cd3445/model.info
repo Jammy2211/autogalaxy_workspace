@@ -1,0 +1,20 @@
+Total Free Parameters = 3
+
+model                                                                           Collection (N=3)
+    galaxies                                                                    Collection (N=3)
+        galaxy                                                                  Galaxy (N=3)
+            pixelization                                                        Pixelization (N=3)
+                mesh                                                            RectangularAdaptDensity (N=0)
+                regularization                                                  MaternKernel (N=3)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        pixelization
+            mesh
+                shape                                                           (28, 28)
+                pixels                                                          784
+            regularization
+                coefficient                                                     LogUniformPrior [0], lower_limit = 1e-06, upper_limit = 1000000.0
+                scale                                                           LogUniformPrior [1], lower_limit = 1e-06, upper_limit = 1000000.0
+                nu                                                              UniformPrior [2], lower_limit = 0.5, upper_limit = 5.5

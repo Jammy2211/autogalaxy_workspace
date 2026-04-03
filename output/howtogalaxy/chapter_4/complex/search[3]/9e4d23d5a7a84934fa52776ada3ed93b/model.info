@@ -1,0 +1,40 @@
+Total Free Parameters = 16
+
+model                                                                           Collection (N=16)
+    galaxies                                                                    Collection (N=16)
+        galaxy                                                                  Galaxy (N=16)
+            bulge - disk                                                        Sersic (N=7)
+            pixelization                                                        Pixelization (N=2)
+                mesh                                                            RectangularAdaptDensity (N=0)
+                regularization                                                  GaussianKernel (N=2)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge
+            centre
+                centre_0                                                        GaussianPrior [15], mean = 0.0, sigma = 0.3
+                centre_1                                                        GaussianPrior [16], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [2], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [3], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            intensity                                                           LogUniformPrior [4], lower_limit = 1e-06, upper_limit = 1000000.0
+            effective_radius                                                    UniformPrior [5], lower_limit = 0.0, upper_limit = 30.0
+            sersic_index                                                        UniformPrior [6], lower_limit = 0.8, upper_limit = 5.0
+        disk
+            centre
+                centre_0                                                        GaussianPrior [22], mean = 0.0, sigma = 0.3
+                centre_1                                                        GaussianPrior [23], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [9], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [10], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            intensity                                                           LogUniformPrior [11], lower_limit = 1e-06, upper_limit = 1000000.0
+            effective_radius                                                    UniformPrior [12], lower_limit = 0.0, upper_limit = 30.0
+            sersic_index                                                        UniformPrior [28], lower_limit = 0.8, upper_limit = 5.0
+        pixelization
+            mesh
+                shape                                                           (28, 28)
+                pixels                                                          784
+            regularization
+                coefficient                                                     LogUniformPrior [29], lower_limit = 1e-06, upper_limit = 1000000.0
+                scale                                                           LogUniformPrior [30], lower_limit = 1e-06, upper_limit = 1000000.0

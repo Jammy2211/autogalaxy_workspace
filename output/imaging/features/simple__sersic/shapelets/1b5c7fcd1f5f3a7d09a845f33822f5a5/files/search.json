@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "unique_tag": "simple__sersic",
+        "n_live": 150,
+        "use_jax_vmap": true,
+        "n_like_new_bound": null,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "number_of_cores": 1,
+        "name": "shapelets",
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "unique_tag": "simple__sersic",
+                "image_path_suffix": "",
+                "is_identifier_in_paths": true,
+                "parent": null,
+                "identifier": "1b5c7fcd1f5f3a7d09a845f33822f5a5",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "imaging/features"
+                },
+                "name": "shapelets"
+            }
+        },
+        "n_update": null,
+        "n_eff": 500,
+        "seed": null,
+        "inplace": false,
+        "n_shell": 1,
+        "path_prefix": {
+            "type": "path",
+            "path": "imaging/features"
+        },
+        "n_points_min": null,
+        "iterations_per_quick_update": 1e+99,
+        "enlarge_per_dim": 1.1,
+        "iterations_per_full_update": 1e+99,
+        "split_threshold": 100,
+        "n_networks": 4
+    }
+}

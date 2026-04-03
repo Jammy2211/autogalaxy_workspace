@@ -1,0 +1,94 @@
+{
+    "type": "collection",
+    "arguments": {
+        "dataset_model": {
+            "class_path": "autoarray.dataset.dataset_model.DatasetModel",
+            "type": "model",
+            "arguments": {
+                "background_sky_level": {
+                    "type": "Constant",
+                    "value": 0.0
+                },
+                "grid_offset": {
+                    "type": "tuple_prior",
+                    "arguments": {
+                        "grid_offset_0": {
+                            "type": "Uniform",
+                            "id": 11,
+                            "lower_limit": -0.1,
+                            "upper_limit": 0.1
+                        },
+                        "grid_offset_1": {
+                            "type": "Uniform",
+                            "id": 12,
+                            "lower_limit": -0.1,
+                            "upper_limit": 0.1
+                        }
+                    }
+                }
+            }
+        },
+        "galaxies": {
+            "type": "instance",
+            "class_path": "autofit.mapper.model.ModelInstance",
+            "arguments": {
+                "child_items": {
+                    "type": "dict",
+                    "arguments": {
+                        "galaxy": {
+                            "type": "instance",
+                            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                            "arguments": {
+                                "label": "cls3",
+                                "redshift": 0.5,
+                                "bulge": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.profiles.light.linear.sersic.Sersic",
+                                    "arguments": {
+                                        "ell_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.2537196984143061,
+                                                -0.13412076502758288
+                                            ]
+                                        },
+                                        "sersic_index": 4.89155785548274,
+                                        "effective_radius": 4.216537423935815,
+                                        "centre": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.0018070704345329368,
+                                                0.10362556943451069
+                                            ]
+                                        }
+                                    }
+                                },
+                                "disk": {
+                                    "type": "instance",
+                                    "class_path": "autogalaxy.profiles.light.linear.exponential.Exponential",
+                                    "arguments": {
+                                        "ell_comps": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.3400600138606859,
+                                                -0.45739736957855076
+                                            ]
+                                        },
+                                        "effective_radius": 29.269880253891387,
+                                        "centre": {
+                                            "type": "tuple",
+                                            "values": [
+                                                -0.06719065266343824,
+                                                0.019917221425051906
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

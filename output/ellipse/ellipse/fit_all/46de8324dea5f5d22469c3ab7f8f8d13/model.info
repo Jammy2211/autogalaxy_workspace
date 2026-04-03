@@ -1,0 +1,40 @@
+Total Free Parameters = 1
+
+model                                                                           Collection (N=1)
+    ellipses                                                                    Collection (N=0)
+        0 - 9                                                                   Ellipse (N=0)
+
+dummy_0                                                                         UniformPrior [68], lower_limit = -0.1, upper_limit = 0.1
+ellipses
+    0 - 9
+        centre                                                                  (-0.07023162473933, 0.02730953213633)
+    0
+        ell_comps                                                               (-0.24139865247937, -0.3391528365532)
+        major_axis                                                              0.3
+    1
+        ell_comps                                                               (-0.16733801303002, 0.08513687652955)
+        major_axis                                                              0.7666666666666666
+    2
+        ell_comps                                                               (-0.01381013796288, 0.16710953581508)
+        major_axis                                                              1.2333333333333334
+    3
+        ell_comps                                                               (0.58164239835023, -0.12315113653514)
+        major_axis                                                              1.7
+    4
+        ell_comps                                                               (-0.04748824585917, 0.45217109149975)
+        major_axis                                                              2.1666666666666665
+    5
+        ell_comps                                                               (0.06173851017342, -0.18967482740552)
+        major_axis                                                              2.6333333333333333
+    6
+        ell_comps                                                               (-0.41254868494927, 0.1023328710164)
+        major_axis                                                              3.0999999999999996
+    7
+        ell_comps                                                               (-0.38242534011924, 0.176028900719)
+        major_axis                                                              3.5666666666666664
+    8
+        ell_comps                                                               (0.02752289326094, 0.09663015519357)
+        major_axis                                                              4.033333333333333
+    9
+        ell_comps                                                               (0.33336285375083, 0.38256034218032)
+        major_axis                                                              4.5

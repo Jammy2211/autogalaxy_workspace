@@ -1,0 +1,61 @@
+Total Free Parameters = 4
+
+model                                                                           Collection (N=4)
+    galaxies                                                                    Collection (N=4)
+        galaxy                                                                  Galaxy (N=4)
+            bulge                                                               Basis (N=4)
+                profile_list                                                    Collection (N=4)
+                    0 - 19                                                      Gaussian (N=4)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge
+            profile_list
+                0 - 19
+                    centre
+                        centre_0                                                GaussianPrior [0], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [1], mean = 0.0, sigma = 0.3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [2], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [3], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                0
+                    sigma                                                       0.0001
+                1
+                    sigma                                                       0.00017344487672185226
+                2
+                    sigma                                                       0.0003008312526105853
+                3
+                    sigma                                                       0.0005217763952312335
+                4
+                    sigma                                                       0.0009049944254725376
+                5
+                    sigma                                                       0.001569666465600478
+                6
+                    sigma                                                       0.002722506066205007
+                7
+                    sigma                                                       0.004722047290274224
+                8
+                    sigma                                                       0.008190149101363692
+                9
+                    sigma                                                       0.014205394012196147
+                10
+                    sigma                                                       0.024638528132306988
+                11
+                    sigma                                                       0.04273426474515874
+                12
+                    sigma                                                       0.07412039280523063
+                13
+                    sigma                                                       0.12855802392678492
+                14
+                    sigma                                                       0.22297730611586142
+                15
+                    sigma                                                       0.38674271371036295
+                16
+                    sigma                                                       0.670785423025685
+                17
+                    sigma                                                       1.1634429500350545
+                18
+                    sigma                                                       2.0179321904173815
+                19
+                    sigma                                                       3.5000000000000004

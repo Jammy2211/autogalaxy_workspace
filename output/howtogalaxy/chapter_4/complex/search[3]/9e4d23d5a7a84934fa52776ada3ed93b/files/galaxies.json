@@ -1,0 +1,86 @@
+{
+    "type": "list",
+    "values": [
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "label": "cls10",
+                "redshift": 0.5,
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "intensity": 0.006029152668639744,
+                        "effective_radius": 11.694881608410379,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.4299032516707905,
+                                0.15996027714425795
+                            ]
+                        },
+                        "sersic_index": 2.8266636891369847,
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.2899890044286237,
+                                -0.35574556348000186
+                            ]
+                        }
+                    }
+                },
+                "disk": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "intensity": 0.0007642790216820143,
+                        "effective_radius": 15.064044722726399,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.05984645984448324,
+                                -0.05592250506576229
+                            ]
+                        },
+                        "sersic_index": 4.709858702913695,
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.09627388535268805,
+                                -0.17004532596955713
+                            ]
+                        }
+                    }
+                },
+                "pixelization": {
+                    "type": "instance",
+                    "class_path": "autoarray.inversion.pixelization.Pixelization",
+                    "arguments": {
+                        "mesh": {
+                            "type": "instance",
+                            "class_path": "autoarray.inversion.mesh.mesh.rectangular_adapt_density.RectangularAdaptDensity",
+                            "arguments": {
+                                "shape": {
+                                    "type": "tuple",
+                                    "values": [
+                                        28,
+                                        28
+                                    ]
+                                }
+                            }
+                        },
+                        "regularization": {
+                            "type": "instance",
+                            "class_path": "autoarray.inversion.regularization.gaussian_kernel.GaussianKernel",
+                            "arguments": {
+                                "coefficient": 0.0036393214171744057,
+                                "scale": 0.1604701317014482
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

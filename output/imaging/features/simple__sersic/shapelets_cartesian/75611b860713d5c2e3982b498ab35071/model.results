@@ -1,0 +1,434 @@
+Bayesian Evidence                                                               -19727.34903415
+Maximum Log Likelihood                                                          -19723.43701114
+
+model                                                                           Collection (N=125)
+    galaxies                                                                    Collection (N=125)
+        galaxy                                                                  Galaxy (N=125)
+            bulge                                                               Basis (N=125)
+                profile_list                                                    Collection (N=125)
+                    0 - 24                                                      ShapeletCartesian (N=5)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            profile_list
+                0
+                    centre
+                        centre_0                                                -0.073
+                        centre_1                                                -0.012
+                    ell_comps
+                        ell_comps_0                                             0.076
+                        ell_comps_1                                             -0.204
+                    beta                                                        23.450
+                1
+                    centre
+                        centre_0                                                -0.193
+                        centre_1                                                -0.248
+                    ell_comps
+                        ell_comps_0                                             -0.174
+                        ell_comps_1                                             0.284
+                    beta                                                        14.660
+                2
+                    centre
+                        centre_0                                                0.195
+                        centre_1                                                -0.198
+                    ell_comps
+                        ell_comps_0                                             -0.710
+                        ell_comps_1                                             -0.883
+                    beta                                                        25.652
+                3
+                    centre
+                        centre_0                                                -0.342
+                        centre_1                                                0.302
+                    ell_comps
+                        ell_comps_0                                             -0.069
+                        ell_comps_1                                             0.153
+                    beta                                                        10.110
+                4
+                    centre
+                        centre_0                                                0.135
+                        centre_1                                                -0.377
+                    ell_comps
+                        ell_comps_0                                             -0.273
+                        ell_comps_1                                             -0.141
+                    beta                                                        2.073
+                5
+                    centre
+                        centre_0                                                -0.011
+                        centre_1                                                0.138
+                    ell_comps
+                        ell_comps_0                                             0.853
+                        ell_comps_1                                             -0.335
+                    beta                                                        5.303
+                6
+                    centre
+                        centre_0                                                0.223
+                        centre_1                                                -0.392
+                    ell_comps
+                        ell_comps_0                                             -0.055
+                        ell_comps_1                                             0.247
+                    beta                                                        22.366
+                7
+                    centre
+                        centre_0                                                -0.089
+                        centre_1                                                -0.121
+                    ell_comps
+                        ell_comps_0                                             0.338
+                        ell_comps_1                                             -0.179
+                    beta                                                        27.327
+                8
+                    centre
+                        centre_0                                                0.193
+                        centre_1                                                0.075
+                    ell_comps
+                        ell_comps_0                                             -0.019
+                        ell_comps_1                                             -0.124
+                    beta                                                        1.017
+                9
+                    centre
+                        centre_0                                                -0.053
+                        centre_1                                                0.049
+                    ell_comps
+                        ell_comps_0                                             0.184
+                        ell_comps_1                                             0.445
+                    beta                                                        20.811
+                10
+                    centre
+                        centre_0                                                -0.121
+                        centre_1                                                -0.155
+                    ell_comps
+                        ell_comps_0                                             0.229
+                        ell_comps_1                                             0.052
+                    beta                                                        21.988
+                11
+                    centre
+                        centre_0                                                0.097
+                        centre_1                                                0.650
+                    ell_comps
+                        ell_comps_0                                             0.074
+                        ell_comps_1                                             -0.003
+                    beta                                                        23.494
+                12
+                    centre
+                        centre_0                                                0.259
+                        centre_1                                                -0.218
+                    ell_comps
+                        ell_comps_0                                             -0.073
+                        ell_comps_1                                             0.384
+                    beta                                                        19.831
+                13
+                    centre
+                        centre_0                                                0.017
+                        centre_1                                                0.364
+                    ell_comps
+                        ell_comps_0                                             -0.324
+                        ell_comps_1                                             -0.218
+                    beta                                                        9.234
+                14
+                    centre
+                        centre_0                                                0.150
+                        centre_1                                                -0.034
+                    ell_comps
+                        ell_comps_0                                             -0.357
+                        ell_comps_1                                             -0.006
+                    beta                                                        2.900
+                15
+                    centre
+                        centre_0                                                -0.188
+                        centre_1                                                0.260
+                    ell_comps
+                        ell_comps_0                                             -0.067
+                        ell_comps_1                                             0.295
+                    beta                                                        4.872
+                16
+                    centre
+                        centre_0                                                -0.102
+                        centre_1                                                -0.099
+                    ell_comps
+                        ell_comps_0                                             -0.408
+                        ell_comps_1                                             -0.184
+                    beta                                                        21.243
+                17
+                    centre
+                        centre_0                                                -0.445
+                        centre_1                                                -0.089
+                    ell_comps
+                        ell_comps_0                                             0.171
+                        ell_comps_1                                             -0.098
+                    beta                                                        24.778
+                18
+                    centre
+                        centre_0                                                -0.327
+                        centre_1                                                -0.255
+                    ell_comps
+                        ell_comps_0                                             0.298
+                        ell_comps_1                                             -0.029
+                    beta                                                        7.641
+                19
+                    centre
+                        centre_0                                                0.102
+                        centre_1                                                -0.260
+                    ell_comps
+                        ell_comps_0                                             -0.478
+                        ell_comps_1                                             -0.390
+                    beta                                                        19.911
+                20
+                    centre
+                        centre_0                                                0.299
+                        centre_1                                                -0.155
+                    ell_comps
+                        ell_comps_0                                             -0.322
+                        ell_comps_1                                             0.236
+                    beta                                                        19.864
+                21
+                    centre
+                        centre_0                                                -0.045
+                        centre_1                                                0.125
+                    ell_comps
+                        ell_comps_0                                             0.647
+                        ell_comps_1                                             0.031
+                    beta                                                        2.731
+                22
+                    centre
+                        centre_0                                                -0.124
+                        centre_1                                                0.035
+                    ell_comps
+                        ell_comps_0                                             0.282
+                        ell_comps_1                                             0.330
+                    beta                                                        0.236
+                23
+                    centre
+                        centre_0                                                -0.250
+                        centre_1                                                0.067
+                    ell_comps
+                        ell_comps_0                                             0.230
+                        ell_comps_1                                             -0.166
+                    beta                                                        0.451
+                24
+                    centre
+                        centre_0                                                -0.090
+                        centre_1                                                0.079
+                    ell_comps
+                        ell_comps_0                                             -0.642
+                        ell_comps_1                                             -0.027
+                    beta                                                        14.990
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            profile_list
+                0
+                    centre
+                        centre_0                                                -0.0728 (-0.5653, 0.7329)
+                        centre_1                                                -0.0118 (-0.5797, 0.5171)
+                    ell_comps
+                        ell_comps_0                                             0.0757 (-0.7065, 0.4980)
+                        ell_comps_1                                             -0.2036 (-0.5921, 0.6588)
+                    beta                                                        23.4496 (0.1316, 29.8275)
+                1
+                    centre
+                        centre_0                                                -0.1935 (-0.7293, 0.7772)
+                        centre_1                                                -0.2484 (-0.6981, 0.4596)
+                    ell_comps
+                        ell_comps_0                                             -0.1742 (-0.7197, 0.5662)
+                        ell_comps_1                                             0.2837 (-0.5351, 0.8551)
+                    beta                                                        14.6598 (0.0341, 29.7032)
+                2
+                    centre
+                        centre_0                                                0.1952 (-0.5320, 0.7434)
+                        centre_1                                                -0.1979 (-0.7155, 0.6152)
+                    ell_comps
+                        ell_comps_0                                             -0.7099 (-0.7099, 0.9328)
+                        ell_comps_1                                             -0.8828 (-0.8828, 0.6285)
+                    beta                                                        25.6522 (0.3547, 29.0979)
+                3
+                    centre
+                        centre_0                                                -0.3422 (-0.8510, 0.5090)
+                        centre_1                                                0.3019 (-0.4987, 0.7904)
+                    ell_comps
+                        ell_comps_0                                             -0.0688 (-0.8041, 0.7222)
+                        ell_comps_1                                             0.1527 (-0.6068, 0.7069)
+                    beta                                                        10.1101 (1.7453, 28.9356)
+                4
+                    centre
+                        centre_0                                                0.1353 (-0.6080, 0.5519)
+                        centre_1                                                -0.3767 (-0.8328, 0.7654)
+                    ell_comps
+                        ell_comps_0                                             -0.2729 (-0.6972, 0.9200)
+                        ell_comps_1                                             -0.1412 (-0.9405, 0.7691)
+                    beta                                                        2.0729 (0.1255, 29.0974)
+                5
+                    centre
+                        centre_0                                                -0.0115 (-0.8154, 0.7089)
+                        centre_1                                                0.1385 (-0.4412, 0.7446)
+                    ell_comps
+                        ell_comps_0                                             0.8531 (-0.6043, 0.8531)
+                        ell_comps_1                                             -0.3349 (-0.6566, 0.9755)
+                    beta                                                        5.3028 (0.6798, 28.6679)
+                6
+                    centre
+                        centre_0                                                0.2234 (-0.7020, 0.6319)
+                        centre_1                                                -0.3920 (-0.7524, 0.4603)
+                    ell_comps
+                        ell_comps_0                                             -0.0548 (-0.7480, 0.5298)
+                        ell_comps_1                                             0.2468 (-0.6456, 0.6902)
+                    beta                                                        22.3659 (1.7951, 29.6686)
+                7
+                    centre
+                        centre_0                                                -0.0888 (-0.7504, 0.7551)
+                        centre_1                                                -0.1212 (-0.5957, 0.6967)
+                    ell_comps
+                        ell_comps_0                                             0.3382 (-0.7766, 0.7845)
+                        ell_comps_1                                             -0.1791 (-0.5376, 0.9326)
+                    beta                                                        27.3265 (0.6641, 29.2168)
+                8
+                    centre
+                        centre_0                                                0.1934 (-0.7409, 0.6256)
+                        centre_1                                                0.0754 (-0.7670, 0.6256)
+                    ell_comps
+                        ell_comps_0                                             -0.0194 (-0.7726, 0.8609)
+                        ell_comps_1                                             -0.1237 (-0.5750, 0.6438)
+                    beta                                                        1.0172 (0.7542, 29.6252)
+                9
+                    centre
+                        centre_0                                                -0.0534 (-0.5380, 0.5785)
+                        centre_1                                                0.0486 (-0.5583, 0.6204)
+                    ell_comps
+                        ell_comps_0                                             0.1835 (-0.6852, 0.6994)
+                        ell_comps_1                                             0.4447 (-0.6501, 0.5941)
+                    beta                                                        20.8108 (0.2319, 28.3067)
+                10
+                    centre
+                        centre_0                                                -0.1210 (-1.0982, 0.8992)
+                        centre_1                                                -0.1546 (-0.6971, 0.4323)
+                    ell_comps
+                        ell_comps_0                                             0.2286 (-0.5400, 0.7760)
+                        ell_comps_1                                             0.0525 (-0.6368, 0.5035)
+                    beta                                                        21.9875 (0.0199, 29.0527)
+                11
+                    centre
+                        centre_0                                                0.0974 (-0.6375, 0.7217)
+                        centre_1                                                0.6498 (-0.5113, 0.6498)
+                    ell_comps
+                        ell_comps_0                                             0.0742 (-0.6991, 0.5300)
+                        ell_comps_1                                             -0.0034 (-0.5371, 0.6238)
+                    beta                                                        23.4941 (0.3660, 29.4762)
+                12
+                    centre
+                        centre_0                                                0.2591 (-1.0130, 0.8524)
+                        centre_1                                                -0.2177 (-0.4947, 0.5751)
+                    ell_comps
+                        ell_comps_0                                             -0.0731 (-0.4743, 0.7527)
+                        ell_comps_1                                             0.3840 (-0.5670, 0.4657)
+                    beta                                                        19.8313 (0.8118, 29.3677)
+                13
+                    centre
+                        centre_0                                                0.0167 (-0.6588, 0.7756)
+                        centre_1                                                0.3639 (-0.4748, 0.9032)
+                    ell_comps
+                        ell_comps_0                                             -0.3238 (-0.5280, 0.5861)
+                        ell_comps_1                                             -0.2178 (-0.6667, 0.6784)
+                    beta                                                        9.2342 (0.0588, 29.9619)
+                14
+                    centre
+                        centre_0                                                0.1502 (-0.7123, 0.8012)
+                        centre_1                                                -0.0343 (-0.5160, 0.6409)
+                    ell_comps
+                        ell_comps_0                                             -0.3566 (-0.7127, 0.5969)
+                        ell_comps_1                                             -0.0056 (-0.7148, 0.3023)
+                    beta                                                        2.9004 (1.0205, 29.6845)
+                15
+                    centre
+                        centre_0                                                -0.1880 (-0.4922, 0.5467)
+                        centre_1                                                0.2601 (-0.7528, 0.7676)
+                    ell_comps
+                        ell_comps_0                                             -0.0665 (-0.7985, 0.5432)
+                        ell_comps_1                                             0.2950 (-0.6149, 0.8712)
+                    beta                                                        4.8715 (0.6598, 29.8209)
+                16
+                    centre
+                        centre_0                                                -0.1019 (-0.6744, 0.6370)
+                        centre_1                                                -0.0986 (-0.6309, 0.5753)
+                    ell_comps
+                        ell_comps_0                                             -0.4083 (-0.7679, 0.9053)
+                        ell_comps_1                                             -0.1843 (-0.8709, 0.5692)
+                    beta                                                        21.2431 (0.2466, 29.8233)
+                17
+                    centre
+                        centre_0                                                -0.4446 (-0.5768, 0.6936)
+                        centre_1                                                -0.0886 (-0.5858, 0.6021)
+                    ell_comps
+                        ell_comps_0                                             0.1713 (-0.6713, 0.6339)
+                        ell_comps_1                                             -0.0980 (-0.6563, 0.6949)
+                    beta                                                        24.7782 (1.1654, 28.2692)
+                18
+                    centre
+                        centre_0                                                -0.3271 (-0.4228, 0.7433)
+                        centre_1                                                -0.2554 (-0.7816, 0.7665)
+                    ell_comps
+                        ell_comps_0                                             0.2984 (-0.5931, 0.8337)
+                        ell_comps_1                                             -0.0287 (-0.4346, 0.8736)
+                    beta                                                        7.6414 (0.2519, 27.7397)
+                19
+                    centre
+                        centre_0                                                0.1023 (-0.7970, 0.8621)
+                        centre_1                                                -0.2599 (-0.6403, 0.6381)
+                    ell_comps
+                        ell_comps_0                                             -0.4775 (-0.7054, 0.7950)
+                        ell_comps_1                                             -0.3898 (-0.6654, 0.6156)
+                    beta                                                        19.9106 (0.1316, 29.0558)
+                20
+                    centre
+                        centre_0                                                0.2987 (-0.5428, 1.0519)
+                        centre_1                                                -0.1550 (-0.5289, 0.7752)
+                    ell_comps
+                        ell_comps_0                                             -0.3218 (-0.7403, 0.8110)
+                        ell_comps_1                                             0.2360 (-0.6616, 0.9078)
+                    beta                                                        19.8639 (1.0504, 29.8235)
+                21
+                    centre
+                        centre_0                                                -0.0447 (-0.7268, 0.4540)
+                        centre_1                                                0.1247 (-0.7186, 0.4281)
+                    ell_comps
+                        ell_comps_0                                             0.6474 (-0.5547, 0.8109)
+                        ell_comps_1                                             0.0307 (-0.4472, 0.7662)
+                    beta                                                        2.7312 (1.1939, 29.2879)
+                22
+                    centre
+                        centre_0                                                -0.1239 (-0.5516, 0.6452)
+                        centre_1                                                0.0351 (-0.6626, 0.3816)
+                    ell_comps
+                        ell_comps_0                                             0.2818 (-0.5274, 0.5667)
+                        ell_comps_1                                             0.3299 (-0.5941, 0.5197)
+                    beta                                                        0.2363 (0.2363, 29.7820)
+                23
+                    centre
+                        centre_0                                                -0.2495 (-0.9792, 0.8920)
+                        centre_1                                                0.0668 (-0.5685, 0.8920)
+                    ell_comps
+                        ell_comps_0                                             0.2300 (-0.6684, 0.6498)
+                        ell_comps_1                                             -0.1665 (-0.6286, 0.7588)
+                    beta                                                        0.4509 (0.4509, 29.0258)
+                24
+                    centre
+                        centre_0                                                -0.0903 (-0.7425, 0.6618)
+                        centre_1                                                0.0794 (-0.9772, 0.6343)
+                    ell_comps
+                        ell_comps_0                                             -0.6421 (-0.6421, 0.7495)
+                        ell_comps_1                                             -0.0272 (-0.5715, 0.6516)
+                    beta                                                        14.9901 (1.0135, 29.4092)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                1.0

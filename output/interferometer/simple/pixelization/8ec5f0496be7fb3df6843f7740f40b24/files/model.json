@@ -1,0 +1,57 @@
+{
+    "type": "collection",
+    "arguments": {
+        "galaxies": {
+            "type": "collection",
+            "arguments": {
+                "galaxy": {
+                    "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                    "type": "model",
+                    "arguments": {
+                        "redshift": {
+                            "type": "Constant",
+                            "value": 0.5
+                        },
+                        "pixelization": {
+                            "class_path": "autoarray.inversion.pixelization.Pixelization",
+                            "type": "model",
+                            "arguments": {
+                                "mesh": {
+                                    "class_path": "autoarray.inversion.mesh.mesh.rectangular_uniform.RectangularUniform",
+                                    "type": "instance",
+                                    "arguments": {
+                                        "shape": {
+                                            "type": "tuple",
+                                            "values": [
+                                                28,
+                                                28
+                                            ]
+                                        }
+                                    }
+                                },
+                                "regularization": {
+                                    "class_path": "autoarray.inversion.regularization.gaussian_kernel.GaussianKernel",
+                                    "type": "model",
+                                    "arguments": {
+                                        "coefficient": {
+                                            "type": "LogUniform",
+                                            "id": 0,
+                                            "lower_limit": 1e-06,
+                                            "upper_limit": 1000000.0
+                                        },
+                                        "scale": {
+                                            "type": "LogUniform",
+                                            "id": 1,
+                                            "lower_limit": 1e-06,
+                                            "upper_limit": 1000000.0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

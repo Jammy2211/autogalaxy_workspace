@@ -1,0 +1,25 @@
+Total Free Parameters = 5
+
+model                                                                           Collection (N=5)
+    galaxies                                                                    Collection (N=5)
+        galaxy                                                                  Galaxy (N=5)
+            bulge                                                               Sersic (N=0)
+            disk                                                                Exponential (N=5)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge
+            centre                                                              (-0.0018070704345329368, 0.10362556943451069)
+            ell_comps                                                           (-0.2537196984143061, -0.13412076502758288)
+            intensity                                                           1.0
+            effective_radius                                                    4.216537423935815
+            sersic_index                                                        4.89155785548274
+        disk
+            centre
+                centre_0                                                        GaussianPrior [6], mean = 0.0, sigma = 0.3
+                centre_1                                                        GaussianPrior [7], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [8], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [9], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius                                                    UniformPrior [10], lower_limit = 0.0, upper_limit = 30.0

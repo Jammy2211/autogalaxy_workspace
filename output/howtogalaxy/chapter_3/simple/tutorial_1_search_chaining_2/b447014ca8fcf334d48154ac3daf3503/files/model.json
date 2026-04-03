@@ -1,0 +1,148 @@
+{
+    "type": "collection",
+    "arguments": {
+        "galaxies": {
+            "type": "collection",
+            "arguments": {
+                "galaxy": {
+                    "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                    "type": "model",
+                    "arguments": {
+                        "redshift": {
+                            "type": "Constant",
+                            "value": 0.5
+                        },
+                        "bulge": {
+                            "class_path": "autogalaxy.profiles.light.linear.sersic.Sersic",
+                            "type": "model",
+                            "arguments": {
+                                "centre": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "centre_0": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 23,
+                                            "mean": 0.0,
+                                            "sigma": 0.1,
+                                            "lower_limit": -Infinity,
+                                            "upper_limit": Infinity
+                                        },
+                                        "centre_1": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 24,
+                                            "mean": 0.0,
+                                            "sigma": 0.1,
+                                            "lower_limit": -Infinity,
+                                            "upper_limit": Infinity
+                                        }
+                                    }
+                                },
+                                "ell_comps": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "ell_comps_0": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 25,
+                                            "mean": 0.11,
+                                            "sigma": 0.2,
+                                            "lower_limit": -1.0,
+                                            "upper_limit": 1.0
+                                        },
+                                        "ell_comps_1": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 26,
+                                            "mean": 0.05,
+                                            "sigma": 0.2,
+                                            "lower_limit": -1.0,
+                                            "upper_limit": 1.0
+                                        }
+                                    }
+                                },
+                                "effective_radius": {
+                                    "type": "TruncatedGaussian",
+                                    "id": 27,
+                                    "mean": 0.75,
+                                    "sigma": 0.4,
+                                    "lower_limit": 0.0,
+                                    "upper_limit": Infinity
+                                },
+                                "sersic_index": {
+                                    "type": "TruncatedGaussian",
+                                    "id": 28,
+                                    "mean": 4.0,
+                                    "sigma": 2.0,
+                                    "lower_limit": 0.0,
+                                    "upper_limit": Infinity
+                                }
+                            }
+                        },
+                        "disk": {
+                            "class_path": "autogalaxy.profiles.light.linear.sersic.Sersic",
+                            "type": "model",
+                            "arguments": {
+                                "centre": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "centre_0": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 29,
+                                            "mean": 0.0,
+                                            "sigma": 0.1,
+                                            "lower_limit": -Infinity,
+                                            "upper_limit": Infinity
+                                        },
+                                        "centre_1": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 30,
+                                            "mean": 0.0,
+                                            "sigma": 0.1,
+                                            "lower_limit": -Infinity,
+                                            "upper_limit": Infinity
+                                        }
+                                    }
+                                },
+                                "ell_comps": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "ell_comps_0": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 31,
+                                            "mean": 0.11,
+                                            "sigma": 0.2,
+                                            "lower_limit": -1.0,
+                                            "upper_limit": 1.0
+                                        },
+                                        "ell_comps_1": {
+                                            "type": "TruncatedGaussian",
+                                            "id": 32,
+                                            "mean": 0.05,
+                                            "sigma": 0.2,
+                                            "lower_limit": -1.0,
+                                            "upper_limit": 1.0
+                                        }
+                                    }
+                                },
+                                "effective_radius": {
+                                    "type": "TruncatedGaussian",
+                                    "id": 33,
+                                    "mean": 1.52,
+                                    "sigma": 0.4,
+                                    "lower_limit": 0.0,
+                                    "upper_limit": Infinity
+                                },
+                                "sersic_index": {
+                                    "type": "TruncatedGaussian",
+                                    "id": 34,
+                                    "mean": 1.0,
+                                    "sigma": 2.0,
+                                    "lower_limit": 0.0,
+                                    "upper_limit": Infinity
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

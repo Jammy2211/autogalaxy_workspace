@@ -1,0 +1,79 @@
+Bayesian Evidence                                                               283.75333821
+Maximum Log Likelihood                                                          287.66536121
+
+model                                                                           Collection (N=16)
+    galaxies                                                                    Collection (N=16)
+        galaxy                                                                  Galaxy (N=16)
+            bulge - disk                                                        Sersic (N=7)
+            pixelization                                                        Pixelization (N=2)
+                mesh                                                            RectangularAdaptDensity (N=0)
+                regularization                                                  GaussianKernel (N=2)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     0.430
+                ell_comps_1                                                     0.160
+            intensity                                                           0.006
+            effective_radius                                                    11.695
+            sersic_index                                                        2.827
+            centre
+                centre_0                                                        -0.290
+                centre_1                                                        -0.356
+        disk
+            ell_comps
+                ell_comps_0                                                     0.060
+                ell_comps_1                                                     -0.056
+            intensity                                                           0.001
+            effective_radius                                                    15.064
+            centre
+                centre_0                                                        0.096
+                centre_1                                                        -0.170
+            sersic_index                                                        4.710
+        pixelization
+            regularization
+                coefficient                                                     0.004
+                scale                                                           0.160
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     0.4299 (-0.5874, 0.5294)
+                ell_comps_1                                                     0.1600 (-0.5542, 0.5596)
+            intensity                                                           0.0060 (0.0000, 800481.1315)
+            effective_radius                                                    11.6949 (1.0972, 28.9730)
+            sersic_index                                                        2.8267 (0.8027, 4.9959)
+            centre
+                centre_0                                                        -0.2900 (-0.6894, 0.5601)
+                centre_1                                                        -0.3557 (-0.8788, 0.6667)
+        disk
+            ell_comps
+                ell_comps_0                                                     0.0598 (-0.8854, 0.6769)
+                ell_comps_1                                                     -0.0559 (-0.8265, 0.6930)
+            intensity                                                           0.0008 (0.0000, 764104.4406)
+            effective_radius                                                    15.0640 (0.3089, 29.2946)
+            centre
+                centre_0                                                        0.0963 (-0.9472, 0.6427)
+                centre_1                                                        -0.1700 (-0.4283, 0.6558)
+            sersic_index                                                        4.7099 (0.9134, 4.7099)
+        pixelization
+            regularization
+                coefficient                                                     0.0036 (0.0000, 857065.0052)
+                scale                                                           0.1605 (0.0000, 484957.5437)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5

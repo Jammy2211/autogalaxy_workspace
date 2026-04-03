@@ -1,0 +1,30 @@
+Total Free Parameters = 6
+
+model                                                                           Collection (N=6)
+    ellipses                                                                    Collection (N=2)
+        0                                                                       Ellipse (N=2)
+    multipoles                                                                  Collection (N=4)
+        0                                                                       Collection (N=4)
+            0 - 1                                                               EllipseMultipole (N=2)
+
+ellipses
+    0
+        major_axis                                                              2.1666666666666665
+        centre
+            centre_0                                                            0.05407920230118
+            centre_1                                                            -0.0664421614891
+        ell_comps
+            ell_comps_0                                                         UniformPrior [217], lower_limit = -0.6, upper_limit = 0.6
+            ell_comps_1                                                         UniformPrior [218], lower_limit = -0.6, upper_limit = 0.6
+multipoles
+    0
+        0
+            m                                                                   3
+            multipole_comps
+                multipole_comps_0                                               GaussianPrior [219], mean = 0.0, sigma = 0.1
+                multipole_comps_1                                               GaussianPrior [220], mean = 0.0, sigma = 0.1
+        1
+            m                                                                   4
+            multipole_comps
+                multipole_comps_0                                               GaussianPrior [221], mean = 0.0, sigma = 0.1
+                multipole_comps_1                                               GaussianPrior [222], mean = 0.0, sigma = 0.1

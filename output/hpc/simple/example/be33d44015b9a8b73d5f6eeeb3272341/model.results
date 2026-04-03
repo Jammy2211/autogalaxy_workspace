@@ -1,0 +1,52 @@
+Bayesian Evidence                                                               -78584.74879533
+Maximum Log Likelihood                                                          -78580.14362514
+
+model                                                                           Collection (N=7)
+    galaxies                                                                    Collection (N=7)
+        galaxy                                                                  Galaxy (N=7)
+            bulge                                                               SersicCore (N=7)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0                                                        0.159
+                centre_1                                                        0.361
+            ell_comps
+                ell_comps_0                                                     -0.401
+                ell_comps_1                                                     0.104
+            effective_radius                                                    17.753
+            sersic_index                                                        4.339
+            intensity                                                           7.126
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0                                                        0.1585 (-0.7332, 0.8075)
+                centre_1                                                        0.3613 (-0.7535, 1.2773)
+            ell_comps
+                ell_comps_0                                                     -0.4014 (-0.6523, 0.9563)
+                ell_comps_1                                                     0.1036 (-0.7785, 0.7439)
+            effective_radius                                                    17.7531 (0.2505, 29.9637)
+            sersic_index                                                        4.3395 (0.8152, 4.9057)
+            intensity                                                           7.1257 (0.0000, 816.8611)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge
+            radius_break                                                        0.025
+            gamma                                                               0.25
+            alpha                                                               3.0

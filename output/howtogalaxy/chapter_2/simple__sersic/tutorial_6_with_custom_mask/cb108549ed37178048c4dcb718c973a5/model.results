@@ -1,0 +1,48 @@
+Bayesian Evidence                                                               -85565.45430046
+Maximum Log Likelihood                                                          -85561.54227745
+
+model                                                                           Collection (N=7)
+    galaxies                                                                    Collection (N=7)
+        galaxy                                                                  Galaxy (N=7)
+            bulge                                                               Sersic (N=7)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0                                                        0.214
+                centre_1                                                        -0.291
+            ell_comps
+                ell_comps_0                                                     -0.357
+                ell_comps_1                                                     -0.124
+            intensity                                                           0.038
+            effective_radius                                                    5.669
+            sersic_index                                                        4.819
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0                                                        0.2137 (-0.7577, 0.5080)
+                centre_1                                                        -0.2908 (-0.3923, 0.7487)
+            ell_comps
+                ell_comps_0                                                     -0.3568 (-0.5933, 0.5351)
+                ell_comps_1                                                     -0.1238 (-0.5214, 0.5055)
+            intensity                                                           0.0378 (0.0000, 697265.3639)
+            effective_radius                                                    5.6691 (0.5841, 28.6361)
+            sersic_index                                                        4.8188 (0.8992, 4.8838)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                1.0

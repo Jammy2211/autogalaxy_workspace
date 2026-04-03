@@ -1,0 +1,31 @@
+Maximum Log Likelihood                                                          -999999999999999967336168804116691273849533185806555472917961779471295845921727862608739868455469056.00000000
+
+model                                                                           Collection (N=1)
+    ellipses                                                                    Collection (N=0)
+        0 - 9                                                                   Ellipse (N=0)
+
+Maximum Log Likelihood Model:
+
+dummy_0                                                                         0.001
+
+ellipses
+    0
+        major_axis                                                              0.3
+    1
+        major_axis                                                              0.7666666666666666
+    2
+        major_axis                                                              1.2333333333333334
+    3
+        major_axis                                                              1.7
+    4
+        major_axis                                                              2.1666666666666665
+    5
+        major_axis                                                              2.6333333333333333
+    6
+        major_axis                                                              3.0999999999999996
+    7
+        major_axis                                                              3.5666666666666664
+    8
+        major_axis                                                              4.033333333333333
+    9
+        major_axis                                                              4.5

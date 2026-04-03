@@ -1,0 +1,66 @@
+{
+    "type": "list",
+    "values": [
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "redshift": 0.5,
+                "label": "cls2",
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.05174184827683735,
+                                0.11242939117225927
+                            ]
+                        },
+                        "sersic_index": 4.936890763724898,
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.4132293547483457,
+                                0.18010755343269788
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.009746517450217847,
+                            "dtype": "float64"
+                        },
+                        "effective_radius": 21.69376932233065
+                    }
+                },
+                "disk": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.exponential.Exponential",
+                    "arguments": {
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 3.1075168033973236e-30,
+                            "dtype": "float64"
+                        },
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.051064738070879634,
+                                -0.21842605006832794
+                            ]
+                        },
+                        "effective_radius": -3.323657686818658,
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.2476599759194439,
+                                0.32413755966138164
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

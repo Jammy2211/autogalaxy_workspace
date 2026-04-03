@@ -1,0 +1,46 @@
+Bayesian Evidence                                                               -54922.18547922
+Maximum Log Likelihood                                                          -54918.27345622
+
+model                                                                           Collection (N=6)
+    galaxies                                                                    Collection (N=6)
+        galaxy                                                                  Galaxy (N=6)
+            bulge                                                               Sersic (N=6)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0                                                        -0.063
+                centre_1                                                        -0.006
+            ell_comps
+                ell_comps_0                                                     0.119
+                ell_comps_1                                                     -0.287
+            effective_radius                                                    7.063
+            sersic_index                                                        4.659
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0                                                        -0.0629 (-0.7381, 0.6640)
+                centre_1                                                        -0.0055 (-0.5708, 0.5827)
+            ell_comps
+                ell_comps_0                                                     0.1192 (-0.6409, 0.9471)
+                ell_comps_1                                                     -0.2869 (-0.4208, 0.8448)
+            effective_radius                                                    7.0633 (0.4202, 29.7792)
+            sersic_index                                                        4.6593 (0.9600, 4.6593)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5

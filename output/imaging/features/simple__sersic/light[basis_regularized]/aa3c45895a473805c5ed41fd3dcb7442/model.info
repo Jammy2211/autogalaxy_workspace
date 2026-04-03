@@ -1,0 +1,130 @@
+Total Free Parameters = 44
+
+model                                                                           Collection (N=44)
+    galaxies                                                                    Collection (N=44)
+        galaxy                                                                  Galaxy (N=44)
+            bulge                                                               Basis (N=44)
+                profile_list                                                    Collection (N=43)
+                    0 - 19                                                      ShapeletPolar (N=5)
+                regularization                                                  Constant (N=1)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge
+            regularization
+                coefficient                                                     LogUniformPrior [100], lower_limit = 1e-06, upper_limit = 1000000.0
+            profile_list
+                0 - 1
+                    n                                                           1
+                0, 6, 16
+                    m                                                           -1
+                0 - 19
+                    centre
+                        centre_0                                                GaussianPrior [0], mean = 0.0, sigma = 0.3
+                        centre_1                                                GaussianPrior [1], mean = 0.0, sigma = 0.3
+                    beta                                                        UniformPrior [4], lower_limit = 0.0, upper_limit = 30.0
+                0
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [2], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [3], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                1, 7, 17
+                    m                                                           1
+                1
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [7], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [8], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                2 - 4
+                    n                                                           2
+                2, 10
+                    m                                                           -2
+                2
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [12], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [13], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                3, 11
+                    m                                                           0
+                3
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [17], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [18], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                4, 12
+                    m                                                           2
+                4
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [22], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [23], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                5 - 8
+                    n                                                           3
+                5, 15
+                    m                                                           -3
+                5
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [27], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [28], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                6
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [32], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [33], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                7
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [37], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [38], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                8, 18
+                    m                                                           3
+                8
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [42], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [43], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                9 - 13
+                    n                                                           4
+                9
+                    m                                                           -4
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [47], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [48], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                10
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [52], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [53], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                11
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [57], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [58], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                12
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [62], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [63], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                13
+                    m                                                           4
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [67], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [68], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                14 - 19
+                    n                                                           5
+                14
+                    m                                                           -5
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [72], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [73], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                15
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [77], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [78], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                16
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [82], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [83], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                17
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [87], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [88], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                18
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [92], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [93], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                19
+                    m                                                           5
+                    ell_comps
+                        ell_comps_0                                             TruncatedGaussianPrior [97], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                        ell_comps_1                                             TruncatedGaussianPrior [98], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0

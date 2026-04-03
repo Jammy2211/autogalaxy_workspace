@@ -1,0 +1,59 @@
+Bayesian Evidence                                                               -106024.68253604
+Maximum Log Likelihood                                                          -106020.77051304
+
+model                                                                           Collection (N=9)
+    galaxies                                                                    Collection (N=9)
+        galaxy                                                                  Galaxy (N=9)
+            bulge                                                               Sersic (N=6)
+            psf                                                                 Gaussian (N=5)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     0.213
+                ell_comps_1                                                     0.329
+            effective_radius                                                    1.415
+            sersic_index                                                        3.906
+        bulge - psf
+            centre
+                centre_0                                                        -0.125
+                centre_1                                                        -0.056
+        psf
+            ell_comps
+                ell_comps_0                                                     0.192
+                ell_comps_1                                                     0.326
+            sigma                                                               1.939
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     0.2127 (-0.8399, 0.5315)
+                ell_comps_1                                                     0.3285 (-0.6849, 0.6576)
+            effective_radius                                                    1.4155 (0.0187, 28.7308)
+            sersic_index                                                        3.9058 (0.9301, 4.8978)
+        bulge - psf
+            centre
+                centre_0                                                        -0.1247 (-0.7988, 0.6750)
+                centre_1                                                        -0.0564 (-0.6174, 0.7112)
+        psf
+            ell_comps
+                ell_comps_0                                                     0.1916 (-0.6423, 0.6084)
+                ell_comps_1                                                     0.3264 (-0.6011, 0.7096)
+            sigma                                                               1.9387 (0.1618, 4.9799)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5

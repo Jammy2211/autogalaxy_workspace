@@ -1,0 +1,12 @@
+{
+    "parameter_lists": [
+        [
+            -0.00186512021962
+        ]
+    ],
+    "log_posterior_list": [
+        -1e+99
+    ],
+    "time": null,
+    "class_path": "autofit.non_linear.samples.samples.Samples"
+}

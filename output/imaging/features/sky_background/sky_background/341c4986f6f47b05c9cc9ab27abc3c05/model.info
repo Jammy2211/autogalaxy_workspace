@@ -1,0 +1,32 @@
+Total Free Parameters = 10
+
+model                                                                           Collection (N=10)
+    galaxies                                                                    Collection (N=9)
+        galaxy                                                                  Galaxy (N=9)
+            bulge                                                               Sersic (N=6)
+            disk                                                                Exponential (N=5)
+    dataset_model                                                               DatasetModel (N=1)
+
+dataset_model
+    background_sky_level                                                        UniformPrior [11], lower_limit = 0.0, upper_limit = 5.0
+    grid_offset
+        grid_offset_0                                                           0.0
+        grid_offset_1                                                           0.0
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge - disk
+            centre
+                centre_0                                                        GaussianPrior [6], mean = 0.0, sigma = 0.3
+                centre_1                                                        GaussianPrior [7], mean = 0.0, sigma = 0.3
+        bulge
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [2], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [3], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius                                                    UniformPrior [4], lower_limit = 0.0, upper_limit = 30.0
+            sersic_index                                                        UniformPrior [5], lower_limit = 0.8, upper_limit = 5.0
+        disk
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [8], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [9], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius                                                    UniformPrior [10], lower_limit = 0.0, upper_limit = 30.0

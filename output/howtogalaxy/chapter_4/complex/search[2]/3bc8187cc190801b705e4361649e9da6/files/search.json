@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "name": "search[2]",
+        "n_shell": 1,
+        "seed": null,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "n_update": null,
+        "enlarge_per_dim": 1.1,
+        "path_prefix": {
+            "type": "path",
+            "path": "howtogalaxy/chapter_4"
+        },
+        "n_points_min": null,
+        "n_like_new_bound": null,
+        "n_networks": 4,
+        "n_live": 50,
+        "split_threshold": 100,
+        "use_jax_vmap": true,
+        "n_eff": 500,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "parent": null,
+                "identifier": "3bc8187cc190801b705e4361649e9da6",
+                "name": "search[2]",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "howtogalaxy/chapter_4"
+                },
+                "unique_tag": "complex",
+                "image_path_suffix": "",
+                "is_identifier_in_paths": true
+            }
+        },
+        "unique_tag": "complex",
+        "inplace": false,
+        "number_of_cores": 1,
+        "iterations_per_quick_update": 1e+99,
+        "iterations_per_full_update": 1e+99
+    }
+}

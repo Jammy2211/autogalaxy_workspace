@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "unique_tag": "operated",
+                "parent": null,
+                "is_identifier_in_paths": true,
+                "name": "operated_light_profiles",
+                "image_path_suffix": "",
+                "identifier": "c0aefa20a1f6c307c34e160eb486ac7d",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "imaging/features"
+                }
+            }
+        },
+        "n_like_new_bound": null,
+        "use_jax_vmap": true,
+        "path_prefix": {
+            "type": "path",
+            "path": "imaging/features"
+        },
+        "n_networks": 4,
+        "n_live": 150,
+        "n_update": null,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "unique_tag": "operated",
+        "enlarge_per_dim": 1.1,
+        "n_shell": 1,
+        "number_of_cores": 1,
+        "iterations_per_quick_update": 1e+99,
+        "iterations_per_full_update": 1e+99,
+        "name": "operated_light_profiles",
+        "inplace": false,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "n_eff": 500,
+        "seed": null,
+        "split_threshold": 100,
+        "n_points_min": null
+    }
+}

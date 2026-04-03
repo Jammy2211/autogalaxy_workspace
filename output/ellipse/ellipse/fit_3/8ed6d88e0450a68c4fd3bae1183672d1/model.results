@@ -1,0 +1,36 @@
+Bayesian Evidence                                                               -65564.85556609
+Maximum Log Likelihood                                                          -65560.19098802
+
+model                                                                           Collection (N=2)
+    ellipses                                                                    Collection (N=2)
+        0                                                                       Ellipse (N=2)
+
+Maximum Log Likelihood Model:
+
+ellipses
+    0
+        ell_comps
+            ell_comps_0                                                         0.582
+            ell_comps_1                                                         -0.123
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+ellipses
+    0
+        ell_comps
+            ell_comps_0                                                         0.5816 (-0.5783, 0.5873)
+            ell_comps_1                                                         -0.1232 (-0.5914, 0.5378)
+
+instances
+
+ellipses
+    0
+        centre
+            centre_0                                                            -0.07023162473933
+            centre_1                                                            0.02730953213633
+        major_axis                                                              1.7

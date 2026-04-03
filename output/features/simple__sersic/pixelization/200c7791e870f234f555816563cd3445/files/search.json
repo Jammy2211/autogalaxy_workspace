@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_networks": 4,
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "is_identifier_in_paths": true,
+                "image_path_suffix": "",
+                "identifier": "200c7791e870f234f555816563cd3445",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "features"
+                },
+                "parent": null,
+                "unique_tag": "simple__sersic",
+                "name": "pixelization"
+            }
+        },
+        "unique_tag": "simple__sersic",
+        "use_jax_vmap": true,
+        "inplace": false,
+        "n_live": 100,
+        "path_prefix": {
+            "type": "path",
+            "path": "features"
+        },
+        "n_shell": 1,
+        "number_of_cores": 1,
+        "name": "pixelization",
+        "n_like_new_bound": null,
+        "n_eff": 500,
+        "n_update": null,
+        "split_threshold": 100,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "iterations_per_quick_update": 50000.0,
+        "enlarge_per_dim": 1.1,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "n_points_min": null,
+        "iterations_per_full_update": 1e+99,
+        "seed": null
+    }
+}

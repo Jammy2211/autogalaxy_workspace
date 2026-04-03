@@ -1,0 +1,102 @@
+{
+    "type": "collection",
+    "arguments": {
+        "ellipses": {
+            "type": "collection",
+            "arguments": {
+                "0": {
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "type": "model",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple_prior",
+                            "arguments": {
+                                "centre_0": 0.05407920230118,
+                                "centre_1": -0.0664421614891
+                            }
+                        },
+                        "ell_comps": {
+                            "type": "tuple_prior",
+                            "arguments": {
+                                "ell_comps_0": {
+                                    "type": "Uniform",
+                                    "id": 273,
+                                    "lower_limit": -0.6,
+                                    "upper_limit": 0.6
+                                },
+                                "ell_comps_1": {
+                                    "type": "Uniform",
+                                    "id": 274,
+                                    "lower_limit": -0.6,
+                                    "upper_limit": 0.6
+                                }
+                            }
+                        },
+                        "major_axis": {
+                            "type": "Constant",
+                            "value": 4.033333333333333
+                        }
+                    }
+                }
+            }
+        },
+        "multipoles": {
+            "type": "collection",
+            "arguments": {
+                "0": {
+                    "type": "collection",
+                    "arguments": {
+                        "0": {
+                            "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                            "type": "model",
+                            "arguments": {
+                                "m": 3,
+                                "multipole_comps": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "multipole_comps_0": {
+                                            "type": "Gaussian",
+                                            "id": 275,
+                                            "mean": 0.0,
+                                            "sigma": 0.1
+                                        },
+                                        "multipole_comps_1": {
+                                            "type": "Gaussian",
+                                            "id": 276,
+                                            "mean": 0.0,
+                                            "sigma": 0.1
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "1": {
+                            "class_path": "autogalaxy.ellipse.ellipse.ellipse_multipole.EllipseMultipole",
+                            "type": "model",
+                            "arguments": {
+                                "m": 4,
+                                "multipole_comps": {
+                                    "type": "tuple_prior",
+                                    "arguments": {
+                                        "multipole_comps_0": {
+                                            "type": "Gaussian",
+                                            "id": 277,
+                                            "mean": 0.0,
+                                            "sigma": 0.1
+                                        },
+                                        "multipole_comps_1": {
+                                            "type": "Gaussian",
+                                            "id": 278,
+                                            "mean": 0.0,
+                                            "sigma": 0.1
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

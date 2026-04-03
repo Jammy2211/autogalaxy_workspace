@@ -1,0 +1,116 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.samples.summary.SamplesSummary",
+    "arguments": {
+        "values_at_sigma_1": {
+            "type": "dict",
+            "arguments": {
+                "ellipses.0.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.59693741031358,
+                        0.57944422327604
+                    ]
+                },
+                "ellipses.0.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.5845474185119,
+                        0.55145759373845
+                    ]
+                }
+            }
+        },
+        "log_evidence": -8062.134814727296,
+        "max_log_likelihood_sample": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.samples.sample.Sample",
+            "arguments": {
+                "log_likelihood": -8057.470236659419,
+                "log_prior": 0.0,
+                "weight": 1.0,
+                "kwargs": {
+                    "type": "dict",
+                    "arguments": {
+                        "ellipses.0.ell_comps.ell_comps_0": -0.54760172796248,
+                        "ellipses.0.ell_comps.ell_comps_1": -0.04932199017108
+                    }
+                }
+            }
+        },
+        "errors_at_sigma_1": {
+            "type": "dict",
+            "arguments": {
+                "ellipses.0.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.049335682351100085,
+                        1.1270459512385198
+                    ]
+                },
+                "ellipses.0.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.53522542834082,
+                        0.60077958390953
+                    ]
+                }
+            }
+        },
+        "model": null,
+        "errors_at_sigma_3": {
+            "type": "dict",
+            "arguments": {
+                "ellipses.0.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.049335682351100085,
+                        1.1270459512385198
+                    ]
+                },
+                "ellipses.0.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.53522542834082,
+                        0.60077958390953
+                    ]
+                }
+            }
+        },
+        "values_at_sigma_3": {
+            "type": "dict",
+            "arguments": {
+                "ellipses.0.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.59693741031358,
+                        0.57944422327604
+                    ]
+                },
+                "ellipses.0.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.5845474185119,
+                        0.55145759373845
+                    ]
+                }
+            }
+        },
+        "median_pdf_sample": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.samples.sample.Sample",
+            "arguments": {
+                "log_likelihood": -8057.470236659419,
+                "log_prior": 0.0,
+                "weight": 1.0,
+                "kwargs": {
+                    "type": "dict",
+                    "arguments": {
+                        "ellipses.0.ell_comps.ell_comps_0": -0.54760172796248,
+                        "ellipses.0.ell_comps.ell_comps_1": -0.04932199017108
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,371 @@
+Script: ellipse/database.py
+Exit: 1
+
+Aggregator loading search_outputs... could take some time.
+
+ A total of 12 search_outputs and results were found.
+2026-04-03 01:17:07,815 - autofit.database.aggregator.scrape - INFO - Scraping directory output/ellipse
+2026-04-03 01:17:07,815 - autofit.database.aggregator.scrape - INFO - 12 searches found
+2026-04-03 01:17:07,816 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py:258: SearchWarning: 
+  warnings.warn(exc.SearchWarning(""))
+2026-04-03 01:17:07,816 - autofit.non_linear.search.abstract_search - WARNING - 
+                        The non-linear search is using multiprocessing (number_of_cores>1). 
+    
+                        However, the following environment variables have not been set to 1:
+    
+                        OPENBLAS_NUM_THREADS
+                        MKL_NUM_THREADS
+                        OMP_NUM_THREADS
+                        VECLIB_MAXIMUM_THREADS
+                        NUMEXPR_NUM_THREADS
+    
+                        This can lead to performance issues, because both the non-linear search and libraries that may be
+                        used in your `log_likelihood_function` evaluation (e.g. NumPy, SciPy, scikit-learn) may attempt to
+                        parallelize over all cores available.
+    
+                        This will lead to slow-down, due to overallocation of tasks over the CPUs.
+    
+                        To mitigate this, set the environment variables to 1 via the following command on your
+                        bash terminal / command line:
+    
+                        export OPENBLAS_NUM_THREADS=1
+                        export MKL_NUM_THREADS=1
+                        export OMP_NUM_THREADS=1
+                        export VECLIB_MAXIMUM_THREADS=1
+                        export NUMEXPR_NUM_THREADS=1
+    
+                        This means only the non-linear search is parallelized over multiple cores.
+    
+                        If you "know what you are doing" and do not want these environment variables to be set to one, you 
+                        can disable this warning by changing the following entry in the config files:
+    
+                        `config -> general.yaml -> parallel: -> warn_environment_variables=False`
+                        
+
+2026-04-03 01:17:08,597 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_5 6f9774eeee8c3460894c02b774f9d623 
+/usr/local/lib/python3.11/dist-packages/autofit/database/aggregator/scrape.py:147: SAWarning: relationship 'Fit.arrays' will copy column fit.id to column array.fit_id, which conflicts with relationship(s): 'HDU.fit' (copies fit.id to array.fit_id). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="fit"' to the 'Fit.arrays' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return self.session.query(m.Fit).filter(m.Fit.id == item.id).one()
+/usr/local/lib/python3.11/dist-packages/autofit/database/aggregator/scrape.py:147: SAWarning: relationship 'Fit.hdus' will copy column fit.id to column array.fit_id, which conflicts with relationship(s): 'Array.fit' (copies fit.id to array.fit_id), 'Fit.arrays' (copies fit.id to array.fit_id). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="arrays,fit"' to the 'Fit.hdus' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  return self.session.query(m.Fit).filter(m.Fit.id == item.id).one()
+2026-04-03 01:17:08,651 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for 6f9774eeee8c3460894c02b774f9d623
+2026-04-03 01:17:08,654 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+
+2026-04-03 01:17:08,682 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_start f9cc33b5dc09b0ecf72057696f772000 
+2026-04-03 01:17:08,709 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for f9cc33b5dc09b0ecf72057696f772000
+2026-04-03 01:17:08,712 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py:258: SearchWarning: 
+  warnings.warn(exc.SearchWarning(""))
+2026-04-03 01:17:08,712 - autofit.non_linear.search.abstract_search - WARNING - 
+                        The non-linear search is using multiprocessing (number_of_cores>1). 
+    
+                        However, the following environment variables have not been set to 1:
+    
+                        OPENBLAS_NUM_THREADS
+                        MKL_NUM_THREADS
+                        OMP_NUM_THREADS
+                        VECLIB_MAXIMUM_THREADS
+                        NUMEXPR_NUM_THREADS
+    
+                        This can lead to performance issues, because both the non-linear search and libraries that may be
+                        used in your `log_likelihood_function` evaluation (e.g. NumPy, SciPy, scikit-learn) may attempt to
+                        parallelize over all cores available.
+    
+                        This will lead to slow-down, due to overallocation of tasks over the CPUs.
+    
+                        To mitigate this, set the environment variables to 1 via the following command on your
+                        bash terminal / command line:
+    
+                        export OPENBLAS_NUM_THREADS=1
+                        export MKL_NUM_THREADS=1
+                        export OMP_NUM_THREADS=1
+                        export VECLIB_MAXIMUM_THREADS=1
+                        export NUMEXPR_NUM_THREADS=1
+    
+                        This means only the non-linear search is parallelized over multiple cores.
+    
+                        If you "know what you are doing" and do not want these environment variables to be set to one, you 
+                        can disable this warning by changing the following entry in the config files:
+    
+                        `config -> general.yaml -> parallel: -> warn_environment_variables=False`
+                        
+
+2026-04-03 01:17:08,739 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_7 54bffecfcae64ddcf1b29c8518f34d0a 
+2026-04-03 01:17:08,758 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for 54bffecfcae64ddcf1b29c8518f34d0a
+2026-04-03 01:17:08,760 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py:258: SearchWarning: 
+  warnings.warn(exc.SearchWarning(""))
+2026-04-03 01:17:08,761 - autofit.non_linear.search.abstract_search - WARNING - 
+                        The non-linear search is using multiprocessing (number_of_cores>1). 
+    
+                        However, the following environment variables have not been set to 1:
+    
+                        OPENBLAS_NUM_THREADS
+                        MKL_NUM_THREADS
+                        OMP_NUM_THREADS
+                        VECLIB_MAXIMUM_THREADS
+                        NUMEXPR_NUM_THREADS
+    
+                        This can lead to performance issues, because both the non-linear search and libraries that may be
+                        used in your `log_likelihood_function` evaluation (e.g. NumPy, SciPy, scikit-learn) may attempt to
+                        parallelize over all cores available.
+    
+                        This will lead to slow-down, due to overallocation of tasks over the CPUs.
+    
+                        To mitigate this, set the environment variables to 1 via the following command on your
+                        bash terminal / command line:
+    
+                        export OPENBLAS_NUM_THREADS=1
+                        export MKL_NUM_THREADS=1
+                        export OMP_NUM_THREADS=1
+                        export VECLIB_MAXIMUM_THREADS=1
+                        export NUMEXPR_NUM_THREADS=1
+    
+                        This means only the non-linear search is parallelized over multiple cores.
+    
+                        If you "know what you are doing" and do not want these environment variables to be set to one, you 
+                        can disable this warning by changing the following entry in the config files:
+    
+                        `config -> general.yaml -> parallel: -> warn_environment_variables=False`
+                        
+
+2026-04-03 01:17:08,787 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_8 13194f267f456e6c274cd13a28963661 
+2026-04-03 01:17:08,892 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for 13194f267f456e6c274cd13a28963661
+2026-04-03 01:17:08,894 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py:258: SearchWarning: 
+  warnings.warn(exc.SearchWarning(""))
+2026-04-03 01:17:08,894 - autofit.non_linear.search.abstract_search - WARNING - 
+                        The non-linear search is using multiprocessing (number_of_cores>1). 
+    
+                        However, the following environment variables have not been set to 1:
+    
+                        OPENBLAS_NUM_THREADS
+                        MKL_NUM_THREADS
+                        OMP_NUM_THREADS
+                        VECLIB_MAXIMUM_THREADS
+                        NUMEXPR_NUM_THREADS
+    
+                        This can lead to performance issues, because both the non-linear search and libraries that may be
+                        used in your `log_likelihood_function` evaluation (e.g. NumPy, SciPy, scikit-learn) may attempt to
+                        parallelize over all cores available.
+    
+                        This will lead to slow-down, due to overallocation of tasks over the CPUs.
+    
+                        To mitigate this, set the environment variables to 1 via the following command on your
+                        bash terminal / command line:
+    
+                        export OPENBLAS_NUM_THREADS=1
+                        export MKL_NUM_THREADS=1
+                        export OMP_NUM_THREADS=1
+                        export VECLIB_MAXIMUM_THREADS=1
+                        export NUMEXPR_NUM_THREADS=1
+    
+                        This means only the non-linear search is parallelized over multiple cores.
+    
+                        If you "know what you are doing" and do not want these environment variables to be set to one, you 
+                        can disable this warning by changing the following entry in the config files:
+    
+                        `config -> general.yaml -> parallel: -> warn_environment_variables=False`
+                        
+
+2026-04-03 01:17:08,921 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_9 57ab923c5df062f04a50f9e1b6a817d3 
+2026-04-03 01:17:08,939 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for 57ab923c5df062f04a50f9e1b6a817d3
+2026-04-03 01:17:08,941 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py:258: SearchWarning: 
+  warnings.warn(exc.SearchWarning(""))
+2026-04-03 01:17:08,942 - autofit.non_linear.search.abstract_search - WARNING - 
+                        The non-linear search is using multiprocessing (number_of_cores>1). 
+    
+                        However, the following environment variables have not been set to 1:
+    
+                        OPENBLAS_NUM_THREADS
+                        MKL_NUM_THREADS
+                        OMP_NUM_THREADS
+                        VECLIB_MAXIMUM_THREADS
+                        NUMEXPR_NUM_THREADS
+    
+                        This can lead to performance issues, because both the non-linear search and libraries that may be
+                        used in your `log_likelihood_function` evaluation (e.g. NumPy, SciPy, scikit-learn) may attempt to
+                        parallelize over all cores available.
+    
+                        This will lead to slow-down, due to overallocation of tasks over the CPUs.
+    
+                        To mitigate this, set the environment variables to 1 via the following command on your
+                        bash terminal / command line:
+    
+                        export OPENBLAS_NUM_THREADS=1
+                        export MKL_NUM_THREADS=1
+                        export OMP_NUM_THREADS=1
+                        export VECLIB_MAXIMUM_THREADS=1
+                        export NUMEXPR_NUM_THREADS=1
+    
+                        This means only the non-linear search is parallelized over multiple cores.
+    
+                        If you "know what you are doing" and do not want these environment variables to be set to one, you 
+                        can disable this warning by changing the following entry in the config files:
+    
+                        `config -> general.yaml -> parallel: -> warn_environment_variables=False`
+                        
+
+2026-04-03 01:17:08,968 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_3 f8fbe0e32ca791f29d369790f480dbd8 
+2026-04-03 01:17:08,985 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for f8fbe0e32ca791f29d369790f480dbd8
+2026-04-03 01:17:08,987 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py:258: SearchWarning: 
+  warnings.warn(exc.SearchWarning(""))
+2026-04-03 01:17:08,987 - autofit.non_linear.search.abstract_search - WARNING - 
+                        The non-linear search is using multiprocessing (number_of_cores>1). 
+    
+                        However, the following environment variables have not been set to 1:
+    
+                        OPENBLAS_NUM_THREADS
+                        MKL_NUM_THREADS
+                        OMP_NUM_THREADS
+                        VECLIB_MAXIMUM_THREADS
+                        NUMEXPR_NUM_THREADS
+    
+                        This can lead to performance issues, because both the non-linear search and libraries that may be
+                        used in your `log_likelihood_function` evaluation (e.g. NumPy, SciPy, scikit-learn) may attempt to
+                        parallelize over all cores available.
+    
+                        This will lead to slow-down, due to overallocation of tasks over the CPUs.
+    
+                        To mitigate this, set the environment variables to 1 via the following command on your
+                        bash terminal / command line:
+    
+                        export OPENBLAS_NUM_THREADS=1
+                        export MKL_NUM_THREADS=1
+                        export OMP_NUM_THREADS=1
+                        export VECLIB_MAXIMUM_THREADS=1
+                        export NUMEXPR_NUM_THREADS=1
+    
+                        This means only the non-linear search is parallelized over multiple cores.
+    
+                        If you "know what you are doing" and do not want these environment variables to be set to one, you 
+                        can disable this warning by changing the following entry in the config files:
+    
+                        `config -> general.yaml -> parallel: -> warn_environment_variables=False`
+                        
+
+2026-04-03 01:17:09,014 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_1 d7d7b41c1ae83c147871368301e5e900 
+2026-04-03 01:17:09,032 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for d7d7b41c1ae83c147871368301e5e900
+2026-04-03 01:17:09,035 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py:258: SearchWarning: 
+  warnings.warn(exc.SearchWarning(""))
+2026-04-03 01:17:09,035 - autofit.non_linear.search.abstract_search - WARNING - 
+                        The non-linear search is using multiprocessing (number_of_cores>1). 
+    
+                        However, the following environment variables have not been set to 1:
+    
+                        OPENBLAS_NUM_THREADS
+                        MKL_NUM_THREADS
+                        OMP_NUM_THREADS
+                        VECLIB_MAXIMUM_THREADS
+                        NUMEXPR_NUM_THREADS
+    
+                        This can lead to performance issues, because both the non-linear search and libraries that may be
+                        used in your `log_likelihood_function` evaluation (e.g. NumPy, SciPy, scikit-learn) may attempt to
+                        parallelize over all cores available.
+    
+                        This will lead to slow-down, due to overallocation of tasks over the CPUs.
+    
+                        To mitigate this, set the environment variables to 1 via the following command on your
+                        bash terminal / command line:
+    
+                        export OPENBLAS_NUM_THREADS=1
+                        export MKL_NUM_THREADS=1
+                        export OMP_NUM_THREADS=1
+                        export VECLIB_MAXIMUM_THREADS=1
+                        export NUMEXPR_NUM_THREADS=1
+    
+                        This means only the non-linear search is parallelized over multiple cores.
+    
+                        If you "know what you are doing" and do not want these environment variables to be set to one, you 
+                        can disable this warning by changing the following entry in the config files:
+    
+                        `config -> general.yaml -> parallel: -> warn_environment_variables=False`
+                        
+
+2026-04-03 01:17:09,060 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_2 eef3ea4841b13b9be205848929e9b013 
+2026-04-03 01:17:09,079 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for eef3ea4841b13b9be205848929e9b013
+2026-04-03 01:17:09,081 - autofit.non_linear.search.abstract_search - WARNING - TEST MODE ON: SEARCH WILL SKIP SAMPLING
+
+
+/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/abstract_search.py:258: SearchWarning: 
+  warnings.warn(exc.SearchWarning(""))
+2026-04-03 01:17:09,081 - autofit.non_linear.search.abstract_search - WARNING - 
+                        The non-linear search is using multiprocessing (number_of_cores>1). 
+    
+                        However, the following environment variables have not been set to 1:
+    
+                        OPENBLAS_NUM_THREADS
+                        MKL_NUM_THREADS
+                        OMP_NUM_THREADS
+                        VECLIB_MAXIMUM_THREADS
+                        NUMEXPR_NUM_THREADS
+    
+                        This can lead to performance issues, because both the non-linear search and libraries that may be
+                        used in your `log_likelihood_function` evaluation (e.g. NumPy, SciPy, scikit-learn) may attempt to
+                        parallelize over all cores available.
+    
+                        This will lead to slow-down, due to overallocation of tasks over the CPUs.
+    
+                        To mitigate this, set the environment variables to 1 via the following command on your
+                        bash terminal / command line:
+    
+                        export OPENBLAS_NUM_THREADS=1
+                        export MKL_NUM_THREADS=1
+                        export OMP_NUM_THREADS=1
+                        export VECLIB_MAXIMUM_THREADS=1
+                        export NUMEXPR_NUM_THREADS=1
+    
+                        This means only the non-linear search is parallelized over multiple cores.
+    
+                        If you "know what you are doing" and do not want these environment variables to be set to one, you 
+                        can disable this warning by changing the following entry in the config files:
+    
+                        `config -> general.yaml -> parallel: -> warn_environment_variables=False`
+                        
+
+2026-04-03 01:17:09,108 - autofit.database.aggregator.scrape - INFO - Creating fit for: ellipse ellipse fit_4 c884274f1b4973c7e4f6d799793b2e0e 
+2026-04-03 01:17:09,124 - autofit.database.aggregator.scrape - WARNING - Failed to load latent variables for c884274f1b4973c7e4f6d799793b2e0e
+Traceback (most recent call last):
+  File "/home/user/autogalaxy_workspace/scripts/ellipse/database.py", line 51, in <module>
+    agg.add_directory(directory=Path("output") / database_name)
+  File "/usr/local/lib/python3.11/dist-packages/autofit/database/aggregator/aggregator.py", line 429, in add_directory
+    scraper.scrape()
+  File "/usr/local/lib/python3.11/dist-packages/autofit/database/aggregator/scrape.py", line 52, in scrape
+    for fit in self._fits():
+  File "/usr/local/lib/python3.11/dist-packages/autofit/database/aggregator/scrape.py", line 71, in _fits
+    f"{item.path_prefix} "
+       ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/aggregator/search_output.py", line 402, in path_prefix
+    return self.search.paths.path_prefix
+           ^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/aggregator/search_output.py", line 385, in search
+    self.__search = from_dict(json.load(f))
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autoconf/dictable.py", line 316, in from_dict
+    return __parsers[type_](dictionary, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/mapper/model_object.py", line 223, in from_dict
+    return cls_(
+           ^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/autofit/non_linear/search/mle/drawer/search.py", line 69, in __init__
+    super().__init__(
+TypeError: autofit.non_linear.search.abstract_search.NonLinearSearch.__init__() got multiple values for keyword argument 'number_of_cores'

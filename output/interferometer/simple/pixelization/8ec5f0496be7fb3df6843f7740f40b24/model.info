@@ -1,0 +1,18 @@
+Total Free Parameters = 2
+
+model                                                                           Collection (N=2)
+    galaxies                                                                    Collection (N=2)
+        galaxy                                                                  Galaxy (N=2)
+            pixelization                                                        Pixelization (N=2)
+                mesh                                                            RectangularUniform (N=0)
+                regularization                                                  GaussianKernel (N=2)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        pixelization
+            mesh
+                shape                                                           (28, 28)
+            regularization
+                coefficient                                                     LogUniformPrior [0], lower_limit = 1e-06, upper_limit = 1000000.0
+                scale                                                           LogUniformPrior [1], lower_limit = 1e-06, upper_limit = 1000000.0

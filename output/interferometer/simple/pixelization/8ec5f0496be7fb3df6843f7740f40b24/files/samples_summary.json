@@ -1,0 +1,116 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.samples.summary.SamplesSummary",
+    "arguments": {
+        "log_evidence": 5238313061.738639,
+        "values_at_sigma_3": {
+            "type": "dict",
+            "arguments": {
+                "galaxies.galaxy.pixelization.regularization.coefficient": {
+                    "type": "tuple",
+                    "values": [
+                        1.0418334202899917e-06,
+                        841154.9902499164
+                    ]
+                },
+                "galaxies.galaxy.pixelization.regularization.scale": {
+                    "type": "tuple",
+                    "values": [
+                        1.073798930011034e-06,
+                        582045.5003574742
+                    ]
+                }
+            }
+        },
+        "errors_at_sigma_1": {
+            "type": "dict",
+            "arguments": {
+                "galaxies.galaxy.pixelization.regularization.coefficient": {
+                    "type": "tuple",
+                    "values": [
+                        0.0,
+                        841154.9902488746
+                    ]
+                },
+                "galaxies.galaxy.pixelization.regularization.scale": {
+                    "type": "tuple",
+                    "values": [
+                        40.38899169107902,
+                        582005.1113647093
+                    ]
+                }
+            }
+        },
+        "errors_at_sigma_3": {
+            "type": "dict",
+            "arguments": {
+                "galaxies.galaxy.pixelization.regularization.coefficient": {
+                    "type": "tuple",
+                    "values": [
+                        0.0,
+                        841154.9902488746
+                    ]
+                },
+                "galaxies.galaxy.pixelization.regularization.scale": {
+                    "type": "tuple",
+                    "values": [
+                        40.38899169107902,
+                        582005.1113647093
+                    ]
+                }
+            }
+        },
+        "values_at_sigma_1": {
+            "type": "dict",
+            "arguments": {
+                "galaxies.galaxy.pixelization.regularization.coefficient": {
+                    "type": "tuple",
+                    "values": [
+                        1.0418334202899917e-06,
+                        841154.9902499164
+                    ]
+                },
+                "galaxies.galaxy.pixelization.regularization.scale": {
+                    "type": "tuple",
+                    "values": [
+                        1.073798930011034e-06,
+                        582045.5003574742
+                    ]
+                }
+            }
+        },
+        "max_log_likelihood_sample": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.samples.sample.Sample",
+            "arguments": {
+                "log_likelihood": 5238313064.734371,
+                "log_prior": 959846.3692176782,
+                "weight": 1.0,
+                "kwargs": {
+                    "type": "dict",
+                    "arguments": {
+                        "galaxies.galaxy.pixelization.regularization.coefficient": 1.0418334202899917e-06,
+                        "galaxies.galaxy.pixelization.regularization.scale": 40.38899276487795
+                    }
+                }
+            }
+        },
+        "median_pdf_sample": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.samples.sample.Sample",
+            "arguments": {
+                "log_likelihood": 5238313064.734371,
+                "log_prior": 959846.3692176782,
+                "weight": 1.0,
+                "kwargs": {
+                    "type": "dict",
+                    "arguments": {
+                        "galaxies.galaxy.pixelization.regularization.coefficient": 1.0418334202899917e-06,
+                        "galaxies.galaxy.pixelization.regularization.scale": 40.38899276487795
+                    }
+                }
+            }
+        },
+        "model": null
+    }
+}

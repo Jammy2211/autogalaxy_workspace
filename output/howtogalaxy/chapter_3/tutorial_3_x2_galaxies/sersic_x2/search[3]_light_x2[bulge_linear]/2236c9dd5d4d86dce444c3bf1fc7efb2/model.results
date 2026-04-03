@@ -1,0 +1,66 @@
+Bayesian Evidence                                                               44720.53048730
+Maximum Log Likelihood                                                          44724.44251031
+
+model                                                                           Collection (N=8)
+    galaxies                                                                    Collection (N=8)
+        left_galaxy - right_galaxy                                              Galaxy (N=4)
+            bulge                                                               Sersic (N=4)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    left_galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     -0.013
+                ell_comps_1                                                     0.476
+            effective_radius                                                    2.172
+            sersic_index                                                        1.735
+    right_galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     0.276
+                ell_comps_1                                                     -0.274
+            effective_radius                                                    15.038
+            sersic_index                                                        4.638
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    left_galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     -0.0131 (-0.7143, 0.4465)
+                ell_comps_1                                                     0.4755 (-0.5395, 0.8370)
+            effective_radius                                                    2.1717 (0.0714, 28.5772)
+            sersic_index                                                        1.7352 (0.8392, 4.9839)
+    right_galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     0.2761 (-0.6705, 0.5819)
+                ell_comps_1                                                     -0.2736 (-0.5680, 0.9527)
+            effective_radius                                                    15.0379 (0.4942, 29.7471)
+            sersic_index                                                        4.6376 (0.8171, 4.9895)
+
+instances
+
+galaxies
+    left_galaxy
+        redshift                                                                0.5
+        bulge
+            centre
+                centre_1                                                        -1.0
+    right_galaxy
+        redshift                                                                0.5
+        bulge
+            centre
+                centre_1                                                        1.0
+    left_galaxy - right_galaxy
+        bulge
+            centre
+                centre_0                                                        0.0

@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "seed": null,
+        "n_eff": 500,
+        "enlarge_per_dim": 1.1,
+        "number_of_cores": 1,
+        "use_jax_vmap": true,
+        "iterations_per_full_update": 1e+99,
+        "path_prefix": {
+            "type": "path",
+            "path": "interferometer"
+        },
+        "n_like_new_bound": null,
+        "n_networks": 4,
+        "iterations_per_quick_update": 50000.0,
+        "n_update": null,
+        "inplace": false,
+        "unique_tag": "simple",
+        "n_points_min": null,
+        "split_threshold": 100,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "name": "pixelization",
+        "n_shell": 1,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "is_identifier_in_paths": true,
+                "image_path_suffix": "",
+                "unique_tag": "simple",
+                "identifier": "8ec5f0496be7fb3df6843f7740f40b24",
+                "parent": null,
+                "name": "pixelization",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "interferometer"
+                }
+            }
+        },
+        "n_live": 100
+    }
+}

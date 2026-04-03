@@ -1,0 +1,42 @@
+Bayesian Evidence                                                               44438.30257833
+Maximum Log Likelihood                                                          44442.21460134
+
+model                                                                           Collection (N=3)
+    galaxies                                                                    Collection (N=3)
+        left_galaxy                                                             Galaxy (N=3)
+            bulge                                                               DevVaucouleurs (N=3)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    left_galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     -0.171
+                ell_comps_1                                                     0.492
+            effective_radius                                                    3.770
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    left_galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     -0.1705 (-0.8803, 0.5411)
+                ell_comps_1                                                     0.4919 (-0.5411, 0.6129)
+            effective_radius                                                    3.7700 (1.4872, 28.8601)
+
+instances
+
+galaxies
+    left_galaxy
+        redshift                                                                0.5
+        bulge
+            centre
+                centre_0                                                        0.0
+                centre_1                                                        -1.0

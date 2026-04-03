@@ -1,0 +1,38 @@
+Bayesian Evidence                                                               5238313061.73863888
+Maximum Log Likelihood                                                          5238313064.73437119
+
+model                                                                           Collection (N=2)
+    galaxies                                                                    Collection (N=2)
+        galaxy                                                                  Galaxy (N=2)
+            pixelization                                                        Pixelization (N=2)
+                mesh                                                            RectangularUniform (N=0)
+                regularization                                                  GaussianKernel (N=2)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        pixelization
+            regularization
+                coefficient                                                     0.000
+                scale                                                           40.389
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        pixelization
+            regularization
+                coefficient                                                     0.0000 (0.0000, 841154.9902)
+                scale                                                           40.3890 (0.0000, 582045.5004)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5

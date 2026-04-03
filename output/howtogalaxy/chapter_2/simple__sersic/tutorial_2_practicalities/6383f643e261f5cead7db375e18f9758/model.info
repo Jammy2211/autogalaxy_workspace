@@ -1,0 +1,19 @@
+Total Free Parameters = 6
+
+model                                                                           Collection (N=6)
+    galaxies                                                                    Collection (N=6)
+        galaxy                                                                  Galaxy (N=6)
+            bulge                                                               Sersic (N=6)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge
+            centre
+                centre_0                                                        GaussianPrior [0], mean = 0.0, sigma = 0.3
+                centre_1                                                        GaussianPrior [1], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [2], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [3], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius                                                    UniformPrior [4], lower_limit = 0.0, upper_limit = 30.0
+            sersic_index                                                        UniformPrior [5], lower_limit = 0.8, upper_limit = 5.0

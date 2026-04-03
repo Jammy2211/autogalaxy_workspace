@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "unique_tag": "dataset_offsets",
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "n_update": null,
+        "iterations_per_quick_update": 1e+99,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "split_threshold": 100,
+        "iterations_per_full_update": 1e+99,
+        "n_networks": 4,
+        "inplace": false,
+        "n_live": 100,
+        "name": "dataset_offsets",
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "unique_tag": "dataset_offsets",
+                "image_path_suffix": "",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "multi/features"
+                },
+                "is_identifier_in_paths": true,
+                "parent": null,
+                "name": "dataset_offsets",
+                "identifier": "11ec2404de90f4deab970e985ab63cee"
+            }
+        },
+        "use_jax_vmap": true,
+        "number_of_cores": 1,
+        "n_eff": 500,
+        "path_prefix": {
+            "type": "path",
+            "path": "multi/features"
+        },
+        "n_like_new_bound": null,
+        "n_shell": 1,
+        "enlarge_per_dim": 1.1,
+        "n_points_min": null,
+        "seed": null
+    }
+}

@@ -1,0 +1,37 @@
+Total Free Parameters = 14
+
+model                                                                           Collection (N=14)
+    galaxies                                                                    Collection (N=14)
+        lens - source                                                           Galaxy (N=7)
+        lens
+            mass                                                                Isothermal (N=5)
+            shear                                                               ExternalShear (N=2)
+        source
+            bulge                                                               Sersic (N=7)
+
+galaxies
+    lens
+        redshift                                                                0.5
+        mass
+            centre
+                centre_0                                                        GaussianPrior [38], mean = 0.0, sigma = 0.1
+                centre_1                                                        GaussianPrior [39], mean = 0.0, sigma = 0.1
+            ell_comps
+                ell_comps_0                                                     GaussianPrior [40], mean = 0.0, sigma = 0.3
+                ell_comps_1                                                     GaussianPrior [41], mean = 0.0, sigma = 0.3
+            einstein_radius                                                     GaussianPrior [42], mean = 1.4, sigma = 0.4
+        shear
+            gamma_1                                                             GaussianPrior [45], mean = 0.0, sigma = 0.1
+            gamma_2                                                             GaussianPrior [46], mean = 0.0, sigma = 0.1
+    source
+        redshift                                                                1.0
+        bulge
+            centre
+                centre_0                                                        GaussianPrior [54], mean = 0.0, sigma = 0.3
+                centre_1                                                        GaussianPrior [55], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0                                                     GaussianPrior [56], mean = 0.0, sigma = 0.3
+                ell_comps_1                                                     GaussianPrior [57], mean = 0.0, sigma = 0.3
+            intensity                                                           GaussianPrior [58], mean = 0.3, sigma = 0.3
+            effective_radius                                                    GaussianPrior [59], mean = 0.2, sigma = 0.2
+            sersic_index                                                        GaussianPrior [60], mean = 1.0, sigma = 1.0

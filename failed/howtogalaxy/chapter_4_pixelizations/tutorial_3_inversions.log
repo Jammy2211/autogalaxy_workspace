@@ -1,0 +1,12 @@
+Script: howtogalaxy/chapter_4_pixelizations/tutorial_3_inversions.py
+Exit: 1
+
+2026-04-03 01:23:46,853 - autoarray.dataset.imaging.dataset - INFO - IMAGING - Data masked, contains a total of 1264 image-pixels
+[0. 0. 0. ... 0. 0. 0.]
+Array2D([0.11287146, 0.11083917, 0.09964034, ..., 0.07366035, 0.07587032,
+       0.07307689])
+Traceback (most recent call last):
+  File "/home/user/autogalaxy_workspace/scripts/howtogalaxy/chapter_4_pixelizations/tutorial_3_inversions.py", line 103, in <module>
+    aplt.plot_array(array=inversion.reconstruction_to_native, title="Reconstruction")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'InversionImagingMapping' object has no attribute 'reconstruction_to_native'. Did you mean: 'reconstruction_noise_map'?

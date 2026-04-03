@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_eff": 500,
+        "iterations_per_quick_update": 1e+99,
+        "n_shell": 1,
+        "enlarge_per_dim": 1.1,
+        "n_update": null,
+        "seed": null,
+        "n_like_new_bound": null,
+        "name": "tutorial_6_with_custom_mask",
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "iterations_per_full_update": 1e+99,
+        "inplace": false,
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "image_path_suffix": "",
+                "identifier": "cb108549ed37178048c4dcb718c973a5",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "howtogalaxy/chapter_2"
+                },
+                "unique_tag": "simple__sersic",
+                "is_identifier_in_paths": true,
+                "parent": null,
+                "name": "tutorial_6_with_custom_mask"
+            }
+        },
+        "n_live": 80,
+        "unique_tag": "simple__sersic",
+        "split_threshold": 100,
+        "n_networks": 4,
+        "path_prefix": {
+            "type": "path",
+            "path": "howtogalaxy/chapter_2"
+        },
+        "number_of_cores": 1,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "use_jax_vmap": true,
+        "n_points_min": null
+    }
+}

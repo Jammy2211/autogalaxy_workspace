@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_shell": 1,
+        "path_prefix": {
+            "type": "path",
+            "path": "multi/features"
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "identifier": "a68f3f44a2c118c65b09e1471c950da6",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "multi/features"
+                },
+                "unique_tag": "wavelength_dependence",
+                "is_identifier_in_paths": true,
+                "name": "wavelength_dependence",
+                "parent": null,
+                "image_path_suffix": ""
+            }
+        },
+        "split_threshold": 100,
+        "n_eff": 500,
+        "n_live": 100,
+        "n_networks": 4,
+        "inplace": false,
+        "iterations_per_quick_update": 1e+99,
+        "n_update": null,
+        "number_of_cores": 1,
+        "unique_tag": "wavelength_dependence",
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "name": "wavelength_dependence",
+        "enlarge_per_dim": 1.1,
+        "use_jax_vmap": true,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "iterations_per_full_update": 1e+99,
+        "seed": null,
+        "n_points_min": null,
+        "n_like_new_bound": null
+    }
+}

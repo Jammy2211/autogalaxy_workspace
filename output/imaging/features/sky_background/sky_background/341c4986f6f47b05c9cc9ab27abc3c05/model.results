@@ -1,0 +1,68 @@
+Bayesian Evidence                                                               -25443.21902506
+Maximum Log Likelihood                                                          -25439.30700206
+
+model                                                                           Collection (N=10)
+    galaxies                                                                    Collection (N=9)
+        galaxy                                                                  Galaxy (N=9)
+            bulge                                                               Sersic (N=6)
+            disk                                                                Exponential (N=5)
+    dataset_model                                                               DatasetModel (N=1)
+
+Maximum Log Likelihood Model:
+
+dataset_model
+    background_sky_level                                                        3.982
+galaxies
+    galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     -0.074
+                ell_comps_1                                                     0.114
+            effective_radius                                                    2.252
+            sersic_index                                                        4.925
+        bulge - disk
+            centre
+                centre_0                                                        -0.273
+                centre_1                                                        0.066
+        disk
+            ell_comps
+                ell_comps_0                                                     0.347
+                ell_comps_1                                                     -0.045
+            effective_radius                                                    28.281
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+dataset_model
+    background_sky_level                                                        3.9818 (0.0538, 4.7873)
+galaxies
+    galaxy
+        bulge
+            ell_comps
+                ell_comps_0                                                     -0.0736 (-0.4483, 0.5935)
+                ell_comps_1                                                     0.1143 (-0.8194, 0.7556)
+            effective_radius                                                    2.2520 (0.1452, 28.6480)
+            sersic_index                                                        4.9249 (0.8339, 4.9249)
+        bulge - disk
+            centre
+                centre_0                                                        -0.2734 (-0.6595, 0.8294)
+                centre_1                                                        0.0661 (-0.6026, 0.9563)
+        disk
+            ell_comps
+                ell_comps_0                                                     0.3468 (-0.7572, 0.7921)
+                ell_comps_1                                                     -0.0446 (-0.6499, 0.7579)
+            effective_radius                                                    28.2813 (0.5437, 28.7321)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+dataset_model
+    grid_offset
+        grid_offset_0                                                           0.0
+        grid_offset_1                                                           0.0

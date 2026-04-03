@@ -1,0 +1,226 @@
+{
+    "type": "collection",
+    "arguments": {
+        "ellipses": {
+            "type": "collection",
+            "arguments": {
+                "0": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.54760172796248,
+                                -0.04932199017108
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 0.3
+                    }
+                },
+                "1": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.41795432836065,
+                                -0.09698074414649
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 0.7666666666666666
+                    }
+                },
+                "2": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.23048399269009,
+                                0.12419866835303
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 1.2333333333333334
+                    }
+                },
+                "3": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.38737517635492,
+                                0.4606398787098
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 1.7
+                    }
+                },
+                "4": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.33797343011454,
+                                -0.30051080719448
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 2.1666666666666665
+                    }
+                },
+                "5": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.09245003123423,
+                                0.13476966187
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 2.6333333333333333
+                    }
+                },
+                "6": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.30790270231608,
+                                -0.20215771070803
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 3.0999999999999996
+                    }
+                },
+                "7": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.20578924025136,
+                                -0.26095073282882
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 3.5666666666666664
+                    }
+                },
+                "8": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.31192912554575,
+                                -0.34766925395717
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 4.033333333333333
+                    }
+                },
+                "9": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.ellipse.ellipse.ellipse.Ellipse",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.5421864922725,
+                                -0.46377508855788
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.07023162473933,
+                                0.02730953213633
+                            ]
+                        },
+                        "major_axis": 4.5
+                    }
+                }
+            }
+        },
+        "dummy_0": {
+            "type": "Uniform",
+            "id": 129,
+            "lower_limit": -0.1,
+            "upper_limit": 0.1
+        }
+    }
+}

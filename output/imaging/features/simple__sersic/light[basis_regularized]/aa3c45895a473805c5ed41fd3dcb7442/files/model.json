@@ -1,0 +1,1083 @@
+{
+    "type": "collection",
+    "arguments": {
+        "galaxies": {
+            "type": "collection",
+            "arguments": {
+                "galaxy": {
+                    "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                    "type": "model",
+                    "arguments": {
+                        "redshift": {
+                            "type": "Constant",
+                            "value": 0.5
+                        },
+                        "bulge": {
+                            "class_path": "autogalaxy.profiles.basis.Basis",
+                            "type": "model",
+                            "arguments": {
+                                "profile_list": {
+                                    "type": "collection",
+                                    "arguments": {
+                                        "0": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 1,
+                                                "m": -1,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 2,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 3,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "1": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 1,
+                                                "m": 1,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 7,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 8,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "2": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 2,
+                                                "m": -2,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 12,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 13,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "3": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 2,
+                                                "m": 0,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 17,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 18,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "4": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 2,
+                                                "m": 2,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 22,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 23,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "5": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 3,
+                                                "m": -3,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 27,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 28,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "6": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 3,
+                                                "m": -1,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 32,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 33,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "7": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 3,
+                                                "m": 1,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 37,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 38,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "8": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 3,
+                                                "m": 3,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 42,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 43,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "9": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 4,
+                                                "m": -4,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 47,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 48,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "10": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 4,
+                                                "m": -2,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 52,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 53,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "11": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 4,
+                                                "m": 0,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 57,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 58,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "12": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 4,
+                                                "m": 2,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 62,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 63,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "13": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 4,
+                                                "m": 4,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 67,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 68,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "14": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 5,
+                                                "m": -5,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 72,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 73,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "15": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 5,
+                                                "m": -3,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 77,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 78,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "16": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 5,
+                                                "m": -1,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 82,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 83,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "17": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 5,
+                                                "m": 1,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 87,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 88,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "18": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 5,
+                                                "m": 3,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 92,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 93,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        },
+                                        "19": {
+                                            "class_path": "autogalaxy.profiles.light.linear.shapelets.polar.ShapeletPolar",
+                                            "type": "model",
+                                            "arguments": {
+                                                "n": 5,
+                                                "m": 5,
+                                                "centre": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "centre_0": {
+                                                            "type": "Gaussian",
+                                                            "id": 0,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        },
+                                                        "centre_1": {
+                                                            "type": "Gaussian",
+                                                            "id": 1,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3
+                                                        }
+                                                    }
+                                                },
+                                                "ell_comps": {
+                                                    "type": "tuple_prior",
+                                                    "arguments": {
+                                                        "ell_comps_0": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 97,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        },
+                                                        "ell_comps_1": {
+                                                            "type": "TruncatedGaussian",
+                                                            "id": 98,
+                                                            "mean": 0.0,
+                                                            "sigma": 0.3,
+                                                            "lower_limit": -1.0,
+                                                            "upper_limit": 1.0
+                                                        }
+                                                    }
+                                                },
+                                                "beta": {
+                                                    "type": "Uniform",
+                                                    "id": 4,
+                                                    "lower_limit": 0.0,
+                                                    "upper_limit": 30.0
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "regularization": {
+                                    "class_path": "autoarray.inversion.regularization.constant.Constant",
+                                    "type": "model",
+                                    "arguments": {
+                                        "coefficient": {
+                                            "type": "LogUniform",
+                                            "id": 100,
+                                            "lower_limit": 1e-06,
+                                            "upper_limit": 1000000.0
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

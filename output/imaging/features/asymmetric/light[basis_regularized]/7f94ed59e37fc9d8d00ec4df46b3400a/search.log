@@ -1,0 +1,11 @@
+Starting new Nautilus non-linear search (no previous samples found).
+JAX: Applying vmap and jit to likelihood function -- may take a few seconds.
+JAX: vmap and jit applied in 0.0003020763397216797 seconds.
+
+            Running search where parallelization is disabled.
+            
+Fit Running: Updating results (see output folder).
+Fit Running: Updating results (see output folder).
+Creating latent samples by drawing 100 from the PDF.
+JAX: Applying vmap and jit to likelihood function for latent variables -- may take a few seconds.
+JAX: vmap and jit applied in 0.00041961669921875 seconds.

@@ -1,0 +1,111 @@
+Bayesian Evidence                                                               -11580.87590378
+Maximum Log Likelihood                                                          -11576.96388078
+
+model                                                                           GlobalPriorModel (N=22)
+    0 - 1                                                                       Collection (N=11)
+        galaxies                                                                Collection (N=11)
+            galaxy                                                              Galaxy (N=11)
+                bulge                                                           Sersic (N=6)
+                disk                                                            Exponential (N=5)
+
+Maximum Log Likelihood Model:
+
+0
+    galaxies
+        galaxy
+            bulge
+                centre
+                    centre_0                                                    0.064
+                    centre_1                                                    0.268
+                ell_comps
+                    ell_comps_0                                                 -0.043
+                    ell_comps_1                                                 -0.049
+                effective_radius                                                9.088
+                sersic_index                                                    3.764
+            disk
+                centre
+                    centre_0                                                    0.290
+                    centre_1                                                    0.470
+                ell_comps
+                    ell_comps_0                                                 0.367
+                    ell_comps_1                                                 0.210
+                effective_radius                                                5.963
+1
+    galaxies
+        galaxy
+            bulge
+                centre
+                    centre_0                                                    0.347
+                    centre_1                                                    0.152
+                ell_comps
+                    ell_comps_0                                                 0.006
+                    ell_comps_1                                                 0.246
+                effective_radius                                                18.537
+                sersic_index                                                    4.988
+            disk
+                centre
+                    centre_0                                                    0.201
+                    centre_1                                                    -0.132
+                ell_comps
+                    ell_comps_0                                                 0.195
+                    ell_comps_1                                                 0.129
+                effective_radius                                                22.401
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+0
+    galaxies
+        galaxy
+            bulge
+                centre
+                    centre_0                                                    0.0644 (-0.6650, 0.7657)
+                    centre_1                                                    0.2680 (-0.5200, 0.6376)
+                ell_comps
+                    ell_comps_0                                                 -0.0431 (-0.5352, 0.6808)
+                    ell_comps_1                                                 -0.0491 (-0.8343, 0.6808)
+                effective_radius                                                9.0877 (1.5066, 29.6728)
+                sersic_index                                                    3.7635 (0.8170, 4.9580)
+            disk
+                centre
+                    centre_0                                                    0.2897 (-0.8054, 0.6060)
+                    centre_1                                                    0.4704 (-0.6294, 0.7569)
+                ell_comps
+                    ell_comps_0                                                 0.3668 (-0.5805, 0.8988)
+                    ell_comps_1                                                 0.2099 (-0.8598, 0.6104)
+                effective_radius                                                5.9630 (0.2856, 29.5764)
+1
+    galaxies
+        galaxy
+            bulge
+                centre
+                    centre_0                                                    0.3474 (-0.6345, 0.8380)
+                    centre_1                                                    0.1521 (-0.7126, 0.7027)
+                ell_comps
+                    ell_comps_0                                                 0.0064 (-0.8295, 0.5608)
+                    ell_comps_1                                                 0.2461 (-0.9896, 0.5567)
+                effective_radius                                                18.5366 (1.2429, 28.9817)
+                sersic_index                                                    4.9876 (0.9834, 4.9876)
+            disk
+                centre
+                    centre_0                                                    0.2008 (-0.5737, 0.6371)
+                    centre_1                                                    -0.1321 (-0.6613, 0.3710)
+                ell_comps
+                    ell_comps_0                                                 0.1950 (-0.6770, 0.7163)
+                    ell_comps_1                                                 0.1288 (-0.5540, 0.6414)
+                effective_radius                                                22.4011 (1.1934, 29.5757)
+
+instances
+
+0
+    galaxies
+        galaxy
+            redshift                                                            0.5
+1
+    galaxies
+        galaxy
+            redshift                                                            0.5

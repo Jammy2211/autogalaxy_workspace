@@ -1,0 +1,15 @@
+Total Free Parameters = 2
+
+model                                                                           Collection (N=2)
+    ellipses                                                                    Collection (N=2)
+        0                                                                       Ellipse (N=2)
+
+ellipses
+    0
+        centre
+            centre_0                                                            -0.07023162473933
+            centre_1                                                            0.02730953213633
+        ell_comps
+            ell_comps_0                                                         UniformPrior [24], lower_limit = -0.6, upper_limit = 0.6
+            ell_comps_1                                                         UniformPrior [25], lower_limit = -0.6, upper_limit = 0.6
+        major_axis                                                              1.2333333333333334

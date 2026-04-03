@@ -1,0 +1,204 @@
+Bayesian Evidence                                                               -81710.33969399
+Maximum Log Likelihood                                                          -81706.42767098
+
+model                                                                           Collection (N=43)
+    galaxies                                                                    Collection (N=43)
+        galaxy                                                                  Galaxy (N=43)
+            bulge                                                               Basis (N=43)
+                profile_list                                                    Collection (N=43)
+                    0 - 19                                                      ShapeletPolar (N=5)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            profile_list
+                0 - 19
+                    centre
+                        centre_0                                                -0.130
+                        centre_1                                                0.458
+                    beta                                                        8.891
+                0
+                    ell_comps
+                        ell_comps_0                                             0.177
+                        ell_comps_1                                             -0.275
+                1
+                    ell_comps
+                        ell_comps_0                                             0.125
+                        ell_comps_1                                             -0.203
+                2
+                    ell_comps
+                        ell_comps_0                                             -0.040
+                        ell_comps_1                                             0.599
+                3
+                    ell_comps
+                        ell_comps_0                                             0.069
+                        ell_comps_1                                             -0.164
+                4
+                    ell_comps
+                        ell_comps_0                                             -0.047
+                        ell_comps_1                                             0.449
+                5
+                    ell_comps
+                        ell_comps_0                                             -0.247
+                        ell_comps_1                                             -0.539
+                6
+                    ell_comps
+                        ell_comps_0                                             0.014
+                        ell_comps_1                                             0.104
+                7
+                    ell_comps
+                        ell_comps_0                                             0.163
+                        ell_comps_1                                             -0.266
+                8
+                    ell_comps
+                        ell_comps_0                                             0.370
+                        ell_comps_1                                             -0.097
+                9
+                    ell_comps
+                        ell_comps_0                                             0.171
+                        ell_comps_1                                             -0.010
+                10
+                    ell_comps
+                        ell_comps_0                                             0.047
+                        ell_comps_1                                             -0.110
+                11
+                    ell_comps
+                        ell_comps_0                                             0.297
+                        ell_comps_1                                             -0.361
+                12
+                    ell_comps
+                        ell_comps_0                                             -0.002
+                        ell_comps_1                                             -0.063
+                13
+                    ell_comps
+                        ell_comps_0                                             -0.095
+                        ell_comps_1                                             -0.155
+                14
+                    ell_comps
+                        ell_comps_0                                             0.135
+                        ell_comps_1                                             -0.526
+                15
+                    ell_comps
+                        ell_comps_0                                             0.504
+                        ell_comps_1                                             0.106
+                16
+                    ell_comps
+                        ell_comps_0                                             -0.147
+                        ell_comps_1                                             0.044
+                17
+                    ell_comps
+                        ell_comps_0                                             0.278
+                        ell_comps_1                                             0.476
+                18
+                    ell_comps
+                        ell_comps_0                                             -0.121
+                        ell_comps_1                                             -0.732
+                19
+                    ell_comps
+                        ell_comps_0                                             0.204
+                        ell_comps_1                                             0.268
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            profile_list
+                0 - 19
+                    centre
+                        centre_0                                                -0.1298 (-0.6404, 0.8058)
+                        centre_1                                                0.4584 (-0.4629, 0.6513)
+                    beta                                                        8.8906 (2.4313, 28.7622)
+                0
+                    ell_comps
+                        ell_comps_0                                             0.1770 (-0.4915, 0.4511)
+                        ell_comps_1                                             -0.2749 (-0.6474, 0.8085)
+                1
+                    ell_comps
+                        ell_comps_0                                             0.1247 (-0.5562, 0.9332)
+                        ell_comps_1                                             -0.2030 (-0.6549, 0.7706)
+                2
+                    ell_comps
+                        ell_comps_0                                             -0.0399 (-0.5194, 0.5990)
+                        ell_comps_1                                             0.5987 (-0.7885, 0.7921)
+                3
+                    ell_comps
+                        ell_comps_0                                             0.0689 (-0.5510, 0.5864)
+                        ell_comps_1                                             -0.1639 (-0.7760, 0.7760)
+                4
+                    ell_comps
+                        ell_comps_0                                             -0.0471 (-0.7210, 0.7446)
+                        ell_comps_1                                             0.4491 (-0.6178, 0.5973)
+                5
+                    ell_comps
+                        ell_comps_0                                             -0.2474 (-0.7586, 0.4956)
+                        ell_comps_1                                             -0.5390 (-0.5616, 0.5123)
+                6
+                    ell_comps
+                        ell_comps_0                                             0.0137 (-0.5717, 0.5252)
+                        ell_comps_1                                             0.1042 (-0.7126, 0.5681)
+                7
+                    ell_comps
+                        ell_comps_0                                             0.1628 (-0.6312, 0.5241)
+                        ell_comps_1                                             -0.2664 (-0.7875, 0.6748)
+                8
+                    ell_comps
+                        ell_comps_0                                             0.3696 (-0.7415, 0.5618)
+                        ell_comps_1                                             -0.0975 (-0.8192, 0.8023)
+                9
+                    ell_comps
+                        ell_comps_0                                             0.1714 (-0.5643, 0.5529)
+                        ell_comps_1                                             -0.0105 (-0.5609, 0.9621)
+                10
+                    ell_comps
+                        ell_comps_0                                             0.0469 (-0.7751, 0.7895)
+                        ell_comps_1                                             -0.1097 (-0.4790, 0.7527)
+                11
+                    ell_comps
+                        ell_comps_0                                             0.2970 (-0.7562, 0.5559)
+                        ell_comps_1                                             -0.3606 (-0.8062, 0.6023)
+                12
+                    ell_comps
+                        ell_comps_0                                             -0.0019 (-0.5082, 0.5074)
+                        ell_comps_1                                             -0.0633 (-0.5497, 0.7891)
+                13
+                    ell_comps
+                        ell_comps_0                                             -0.0952 (-0.7025, 0.7902)
+                        ell_comps_1                                             -0.1546 (-0.7924, 0.3647)
+                14
+                    ell_comps
+                        ell_comps_0                                             0.1352 (-0.6686, 0.6770)
+                        ell_comps_1                                             -0.5257 (-0.5806, 0.4911)
+                15
+                    ell_comps
+                        ell_comps_0                                             0.5038 (-0.5557, 0.7792)
+                        ell_comps_1                                             0.1062 (-0.5103, 0.5295)
+                16
+                    ell_comps
+                        ell_comps_0                                             -0.1473 (-0.6221, 0.6452)
+                        ell_comps_1                                             0.0438 (-0.4923, 0.5701)
+                17
+                    ell_comps
+                        ell_comps_0                                             0.2781 (-0.7619, 0.8115)
+                        ell_comps_1                                             0.4764 (-0.7989, 0.8278)
+                18
+                    ell_comps
+                        ell_comps_0                                             -0.1211 (-0.4923, 0.7301)
+                        ell_comps_1                                             -0.7315 (-0.7315, 0.7610)
+                19
+                    ell_comps
+                        ell_comps_0                                             0.2040 (-0.9401, 0.5809)
+                        ell_comps_1                                             0.2677 (-0.5367, 0.5762)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5

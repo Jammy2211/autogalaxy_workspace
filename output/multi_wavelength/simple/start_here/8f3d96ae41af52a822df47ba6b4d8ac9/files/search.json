@@ -1,0 +1,52 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.nautilus.search.Nautilus",
+    "arguments": {
+        "n_points_min": null,
+        "name": "start_here",
+        "n_live": 150,
+        "use_jax_vmap": true,
+        "n_like_new_bound": null,
+        "n_update": null,
+        "number_of_cores": 1,
+        "path_prefix": {
+            "type": "path",
+            "path": "multi_wavelength"
+        },
+        "n_eff": 500,
+        "split_threshold": 100,
+        "iterations_per_full_update": 1e+99,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "n_networks": 4,
+        "iterations_per_quick_update": 10000.0,
+        "unique_tag": "simple",
+        "inplace": false,
+        "seed": null,
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "name": "start_here",
+                "unique_tag": "simple",
+                "identifier": "8f3d96ae41af52a822df47ba6b4d8ac9",
+                "parent": null,
+                "image_path_suffix": "",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "multi_wavelength"
+                },
+                "is_identifier_in_paths": true
+            }
+        },
+        "n_shell": 1,
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "enlarge_per_dim": 1.1
+    }
+}

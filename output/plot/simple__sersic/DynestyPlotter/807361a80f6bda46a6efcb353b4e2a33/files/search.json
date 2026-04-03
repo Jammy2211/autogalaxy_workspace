@@ -1,0 +1,51 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.search.nest.dynesty.search.static.DynestyStatic",
+    "arguments": {
+        "initial_values": {
+            "type": "dict",
+            "arguments": {}
+        },
+        "paths": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.paths.directory.DirectoryPaths",
+            "arguments": {
+                "identifier": "807361a80f6bda46a6efcb353b4e2a33",
+                "is_identifier_in_paths": true,
+                "image_path_suffix": "",
+                "name": "DynestyPlotter",
+                "path_prefix": {
+                    "type": "path",
+                    "path": "plot"
+                },
+                "parent": null,
+                "unique_tag": "simple__sersic"
+            }
+        },
+        "iterations_per_quick_update": 1e+99,
+        "bound": "multi",
+        "slices": 5,
+        "sample": "rwalk",
+        "max_move": 100,
+        "unique_tag": "simple__sersic",
+        "iterations_per_full_update": 1e+99,
+        "initializer": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.initializer.InitializerPrior",
+            "arguments": {}
+        },
+        "inplace": false,
+        "name": "DynestyPlotter",
+        "bootstrap": null,
+        "path_prefix": {
+            "type": "path",
+            "path": "plot"
+        },
+        "facc": 0.2,
+        "number_of_cores": 1,
+        "nlive": 50,
+        "walks": 5,
+        "enlarge": null,
+        "fmove": 0.9
+    }
+}

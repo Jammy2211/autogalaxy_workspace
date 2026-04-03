@@ -1,0 +1,66 @@
+{
+    "type": "list",
+    "values": [
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "label": "cls6",
+                "redshift": 0.5,
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.27399589702456584,
+                                0.460960913683907
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 1.913423175302907e-26,
+                            "dtype": "float64"
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.06434786483190692,
+                                -0.054662326694149464
+                            ]
+                        },
+                        "effective_radius": 16.59165628688424,
+                        "sersic_index": 4.968384410018393
+                    }
+                },
+                "disk": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.exponential.Exponential",
+                    "arguments": {
+                        "effective_radius": 1.1799705330083465,
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.1332889794136732,
+                                0.06646243729890841
+                            ]
+                        },
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                -0.09138038190313343,
+                                0.5973785274757863
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.07639364046488034,
+                            "dtype": "float64"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

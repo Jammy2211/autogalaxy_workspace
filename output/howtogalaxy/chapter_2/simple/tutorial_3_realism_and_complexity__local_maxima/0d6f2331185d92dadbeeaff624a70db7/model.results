@@ -1,0 +1,67 @@
+Bayesian Evidence                                                               -91612.53982398
+Maximum Log Likelihood                                                          -91608.62780098
+
+model                                                                           Collection (N=13)
+    galaxies                                                                    Collection (N=13)
+        galaxy                                                                  Galaxy (N=13)
+            bulge                                                               Sersic (N=7)
+            disk                                                                Exponential (N=6)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0                                                        -0.056
+                centre_1                                                        -0.006
+            ell_comps
+                ell_comps_0                                                     0.482
+                ell_comps_1                                                     0.249
+            intensity                                                           0.039
+            effective_radius                                                    22.158
+            sersic_index                                                        1.419
+        disk
+            centre
+                centre_0                                                        0.175
+                centre_1                                                        0.114
+            ell_comps
+                ell_comps_0                                                     -0.298
+                ell_comps_1                                                     -0.534
+            intensity                                                           0.125
+            effective_radius                                                    4.089
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0                                                        -0.0557 (-0.5373, 0.5941)
+                centre_1                                                        -0.0058 (-0.4344, 0.7527)
+            ell_comps
+                ell_comps_0                                                     0.4819 (-0.6562, 0.5089)
+                ell_comps_1                                                     0.2486 (-0.7633, 0.6662)
+            intensity                                                           0.0394 (0.0000, 984344.1704)
+            effective_radius                                                    22.1584 (1.0255, 29.6795)
+            sersic_index                                                        1.4186 (0.9299, 4.7699)
+        disk
+            centre
+                centre_0                                                        0.1752 (-0.8844, 0.6345)
+                centre_1                                                        0.1139 (-0.8017, 0.7417)
+            ell_comps
+                ell_comps_0                                                     -0.2983 (-0.5571, 0.5281)
+                ell_comps_1                                                     -0.5345 (-0.5568, 0.6067)
+            intensity                                                           0.1253 (0.0000, 997042.1673)
+            effective_radius                                                    4.0892 (0.4722, 29.8132)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5

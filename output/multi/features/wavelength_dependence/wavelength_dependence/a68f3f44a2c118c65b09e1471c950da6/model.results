@@ -1,0 +1,82 @@
+Bayesian Evidence                                                               -1439177.67019303
+Maximum Log Likelihood                                                          -1439173.75817002
+
+model                                                                           GlobalPriorModel (N=13)
+    0 - 2                                                                       Collection (N=13)
+        galaxies                                                                Collection (N=13)
+            galaxy                                                              Galaxy (N=13)
+                bulge                                                           Sersic (N=7)
+                disk                                                            Exponential (N=6)
+                bulge - disk
+                    effective_radius                                            SumPrior (N=2)
+                        self                                                    MultiplePrior (N=1)
+
+Maximum Log Likelihood Model:
+
+0 - 2
+    galaxies
+        galaxy
+            bulge
+                sersic_index                                                    4.937
+                centre
+                    centre_0                                                    0.413
+                    centre_1                                                    0.180
+                ell_comps
+                    ell_comps_0                                                 -0.052
+                    ell_comps_1                                                 0.112
+                effective_radius
+                    self
+                        bulge_m                                                 0.026
+                    bulge_c                                                     9.468
+            disk
+                centre
+                    centre_0                                                    0.248
+                    centre_1                                                    0.324
+                ell_comps
+                    ell_comps_0                                                 0.051
+                    ell_comps_1                                                 -0.218
+                effective_radius
+                    self
+                        disk_m                                                  -0.015
+                    disk_c                                                      3.589
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+0 - 2
+    galaxies
+        galaxy
+            bulge
+                sersic_index                                                    4.9369 (0.9443, 4.9369)
+                centre
+                    centre_0                                                    0.4132 (-0.7607, 1.0592)
+                    centre_1                                                    0.1801 (-0.5644, 0.7560)
+                ell_comps
+                    ell_comps_0                                                 -0.0517 (-0.4770, 0.6330)
+                    ell_comps_1                                                 0.1124 (-0.6231, 0.6384)
+                effective_radius
+                    self
+                        bulge_m                                                 0.0 (-0.1, 0.1)
+                    bulge_c                                                     9.4675 (-9.9325, 9.8186)
+            disk
+                centre
+                    centre_0                                                    0.2477 (-0.5075, 0.4402)
+                    centre_1                                                    0.3241 (-0.6511, 0.7914)
+                ell_comps
+                    ell_comps_0                                                 0.0511 (-0.8245, 0.6536)
+                    ell_comps_1                                                 -0.2184 (-0.7501, 0.4423)
+                effective_radius
+                    self
+                        disk_m                                                  -0.0 (-0.1, 0.1)
+                    disk_c                                                      3.5890 (-9.9537, 9.3855)
+
+instances
+
+0 - 2
+    galaxies
+        galaxy
+            redshift                                                            0.5

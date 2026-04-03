@@ -1,0 +1,28 @@
+Total Free Parameters = 12
+
+model                                                                           Collection (N=12)
+    galaxies                                                                    Collection (N=12)
+        galaxy                                                                  Galaxy (N=12)
+            bulge - disk                                                        Sersic (N=6)
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge
+            centre
+                centre_0                                                        TruncatedGaussianPrior [23], mean = 0.0, sigma = 0.1, lower_limit = -inf, upper_limit = inf
+                centre_1                                                        TruncatedGaussianPrior [24], mean = 0.0, sigma = 0.1, lower_limit = -inf, upper_limit = inf
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [25], mean = 0.11, sigma = 0.2, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [26], mean = 0.05, sigma = 0.2, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius                                                    TruncatedGaussianPrior [27], mean = 0.75, sigma = 0.4, lower_limit = 0.0, upper_limit = inf
+            sersic_index                                                        TruncatedGaussianPrior [28], mean = 4.0, sigma = 2.0, lower_limit = 0.0, upper_limit = inf
+        disk
+            centre
+                centre_0                                                        TruncatedGaussianPrior [29], mean = 0.0, sigma = 0.1, lower_limit = -inf, upper_limit = inf
+                centre_1                                                        TruncatedGaussianPrior [30], mean = 0.0, sigma = 0.1, lower_limit = -inf, upper_limit = inf
+            ell_comps
+                ell_comps_0                                                     TruncatedGaussianPrior [31], mean = 0.11, sigma = 0.2, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1                                                     TruncatedGaussianPrior [32], mean = 0.05, sigma = 0.2, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius                                                    TruncatedGaussianPrior [33], mean = 1.52, sigma = 0.4, lower_limit = 0.0, upper_limit = inf
+            sersic_index                                                        TruncatedGaussianPrior [34], mean = 1.0, sigma = 2.0, lower_limit = 0.0, upper_limit = inf

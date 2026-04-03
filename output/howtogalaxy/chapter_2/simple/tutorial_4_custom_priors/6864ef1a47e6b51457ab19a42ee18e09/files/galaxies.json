@@ -1,0 +1,58 @@
+{
+    "type": "list",
+    "values": [
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "redshift": 0.5,
+                "label": "cls5",
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.008524886424488995,
+                                -0.009889698097629865
+                            ]
+                        },
+                        "effective_radius": 1.2406060190890282,
+                        "sersic_index": 2.699974775218937,
+                        "intensity": 0.0001941853814157094,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.1702156549282593,
+                                -0.04316628545052723
+                            ]
+                        }
+                    }
+                },
+                "disk": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.exponential.Exponential",
+                    "arguments": {
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                -0.0024390411502655113,
+                                -0.02346656651263578
+                            ]
+                        },
+                        "intensity": 0.7381001247872795,
+                        "effective_radius": 1.4332903333330875,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.33451251338710264,
+                                0.02102678303634202
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

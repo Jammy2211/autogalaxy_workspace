@@ -1,0 +1,266 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.samples.summary.SamplesSummary",
+    "arguments": {
+        "median_pdf_sample": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.samples.sample.Sample",
+            "arguments": {
+                "log_likelihood": -85561.54227745166,
+                "log_prior": 26.969447449662297,
+                "weight": 1.0,
+                "kwargs": {
+                    "type": "dict",
+                    "arguments": {
+                        "galaxies.galaxy.bulge.centre.centre_0": 0.21367002703598362,
+                        "galaxies.galaxy.bulge.centre.centre_1": -0.29076075793544437,
+                        "galaxies.galaxy.bulge.ell_comps.ell_comps_0": -0.3568049144506496,
+                        "galaxies.galaxy.bulge.ell_comps.ell_comps_1": -0.12384659118669383,
+                        "galaxies.galaxy.bulge.intensity": 0.03778313600906495,
+                        "galaxies.galaxy.bulge.effective_radius": 5.669134427913529,
+                        "galaxies.galaxy.bulge.sersic_index": 4.818780222506743
+                    }
+                }
+            }
+        },
+        "errors_at_sigma_3": {
+            "type": "dict",
+            "arguments": {
+                "galaxies.galaxy.bulge.centre.centre_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.9713916451025275,
+                        0.2943492454003893
+                    ]
+                },
+                "galaxies.galaxy.bulge.centre.centre_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.10157091308966099,
+                        1.0394873034808472
+                    ]
+                },
+                "galaxies.galaxy.bulge.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.23651530220449885,
+                        0.8918583718899691
+                    ]
+                },
+                "galaxies.galaxy.bulge.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.3975263350653022,
+                        0.6293015647002943
+                    ]
+                },
+                "galaxies.galaxy.bulge.intensity": {
+                    "type": "tuple",
+                    "values": [
+                        0.03778209323362382,
+                        697265.3261041164
+                    ]
+                },
+                "galaxies.galaxy.bulge.effective_radius": {
+                    "type": "tuple",
+                    "values": [
+                        5.085016028966766,
+                        22.966923015464996
+                    ]
+                },
+                "galaxies.galaxy.bulge.sersic_index": {
+                    "type": "tuple",
+                    "values": [
+                        3.9195587550972233,
+                        0.06504292840750736
+                    ]
+                }
+            }
+        },
+        "values_at_sigma_3": {
+            "type": "dict",
+            "arguments": {
+                "galaxies.galaxy.bulge.centre.centre_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.7577216180665439,
+                        0.5080192724363729
+                    ]
+                },
+                "galaxies.galaxy.bulge.centre.centre_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.39233167102510536,
+                        0.7487265455454029
+                    ]
+                },
+                "galaxies.galaxy.bulge.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.5933202166551484,
+                        0.5350534574393195
+                    ]
+                },
+                "galaxies.galaxy.bulge.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.521372926251996,
+                        0.5054549735136005
+                    ]
+                },
+                "galaxies.galaxy.bulge.intensity": {
+                    "type": "tuple",
+                    "values": [
+                        1.0427754411341098e-06,
+                        697265.3638872524
+                    ]
+                },
+                "galaxies.galaxy.bulge.effective_radius": {
+                    "type": "tuple",
+                    "values": [
+                        0.5841183989467624,
+                        28.636057443378526
+                    ]
+                },
+                "galaxies.galaxy.bulge.sersic_index": {
+                    "type": "tuple",
+                    "values": [
+                        0.8992214674095198,
+                        4.8838231509142505
+                    ]
+                }
+            }
+        },
+        "values_at_sigma_1": {
+            "type": "dict",
+            "arguments": {
+                "galaxies.galaxy.bulge.centre.centre_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.7577216180665439,
+                        0.5080192724363729
+                    ]
+                },
+                "galaxies.galaxy.bulge.centre.centre_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.39233167102510536,
+                        0.7487265455454029
+                    ]
+                },
+                "galaxies.galaxy.bulge.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.5933202166551484,
+                        0.5350534574393195
+                    ]
+                },
+                "galaxies.galaxy.bulge.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.521372926251996,
+                        0.5054549735136005
+                    ]
+                },
+                "galaxies.galaxy.bulge.intensity": {
+                    "type": "tuple",
+                    "values": [
+                        1.0427754411341098e-06,
+                        697265.3638872524
+                    ]
+                },
+                "galaxies.galaxy.bulge.effective_radius": {
+                    "type": "tuple",
+                    "values": [
+                        0.5841183989467624,
+                        28.636057443378526
+                    ]
+                },
+                "galaxies.galaxy.bulge.sersic_index": {
+                    "type": "tuple",
+                    "values": [
+                        0.8992214674095198,
+                        4.8838231509142505
+                    ]
+                }
+            }
+        },
+        "errors_at_sigma_1": {
+            "type": "dict",
+            "arguments": {
+                "galaxies.galaxy.bulge.centre.centre_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.9713916451025275,
+                        0.2943492454003893
+                    ]
+                },
+                "galaxies.galaxy.bulge.centre.centre_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.10157091308966099,
+                        1.0394873034808472
+                    ]
+                },
+                "galaxies.galaxy.bulge.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.23651530220449885,
+                        0.8918583718899691
+                    ]
+                },
+                "galaxies.galaxy.bulge.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.3975263350653022,
+                        0.6293015647002943
+                    ]
+                },
+                "galaxies.galaxy.bulge.intensity": {
+                    "type": "tuple",
+                    "values": [
+                        0.03778209323362382,
+                        697265.3261041164
+                    ]
+                },
+                "galaxies.galaxy.bulge.effective_radius": {
+                    "type": "tuple",
+                    "values": [
+                        5.085016028966766,
+                        22.966923015464996
+                    ]
+                },
+                "galaxies.galaxy.bulge.sersic_index": {
+                    "type": "tuple",
+                    "values": [
+                        3.9195587550972233,
+                        0.06504292840750736
+                    ]
+                }
+            }
+        },
+        "log_evidence": -85565.45430045709,
+        "max_log_likelihood_sample": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.samples.sample.Sample",
+            "arguments": {
+                "log_likelihood": -85561.54227745166,
+                "log_prior": 26.969447449662297,
+                "weight": 1.0,
+                "kwargs": {
+                    "type": "dict",
+                    "arguments": {
+                        "galaxies.galaxy.bulge.centre.centre_0": 0.21367002703598362,
+                        "galaxies.galaxy.bulge.centre.centre_1": -0.29076075793544437,
+                        "galaxies.galaxy.bulge.ell_comps.ell_comps_0": -0.3568049144506496,
+                        "galaxies.galaxy.bulge.ell_comps.ell_comps_1": -0.12384659118669383,
+                        "galaxies.galaxy.bulge.intensity": 0.03778313600906495,
+                        "galaxies.galaxy.bulge.effective_radius": 5.669134427913529,
+                        "galaxies.galaxy.bulge.sersic_index": 4.818780222506743
+                    }
+                }
+            }
+        },
+        "model": null
+    }
+}

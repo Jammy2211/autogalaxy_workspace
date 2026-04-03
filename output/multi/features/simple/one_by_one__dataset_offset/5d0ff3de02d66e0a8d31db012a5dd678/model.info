@@ -1,0 +1,29 @@
+Total Free Parameters = 2
+
+model                                                                           Collection (N=2)
+    dataset_model                                                               DatasetModel (N=2)
+    galaxies                                                                    ModelInstance (N=0)
+        galaxy                                                                  Galaxy (N=0)
+            bulge                                                               Sersic (N=0)
+            disk                                                                Exponential (N=0)
+
+dataset_model
+    background_sky_level                                                        0.0
+    grid_offset
+        grid_offset_0                                                           UniformPrior [11], lower_limit = -0.1, upper_limit = 0.1
+        grid_offset_1                                                           UniformPrior [12], lower_limit = -0.1, upper_limit = 0.1
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge
+            centre                                                              (-0.0018070704345329368, 0.10362556943451069)
+            ell_comps                                                           (-0.2537196984143061, -0.13412076502758288)
+            effective_radius                                                    4.216537423935815
+            sersic_index                                                        4.89155785548274
+        bulge - disk
+            intensity                                                           1.0
+        disk
+            centre                                                              (-0.06719065266343824, 0.019917221425051906)
+            ell_comps                                                           (-0.3400600138606859, -0.45739736957855076)
+            effective_radius                                                    29.269880253891387
+            sersic_index                                                        1.0

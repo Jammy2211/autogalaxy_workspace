@@ -1,0 +1,70 @@
+PriorFactors
+
+PriorFactor0 (AnalysisFactor1.galaxies.galaxy.disk.effective_radius)                      UniformPrior [21], lower_limit = 0.0, upper_limit = 30.0
+PriorFactor1 (AnalysisFactor1.galaxies.galaxy.disk.ell_comps.ell_comps_1)                 TruncatedGaussianPrior [20], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+PriorFactor2 (AnalysisFactor1.galaxies.galaxy.disk.ell_comps.ell_comps_0)                 TruncatedGaussianPrior [19], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+PriorFactor3 (AnalysisFactor1.galaxies.galaxy.disk.centre.centre_1)                       GaussianPrior [18], mean = 0.0, sigma = 0.3
+PriorFactor4 (AnalysisFactor1.galaxies.galaxy.disk.centre.centre_0)                       GaussianPrior [17], mean = 0.0, sigma = 0.3
+PriorFactor5 (AnalysisFactor1.galaxies.galaxy.bulge.sersic_index)                         UniformPrior [16], lower_limit = 0.8, upper_limit = 5.0
+PriorFactor6 (AnalysisFactor1.galaxies.galaxy.bulge.effective_radius)                     UniformPrior [15], lower_limit = 0.0, upper_limit = 30.0
+PriorFactor7 (AnalysisFactor1.galaxies.galaxy.bulge.ell_comps.ell_comps_1)                TruncatedGaussianPrior [14], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+PriorFactor8 (AnalysisFactor1.galaxies.galaxy.bulge.ell_comps.ell_comps_0)                TruncatedGaussianPrior [13], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+PriorFactor9 (AnalysisFactor1.galaxies.galaxy.bulge.centre.centre_1)                      GaussianPrior [12], mean = 0.0, sigma = 0.3
+PriorFactor10 (AnalysisFactor1.galaxies.galaxy.bulge.centre.centre_0)                     GaussianPrior [11], mean = 0.0, sigma = 0.3
+PriorFactor11 (AnalysisFactor0.galaxies.galaxy.disk.effective_radius)                     UniformPrior [10], lower_limit = 0.0, upper_limit = 30.0
+PriorFactor12 (AnalysisFactor0.galaxies.galaxy.disk.ell_comps.ell_comps_1)                TruncatedGaussianPrior [9], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+PriorFactor13 (AnalysisFactor0.galaxies.galaxy.disk.ell_comps.ell_comps_0)                TruncatedGaussianPrior [8], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+PriorFactor14 (AnalysisFactor0.galaxies.galaxy.disk.centre.centre_1)                      GaussianPrior [7], mean = 0.0, sigma = 0.3
+PriorFactor15 (AnalysisFactor0.galaxies.galaxy.disk.centre.centre_0)                      GaussianPrior [6], mean = 0.0, sigma = 0.3
+PriorFactor16 (AnalysisFactor0.galaxies.galaxy.bulge.sersic_index)                        UniformPrior [5], lower_limit = 0.8, upper_limit = 5.0
+PriorFactor17 (AnalysisFactor0.galaxies.galaxy.bulge.effective_radius)                    UniformPrior [4], lower_limit = 0.0, upper_limit = 30.0
+PriorFactor18 (AnalysisFactor0.galaxies.galaxy.bulge.ell_comps.ell_comps_1)               TruncatedGaussianPrior [3], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+PriorFactor19 (AnalysisFactor0.galaxies.galaxy.bulge.ell_comps.ell_comps_0)               TruncatedGaussianPrior [2], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+PriorFactor20 (AnalysisFactor0.galaxies.galaxy.bulge.centre.centre_1)                     GaussianPrior [1], mean = 0.0, sigma = 0.3
+PriorFactor21 (AnalysisFactor0.galaxies.galaxy.bulge.centre.centre_0)                     GaussianPrior [0], mean = 0.0, sigma = 0.3
+
+AnalysisFactors
+
+AnalysisFactor0
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0 (PriorFactor21)                                                  GaussianPrior [0], mean = 0.0, sigma = 0.3
+                centre_1 (PriorFactor20)                                                  GaussianPrior [1], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0 (PriorFactor19)                                               TruncatedGaussianPrior [2], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1 (PriorFactor18)                                               TruncatedGaussianPrior [3], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius (PriorFactor17)                                              UniformPrior [4], lower_limit = 0.0, upper_limit = 30.0
+            sersic_index (PriorFactor16)                                                  UniformPrior [5], lower_limit = 0.8, upper_limit = 5.0
+        disk
+            centre
+                centre_0 (PriorFactor15)                                                  GaussianPrior [6], mean = 0.0, sigma = 0.3
+                centre_1 (PriorFactor14)                                                  GaussianPrior [7], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0 (PriorFactor13)                                               TruncatedGaussianPrior [8], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1 (PriorFactor12)                                               TruncatedGaussianPrior [9], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius (PriorFactor11)                                              UniformPrior [10], lower_limit = 0.0, upper_limit = 30.0
+
+AnalysisFactor1
+
+galaxies
+    galaxy
+        bulge
+            centre
+                centre_0 (PriorFactor10)                                                  GaussianPrior [11], mean = 0.0, sigma = 0.3
+                centre_1 (PriorFactor9)                                                   GaussianPrior [12], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0 (PriorFactor8)                                                TruncatedGaussianPrior [13], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1 (PriorFactor7)                                                TruncatedGaussianPrior [14], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius (PriorFactor6)                                               UniformPrior [15], lower_limit = 0.0, upper_limit = 30.0
+            sersic_index (PriorFactor5)                                                   UniformPrior [16], lower_limit = 0.8, upper_limit = 5.0
+        disk
+            centre
+                centre_0 (PriorFactor4)                                                   GaussianPrior [17], mean = 0.0, sigma = 0.3
+                centre_1 (PriorFactor3)                                                   GaussianPrior [18], mean = 0.0, sigma = 0.3
+            ell_comps
+                ell_comps_0 (PriorFactor2)                                                TruncatedGaussianPrior [19], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+                ell_comps_1 (PriorFactor1)                                                TruncatedGaussianPrior [20], mean = 0.0, sigma = 0.3, lower_limit = -1.0, upper_limit = 1.0
+            effective_radius (PriorFactor0)                                               UniformPrior [21], lower_limit = 0.0, upper_limit = 30.0

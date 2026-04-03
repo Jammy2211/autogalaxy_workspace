@@ -1,0 +1,66 @@
+{
+    "type": "list",
+    "values": [
+        {
+            "type": "instance",
+            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+            "arguments": {
+                "label": "cls5",
+                "redshift": 0.5,
+                "bulge": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
+                    "arguments": {
+                        "sersic_index": 4.987646750590311,
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.3473892193144808,
+                                0.1521482678608592
+                            ]
+                        },
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 0.017973204100714988,
+                            "dtype": "float64"
+                        },
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.0064219168661510005,
+                                0.24605124060658834
+                            ]
+                        },
+                        "effective_radius": 18.53662519328426
+                    }
+                },
+                "disk": {
+                    "type": "instance",
+                    "class_path": "autogalaxy.profiles.light.standard.exponential.Exponential",
+                    "arguments": {
+                        "intensity": {
+                            "type": "ndarray",
+                            "array": 5.139401746112324e-18,
+                            "dtype": "float64"
+                        },
+                        "effective_radius": 22.401142111258828,
+                        "ell_comps": {
+                            "type": "tuple",
+                            "values": [
+                                0.19499843602693728,
+                                0.12877854245810438
+                            ]
+                        },
+                        "centre": {
+                            "type": "tuple",
+                            "values": [
+                                0.2007808454369985,
+                                -0.1321200673463075
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

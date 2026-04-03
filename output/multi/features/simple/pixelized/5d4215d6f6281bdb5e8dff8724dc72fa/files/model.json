@@ -1,0 +1,112 @@
+{
+    "type": "collection",
+    "arguments": {
+        "0": {
+            "type": "collection",
+            "arguments": {
+                "galaxies": {
+                    "type": "collection",
+                    "arguments": {
+                        "galaxy": {
+                            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                            "type": "model",
+                            "arguments": {
+                                "redshift": {
+                                    "type": "Constant",
+                                    "value": 0.5
+                                },
+                                "pixelization": {
+                                    "class_path": "autoarray.inversion.pixelization.Pixelization",
+                                    "type": "model",
+                                    "arguments": {
+                                        "mesh": {
+                                            "class_path": "autoarray.inversion.mesh.mesh.rectangular_adapt_density.RectangularAdaptDensity",
+                                            "type": "instance",
+                                            "arguments": {
+                                                "shape": {
+                                                    "type": "tuple",
+                                                    "values": [
+                                                        28,
+                                                        28
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "regularization": {
+                                            "class_path": "autoarray.inversion.regularization.constant.Constant",
+                                            "type": "model",
+                                            "arguments": {
+                                                "coefficient": {
+                                                    "type": "LogUniform",
+                                                    "id": 1,
+                                                    "lower_limit": 0.0001,
+                                                    "upper_limit": 10000.0
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "1": {
+            "type": "collection",
+            "arguments": {
+                "galaxies": {
+                    "type": "collection",
+                    "arguments": {
+                        "galaxy": {
+                            "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
+                            "type": "model",
+                            "arguments": {
+                                "redshift": {
+                                    "type": "Constant",
+                                    "value": 0.5
+                                },
+                                "pixelization": {
+                                    "class_path": "autoarray.inversion.pixelization.Pixelization",
+                                    "type": "model",
+                                    "arguments": {
+                                        "mesh": {
+                                            "class_path": "autoarray.inversion.mesh.mesh.rectangular_adapt_density.RectangularAdaptDensity",
+                                            "type": "instance",
+                                            "arguments": {
+                                                "shape": {
+                                                    "type": "tuple",
+                                                    "values": [
+                                                        28,
+                                                        28
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "regularization": {
+                                            "class_path": "autoarray.inversion.regularization.constant.Constant",
+                                            "type": "model",
+                                            "arguments": {
+                                                "coefficient": {
+                                                    "type": "LogUniform",
+                                                    "id": 2,
+                                                    "lower_limit": 0.0001,
+                                                    "upper_limit": 10000.0
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "factor": {
+            "type": "instance",
+            "class_path": "autofit.graphical.declarative.collection.FactorGraphModel",
+            "arguments": {}
+        }
+    }
+}

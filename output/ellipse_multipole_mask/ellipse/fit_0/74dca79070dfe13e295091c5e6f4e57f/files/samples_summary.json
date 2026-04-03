@@ -1,0 +1,236 @@
+{
+    "type": "instance",
+    "class_path": "autofit.non_linear.samples.summary.SamplesSummary",
+    "arguments": {
+        "model": null,
+        "errors_at_sigma_3": {
+            "type": "dict",
+            "arguments": {
+                "ellipses.0.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        1.07005614132728,
+                        0.09691497177996994
+                    ]
+                },
+                "ellipses.0.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.26944711285097994,
+                        0.88180007308386
+                    ]
+                },
+                "multipoles.0.0.multipole_comps.multipole_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.11368276031655018,
+                        0.2768434937300966
+                    ]
+                },
+                "multipoles.0.0.multipole_comps.multipole_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.24264687671524543,
+                        0.15011457274323803
+                    ]
+                },
+                "multipoles.0.1.multipole_comps.multipole_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.23511891656865191,
+                        0.19667582722663804
+                    ]
+                },
+                "multipoles.0.1.multipole_comps.multipole_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.0,
+                        0.4800886663610817
+                    ]
+                }
+            }
+        },
+        "median_pdf_sample": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.samples.sample.Sample",
+            "arguments": {
+                "log_likelihood": -39433.43565726488,
+                "log_prior": 4.743636127973863,
+                "weight": 1.0,
+                "kwargs": {
+                    "type": "dict",
+                    "arguments": {
+                        "ellipses.0.ell_comps.ell_comps_0": 0.48457440367551,
+                        "ellipses.0.ell_comps.ell_comps_1": -0.30771749300095,
+                        "multipoles.0.0.multipole_comps.multipole_comps_0": -0.07025177578078366,
+                        "multipoles.0.0.multipole_comps.multipole_comps_1": -0.011607323466355396,
+                        "multipoles.0.1.multipole_comps.multipole_comps_0": -0.0460092020569181,
+                        "multipoles.0.1.multipole_comps.multipole_comps_1": -0.29611793921874585
+                    }
+                }
+            }
+        },
+        "values_at_sigma_1": {
+            "type": "dict",
+            "arguments": {
+                "ellipses.0.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.58548173765177,
+                        0.58148937545548
+                    ]
+                },
+                "ellipses.0.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.57716460585193,
+                        0.57408258008291
+                    ]
+                },
+                "multipoles.0.0.multipole_comps.multipole_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.18393453609733385,
+                        0.20659171794931294
+                    ]
+                },
+                "multipoles.0.0.multipole_comps.multipole_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.25425420018160083,
+                        0.13850724927688263
+                    ]
+                },
+                "multipoles.0.1.multipole_comps.multipole_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.28112811862557,
+                        0.15066662516971993
+                    ]
+                },
+                "multipoles.0.1.multipole_comps.multipole_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.29611793921874585,
+                        0.18397072714233587
+                    ]
+                }
+            }
+        },
+        "values_at_sigma_3": {
+            "type": "dict",
+            "arguments": {
+                "ellipses.0.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.58548173765177,
+                        0.58148937545548
+                    ]
+                },
+                "ellipses.0.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.57716460585193,
+                        0.57408258008291
+                    ]
+                },
+                "multipoles.0.0.multipole_comps.multipole_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.18393453609733385,
+                        0.20659171794931294
+                    ]
+                },
+                "multipoles.0.0.multipole_comps.multipole_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.25425420018160083,
+                        0.13850724927688263
+                    ]
+                },
+                "multipoles.0.1.multipole_comps.multipole_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        -0.28112811862557,
+                        0.15066662516971993
+                    ]
+                },
+                "multipoles.0.1.multipole_comps.multipole_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        -0.29611793921874585,
+                        0.18397072714233587
+                    ]
+                }
+            }
+        },
+        "max_log_likelihood_sample": {
+            "type": "instance",
+            "class_path": "autofit.non_linear.samples.sample.Sample",
+            "arguments": {
+                "log_likelihood": -39433.43565726488,
+                "log_prior": 4.743636127973863,
+                "weight": 1.0,
+                "kwargs": {
+                    "type": "dict",
+                    "arguments": {
+                        "ellipses.0.ell_comps.ell_comps_0": 0.48457440367551,
+                        "ellipses.0.ell_comps.ell_comps_1": -0.30771749300095,
+                        "multipoles.0.0.multipole_comps.multipole_comps_0": -0.07025177578078366,
+                        "multipoles.0.0.multipole_comps.multipole_comps_1": -0.011607323466355396,
+                        "multipoles.0.1.multipole_comps.multipole_comps_0": -0.0460092020569181,
+                        "multipoles.0.1.multipole_comps.multipole_comps_1": -0.29611793921874585
+                    }
+                }
+            }
+        },
+        "log_evidence": -39438.10023533276,
+        "errors_at_sigma_1": {
+            "type": "dict",
+            "arguments": {
+                "ellipses.0.ell_comps.ell_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        1.07005614132728,
+                        0.09691497177996994
+                    ]
+                },
+                "ellipses.0.ell_comps.ell_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.26944711285097994,
+                        0.88180007308386
+                    ]
+                },
+                "multipoles.0.0.multipole_comps.multipole_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.11368276031655018,
+                        0.2768434937300966
+                    ]
+                },
+                "multipoles.0.0.multipole_comps.multipole_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.24264687671524543,
+                        0.15011457274323803
+                    ]
+                },
+                "multipoles.0.1.multipole_comps.multipole_comps_0": {
+                    "type": "tuple",
+                    "values": [
+                        0.23511891656865191,
+                        0.19667582722663804
+                    ]
+                },
+                "multipoles.0.1.multipole_comps.multipole_comps_1": {
+                    "type": "tuple",
+                    "values": [
+                        0.0,
+                        0.4800886663610817
+                    ]
+                }
+            }
+        }
+    }
+}

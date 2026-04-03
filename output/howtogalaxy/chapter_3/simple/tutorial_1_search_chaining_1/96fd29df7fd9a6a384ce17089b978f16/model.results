@@ -1,0 +1,51 @@
+Bayesian Evidence                                                               1045.98691435
+Maximum Log Likelihood                                                          1049.89893736
+
+model                                                                           Collection (N=4)
+    galaxies                                                                    Collection (N=4)
+        galaxy                                                                  Galaxy (N=4)
+            bulge                                                               Sersic (N=3)
+            disk                                                                Exponential (N=3)
+
+Maximum Log Likelihood Model:
+
+galaxies
+    galaxy
+        bulge - disk
+            ell_comps
+                ell_comps_0                                                     -0.141
+                ell_comps_1                                                     0.004
+        bulge
+            effective_radius                                                    2.622
+        disk
+            effective_radius                                                    20.024
+
+ WARNING: The samples have not converged enough to compute a PDF and model errors. 
+ The model below over estimates errors. 
+
+
+
+Summary (1.0 sigma limits):
+
+galaxies
+    galaxy
+        bulge - disk
+            ell_comps
+                ell_comps_0                                                     -0.1409 (-0.8891, 0.5890)
+                ell_comps_1                                                     0.0039 (-0.5284, 0.5449)
+        bulge
+            effective_radius                                                    2.6218 (0.0263, 29.4351)
+        disk
+            effective_radius                                                    20.0242 (0.2311, 29.3402)
+
+instances
+
+galaxies
+    galaxy
+        redshift                                                                0.5
+        bulge - disk
+            centre
+                centre_0                                                        0.0
+                centre_1                                                        0.0
+        bulge
+            sersic_index                                                        4.0
