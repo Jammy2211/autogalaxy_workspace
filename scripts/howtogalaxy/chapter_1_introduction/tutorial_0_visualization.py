@@ -80,7 +80,6 @@ If not, you can customize common matplotlib options by passing them directly to 
 aplt.plot_array(
     array=dataset.data,
     title="Data",
-    figsize=(7, 7),
 )
 
 """
@@ -136,7 +135,7 @@ mask = ag.Mask2D.circular_annular(
     outer_radius=3.0,
 )
 
-aplt.plot_array(array=dataset.data, title="Data", mask=mask)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 __Wrap Up__

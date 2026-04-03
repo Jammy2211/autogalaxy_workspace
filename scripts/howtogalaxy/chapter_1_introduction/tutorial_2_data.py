@@ -342,7 +342,8 @@ The files are named `data.fits`, `noise_map.fits`, and `psf.fits`, and will be u
 dataset_path = Path("dataset", "imaging", "howtogalaxy")
 print("Dataset Path: ", dataset_path)
 
-dataset.output_to_fits(
+aplt.fits_imaging(
+    dataset=dataset,
     data_path=dataset_path / "data.fits",
     noise_map_path=dataset_path / "noise_map.fits",
     psf_path=dataset_path / "psf.fits",

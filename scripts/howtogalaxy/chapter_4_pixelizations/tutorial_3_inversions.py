@@ -20,6 +20,8 @@ of this tutorial, where the process of reconstructing the galaxy's light on the 
 from pathlib import Path
 import autogalaxy as ag
 import autogalaxy.plot as aplt
+import autoarray.plot as aaplt
+from autoarray.inversion.plot.inversion_plots import subplot_of_mapper
 
 """
 __Initial Setup__
@@ -47,7 +49,7 @@ mask = ag.Mask2D.circular(
     shape_native=dataset.shape_native, pixel_scales=dataset.pixel_scales, radius=2.0
 )
 
-aplt.plot_array(array=dataset.data, title="Data", mask=mask)
+aplt.plot_array(array=dataset.data, title="Data")
 
 """
 We now create the masked imaging, as we did in the previous tutorial.
@@ -73,7 +75,7 @@ mapper = ag.Mapper(
     regularization=ag.reg.Constant(coefficient=1.0),
 )
 
-aplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
+aaplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 __Pixelization__
@@ -93,13 +95,13 @@ print(inversion.reconstruction)
 print(inversion.mapped_reconstructed_operated_data)
 
 """
-Both of these can be plotted using an `InversionPlotter`.
+Both of these can be plotted using `subplot_of_mapper`.
 
 It is possible for an inversion to have multiple `Mapper`'s, therefore for certain figures we specify the index 
 of the mapper we wish to plot. In this case, because we only have one mapper we specify the index 0.
 """
-aplt.plot_array(array=inversion.reconstruction_to_native, title="Reconstruction")
-aplt.subplot_of_mapper(mapper_index=0, inversion=inversion)
+aplt.plot_array(array=inversion.mapped_reconstructed_operated_data, title="Reconstruction")
+subplot_of_mapper(inversion=inversion, mapper_index=0)
 
 """
 There we have it, we have successfully reconstructed the galaxy using a rectangular pixel-grid. This has reconstructed
@@ -119,7 +121,7 @@ pix_indexes = [[445], [285], [313], [132], [11]]
 
 indexes = mapper.slim_indexes_for_pix_indexes(pix_indexes=pix_indexes)
 
-aplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
+aaplt.subplot_image_and_mapper(mapper=mapper, image=dataset.data)
 
 """
 These mappings are known before the inversion reconstructs the galaxy, which means before this inversion is performed 

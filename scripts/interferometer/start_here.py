@@ -139,7 +139,7 @@ dataset = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
-aplt.subplot_interferometer_dataset(dataset=dataset)
+aplt.subplot_interferometer_dirty_images(dataset=dataset)
 
 """
 __Model__
@@ -239,7 +239,7 @@ print(result.info)
 The result also contains the maximum likelihood galaxy model which can be used to plot the best-fit information
 and fit to the data.
 """
-aplt.subplot_fit_interferometer(fit=result.max_log_likelihood_fit)  # residuals, chi^2, dirty image, etc.
+aplt.subplot_fit_dirty_images(fit=result.max_log_likelihood_fit)  # residuals, chi^2, dirty image, etc.
 
 """
 The result object contains pretty much everything you need to do science with your own galaxy, but details
@@ -331,11 +331,12 @@ galaxies = ag.Galaxies([galaxy])
 dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 
 aplt.plot_array(array=dataset.dirty_image, title="Dirty Image")
-aplt.subplot_interferometer_dataset(dataset=dataset)
+aplt.subplot_interferometer_dirty_images(dataset=dataset)
 
 dataset_path = Path("dataset") / "interferometer" / "simulated_galaxy"
 
-dataset.output_to_fits(
+aplt.fits_interferometer(
+    dataset=dataset,
     data_path=dataset_path / "data.fits",
     noise_map_path=dataset_path / "noise_map.fits",
     uv_wavelengths_path=dataset_path / "uv_wavelengths.fits",
@@ -371,7 +372,7 @@ for sample_index in range(total_datasets):
 
     dataset = simulator.via_galaxies_from(galaxies=galaxies, grid=grid)
 
-    aplt.subplot_interferometer_dataset(dataset=dataset)
+    aplt.subplot_interferometer_dirty_images(dataset=dataset)
 
 """
 __Wrap Up__

@@ -73,13 +73,15 @@ aplt.plot_array(array=blurred_signal_to_noise_map, title="Image")
 """
 Now create the mask in 2ll pixels where the signal to noise is above some threshold value.
 """
-mask = np.where(blurred_signal_to_noise_map.native > snr_cut, False, True)
-mask = ag.Mask2D(mask=mask, pixel_scales=data.pixel_scales)
+mask = ag.Mask2D(
+    mask=np.where(blurred_signal_to_noise_map.native > snr_cut, False, True),
+    pixel_scales=data.pixel_scales,
+)
 
-aplt.plot_array(array=data, title="Data", mask=mask)
+aplt.plot_array(array=data, title="Data")
 
 """
 Now we`re happy with the mask, lets output it to the dataset folder of the galaxy, so that we can load it from a .fits
 file in our pipelines!
 """
-mask.output_to_fits(file_path=Path(dataset_path, "mask.fits"), overwrite=True)
+aplt.fits_array(array=mask, file_path=Path(dataset_path, "mask.fits"), overwrite=True)

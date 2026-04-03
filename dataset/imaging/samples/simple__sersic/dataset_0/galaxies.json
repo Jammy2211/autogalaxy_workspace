@@ -5,22 +5,22 @@
             "type": "instance",
             "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
             "arguments": {
-                "redshift": 0.5,
                 "label": "cls1",
+                "redshift": 0.5,
                 "bulge": {
                     "type": "instance",
                     "class_path": "autogalaxy.profiles.light.snr.sersic.Sersic",
                     "arguments": {
-                        "sersic_index": 4.044277713606838,
+                        "sersic_index": 4.711944699461897,
                         "ell_comps": {
                             "type": "tuple",
                             "values": [
-                                -0.01168650542173913,
-                                -0.3185302638614107
+                                -0.4563288577398815,
+                                0.00912386747158918
                             ]
                         },
-                        "effective_radius": 2.21826163719642,
-                        "signal_to_noise_ratio": 20.94430711118393,
+                        "effective_radius": 1.35969930258072,
+                        "signal_to_noise_ratio": 26.86462201496154,
                         "centre": {
                             "type": "tuple",
                             "values": [

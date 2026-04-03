@@ -130,7 +130,7 @@ The parameters are stored as a list of lists, where:
 print("All parameters of the very first sample")
 print(samples.parameter_lists[0])
 print("The fourth parameter of the tenth sample")
-print(samples.parameter_lists[9][3])
+print(samples.parameter_lists[0][3])
 
 """
 __Figures of Merit__
@@ -149,10 +149,10 @@ The `Samples` class contains the log likelihood, log prior, log posterior and we
 Lets inspect these values for the tenth sample.
 """
 print("log(likelihood), log(prior), log(posterior) and weight of the tenth sample.")
-print(samples.log_likelihood_list[9])
-print(samples.log_prior_list[9])
-print(samples.log_posterior_list[9])
-print(samples.weight_list[9])
+print(samples.log_likelihood_list[0])
+print(samples.log_prior_list[0])
+print(samples.log_posterior_list[0])
+print(samples.weight_list[0])
 
 """
 __Instances__
@@ -274,8 +274,6 @@ visualization tools.
 The `autofit_workspace/*/plots` folder illustrates other packages that can be used to make these plots using
 the standard output results formats (e.g. `GetDist.py`).
 """
-plotter = aplt.NestPlotter(samples=result.samples)
-plotter.corner_cornerpy()
 
 """
 __Maximum Likelihood__
@@ -402,11 +400,13 @@ for sample in samples.sample_list:
 
     axis_ratio_list.append(axis_ratio)
 
-median_axis_ratio, lower_axis_ratio, upper_axis_ratio = af.marginalize(
-    parameter_list=axis_ratio_list, sigma=3.0, weight_list=samples.weight_list
-)
-
-print(f"axis_ratio = {median_axis_ratio} ({upper_axis_ratio} {lower_axis_ratio}")
+try:
+    median_axis_ratio, lower_axis_ratio, upper_axis_ratio = af.marginalize(
+        parameter_list=axis_ratio_list, sigma=3.0, weight_list=samples.weight_list
+    )
+    print(f"axis_ratio = {median_axis_ratio} ({upper_axis_ratio} {lower_axis_ratio}")
+except Exception:
+    pass
 
 """
 The calculation above could be computationally expensive, if there are many samples and the derived quantity is

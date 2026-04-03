@@ -76,9 +76,9 @@ __Figure Size and Aspect__
 
 We can control the figure size using `figsize=` and the image aspect ratio using `aspect=`.
 """
-aplt.plot_array(array=data, title="Image", figsize=(7, 7))
+aplt.plot_array(array=data, title="Image")
 
-aplt.plot_array(array=data, title="Image", aspect="square")
+aplt.plot_array(array=data, title="Image")
 
 """
 __Labels__
@@ -88,8 +88,6 @@ We can set the title, y-label and x-label using `title=`, `ylabel=` and `xlabel=
 aplt.plot_array(
     array=data,
     title="This is the title",
-    ylabel='Label of Y (")',
-    xlabel='Label of X (")',
 )
 
 """
@@ -129,9 +127,9 @@ grid = ag.Grid2D.uniform(shape_native=(100, 100), pixel_scales=0.05)
 
 image = light.image_2d_from(grid=grid)
 
-aplt.plot_array(array=image, title="Image with Contours", contours=10)
+aplt.plot_array(array=image, title="Image with Contours")
 
-aplt.plot_array(array=image, title="Image with Fewer Contours", contours=5)
+aplt.plot_array(array=image, title="Image with Fewer Contours")
 
 """
 __Ticks / Colorbar / Legend / Annotate / Text / Axis__

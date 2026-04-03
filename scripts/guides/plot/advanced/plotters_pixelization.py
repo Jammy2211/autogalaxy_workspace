@@ -78,7 +78,7 @@ mapped back to the native image frame.
 inversion = fit.inversion
 
 aplt.plot_array(
-    array=inversion.reconstruction_to_native, title="Reconstruction"
+    array=fit.model_data, title="Reconstruction"
 )
 
 """

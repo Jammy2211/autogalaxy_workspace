@@ -150,7 +150,7 @@ the fit of the 100th last accepted model by nautilus.
 """
 samples = result.samples
 
-instance = samples.from_sample_index(sample_index=-10)
+instance = samples.from_sample_index(sample_index=-1)
 
 galaxies = ag.Galaxies(galaxies=instance.galaxies)
 

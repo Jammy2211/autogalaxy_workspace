@@ -5,12 +5,14 @@
             "type": "instance",
             "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
             "arguments": {
-                "label": null,
                 "redshift": 0.5,
+                "label": null,
                 "bulge": {
                     "type": "instance",
                     "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
                     "arguments": {
+                        "sersic_index": 4.0,
+                        "intensity": 2.0,
                         "ell_comps": {
                             "type": "tuple",
                             "values": [
@@ -18,7 +20,6 @@
                                 0.22838636441065022
                             ]
                         },
-                        "intensity": 2.0,
                         "effective_radius": 0.3,
                         "centre": {
                             "type": "tuple",
@@ -26,14 +27,14 @@
                                 0.0,
                                 0.0
                             ]
-                        },
-                        "sersic_index": 4.0
+                        }
                     }
                 },
                 "disk": {
                     "type": "instance",
                     "class_path": "autogalaxy.profiles.light.standard.exponential.Exponential",
                     "arguments": {
+                        "intensity": 0.7,
                         "centre": {
                             "type": "tuple",
                             "values": [
@@ -41,7 +42,6 @@
                                 0.0
                             ]
                         },
-                        "intensity": 0.7,
                         "ell_comps": {
                             "type": "tuple",
                             "values": [

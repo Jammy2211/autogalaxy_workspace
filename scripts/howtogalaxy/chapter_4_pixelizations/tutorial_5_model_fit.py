@@ -66,7 +66,7 @@ over_sample_size = ag.util.over_sample.over_sample_size_via_radial_bins_from(
 
 dataset = dataset.apply_over_sampling(over_sample_size_lp=over_sample_size)
 
-aplt.subplot_imaging_dataset(dataset=dataset, mask=mask)
+aplt.subplot_imaging_dataset(dataset=dataset)
 
 
 """

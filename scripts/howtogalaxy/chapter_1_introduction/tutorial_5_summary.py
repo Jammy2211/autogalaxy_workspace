@@ -117,15 +117,6 @@ Before beginning chapter 2 of **HowToGalaxy**, you should checkout the package `
 This provides a full API reference of every plotting option in **PyAutoGalaxy**, allowing you to create your own 
 fully customized figures of galaxies with minimal effort!
 """
-mat_plot = aplt.MatPlot2D(
-    title=aplt.Title(label="This is the title", color="r", fontsize=20),
-    ylabel=aplt.YLabel(ylabel="Label of Y", color="b", fontsize=5, position=(0.2, 0.5)),
-    xlabel=aplt.XLabel(xlabel="Label of X", color="g", fontsize=10),
-    cmap=aplt.Cmap(cmap="cool", norm="linear"),
-)
-
-visuals = aplt.Visuals2D(origin=(0.0, 0.0))
-
 aplt.plot_array(array=galaxies[0].bulge.image_2d_from(grid=grid), title="Bulge Image")
 
 """

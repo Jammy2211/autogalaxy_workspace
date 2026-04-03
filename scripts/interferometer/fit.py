@@ -66,11 +66,11 @@ dataset = ag.Interferometer.from_fits(
 )
 
 """
-The `InterferometerPlotter` contains a subplot which plots all the key properties of the dataset simultaneously.
+The `Interferometer` contains a subplot which plots all the key properties of the dataset simultaneously.
 
 This includes the observed visibility data, RMS noise map and other information.
 """
-aplt.subplot_interferometer_dataset(dataset=dataset)
+aplt.subplot_interferometer_dirty_images(dataset=dataset)
 
 """
 Visibility data is in uv space, making it hard to interpret by eye.
@@ -148,14 +148,7 @@ The fit does a lot more than just Fourier transform the galaxy image it also cre
 For a good galaxy model where the model and galaxies are representative of the dataset
 residuals, normalized residuals and chi-squareds are minimized:
 """
-aplt.plot_array(array=fit.residual_map.real, title="Residual Map (Real)")
-fit_plotter.figures_2d(
-    residual_map_imag=True,
-    normalized_residual_map_real=True,
-    normalized_residual_map_imag=True,
-    chi_squared_map_real=True,
-    chi_squared_map_imag=True,
-)
+aplt.plot_array(array=fit.dirty_residual_map, title="Dirty Residual Map")
 
 """
 A subplot can be plotted which contains all of the above quantities, as well as other information contained in the
@@ -285,8 +278,10 @@ For example, one could output the galaxy model image to a .fits file such that
 we could fit this image again with an independent pipeline.
 """
 galaxy_model_image = fit.galaxy_image_dict[galaxy]
-galaxy_model_image.output_to_fits(
-    file_path=dataset_path / "galaxy_model_image.fits", overwrite=True
+aplt.fits_array(
+    array=galaxy_model_image,
+    file_path=dataset_path / "galaxy_model_image.fits",
+    overwrite=True,
 )
 
 """

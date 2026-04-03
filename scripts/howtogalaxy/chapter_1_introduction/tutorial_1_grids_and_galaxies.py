@@ -595,8 +595,6 @@ We compute this value and plot the image in converted units of kiloparsecs.
 This passes the plotting modules `Units` object a `ticks_convert_factor` and manually specified the new units of the
 plot ticks.
 """
-units = aplt.Units(ticks_convert_factor=kpc_per_arcsec, ticks_label=" kpc")
-
 aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Image")
 
 """

@@ -54,7 +54,7 @@ interferometer = ag.Interferometer.from_fits(
     transformer_class=ag.TransformerDFT,
 )
 
-aplt.subplot_interferometer_dataset(dataset=interferometer)
+aplt.subplot_interferometer_dirty_images(dataset=interferometer)
 
 
 """
@@ -170,10 +170,8 @@ aplt.subplot_galaxies(
     grid=real_space_mask.derive_grid.unmasked,
 )
 aplt.subplot_fit_imaging(fit=result_list[0].max_log_likelihood_fit)
-aplt.subplot_fit_interferometer(fit=result_list[1].max_log_likelihood_fit)
+aplt.subplot_fit_dirty_images(fit=result_list[1].max_log_likelihood_fit)
 
-plotter = aplt.NestPlotter(samples=result_list.samples)
-plotter.corner_cornerpy()
 
 """
 Checkout `autogalaxy_workspace/*/results` for a full description of analysing results in **PyAutoGalaxy**.

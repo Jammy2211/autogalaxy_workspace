@@ -204,8 +204,7 @@ The `Samples` object still has the dimensions of the overall non-linear search (
 Therefore, the samples is identical in every result object.
 """
 for result in result_list:
-    plotter = aplt.NestPlotter(samples=result.samples)
-    plotter.corner_cornerpy()
+    pass
 
 """
 Checkout `autogalaxy_workspace/*/results` for a full description of analysing results in **PyAutoGalaxy**.

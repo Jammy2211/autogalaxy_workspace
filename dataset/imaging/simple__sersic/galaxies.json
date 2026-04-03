@@ -5,14 +5,12 @@
             "type": "instance",
             "class_path": "autogalaxy.galaxy.galaxy.Galaxy",
             "arguments": {
-                "label": null,
                 "redshift": 0.5,
+                "label": null,
                 "bulge": {
                     "type": "instance",
                     "class_path": "autogalaxy.profiles.light.standard.sersic.Sersic",
                     "arguments": {
-                        "intensity": 1.0,
-                        "sersic_index": 4.0,
                         "centre": {
                             "type": "tuple",
                             "values": [
@@ -27,6 +25,8 @@
                                 3.2227547345982974e-18
                             ]
                         },
+                        "intensity": 1.0,
+                        "sersic_index": 4.0,
                         "effective_radius": 0.8
                     }
                 }
