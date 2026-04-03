@@ -126,7 +126,7 @@ __Searches__
 
 Model-fits using a non-linear search (e.g. Nautilus, Emcee) produce search-specific visualization.
 
-The `searches` example illustrates how to perform this visualization for every search (e.g. `NestPlotter`).
+The `searches` example illustrates how to perform this visualization for every search (e.g. via the `corner_anesthetic` function).
 
 Finish.
 """

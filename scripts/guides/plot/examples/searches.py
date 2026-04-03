@@ -12,10 +12,10 @@ behaviour of plotting visuals.
 __Contents__
 
 - **Setup:** Sets up a dataset and model which we will perform quick model-fits to for illustration.
-- **DynestyPlotter:**: Plots results of the nested sampling method Dynesty.
-- **MCMCPlotter:**: Plots results of an Emcee fit (e.g. cornerplot).
-- **PySwarmsPlotter:**: Plots results of a PySwarms fit (e.g. contour).
-- **ZeusPlotter:**: Plots results of a Zeus fit (e.g. cornerplot).
+- **Dynesty:**: Plots results of the nested sampling method Dynesty.
+- **Emcee:**: Plots results of an Emcee fit (e.g. cornerplot).
+- **PySwarms:**: Plots results of a PySwarms fit (e.g. contour).
+- **Zeus:**: Plots results of a Zeus fit (e.g. cornerplot).
 - **GetDist:**: Plot results of any MCMC / nested sampler non-linear search using the library GetDist.
 
 __Setup__
@@ -70,7 +70,7 @@ and can be customized.
 Each label also has a superscript corresponding to the model component the parameter originates from. For example,
 Gaussians are given the superscript `g`. This can also be customized in the `config/notation.yaml` file.
 
-__DynestyPlotter__
+__Dynesty__
 
 We set up the Dynesty non-linear search and perform the fit to get the samples we will plot below.
 """
@@ -84,7 +84,7 @@ search = af.DynestyStatic(
 result = search.fit(model=model, analysis=analysis)
 
 """
-We now pass the samples to a `DynestyPlotter` which will allow us to use the corner plotting function of the
+We now pass the samples to Dynesty's in-built plotting tools and the corner plotting function of the
 public library anesthetic
 
 The Dynesty readthedocs describes fully all of the methods used below 
@@ -325,7 +325,7 @@ if search_internal is not None:
     plt.close()
 
 """
-__EmceePlotter__
+__Emcee__
 
 For Emcee MCMC searches, the `search_internal` attribute contains the emcee sampler object
 which can be used for search-specific visualization.
@@ -380,7 +380,7 @@ if search_internal is not None:
     plt.show()
 
 """
-__ZeusPlotter__
+__Zeus__
 
 For Zeus MCMC searches, the `search_internal` attribute contains the zeus sampler object
 which can be used for search-specific visualization. The `search_internal` attribute is only
@@ -436,7 +436,7 @@ if search_internal is not None:
     plt.show()
 
 """
-__PySwarmsPlotter__
+__PySwarms__
 
 For PySwarms MLE searches, the `search_internal` attribute contains the pyswarms optimizer object
 which can be used for search-specific visualization.

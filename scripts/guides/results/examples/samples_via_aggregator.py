@@ -293,8 +293,8 @@ __Search Plots__
 The Probability Density Functions (PDF's) of the results can be plotted using the non-linear search in-built 
 visualization tools.
 
-This fit used `nautilus` therefore we use the `NestPlotter` for visualization, which wraps `nautilus`'s in-built
-visualization tools.
+This fit used `nautilus` therefore we use the `corner_anesthetic` function for visualization, which wraps
+the anesthetic library's corner plotting tools.
 
 The `autofit_workspace/*/plots` folder illustrates other packages that can be used to make these plots using
 the standard output results formats (e.g. `GetDist.py`).

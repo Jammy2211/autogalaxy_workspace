@@ -337,7 +337,7 @@ aplt.subplot_fit_imaging(fit=result.max_log_likelihood_fit)
 
 """
 The Probability Density Functions (PDF's) of the results can be plotted using Nautilus's in-built visualization 
-library, which is wrapped via the `NestPlotter` object.
+library, which is wrapped via the `corner_anesthetic` function.
 
 The PDF shows the 1D and 2D probabilities estimated for every parameter after the model-fit. The two dimensional 
 figures can show the degeneracies between different parameters, for example how increasing the intensity $I$ of the
