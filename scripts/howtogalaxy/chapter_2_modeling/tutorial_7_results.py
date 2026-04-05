@@ -4,6 +4,15 @@ Tutorial 5: Results
 
 In the previous tutorials, each search returned a `Result` object, which we used to plot the maximum log likelihood
 fit each model-fit. In this tutorial, we'll take a look at the result object in a little more detail.
+
+__Contents__
+
+**Initial Setup:** Perform a model-fit to obtain a Result object.
+**Galaxies & Fit:** Access the maximum likelihood galaxies and fit from the result.
+**Samples:** Inspect the non-linear search samples, including parameter estimates and errors.
+**Workspace:** Pointers to more detailed results examples in the workspace.
+**Database:** Overview of the database functionality for managing large numbers of results.
+**Wrap Up:** Summary of the Result object and its key attributes.
 """
 
 # %matplotlib inline

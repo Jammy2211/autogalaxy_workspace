@@ -6,6 +6,15 @@ This script simulates `Imaging` of a galaxy using light profiles where:
 
  - The galaxy's bulge is an `Sersic`.
 
+__Contents__
+
+**Dataset Paths:** Set the output path for the simulated dataset.
+**Grid:** Create a 2D grid with adaptive over-sampling for simulation.
+**Galaxies:** Define the galaxy Sersic light profile used for simulation.
+**Output:** Save the simulated dataset to FITS files.
+**Visualize:** Output subplot and image PNGs of the simulated dataset.
+**Plane Output:** Save the Galaxies object as a JSON file.
+
 __Start Here Notebook__
 
 If any code in this script is unclear, refer to the `simulators/start_here.ipynb` notebook.

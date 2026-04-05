@@ -18,6 +18,15 @@ using an inversion.
 
 We will use search chaining to do this, first fitting the main galaxy components with light profiles, thereby
 initializing the bulge and disk components. In the later searches we will switch to an `Inversion`.
+
+__Contents__
+
+**Initial Setup:** Load the complex galaxy dataset and apply a mask.
+**Model + Search + Analysis + Model-Fit (Search 1):** Fit light profiles to the main galaxy components.
+**Mesh Shape:** Discussion of how mesh shape affects the inversion.
+**Model + Search + Analysis + Model-Fit (Search 2):** Fit with a pixelization for residual structure.
+**Model + Search (Search 3):** Final simultaneous fit of light profiles and pixelization.
+**Wrap Up:** Summary of combining light profiles with pixelizations via search chaining.
 """
 
 # %matplotlib inline

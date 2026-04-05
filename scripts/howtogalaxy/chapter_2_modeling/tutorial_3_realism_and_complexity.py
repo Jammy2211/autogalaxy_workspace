@@ -16,6 +16,14 @@ previous tutorials and in future exercises, we will fit even more complex models
 
 Therefore, take note, as we make our model more realistic, we also make its parameter space more complex, this is
 an important concept to keep in mind for the remainder of this chapter!
+
+__Contents__
+
+**Initial Setup:** Load the dataset and apply a mask.
+**Model + Search + Analysis:** Compose a bulge+disk model and fit it using Nautilus.
+**Result:** Inspect the result and compare to the true model.
+**Global and Local Maxima:** Demonstrate how the search can infer incorrect local maxima solutions.
+**Wrap Up:** Summary of the challenges of fitting more complex and realistic models.
 """
 
 # %matplotlib inline

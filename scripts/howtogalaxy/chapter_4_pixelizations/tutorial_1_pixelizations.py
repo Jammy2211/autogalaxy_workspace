@@ -7,6 +7,12 @@ analytic description of how the luminosity varies as a function of radius.
 
 In this chapter, we are instead going to reconstruct the galaxy's light on a pixel-grid, and in this tutorial we will
 learn how to create a pixelization in **PyAutoGalaxy**.
+
+__Contents__
+
+**Initial Setup:** Create a grid for illustration.
+**Mesh:** Set up a rectangular mesh for the pixelization.
+**Wrap Up:** Summary of pixelization concepts.
 """
 
 # %matplotlib inline

@@ -10,6 +10,12 @@ We will also discuss other types of non-linear searches, such as MCMC and optimi
 modeling. So far, we have no found any of these alternatives to give anywhere near as robust and efficient results as
 Nautilus, and we recommend users use Nautilus unless they are particularly interested in investigating different
 model-fitting techniques.
+
+__Contents__
+
+**Nested Sampling:** Customize Nautilus settings and use Dynesty as an alternative nested sampler.
+**Optimizers:** Use maximum likelihood optimizers like PySwarms for fast but less robust fitting.
+**MCMC:** Use Markov Chain Monte Carlo methods like Emcee for parameter estimation.
 """
 
 # %matplotlib inline

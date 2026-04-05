@@ -11,6 +11,16 @@ So far, we have:
 The explanation of *how* an inversion works has so far been overly simplified. You'll have noted the regularization
 inputs which we have not so far discussed. This will be the topic of this tutorial, and where inversions become more
 conceptually challenging!
+
+__Contents__
+
+**Initial Setup:** Load the dataset for illustration.
+**Convenience Function:** A helper function for performing inversions.
+**Pixelization:** Perform inversions with different regularization coefficients.
+**Regularization:** Understand how regularization smooths the reconstruction.
+**Bayesian Evidence:** Use the Bayesian evidence to objectively choose the regularization coefficient.
+**Non-Linear and Linear:** Discussion of how regularization interacts with the non-linear search.
+**Detailed Description:** In-depth explanation of how the Bayesian evidence penalizes overfitting.
 """
 
 # %matplotlib inline

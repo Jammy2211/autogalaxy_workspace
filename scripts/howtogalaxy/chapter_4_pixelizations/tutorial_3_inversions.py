@@ -9,6 +9,14 @@ In the previous two tutorials, we introduced:
 
 However, non of this has actually helped us fit galaxy data or reconstruct the galaxy. This is the subject
 of this tutorial, where the process of reconstructing the galaxy's light on the pixelization is called an `Inversion`.
+
+__Contents__
+
+**Initial Setup:** Load the dataset for illustration.
+**Pixelization:** Create a pixelization and perform an inversion to reconstruct the galaxy.
+**Positive Only Solver:** Ensure the reconstruction has only positive intensity values.
+**Wrap Up:** Summary of inversion concepts.
+**Detailed Explanation:** In-depth explanation of the linear algebra behind inversions.
 """
 
 # %matplotlib inline

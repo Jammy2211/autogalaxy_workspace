@@ -34,6 +34,16 @@ search, we can use its results to tune the priors of our second search. For exam
 
  1) The first search should give us a pretty good idea of the galaxy's bulge and disk profiles, for example its
  centre, intensity, effective radius.
+
+__Contents__
+
+**Initial Setup:** Load the dataset and apply a mask.
+**Model:** Compose a simplified model for the first search with aligned bulge-disk assumptions.
+**Search + Analysis:** Run the first search with the simplified model.
+**Result:** Inspect the result of the first search.
+**Prior Passing:** Manually pass results from search 1 as priors for search 2.
+**Result:** Inspect the final result of the chained search.
+**Wrap Up:** Summary of how search chaining improves model-fitting reliability.
 """
 
 # %matplotlib inline

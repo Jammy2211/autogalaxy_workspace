@@ -18,13 +18,15 @@ gather more light, improving the signal-to-noise ratio and creating a clearer im
 In this tutorial, we'll simulate a galaxy image by applying these real-world effects to the light profiles and images
 we created earlier.
 
-Here is an overview of what we'll cover in this tutorial:
+__Contents__
 
-- **Optics Blurring:** Simulating how the telescope optics blur the galaxy's light, making the image appear blurred.
-- **Poisson Noise:** Adding Poisson noise to the image, simulating the randomness in the photon-to-electron conversion process on the CCD.
-- **Background Sky:** Adding a background sky to the image, simulating the light from the sky that adds noise to the image.
-- **Simulator:** Using the `SimulatorImaging` object to simulate imaging data that includes all these effects.
-- **Output:** Saving the simulated data to `.fits` files for use in future tutorials, where .fits is the standard image format used by astronomers.
+**Initial Setup:** Create a 2D grid and define galaxy light profiles for simulation.
+**Optics Blurring:** Simulate how the telescope optics blur the galaxy's light using PSF convolution.
+**Poisson Noise:** Add Poisson noise to the image, simulating CCD photon-to-electron randomness.
+**Background Sky:** Add background sky light that introduces noise across the entire image.
+**Simulator:** Use the SimulatorImaging object to simulate imaging data with all effects combined.
+**Output:** Save the simulated data to .fits files for use in future tutorials.
+**Wrap Up:** Summary of how CCD imaging data is simulated.
 """
 
 # %matplotlib inline
