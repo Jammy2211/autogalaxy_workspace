@@ -17,6 +17,13 @@ In the previous tutorial, when we inferred a local maxima we knew that we had do
 we do not know the true model and it may be unclear if the solution we inferred is a global or local maxima. The
 methods we learn in this tutorial are therefore equally important for verifying that a solution that looks like a
 global maxima solution is in indeed the global maxima.
+
+__Contents__
+
+**Initial Setup:** Load the dataset and apply a mask.
+**Approach 1: Prior Tuning:** Narrow the priors to guide the search to the correct region of parameter space.
+**Approach 2: Reducing Complexity:** Simplify the model to reduce the dimensionality of parameter space.
+**Approach 3: Look Harder:** Increase the thoroughness of the non-linear search sampling.
 """
 
 # %matplotlib inline

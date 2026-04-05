@@ -14,6 +14,20 @@ fitting them simultaneously.
 Up to now, I've put a focus on an analysis being generag. The script we write in this example is going to be the
 opposite, specific to the image we're modeling. Fitting multiple galaxies is really difficult and writing a
 pipeline that we can generalize to many galaxies isn't currently possible.
+
+__Contents__
+
+**Initial Setup:** Load the double-galaxy dataset and apply a mask.
+**Paths:** Set the output path for chained search results.
+**Search Chaining Approach:** Strategy for fitting two galaxies using a sequence of searches.
+**Model + Search + Analysis + Model-Fit (Search 1):** Fit the first galaxy alone.
+**Result (Search 1):** Inspect the result of fitting the first galaxy.
+**Model (Search 2):** Compose a model for the second galaxy, fixing the first.
+**Search + Analysis + Model-Fit (Search 2):** Fit the second galaxy.
+**Result (Search 2):** Inspect the result of fitting the second galaxy.
+**Model + Search + Analysis + Model-Fit (Search 4):** Fit both galaxies simultaneously.
+**Result (Search 3):** Inspect the final simultaneous fit result.
+**Wrap Up:** Summary of search chaining for multi-galaxy systems.
 """
 
 # %matplotlib inline

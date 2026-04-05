@@ -14,6 +14,15 @@ In this chapter, we have learnt that:
 
 In this summary, we'll go over all the different Python objects introduced throughout this chapter and consider how
 they come together as one.
+
+__Contents__
+
+**Initial Setup:** Create profiles, galaxies and a Galaxies object for illustration.
+**Object Composition:** How Galaxies, Galaxy and Profile objects compose together.
+**Visualization:** Customize and visualize any aspect of galaxies using the plotting API.
+**Code Design:** Discussion of PyAutoGalaxy's object-oriented design philosophy.
+**Source Code:** Links to the source code repositories for PyAutoFit, PyAutoArray and PyAutoGalaxy.
+**Wrap Up:** Summary of chapter 1 and preview of the modeling chapter.
 """
 
 # %matplotlib inline

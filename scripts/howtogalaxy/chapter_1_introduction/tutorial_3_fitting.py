@@ -19,17 +19,15 @@ The process of fitting data introduces essential statistical concepts like the `
 also in any scientific field that involves data modeling. This tutorial will provide a detailed introduction to these
 concepts and show how they are applied in practice to analyze astronomical data.
 
-Here is an overview of what we'll cover in this tutorial:
+__Contents__
 
-- **Dataset**: Load the imaging dataset that we previously simulated, consisting of the image, noise map, and PSF.
-- **Mask**: Apply a mask to the data, excluding regions with low signal-to-noise ratios from the analysis.
-- **Masked Grid**: Create a masked grid, which contains only the coordinates of unmasked pixels, to evaluate the
-  galaxy's light profile in only unmasked regions.
-- **Fitting**: Fit the data with a galaxy model, computing key quantities like the model image, residuals,
-  chi-squared, and log likelihood to assess the quality of the fit.
-- **Bad Fits**: Demonstrate how even small deviations from the true parameters can significantly impact the fit.
-- **Model Fitting**: Perform a basic model fit on a simple dataset, adjusting the model parameters to improve the
-  fit quality.
+**Dataset:** Load the imaging dataset previously simulated, consisting of the image, noise map, and PSF.
+**Mask:** Apply a mask to the data, excluding regions with low signal-to-noise ratios from the analysis.
+**Masked Grid:** Create a masked grid containing only coordinates of unmasked pixels.
+**Fitting:** Fit the data with a galaxy model, computing the model image, residuals, chi-squared, and log likelihood.
+**Incorrect Fit:** Demonstrate how small deviations from true parameters impact fit quality.
+**Model Fitting:** Perform a basic model fit, adjusting parameters to improve the fit.
+**Wrap Up:** Summary of the fitting process and key statistical concepts.
 """
 
 import numpy as np

@@ -22,6 +22,22 @@ reducing the complexity of parameter space and making the fit faster and more ac
 This tutorial will then show how many linear light profiles can be combined into a `Basis`, which comes from the term
 'basis function'. By combining many linear light profiles models can be composed which are able to fit complex galaxy
 structures (e.g. asymmetries, twists) with just N=6-8 non-linear parameters.
+
+__Contents__
+
+**Initial Setup:** Load the dataset and apply a mask.
+**Linear Light Profiles:** Fit a model using linear light profiles that solve for intensity via linear algebra.
+**Run Time:** Estimate the run time of the model-fit before starting.
+**Result:** Inspect the result and the solved intensity values.
+**Intensities:** Access the intensity values of linear light profiles after the fit.
+**Visualization:** Visualize the fit using linear light profiles.
+**Basis:** Combine many linear light profiles into a basis for fitting complex structures.
+**Model Fit:** Fit the basis model to the data.
+**Disk MGE:** Use a Multi-Gaussian Expansion for the disk component.
+**Multi Gaussian Expansion Benefits:** Discussion of the advantages of MGE models.
+**Positive Only Solver:** Ensure linear algebra solutions have positive intensity values.
+**Other Basis Functions:** Overview of other basis functions like shapelets.
+**Wrap Up:** Summary of linear light profiles and basis functions.
 """
 
 # %matplotlib inline

@@ -6,6 +6,13 @@ In the previous tutorial, we used a pixelization to create made a `Mapper`. Howe
 does, why it was called a mapper and whether it was mapping anything at all!
 
 Therefore, in this tutorial, we'll cover mappers in more detail.
+
+__Contents__
+
+**Initial Setup:** Load the dataset for illustration.
+**Mappers:** Understand how mappers map image-plane pixels to pixelization pixels.
+**Mask:** Apply a mask and see how it affects the mapper.
+**Wrap Up:** Summary of mapper concepts.
 """
 
 # %matplotlib inline

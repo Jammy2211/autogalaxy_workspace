@@ -5,6 +5,14 @@ Tutorial 6: Masking
 We have learnt everything we need to know about non-linear searches to model a galaxy and infer a good lens
 model solution. Now, lets consider masking in more detail, something we have not given much consideration previously.
 We'll also learn a neat trick to improve the speed and accuracy of a non-linear search.
+
+__Contents__
+
+**Initial Setup:** Load the dataset and apply a mask.
+**Mask:** Apply a custom mask to focus the fit on specific regions.
+**Model + Search + Analysis:** Fit the model using the custom mask.
+**Discussion:** How the mask affects the fit quality and run time.
+**Wrap Up:** Summary of masking strategies for galaxy modeling.
 """
 
 # %matplotlib inline
