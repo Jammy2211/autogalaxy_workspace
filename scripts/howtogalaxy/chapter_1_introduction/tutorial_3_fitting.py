@@ -58,6 +58,7 @@ simulator script. This ensures that all example scripts can be run without manua
 if not dataset_path.exists():
     import subprocess
     import sys
+
     subprocess.run(
         [sys.executable, "scripts/imaging/simulator.py"],
         check=True,
@@ -250,7 +251,9 @@ previous tutorials. The difference now is that we use the dataset's `grid`, whic
 we defined earlier. This means that the galaxy image is only evaluated in the unmasked region, skipping calculations 
 in masked regions.
 """
-aplt.plot_array(array=galaxies.image_2d_from(grid=dataset.grid), title="Galaxy Image To Be Fitted")
+aplt.plot_array(
+    array=galaxies.image_2d_from(grid=dataset.grid), title="Galaxy Image To Be Fitted"
+)
 
 """
 Now, we proceed to fit the image by passing both the `Imaging` and `Galaxies` objects to a `FitImaging` object. 

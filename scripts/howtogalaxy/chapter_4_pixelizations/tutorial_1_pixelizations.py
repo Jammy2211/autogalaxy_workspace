@@ -69,7 +69,9 @@ print(type(mapper))
 """
 By plotting our mapper, we now see our `Pixelization`. Its a fairly boring grid of rectangular pixels.
 """
-plot_mapper(mapper=mapper, title="Fairly Boring Grid2D of RectangularAdaptDensity Pixels")
+plot_mapper(
+    mapper=mapper, title="Fairly Boring Grid2D of RectangularAdaptDensity Pixels"
+)
 
 """
 However, the `Mapper` does contain lots of interesting information about our `Pixelization`, for example its 
@@ -86,7 +88,11 @@ print("etc.")
 """
 We can plot these centre on our grid, to make it look slightly less boring!
 """
-plot_mapper(mapper=mapper, mesh_grid=mapper.source_plane_mesh_grid, title="Recntagular Grid With Pixel Cenres")
+plot_mapper(
+    mapper=mapper,
+    mesh_grid=mapper.source_plane_mesh_grid,
+    title="Recntagular Grid With Pixel Cenres",
+)
 
 """
 The `Mapper` also has the grid that we passed when we set it up. Lets check they`re the same.
@@ -102,9 +108,17 @@ print("etc.")
 """
 We can over-lay this grid on the figure, which is starting to look a bit less boring now!
 """
-plot_mapper(mapper=mapper, mesh_grid=mapper.source_plane_data_grid, title="Even less Boring Grid2D of RectangularAdaptDensity Pixels")
+plot_mapper(
+    mapper=mapper,
+    mesh_grid=mapper.source_plane_data_grid,
+    title="Even less Boring Grid2D of RectangularAdaptDensity Pixels",
+)
 
-plot_mapper(mapper=mapper, mesh_grid=mapper.source_plane_data_grid, title="Zoomed Grid2D of RectangularAdaptDensity Pixels")
+plot_mapper(
+    mapper=mapper,
+    mesh_grid=mapper.source_plane_data_grid,
+    title="Zoomed Grid2D of RectangularAdaptDensity Pixels",
+)
 
 """
 Finally, the mapper`s `mesh_grid` has lots of information about the pixelization, for example, the arc-second 
