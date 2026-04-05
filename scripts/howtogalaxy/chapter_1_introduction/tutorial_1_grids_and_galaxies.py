@@ -348,7 +348,9 @@ We can visualize the light profile's image.
 
 We provide it with the light profile and the grid, which are used to create and plot the image.
 """
-aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Image via LightProfile")
+aplt.plot_array(
+    array=sersic_light_profile.image_2d_from(grid=grid), title="Image via LightProfile"
+)
 
 """
 __One Dimension Projection__
@@ -416,7 +418,11 @@ scale. This approach helps highlight details in the faint outskirts of a light p
 The `MatPlot2D` object has a `use_log10` option that applies this transformation automatically. Below, you can see 
 that the image plotted in log10 space reveals more details.
 """
-aplt.plot_array(array=sersic_light_profile.image_2d_from(grid=grid), title="Sersic Image", use_log10=True)
+aplt.plot_array(
+    array=sersic_light_profile.image_2d_from(grid=grid),
+    title="Sersic Image",
+    use_log10=True,
+)
 
 """
 __Galaxies__
@@ -491,7 +497,11 @@ outskirts of the light profile, in this case the emission of the disk.
 
 This is especially helpful to separate the bulge and disk profiles, which have different intensities and sizes.
 """
-aplt.plot_array(array=galaxy.image_2d_from(grid=grid), title="Galaxy Bulge+Disk Image", use_log10=True)
+aplt.plot_array(
+    array=galaxy.image_2d_from(grid=grid),
+    title="Galaxy Bulge+Disk Image",
+    use_log10=True,
+)
 
 """
 Using the tools above, we can visualize each light profile's contribution in 1D.

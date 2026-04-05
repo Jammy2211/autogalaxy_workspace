@@ -78,7 +78,9 @@ galaxies = ag.Galaxies(galaxies=[galaxy])
 """
 To visualize the galaxy’s image, which we will use as the starting point for the simulations, we use the following code:
 """
-aplt.plot_array(array=galaxies.image_2d_from(grid=grid), title="Galaxy Image Before Simulating")
+aplt.plot_array(
+    array=galaxies.image_2d_from(grid=grid), title="Galaxy Image Before Simulating"
+)
 
 """
 __Optics Blurring__
