@@ -14,7 +14,7 @@ model-fitting techniques.
 __Contents__
 
 **Nested Sampling:** Customize Nautilus settings and use Dynesty as an alternative nested sampler.
-**Optimizers:** Use maximum likelihood optimizers like PySwarms for fast but less robust fitting.
+**Optimizers:** Use maximum likelihood optimizers like LBFGS for fast but less robust fitting.
 **MCMC:** Use Markov Chain Monte Carlo methods like Emcee for parameter estimation.
 """
 
@@ -202,89 +202,19 @@ and do not provide high likelihood fits to the data, but takes many extra iterat
 error estimates (perhaps this is our final model fit before we publish the results in a paper), these extra
 iterations are acceptable. 
 
-However, we often don't care about the errors. For example, in the previous tutorial when chaining searches, the only 
+However, we often don't care about the errors. For example, in the previous tutorial when chaining searches, the only
 result we used from the fit performed in the first search was the maximum log likelihood model, omitting the errors
 entirely! Its seems wasteful to use a nested sampling algorithm like Nautilus to map out the entirity of parameter
-space when we don't use this information! 
+space when we don't use this information!
 
-There are a class of non-linear searches called `optimizers`, which seek to optimize just one thing, the log 
-likelihood. They want to find the model that maximizes the log likelihood, with no regard for the errors, thus not 
-wasting time mapping out in intricate detail every facet of parameter space. Lets see how much faster we can find a 
-good fit to the galaxy data using an optimizer.
+There are a class of non-linear searches called `optimizers`, which seek to optimize just one thing, the log
+likelihood. They want to find the model that maximizes the log likelihood, with no regard for the errors, thus not
+wasting time mapping out in intricate detail every facet of parameter space.
 
-we'll use the `Particle Swarm Optimizer` PySwarms. Conceptually this works quite similar to Nautilus, it has a set of 
-points in parameter space (called `particles`) and it uses their likelihoods to determine where it thinks the higher
-likelihood regions of parameter space are. 
-
-Unlike Nautilus, this algorithm requires us to specify how many iterations it should perform to find the global 
-maxima solutions. Here, an iteration is the number of samples performed by every particle, so the total number of
-iterations is n_particles * iters. Lets try a total of 50000 iterations, a factor 10 less than our Nautilus runs above. 
-
-In our experience, pyswarms is ineffective at initializing a model and therefore needs a the initial swarm of
-particles to surround the highest likelihood models. We set this starting point up below by manually inputting 
-`GaussianPriors` on every parameter, where the centre of these priors is near the true values of the simulation data.
-
-Given this need for a robust starting point, PySwarms is only suited to model-fits where we have this information. It may
-therefore be useful when performing modeling search chaining (see HowToGalaxy chapter 3). However, even in such
-circumstances, we have found that is often unrealible and often infers a local maxima.
-"""
-lens_bulge = af.Model(ag.lp.Sersic)
-lens_bulge.centre.centre_0 = af.GaussianPrior(mean=0.0, sigma=0.3)
-lens_bulge.centre.centre_1 = af.GaussianPrior(mean=0.0, sigma=0.3)
-lens_bulge.ell_comps.ell_comps_0 = af.GaussianPrior(mean=0.0, sigma=0.3)
-lens_bulge.ell_comps.ell_comps_1 = af.GaussianPrior(mean=0.0, sigma=0.3)
-lens_bulge.intensity = af.GaussianPrior(mean=1.0, sigma=0.3)
-lens_bulge.effective_radius = af.GaussianPrior(mean=0.8, sigma=0.2)
-lens_bulge.sersic_index = af.GaussianPrior(mean=4.0, sigma=1.0)
-
-mass = af.Model(ag.mp.Isothermal)
-mass.centre.centre_0 = af.GaussianPrior(mean=0.0, sigma=0.1)
-mass.centre.centre_1 = af.GaussianPrior(mean=0.0, sigma=0.1)
-mass.ell_comps.ell_comps_0 = af.GaussianPrior(mean=0.0, sigma=0.3)
-mass.ell_comps.ell_comps_1 = af.GaussianPrior(mean=0.0, sigma=0.3)
-mass.einstein_radius = af.GaussianPrior(mean=1.4, sigma=0.4)
-
-shear = af.Model(ag.mp.ExternalShear)
-shear.gamma_1 = af.GaussianPrior(mean=0.0, sigma=0.1)
-shear.gamma_2 = af.GaussianPrior(mean=0.0, sigma=0.1)
-
-bulge = af.Model(ag.lp.Sersic)
-bulge.centre.centre_0 = af.GaussianPrior(mean=0.0, sigma=0.3)
-bulge.centre.centre_1 = af.GaussianPrior(mean=0.0, sigma=0.3)
-bulge.ell_comps.ell_comps_0 = af.GaussianPrior(mean=0.0, sigma=0.3)
-bulge.ell_comps.ell_comps_1 = af.GaussianPrior(mean=0.0, sigma=0.3)
-bulge.intensity = af.GaussianPrior(mean=0.3, sigma=0.3)
-bulge.effective_radius = af.GaussianPrior(mean=0.2, sigma=0.2)
-bulge.sersic_index = af.GaussianPrior(mean=1.0, sigma=1.0)
-
-lens = af.Model(ag.Galaxy, redshift=0.5, mass=mass, shear=shear)
-source = af.Model(ag.Galaxy, redshift=1.0, bulge=bulge)
-
-model = af.Collection(galaxies=af.Collection(lens=lens, source=source))
-
-search = af.PySwarmsLocal(
-    path_prefix=Path("howtogalaxy", "chapter_optional"),
-    name="tutorial_searches_pso",
-    unique_tag=dataset_name,
-    n_particles=50,
-    iters=1000,
-)
-
-print(
-    "The non-linear search has begun running - checkout the workspace/output"
-    "  folder for live output of the results, images and model."
-    "  This Jupyter notebook cell with progress once search has completed - this could take some time!"
-)
-
-result_pso = search.fit(model=model, analysis=analysis)
-
-print("PySwarms has finished run - you may now continue the notebook.")
-
-aplt.subplot_fit_imaging(fit=result_pso.max_log_likelihood_fit)
-
-"""
-In our experience, the parameter spaces fitted by models are too complex for `PySwarms` to be used without a lot
-of user attention and care and careful setting up of the initialization priors, as shown above.
+PyAutoFit supports the LBFGS optimizer (from scipy), which can be used as an alternative to nested sampling when
+only the maximum likelihood model is needed. However, optimizers generally need a good starting point to work well,
+and in our experience the parameter spaces fitted by models are often too complex for optimizers without careful
+setup of initialization priors.
 
 __MCMC__
 
