@@ -43,11 +43,7 @@ It is absolutely vital you use a sufficently small pixel scale that all structur
 Fourier transform. If the pixel scale is too large, the Fourier transform will smear out the data and the model.
 """
 
-# %matplotlib inline
-# from pyprojroot import here
-# workspace_path = str(here())
-# %cd $workspace_path
-# print(f"Working Directory has been set to `{workspace_path}`")
+# from autoconf import setup_notebook; setup_notebook()
 
 # %matplotlib inline
 from pathlib import Path

@@ -30,14 +30,10 @@ __Directories__
  - Load example data from the `autogalaxy_workspace/dataset` folder.
  - Output the results of models fits to your hard-disk to the `autogalaxy/output` folder.
 
-At the top of every tutorial notebook, you'll see the following cell. This cell uses the project `pyprojroot` to
-locate the path to the workspace on your computer and use it to set the working directory of the notebook.
+At the top of every tutorial notebook, you'll see the following cell. This cell finds the workspace root
+directory on your computer and sets it as the working directory of the notebook.
 """
-# %matplotlib inline
-# from pyprojroot import here
-# workspace_path = str(here())
-# %cd $workspace_path
-# print(f"Working Directory has been set to `{workspace_path}`")
+# from autoconf import setup_notebook; setup_notebook()
 
 """
 If the printed working directory does not match the workspace path on your computer, you can manually set it
