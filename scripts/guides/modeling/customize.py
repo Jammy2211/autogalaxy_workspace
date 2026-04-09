@@ -16,11 +16,7 @@ __Start Here Notebook__
 If any code in this script is unclear, refer to the `modeling/start_here.ipynb` notebook.
 """
 
-# %matplotlib inline
-# from pyprojroot import here
-# workspace_path = str(here())
-# %cd $workspace_path
-# print(f"Working Directory has been set to `{workspace_path}`")
+# from autoconf import setup_notebook; setup_notebook()
 
 from pathlib import Path
 import autogalaxy as ag
@@ -107,11 +103,19 @@ dataset = ag.Imaging.from_fits(
     pixel_scales=0.1,
 )
 
-mask = ag.Mask2D.from_fits(
-    file_path=Path(dataset_path, "mask_gui.fits"),
-    hdu=0,
-    pixel_scales=dataset.pixel_scales,
-)
+try:
+    mask = ag.Mask2D.from_fits(
+        file_path=Path(dataset_path, "mask_gui.fits"),
+        hdu=0,
+        pixel_scales=dataset.pixel_scales,
+    )
+except FileNotFoundError:
+    mask = ag.Mask2D.circular_annular(
+        shape_native=dataset.shape_native,
+        pixel_scales=dataset.pixel_scales,
+        inner_radius=0.5,
+        outer_radius=2.5,
+    )
 
 dataset = dataset.apply_mask(mask=mask)  # <----- The custom mask is used here!
 

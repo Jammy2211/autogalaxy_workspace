@@ -16,11 +16,7 @@ __Contents__
 - **Searches**: Visualize the results of a search.
 """
 
-# %matplotlib inline
-# from pyprojroot import here
-# workspace_path = str(here())
-# %cd $workspace_path
-# print(f"Working Directory has been set to `{workspace_path}`")
+# from autoconf import setup_notebook; setup_notebook()
 
 from pathlib import Path
 import autogalaxy as ag
@@ -31,7 +27,7 @@ __Dataset__
 
 First, lets load an example image of a galaxy as an `Array2D`.
 """
-dataset_path = Path("dataset") / "imaging" / "complex"
+dataset_path = Path("dataset") / "imaging" / "simple"
 
 """
 __Dataset Auto-Simulation__

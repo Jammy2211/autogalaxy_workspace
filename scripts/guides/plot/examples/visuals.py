@@ -28,11 +28,7 @@ __Setup__
 To illustrate plotting, we require standard objects like a grid, galaxies and dataset.
 """
 
-# %matplotlib inline
-# from pyprojroot import here
-# workspace_path = str(here())
-# %cd $workspace_path
-# print(f"Working Directory has been set to `{workspace_path}`")
+# from autoconf import setup_notebook; setup_notebook()
 
 import numpy as np
 from pathlib import Path
@@ -53,7 +49,7 @@ galaxy = ag.Galaxy(
 
 galaxies = ag.Galaxies(galaxies=[galaxy])
 
-dataset_path = Path("dataset") / "imaging" / "complex"
+dataset_path = Path("dataset") / "imaging" / "simple"
 
 """
 __Dataset Auto-Simulation__
