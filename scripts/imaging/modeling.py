@@ -446,10 +446,7 @@ file loads back into a full Python object with a single line — much faster and
 For example, the maximum log likelihood `Galaxies` is saved as a `.json` file and the per-galaxy model images as
 a `.fits` file:
 """
-# Replace <unique_hash> with the 32-char identifier for your fit.
-result_path = (
-    Path("output") / "imaging" / "features" / dataset_name / "start_here" / "<unique_hash>"
-)
+result_path = search.paths.output_path  # Points at the fit's unique output folder.
 
 galaxies = ag.Galaxies.from_json(file_path=result_path / "files" / "galaxies.json")
 
