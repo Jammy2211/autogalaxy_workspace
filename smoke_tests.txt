@@ -9,10 +9,10 @@ interferometer/fit.py
 interferometer/likelihood_function.py
 # point_source/start_here.py  # disabled: bypass mode tuple-path KeyError on point source models (rhayes777/PyAutoFit#1179)
 # group/start_here.py  # disabled: uses checked-in real data incompatible with PYAUTO_SMALL_DATASETS=1
-group/modeling.py
+# group/modeling.py  # disabled: committed dataset (150x150) clashes with PYAUTO_SMALL_DATASETS=1 — see admin_jammy/prompt/build/smoke_workspace_fixes.md
 # multi/start_here.py  # disabled: uses checked-in real data incompatible with PYAUTO_SMALL_DATASETS=1
-multi/modeling.py
-ellipse/fit.py
+# multi/modeling.py  # disabled: committed dataset (100x100) clashes with PYAUTO_SMALL_DATASETS=1 — see admin_jammy/prompt/build/smoke_workspace_fixes.md
+# ellipse/fit.py  # disabled: committed dataset shape clash with PYAUTO_SMALL_DATASETS=1 — see admin_jammy/prompt/build/smoke_workspace_fixes.md
 guides/galaxies.py
 # guides/results/start_here.py  # disabled: depends on prior search output in output/ dir (not generated during smoke tests)
 guides/modeling/cookbook.py
