@@ -1,8 +1,18 @@
-imaging/start_here.py
+# imaging/start_here.py  # disabled: uses checked-in real data incompatible with PYAUTO_SMALL_DATASETS=1
+imaging/modeling.py
 imaging/fit.py
-# imaging/modeling.py  # disabled: result.max_log_likelihood_instance fails in PYAUTO_TEST_MODE=2 (rhayes777/PyAutoFit#1179)
-interferometer/start_here.py
-multi/start_here.py
-# ellipse/modeling.py  # disabled: bypass mode tuple-path KeyError on ellipse models (rhayes777/PyAutoFit#1179)
+imaging/likelihood_function.py
+# imaging/data_preparation/start_here.py  # disabled: no auto-simulation, depends on imaging/modeling.py dataset (race condition in parallel)
+# interferometer/start_here.py  # disabled: uses checked-in real data incompatible with PYAUTO_SMALL_DATASETS=1
+interferometer/modeling.py
+interferometer/fit.py
+interferometer/likelihood_function.py
+# point_source/start_here.py  # disabled: bypass mode tuple-path KeyError on point source models (rhayes777/PyAutoFit#1179)
+# group/start_here.py  # disabled: uses checked-in real data incompatible with PYAUTO_SMALL_DATASETS=1
+group/modeling.py
+# multi/start_here.py  # disabled: uses checked-in real data incompatible with PYAUTO_SMALL_DATASETS=1
+multi/modeling.py
+ellipse/fit.py
 guides/galaxies.py
+# guides/results/start_here.py  # disabled: depends on prior search output in output/ dir (not generated during smoke tests)
 guides/modeling/cookbook.py
