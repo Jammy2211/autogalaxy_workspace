@@ -51,6 +51,7 @@ __Contents__
 """
 
 from autoconf import jax_wrapper  # Sets JAX environment before other imports
+from autoconf.dictable import from_json
 
 from pathlib import Path
 
@@ -83,7 +84,7 @@ The maximum log likelihood `Galaxies` collection is saved to `files/galaxies.jso
 It contains every `Galaxy` at its max log likelihood values (light and mass profiles included), so it can be used
 directly to compute images, convergence maps and more — exactly as if it had been returned by `search.fit()`.
 """
-galaxies = ag.Galaxies.from_json(file_path=files_path / "galaxies.json")
+galaxies = from_json(file_path=files_path / "galaxies.json")
 
 print(galaxies)
 
@@ -93,7 +94,7 @@ __Model__
 The fitted `af.Collection` model is saved to `files/model.json`. This is the *prior* model (with free parameters),
 not the max log likelihood instance — useful for inspecting the structure of what was fitted.
 """
-model = af.Collection.from_json(file_path=files_path / "model.json")
+model = from_json(file_path=files_path / "model.json")
 print(model.info)
 
 """
