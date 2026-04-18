@@ -215,8 +215,8 @@ setup of initialization priors.
 __MCMC__
 
 For users familiar with Markov Chain Monte Carlo (MCMC) non-linear samplers, PyAutoFit supports the non-linear
-searches `Emcee` and `Zeus`. Like PySwarms, these also need a good starting point, and are generally less effective at 
-modeling than Nautilus. 
+searches `Emcee` and `Zeus`. Like LBFGS, these also need a good starting point, and are generally less effective at
+modeling than Nautilus.
 
 I've included an example runs of Emcee and Zeus below, where the model is set up using `UniformPriors` to give
 the starting point of the MCMC walkers. 
