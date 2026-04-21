@@ -15,9 +15,10 @@ __Contents__
 **Visualize:** Output subplot and image PNGs of the simulated dataset.
 **Plane Output:** Save the Galaxies object as a JSON file.
 
-__Start Here Notebook__
+__Start Here__
 
-If any code in this script is unclear, refer to the `simulators/start_here.ipynb` notebook.
+If any code in this script is unclear, refer to `imaging/simulator.py` which is a more detailed
+walk-through of the same simulation steps for a bulge + disk galaxy.
 """
 
 # from autoconf import setup_notebook; setup_notebook()
